@@ -1,0 +1,591 @@
+
+
+  <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Los Mejores Cursos de Crochet Online 2026 | Aprende a Tejer</title>
+    <meta name="description" content="Descubre los cursos de crochet más recomendados para principiantes y avanzados. Aprende amigurumi, prendas y técnicas profesionales con expertos.">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #8B5CF6;
+            --primary-dark: #7C3AED;
+            --secondary: #F472B6;
+            --accent: #06B6D4;
+            --dark: #1E1B4B;
+            --light: #F5F3FF;
+            --white: #ffffff;
+            --gray: #6B7280;
+            --success: #10B981;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background: var(--light); color: var(--dark); line-height: 1.6; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        
+        /* Header */
+        header { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); z-index: 1000; box-shadow: 0 2px 20px rgba(0,0,0,0.1); }
+        .nav-container { max-width: 1200px; margin: 0 auto; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--primary); }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--dark); font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--primary); }
+        .btn { padding: 0.8rem 2rem; border-radius: 50px; border: none; cursor: pointer; font-weight: 600; transition: all 0.3s; text-decoration: none; display: inline-block; }
+        .btn-primary { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; box-shadow: 0 4px 15px rgba(139,92,246,0.4); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(139,92,246,0.5); }
+        .btn-outline { background: transparent; border: 2px solid var(--primary); color: var(--primary); }
+        .btn-outline:hover { background: var(--primary); color: white; }
+        
+        /* Hero */
+        .hero { margin-top: 80px; padding: 5rem 2rem; background: linear-gradient(135deg, var(--dark) 0%, #312E81 50%, var(--primary) 100%); color: white; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: -50%; right: -10%; width: 600px; height: 600px; background: rgba(255,255,255,0.05); border-radius: 50%; }
+        .hero-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; position: relative; z-index: 1; }
+        .hero-badge { display: inline-block; background: rgba(255,255,255,0.2); padding: 0.5rem 1.5rem; border-radius: 50px; font-size: 0.9rem; margin-bottom: 1.5rem; backdrop-filter: blur(10px); }
+        .hero h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; }
+        .hero h1 span { color: var(--secondary); }
+        .hero p { font-size: 1.2rem; opacity: 0.9; margin-bottom: 2rem; }
+        .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .hero-stats { display: flex; gap: 2rem; margin-top: 3rem; }
+        .stat { text-align: center; }
+        .stat-number { font-size: 2.5rem; font-weight: 700; color: var(--secondary); }
+        .stat-label { font-size: 0.9rem; opacity: 0.8; }
+        .hero-image { position: relative; }
+        .hero-image img { width: 100%; border-radius: 20px; box-shadow: 0 25px 50px rgba(0,0,0,0.3); }
+        .floating-card { position: absolute; background: white; color: var(--dark); padding: 1rem 1.5rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); animation: float 3s ease-in-out infinite; }
+        .floating-card.card-1 { bottom: 20%; left: -10%; animation-delay: 0s; }
+        .floating-card.card-2 { top: 10%; right: -5%; animation-delay: 1.5s; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+        
+        /* Social Proof */
+        .social-proof { padding: 3rem 2rem; background: white; text-align: center; }
+        .social-proof p { color: var(--gray); margin-bottom: 1.5rem; font-size: 0.95rem; }
+        .brands { display: flex; justify-content: center; align-items: center; gap: 3rem; flex-wrap: wrap; opacity: 0.6; }
+        .brands span { font-weight: 600; font-size: 1.2rem; color: var(--gray); }
+        
+        /* Section Headers */
+        .section-header { text-align: center; max-width: 700px; margin: 0 auto 3rem; }
+        .section-header h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .section-header p { color: var(--gray); }
+        
+        /* Courses */
+        .courses { padding: 5rem 2rem; max-width: 1200px; margin: 0 auto; }
+        .filters { display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap; }
+        .filter-btn { padding: 0.6rem 1.5rem; border-radius: 50px; border: 2px solid #E5E7EB; background: white; cursor: pointer; font-weight: 500; transition: all 0.3s; }
+        .filter-btn.active, .filter-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
+        .courses-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
+        .course-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: all 0.3s; }
+        .course-card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0,0,0,0.15); }
+        .course-image { height: 220px; background: linear-gradient(135deg, var(--primary), var(--secondary)); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; position: relative; }
+        .course-badge { position: absolute; top: 1rem; right: 1rem; background: var(--success); color: white; padding: 0.3rem 1rem; border-radius: 50px; font-size: 0.8rem; font-weight: 600; }
+        .course-badge.popular { background: var(--secondary); }
+        .course-content { padding: 1.5rem; }
+        .course-level { display: inline-block; padding: 0.3rem 1rem; border-radius: 50px; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.5rem; }
+        .level-beginner { background: #D1FAE5; color: #065F46; }
+        .level-intermediate { background: #FEF3C7; color: #92400E; }
+        .level-advanced { background: #FEE2E2; color: #991B1B; }
+        .course-content h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
+        .course-content p { color: var(--gray); font-size: 0.95rem; margin-bottom: 1rem; }
+        .course-meta { display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; border-top: 1px solid #E5E7EB; }
+        .course-price { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
+        .course-price span { font-size: 0.9rem; color: var(--gray); text-decoration: line-through; margin-left: 0.5rem; }
+        .course-rating { color: #FBBF24; }
+        
+        /* Benefits */
+        .benefits { padding: 5rem 2rem; background: white; }
+        .benefits-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .benefit-card { text-align: center; padding: 2rem; border-radius: 20px; background: var(--light); transition: all 0.3s; }
+        .benefit-card:hover { background: white; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .benefit-icon { width: 70px; height: 70px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; color: white; font-size: 1.5rem; }
+        .benefit-card h3 { margin-bottom: 0.5rem; }
+        .benefit-card p { color: var(--gray); font-size: 0.95rem; }
+        
+        /* Testimonials */
+        .testimonials { padding: 5rem 2rem; max-width: 1200px; margin: 0 auto; }
+        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .testimonial-card { background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); position: relative; }
+        .testimonial-card::before { content: '"'; position: absolute; top: 1rem; left: 1.5rem; font-size: 4rem; color: var(--primary); opacity: 0.2; font-family: 'Playfair Display', serif; }
+        .testimonial-text { margin-bottom: 1.5rem; color: var(--dark); font-style: italic; }
+        .testimonial-author { display: flex; align-items: center; gap: 1rem; }
+        .author-avatar { width: 50px; height: 50px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; }
+        .author-info h4 { font-size: 1rem; }
+        .author-info p { font-size: 0.85rem; color: var(--gray); }
+        
+        /* Lead Magnet */
+        .lead-magnet { padding: 5rem 2rem; background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; text-align: center; }
+        .lead-magnet h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .lead-magnet p { max-width: 600px; margin: 0 auto 2rem; opacity: 0.9; }
+        .lead-form { max-width: 500px; margin: 0 auto; display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+        .lead-form input { flex: 1; min-width: 250px; padding: 1rem 1.5rem; border: none; border-radius: 50px; font-size: 1rem; outline: none; }
+        .lead-form button { padding: 1rem 2.5rem; border-radius: 50px; border: none; background: var(--dark); color: white; font-weight: 600; cursor: pointer; transition: all 0.3s; }
+        .lead-form button:hover { background: white; color: var(--dark); }
+        .trust-badges { display: flex; justify-content: center; gap: 2rem; margin-top: 2rem; opacity: 0.8; }
+        
+        /* FAQ */
+        .faq { padding: 5rem 2rem; max-width: 800px; margin: 0 auto; }
+        .faq-item { background: white; margin-bottom: 1rem; border-radius: 15px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .faq-question { padding: 1.5rem; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-weight: 600; }
+        .faq-question i { transition: transform 0.3s; }
+        .faq-item.active .faq-question i { transform: rotate(180deg); }
+        .faq-answer { padding: 0 1.5rem; max-height: 0; overflow: hidden; transition: all 0.3s; color: var(--gray); }
+        .faq-item.active .faq-answer { padding: 0 1.5rem 1.5rem; max-height: 200px; }
+        
+        /* Footer */
+        footer { background: var(--dark); color: white; padding: 3rem 2rem 1rem; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 2rem; }
+        .footer-section h3 { margin-bottom: 1rem; color: var(--secondary); }
+        .footer-section a { color: rgba(255,255,255,0.7); text-decoration: none; display: block; margin-bottom: 0.5rem; transition: color 0.3s; }
+        .footer-section a:hover { color: white; }
+        .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.5); font-size: 0.9rem; }
+        .disclaimer { background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 10px; margin-top: 1rem; font-size: 0.85rem; }
+        
+        /* Animations */
+        .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.6s; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        
+        /* Mobile */
+        @media (max-width: 768px) {
+            .hero-container { grid-template-columns: 1fr; text-align: center; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero-stats { justify-content: center; }
+            .nav-links { display: none; }
+            .courses-grid { grid-template-columns: 1fr; }
+            .hero-buttons { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">🧶 CrochetPro</div>
+            <ul class="nav-links">
+                <li><a href="#cursos">Cursos</a></li>
+                <li><a href="#beneficios">Beneficios</a></li>
+                <li><a href="#testimonios">Opiniones</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+            <a href="#cursos" class="btn btn-primary">Ver Cursos</a>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">✨ Actualizado 2026</div>
+                <h1>Domina el <span>Crochet</span> con los Mejores Cursos Online</h1>
+                <p>Aprende desde cero o perfecciona tu técnica con cursos seleccionados por expertos. Desde amigurumis hasta prendas profesionales.</p>
+                <div class="hero-buttons">
+                    <a href="#cursos" class="btn btn-primary">Explorar Cursos</a>
+                    <a href="#gratis" class="btn btn-outline" style="color: white; border-color: white;">Descargar Patrón Gratis</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number" id="counter1">50+</div>
+                        <div class="stat-label">Cursos Revisados</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number" id="counter2">12K</div>
+                        <div class="stat-label">Estudiantes</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number" id="counter3">4.8</div>
+                        <div class="stat-label">Valoración Media</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1605218427306-022ba6c5544f?w=600&h=500&fit=crop" alt="Crochet">
+                <div class="floating-card card-1">
+                    <i class="fas fa-star" style="color: #FBBF24;"></i> 4.9/5<br>
+                    <small>Curso Top #1</small>
+                </div>
+                <div class="floating-card card-2">
+                    <i class="fas fa-users" style="color: var(--primary);"></i> 2,500+<br>
+                    <small>Estudiantes activos</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="social-proof">
+        <p>Confían en nuestras recomendaciones estudiantes de:</p>
+        <div class="brands">
+            <span>🧶 CrochetWay</span>
+            <span>🧵 TejePro</span>
+            <span>🎨 AmigurumiArt</span>
+            <span>👗 ModaTejida</span>
+            <span>🏠 HomeCrochet</span>
+        </div>
+    </section>
+
+    <!-- Courses -->
+    <section class="courses" id="cursos">
+        <div class="section-header">
+            <h2>Cursos Recomendados</h2>
+            <p>Seleccionamos cuidadosamente cada curso basándonos en calidad de contenido, valoraciones reales y resultados de los estudiantes.</p>
+        </div>
+        
+        <div class="filters">
+            <button class="filter-btn active" onclick="filterCourses('all')">Todos</button>
+            <button class="filter-btn" onclick="filterCourses('beginner')">Principiantes</button>
+            <button class="filter-btn" onclick="filterCourses('intermediate')">Intermedios</button>
+            <button class="filter-btn" onclick="filterCourses('advanced')">Avanzados</button>
+            <button class="filter-btn" onclick="filterCourses('amigurumi')">Amigurumi</button>
+        </div>
+
+        <div class="courses-grid">
+            <!-- Curso 1 -->
+            <div class="course-card" data-category="beginner">
+                <div class="course-image">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span class="course-badge popular">MÁS VENDIDO</span>
+                </div>
+                <div class="course-content">
+                    <span class="course-level level-beginner">Principiante</span>
+                    <h3>Crochet desde Cero: Guía Completa</h3>
+                    <p>Aprende los puntos básicos, cómo leer patrones y crea tu primera bufanda en 7 días. Ideal si nunca has tejido.</p>
+                    <div class="course-meta">
+                        <div class="course-price">$29 <span>$97</span></div>
+                        <a href="https://pay.hotmart.com/XXXXX?off=xxxxx" class="btn btn-primary" style="padding: 0.6rem 1.5rem; font-size: 0.9rem;">Ver Curso →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Curso 2 -->
+            <div class="course-card" data-category="amigurumi">
+                <div class="course-image" style="background: linear-gradient(135deg, #F472B6, #EC4899);">
+                    <i class="fas fa-paw"></i>
+                    <span class="course-badge">NUEVO</span>
+                </div>
+                <div class="course-content">
+                    <span class="course-level level-intermediate">Intermedio</span>
+                    <h3>Amigurumi Master: Muñecos Profesionales</h3>
+                    <p>Técnicas avanzadas de amigurumi, diseño de personajes, venta de patrones y creación de tu propio negocio.</p>
+                    <div class="course-meta">
+                        <div class="course-price">$47 <span>$147</span></div>
+                        <a href="https://pay.hotmart.com/XXXXX?off=xxxxx" class="btn btn-primary" style="padding: 0.6rem 1.5rem; font-size: 0.9rem;">Ver Curso →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Curso 3 -->
+            <div class="course-card" data-category="advanced">
+                <div class="course-image" style="background: linear-gradient(135deg, #06B6D4, #0891B2);">
+                    <i class="fas fa-tshirt"></i>
+                </div>
+                <div class="course-content">
+                    <span class="course-level level-advanced">Avanzado</span>
+                    <h3>Prendas a Crochet: Diseño y Confección</h3>
+                    <p>Diseña suéteres, tops y vestidos con técnicas profesionales. Incluye patrones descargables y tutorías de ajuste.</p>
+                    <div class="course-meta">
+                        <div class="course-price">$67 <span>$197</span></div>
+                        <a href="https://pay.hotmart.com/XXXXX?off=xxxxx" class="btn btn-primary" style="padding: 0.6rem 1.5rem; font-size: 0.9rem;">Ver Curso →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Curso 4 -->
+            <div class="course-card" data-category="intermediate">
+                <div class="course-image" style="background: linear-gradient(135deg, #F59E0B, #D97706);">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <div class="course-content">
+                    <span class="course-level level-intermediate">Intermedio</span>
+                    <h3>Crochet Sostenible: Moda Eco-Friendly</h3>
+                    <p>Aprende a trabajar con hilos reciclados, crea bolsos y accesorios sostenibles. Tendencia 2026.</p>
+                    <div class="course-meta">
+                        <div class="course-price">$39 <span>$127</span></div>
+                        <a href="https://pay.hotmart.com/XXXXX?off=xxxxx" class="btn btn-primary" style="padding: 0.6rem 1.5rem; font-size: 0.9rem;">Ver Curso →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Curso 5 -->
+            <div class="course-card" data-category="beginner">
+                <div class="course-image" style="background: linear-gradient(135deg, #10B981, #059669);">
+                    <i class="fas fa-home"></i>
+                </div>
+                <div class="course-content">
+                    <span class="course-level level-beginner">Principiante</span>
+                    <h3>Decoración Hogar a Crochet</h3>
+                    <p>Mantas, cojines, tapetes y cestas. Proyectos fáciles y rápidos para embellecer tu hogar paso a paso.</p>
+                    <div class="course-meta">
+                        <div class="course-price">$24 <span>$87</span></div>
+                        <a href="https://pay.hotmart.com/XXXXX?off=xxxxx" class="btn btn-primary" style="padding: 0.6rem 1.5rem; font-size: 0.9rem;">Ver Curso →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Curso 6 -->
+            <div class="course-card" data-category="advanced">
+                <div class="course-image" style="background: linear-gradient(135deg, #8B5CF6, #7C3AED);">
+                    <i class="fas fa-chart-line"></i>
+                    <span class="course-badge popular">TOP VENTAS</span>
+                </div>
+                <div class="course-content">
+                    <span class="course-level level-advanced">Avanzado</span>
+                    <h3>Negocio de Crochet: De Hobby a Ingresos</h3>
+                    <p>Estrategias para vender tus piezas, crear patrones digitales, usar Etsy y monetizar tu pasión por el tejido.</p>
+                    <div class="course-meta">
+                        <div class="course-price">$97 <span>$297</span></div>
+                        <a href="https://pay.hotmart.com/XXXXX?off=xxxxx" class="btn btn-primary" style="padding: 0.6rem 1.5rem; font-size: 0.9rem;">Ver Curso →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits -->
+    <section class="benefits" id="beneficios">
+        <div class="section-header">
+            <h2>¿Por qué confiar en nuestras recomendaciones?</h2>
+            <p>No recomendamos cualquier curso. Cada uno pasa por un riguroso proceso de selección.</p>
+        </div>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon"><i class="fas fa-check-double"></i></div>
+                <h3>Cursos Verificados</h3>
+                <p>Revisamos cada curso personalmente evaluando calidad de video, claridad de explicaciones y resultados reales.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon"><i class="fas fa-shield-alt"></i></div>
+                <h3>Garantía de Hotmart</h3>
+                <p>Todos los cursos incluyen garantía de devolución de 7-30 días. Tu compra está 100% protegida.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon"><i class="fas fa-tags"></i></div>
+                <h3>Mejores Precios</h3>
+                <p>Negociamos descuentos exclusivos. Los precios que ves son los mejores disponibles en el mercado.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon"><i class="fas fa-infinity"></i></div>
+                <h3>Acceso de por Vida</h3>
+                <p>Una vez comprado, el curso es tuyo para siempre. Accede cuando quieras, desde cualquier dispositivo.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonios">
+        <div class="section-header">
+            <h2>Lo que dicen nuestros estudiantes</h2>
+            <p>Historias reales de personas que transformaron su pasión por el crochet.</p>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Empecé desde cero con el curso de principiantes y en 3 meses ya vendía mis primeros amigurumis en Instagram. La inversión se pagó sola."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">MR</div>
+                    <div class="author-info">
+                        <h4>María Rodríguez</h4>
+                        <p>Estudiante de Amigurumi Master</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Nunca pensé que podría diseñar mis propias prendas. El curso avanzado me dio las herramientas para crear suéteres únicos que ahora vendo en Etsy."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">LC</div>
+                    <div class="author-info">
+                        <h4>Laura Castro</h4>
+                        <p>Estudiante de Prendas a Crochet</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">"El curso de negocios cambió mi perspectiva. Pasé de tejer como hobby a tener un ingreso extra de $500 mensuales. Totalmente recomendado."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">AP</div>
+                    <div class="author-info">
+                        <h4>Ana Pérez</h4>
+                        <p>Estudiante de Negocio de Crochet</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lead Magnet -->
+    <section class="lead-magnet" id="gratis">
+        <h2>🎁 Descarga tu Patrón Gratis</h2>
+        <p>Únete a nuestra comunidad y recibe un patrón exclusivo de amigurumi + guía de puntos básicos en PDF. ¡100% gratuito!</p>
+        <form class="lead-form" onsubmit="event.preventDefault(); alert('¡Gracias! Revisa tu correo para descargar tu patrón.');">
+            <input type="email" placeholder="Tu correo electrónico" required>
+            <button type="submit">Quiero mi Patrón</button>
+        </form>
+        <div class="trust-badges">
+            <span><i class="fas fa-lock"></i> Sin spam</span>
+            <span><i class="fas fa-download"></i> Descarga inmediata</span>
+            <span><i class="fas fa-heart"></i> 5,000+ descargas</span>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq" id="faq">
+        <div class="section-header">
+            <h2>Preguntas Frecuentes</h2>
+            <p>Todo lo que necesitas saber antes de empezar.</p>
+        </div>
+        <div class="faq-item active">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                ¿Necesito experiencia previa para estos cursos?
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                No. Tenemos cursos para todos los niveles. Los de principiantes parten desde cero, explicando los puntos básicos paso a paso.
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                ¿Qué materiales necesito para empezar?
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                Solo aguja de crochet e hilo. Los cursos incluyen listas de materiales específicos y dónde comprarlos económicamente.
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                ¿Por cuánto tiempo tengo acceso al curso?
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                Acceso de por vida. Una vez comprado, puedes ver los videos las veces que quieras, sin límite de tiempo.
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                ¿Puedo pedir reembolso si no me gusta?
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                Sí. Hotmart ofrece garantía de devolución de 7 días (algunos cursos hasta 30 días). Sin preguntas, sin complicaciones.
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                ¿Los cursos incluyen certificado?
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                La mayoría incluye certificado de finalización. Revisa la descripción de cada curso para confirmar.
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>🧶 CrochetPro</h3>
+                <p style="color: rgba(255,255,255,0.7); margin-bottom: 1rem;">Tu guía confiable para aprender crochet y convertir tu pasión en ingresos.</p>
+                <div class="disclaimer">
+                    <strong>Divulgación de Afiliados:</strong> Este sitio contiene enlaces de afiliados. Si compras a través de ellos, recibimos una comisión sin costo adicional para ti.
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Enlaces Rápidos</h3>
+                <a href="#cursos">Cursos Recomendados</a>
+                <a href="#beneficios">Por qué Elegirnos</a>
+                <a href="#testimonios">Opiniones</a>
+                <a href="#faq">Preguntas Frecuentes</a>
+            </div>
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <a href="#">Política de Privacidad</a>
+                <a href="#">Términos de Uso</a>
+                <a href="#">Política de Cookies</a>
+            </div>
+            <div class="footer-section">
+                <h3>Síguenos</h3>
+                <a href="https://youtube.com/@EldisYerar" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
+                <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="#"><i class="fab fa-pinterest"></i> Pinterest</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 CrochetPro. Todos los derechos reservados. Creado con ❤️ para la comunidad del tejido.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Filter courses
+        function filterCourses(category) {
+            const cards = document.querySelectorAll('.course-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+            
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                    setTimeout(() => card.style.opacity = '1', 10);
+                } else {
+                    card.style.opacity = '0';
+                    setTimeout(() => card.style.display = 'none', 300);
+                }
+            });
+        }
+
+        // FAQ Toggle
+        function toggleFaq(element) {
+            const item = element.parentElement;
+            const allItems = document.querySelectorAll('.faq-item');
+            allItems.forEach(i => {
+                if (i !== item) i.classList.remove('active');
+            });
+            item.classList.toggle('active');
+        }
+
+        // Scroll animations
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.course-card, .benefit-card, .testimonial-card').forEach(el => {
+            el.classList.add('fade-in');
+            observer.observe(el);
+        });
+
+        // Counter animation
+        function animateCounter(id, target, suffix = '') {
+            const el = document.getElementById(id);
+            let current = 0;
+            const increment = target / 50;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    el.textContent = target + suffix;
+                    clearInterval(timer);
+                } else {
+                    el.textContent = Math.floor(current) + suffix;
+                }
+            }, 30);
+        }
+
+        // Trigger counters when hero is visible
+        const heroObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter('counter1', 50, '+');
+                    animateCounter('counter2', 12, 'K');
+                    animateCounter('counter3', 4.8);
+                    heroObserver.disconnect();
+                }
+            });
+        });
+        heroObserver.observe(document.querySelector('.hero'));
+    </script>
+</body>
+</html>
