@@ -1,184 +1,698 @@
-[22/4/2026 20:54] Eyerar: <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cursos de Crochet y Trapillo | Aprende Desde Cero</title>
+    <title>Mi Ebook para Ti - Crochet y Amigurumis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #faf7f2 0%, #f0e6d3 100%); color: #333; line-height: 1.6; }
-        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
         /* Header */
-        header { background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%); color: white; padding: 3rem 1rem; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
-        header p { font-size: 1.2rem; opacity: 0.95; }
-        
-        /* Contenedor principal */
-        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
-        
-        /* Sección de categoría */
-        .seccion { margin-bottom: 3rem; }
-        .seccion-titulo { font-size: 1.8rem; color: #6B46C1; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 3px solid #EC4899; display: inline-block; }
-        
-        /* Grid de cursos */
-        .cursos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
-        
-        /* Tarjeta de curso */
-        .curso-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: all 0.3s ease; position: relative; }
-        .curso-card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0,0,0,0.15); }
-        
-        /* Badge destacado */
-        .badge-destacado { position: absolute; top: 15px; right: -30px; background: #EF4444; color: white; padding: 0.4rem 2.5rem; font-size: 0.75rem; font-weight: bold; transform: rotate(45deg); z-index: 10; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
-        
-        /* Imagen del curso */
-        .curso-imagen { width: 100%; height: 220px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; font-size: 4rem; position: relative; }
-        .curso-imagen.trapillo { background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); }
-        .curso-imagen.amigurumi { background: linear-gradient(135deg, #EC4899 0%, #8B5CF6 100%); }
-        .curso-imagen.patrones { background: linear-gradient(135deg, #10B981 0%, #059669 100%); }
-        .curso-imagen.prendas { background: linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%); }
-        
-        /* Contenido */
-        .curso-content { padding: 1.8rem; }
-        .curso-tag { display: inline-block; padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.8rem; }
-        .tag-trapillo { background: #FEF3C7; color: #92400E; }
-        .tag-amigurumi { background: #FCE7F3; color: #9D174D; }
-        .tag-patrones { background: #D1FAE5; color: #065F46; }
-        .tag-prene { background: #DBEAFE; color: #1E40AF; }
-        
-        .curso-titulo { font-size: 1.4rem; margin-bottom: 0.8rem; color: #1F2937; font-weight: 700; }
-        .curso-desc { color: #6B7280; margin-bottom: 1.2rem; line-height: 1.6; font-size: 0.95rem; }
-        
-        /* Precio */
-        .curso-precio { margin-bottom: 1.2rem; }
-        .precio-actual { font-size: 2rem; font-weight: bold; color: #059669; }
-        .precio-tachado { font-size: 1rem; color: #9CA3AF; text-decoration: line-through; margin-left: 0.5rem; }
-        .precio-oferta { display: inline-block; background: #FEE2E2; color: #DC2626; padding: 0.2rem 0.6rem; border-radius: 10px; font-size: 0.8rem; font-weight: bold; margin-left: 0.5rem; vertical-align: middle; }
-[22/4/2026 20:54] Eyerar: /* Botón */
-        .btn-comprar { display: block; width: 100%; padding: 1rem; background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%); color: white; text-align: center; text-decoration: none; border-radius: 12px; font-weight: bold; font-size: 1.1rem; transition: all 0.3s; border: none; cursor: pointer; box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3); }
-        .btn-comprar:hover { transform: scale(1.02); box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4); }
-        
-        /* Bonos */
-        .bonos { margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed #E5E7EB; }
-        .bonos-titulo { font-size: 0.85rem; color: #059669; font-weight: bold; margin-bottom: 0.5rem; }
-        .bonos-lista { font-size: 0.8rem; color: #6B7280; }
-        .bonos-lista li { margin-bottom: 0.2rem; list-style: none; }
-        .bonos-lista li::before { content: "🎁 "; }
-        
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            color: white;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Lead Magnet Section */
+        .lead-magnet {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px 0;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+        .lead-magnet h2 {
+            color: #667eea;
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .lead-magnet .subtitle {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .ebook-preview {
+            width: 200px;
+            height: 280px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ebook-preview::before {
+            content: '🧶';
+            font-size: 4rem;
+            position: absolute;
+            top: 20px;
+        }
+
+        .ebook-preview span {
+            margin-top: 60px;
+            padding: 0 20px;
+        }
+
+        /* Form Styles */
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 600;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .privacy-note {
+            margin-top: 15px;
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        /* Products Section */
+        .products-section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px 0;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .products-section h2 {
+            text-align: center;
+            color: #667eea;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .products-section .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        /* Category Filter */
+        .category-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
+        /* Product Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .product-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            border-color: #667eea;
+        }
+
+        .product-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .product-type {
+            display: inline-block;
+            padding: 5px 15px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .product-body {
+            padding: 25px;
+        }
+
+        .product-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .product-category {
+            display: inline-block;
+            padding: 5px 12px;
+            background: #e3f2fd;
+            color: #667eea;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .product-code {
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 15px;
+        }
+
+        .btn-buy {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: opacity 0.3s;
+        }
+
+        .btn-buy:hover {
+            opacity: 0.9;
+        }
+
         /* Footer */
-        footer { background: #1F2937; color: #9CA3AF; text-align: center; padding: 2rem; margin-top: 3rem; }
-        footer a { color: #8B5CF6; }
-        
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: white;
+        }
+
+        footer .social-links {
+            margin: 20px 0;
+        }
+
+        footer .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 15px;
+            transition: transform 0.3s;
+            display: inline-block;
+        }
+
+        footer .social-links a:hover {
+            transform: scale(1.2);
+        }
+
+        footer p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* WhatsApp Float Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            text-decoration: none;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            transition: transform 0.3s;
+            z-index: 1000;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            background: #d4edda;
+            color: #155724;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border: 1px solid #c3e6cb;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         /* Responsive */
-        @media (max-width: 768px) { 
-            header h1 { font-size: 1.8rem; } 
-            .cursos-grid { grid-template-columns: 1fr; } 
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .lead-magnet,
+            .products-section {
+                padding: 25px;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-
+    <!-- Header -->
     <header>
-        <h1>🧶 Cursos de Crochet Online</h1>
-        <p>Aprende trapillo, amigurumi y prendas tejidas con los mejores cursos seleccionados</p>
+        <h1>🧶 Crochet y Amigurumis</h1>
+        <p>Aprende a tejer desde cero y convierte tu pasión en negocio</p>
     </header>
 
     <div class="container">
+        <!-- Lead Magnet Section -->
+        <section class="lead-magnet">
+            <h2>📚 Mi Ebook para Ti</h2>
+            <p class="subtitle">Recibe GRATIS mi guía exclusiva con patrones y tips para empezar</p>
+            
+            <div class="ebook-preview">
+                <span>Mi Ebook para Ti</span>
+            </div>
 
-        <!-- SECCIÓN 1: TRAPILLO -->
-        <section class="seccion">
-            <h2 class="seccion-titulo">👜 Cursos de Trapillo</h2>
-            <div class="cursos-grid">
-
-                <!-- CURSO 1: Bolsos Premium -->
-                <div class="curso-card">
-                    <div class="curso-imagen trapillo">👜</div>
-                    <div class="curso-content">
-                        <span class="curso-tag tag-trapillo">Trapillo</span>
-                        <h3 class="curso-titulo">Bolsos Premium en Trapillo</h3>
-                        <p class="curso-desc">Aprende a crear bolsos profesionales con trapillo. Técnicas paso a paso desde cero para emprender.</p>
-                        <div class="curso-precio">
-                            <span class="precio-actual">$19.00</span>
-                            <span class="precio-tachado">$49.00</span>
-                        </div>
-                        <a href="https://go.hotmart.com/R97973128U?ap=2ff1" class="btn-comprar" target="_blank">Ver Curso →</a>
+            <div class="form-container">
+                <form id="leadForm">
+                    <div class="form-group">
+                        <label for="nombre">Nombre completo *</label>
+                        <input type="text" id="nombre" name="nombre" required placeholder="Escribe tu nombre">
                     </div>
-                </div>
-
-                <!-- CURSO 2: Guía Bolsos Trapillo -->
-                <div class="curso-card">
-                    <div class="curso-imagen trapillo">👛</div>
-                    <div class="curso-content">
-                        <span class="curso-tag tag-trapillo">Trapillo</span>
-                        <h3 class="curso-titulo">Guía para Tejer Bolsos a Trapillo</h3>
-                        <p class="curso-desc">Guía completa para dominar el trapillo. Desde los primeros puntos hasta bolsos terminados.</p>
-                        <div class="curso-precio">
-                            <span class="precio-actual">$19.00</span>
-                        </div>
-                        <a href="https://go.hotmart.com/Q101999463U" class="btn-comprar" target="_blank">Ver Curso →</a>
+                    
+                    <div class="form-group">
+                        <label for="email">Correo electrónico *</label>
+                        <input type="email" id="email" name="email" required placeholder="tu@email.com">
                     </div>
+                    
+                    <div class="form-group">
+                        <label for="whatsapp">WhatsApp *</label>
+                        <input type="tel" id="whatsapp" name="whatsapp" required placeholder="+53 54356696">
+                    </div>
+                    
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-gift"></i> ¡Quiero mi Ebook Gratis!
+                    </button>
+                </form>
+                
+                <div class="success-message" id="successMessage">
+                    <i class="fas fa-check-circle"></i> ¡Gracias! Te enviaremos tu ebook pronto. Revisa tu WhatsApp.
                 </div>
-
+                
+                <p class="privacy-note">
+                    <i class="fas fa-lock"></i> Tu información está segura. No enviamos spam.
+                </p>
             </div>
         </section>
 
-        <!-- SECCIÓN 2: AMIGURUMI Y PATRONES -->
-        <section class="seccion">
-            <h2 class="seccion-titulo">🧸 Amigurumi & Patrones</h2>
-            <div class="cursos-grid">
+        <!-- Products Section -->
+        <section class="products-section">
+            <h2>🛍️ Nuestros Productos</h2>
+            <p class="section-subtitle">Cursos, ebooks y patrones para todos los niveles</p>
+            
+            <div class="category-filter">
+                <button class="filter-btn active" onclick="filterProducts('todos')">Todos</button>
+                <button class="filter-btn" onclick="filterProducts('amigurumi')">Amigurumi</button>
+                <button class="filter-btn" onclick="filterProducts('crochet')">Crochet</button>
+                <button class="filter-btn" onclick="filterProducts('trapillo')">Trapillo</button>
+                <button class="filter-btn" onclick="filterProducts('prendas')">Prendas</button>
+                <button class="filter-btn" onclick="filterProducts('accesorios')">Accesorios</button>
+            </div>
 
-                <!-- CURSO 3: 5000 Patrones (DESTACADO) -->
-                <div class="curso-card">
-                    <div class="badge-destacado">MEJOR OFERTA</div>
-                    <div class="curso-imagen patrones">📚</div>
-[22/4/2026 20:54] Eyerar: <div class="curso-content">
-                        <span class="curso-tag tag-patrones">+5000 Patrones</span>
-                        <h3 class="curso-titulo">+5000 Patrones Amigurumis en Español</h3>
-                        <p class="curso-desc">eBook con más de 5,000 patrones creativos con guías paso a paso. Ideal para principiantes y expertos.</p>
-                        <div class="curso-precio">
-                            <span class="precio-actual">$14.99</span>
-                            <span class="precio-tachado">$75.00</span>
-                            <span class="precio-oferta">-80%</span>
-                        </div>
-                        <a href="https://go.hotmart.com/L101525956Q?ap=a7bb" class="btn-comprar" target="_blank">¡Aprovechar Oferta! →</a>
-                        
-                        <div class="bonos">
-                            <div class="bonos-titulo">✨ Incluye 6 Bonos GRATIS:</div>
-                            <ul class="bonos-lista">
-                                <li>Guía para tejer desde cero</li>
-                                <li>Pack de Harry Potter Amigurumis</li>
-                                <li>Abreviaturas para leer patrones</li>
-                                <li>Masterclass 100% online</li>
-                                <li>Cómo conseguir tus primeros clientes</li>
-                                <li>Actualización Amigurumi Pro</li>
-                            </ul>
-                        </div>
+            <div class="products-grid" id="productsGrid">
+                <!-- Product 1 -->
+                <div class="product-card" data-category="prendas">
+                    <div class="product-header">
+                        <div class="product-icon">👗</div>
+                        <span class="product-type">PATRÓN</span>
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-title">Patrón Blusa Flor de Olivo en Crochet</h3>
+                        <span class="product-category">Prendas</span>
+                        <p class="product-code">Código: W102293007J</p>
+                        <a href="https://pay.hotmart.com/W102293007J" class="btn-buy" target="_blank">
+                            <i class="fas fa-shopping-cart"></i> Ver Producto
+                        </a>
                     </div>
                 </div>
 
-                <!-- CURSO 4: Zapatos Tejidos -->
-                <div class="curso-card">
-                    <div class="curso-imagen prendas">👟</div>
-                    <div class="curso-content">
-                        <span class="curso-tag tag-prene">Prendas</span>
-                        <h3 class="curso-titulo">Zapatos Tejidos a Crochet</h3>
-                        <p class="curso-desc">Aprende a tejer zapatos, sandalias y pantuflas profesionales. Nicho rentable con alta demanda.</p>
-                        <div class="curso-precio">
-                            <span class="precio-actual">$24.99</span>
-                            <span class="precio-tachado">$59.99</span>
-                        </div>
-                        <a href="https://go.hotmart.com/C101852722L?ap=c1bc" class="btn-comprar" target="_blank">Ver Curso →</a>
+                <!-- Product 2 -->
+                <div class="product-card" data-category="crochet">
+                    <div class="product-header">
+                        <div class="product-icon">🎓</div>
+                        <span class="product-type">CURSO</span>
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-title">Curso de Crochet Profesional</h3>
+                        <span class="product-category">Crochet</span>
+                        <p class="product-code">Código: V101927515C</p>
+                        <a href="https://pay.hotmart.com/V101927515C" class="btn-buy" target="_blank">
+                            <i class="fas fa-shopping-cart"></i> Ver Producto
+                        </a>
                     </div>
                 </div>
 
+                <!-- Product 3 -->
+                <div class="product-card" data-category="amigurumi">
+                    <div class="product-header">
+                        <div class="product-icon">🧸</div>
+                        <span class="product-type">CURSO</span>
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-title">Crochet – Amigurumis (Curso Completo)</h3>
+                        <span class="product-category">Amigurumi</span>
+                        <p class="product-code">Código: P97973535Q</p>
+                        <a href="https://pay.hotmart.com/P97973535Q" class="btn-buy" target="_blank">
+                            <i class="fas fa-shopping-cart"></i> Ver Producto
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card" data-category="accesorios">
+                    <div class="product-header">
+                        <div class="product-icon">👜</div>
+                        <span class="product-type">CURSO</span>
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-title">Bolsos y Accesorios en Crochet</h3>
+                        <span class="product-category">Accesorios</span>
+                        <p class="product-code">Código: X101549444K</p>
+                        <a href="https://pay.hotmart.com/X101549444K" class="btn-buy" target="_blank">
+                            <i class="fas fa-shopping-cart"></i> Ver Producto
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="product-card" data-category="trapillo">
+                    <div class="product-header">
+                        <div class="product-icon">🧵</div>
+                        <span class="product-type">CURSO</span>
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-title">Crochet – Bolsos Premium en Trapillo</h3>
+                        <span class="product-category">Trapillo</span>
+                        <p class="product-code">Código: R97973128U</p>
+                        <a href="https://pay.hotmart.com/R97973128U" class="btn-buy" target="_blank">
+                            <i class="fas fa-shopping-cart"></i> Ver Producto
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="product-card" data-category="amigurumi">
+                    <div class="product-header">
+                        <div class="product-icon">🔑</div>
+                        <span class="product-type">EBOOK</span>
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-title">Ebook +60 Llaveros Amigurumis</h3>
+                        <span class="product-category">Amigurumi</span>
+                        <p class="product-code">Código: S101949118J</p>
+                        <a href="https://pay.hotmart.com/S101949118J" class="btn-buy" target="_blank">
+                            <i class="fas fa-shopping-cart"></i> Ver Producto
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product 7 -->
+                <div class="product-card" data-category="amigurumi">
+                    <div class="product-header">
+                        <div class="product-icon">📖</div>
+                        <span class="product-type">EBOOK</span>
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-title">Ebook +250 Minipatrones de Amigurumis</h3>
+                        <span class="product-category">Amigurumi</span>
+                        <p class="product-code">Código: L101949170Y</p>
+                        <a href="https://pay.hotmart.com/L101949170Y" class="btn-buy" target="_blank">
+                            <i class="fas fa-shopping-cart"></i> Ver Producto
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product 8 -->
+                <div class="product-card" data-category="amigurumi">
+                    <div class="product-header">
+                        <div class="product-icon">🧶</div>
+                        <span class="product-type">EBOOK</span>
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-title">Ebook Amigurumis (Nícol Valentina)</h3>
+                        <span class="product-category">Amigurumi</span>
+                        <p class="product-code">Código: E102070698A</p>
+                        <a href="https://pay.hotmart.com/E102070698A" class="btn-buy" target="_blank">
+                            <i class="fas fa-shopping-cart"></i> Ver Producto
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product 9 -->
+                <div class="product-card" data-category="crochet">
+                    <div class="product-header">
+                        <div class="product-icon">🌸</div>
+                        <span class="product-type">EBOOK</span>
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-title">Ebook Flores a Crochet</h3>
+                        <span class="product-category">Crochet</span>
+                        <p class="product-code">Código: H101888647B</p>
+                        <a href="https://pay.hotmart.com/H101888647B" class="btn-buy" target="_blank">
+                            <i class="fas fa-shopping-cart"></i> Ver Producto
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product 10 -->
+                <div class="product-card" data-category="amigurumi">
+                    <div class="product-header">
+                        <div class="product-icon">👸</div>
+                        <span class="product-type">CURSO</span>
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-title">Princesas Amigurumis</h3>
+                        <span class="product-category">Amigurumi</span>
+                        <p class="product-code">Código: P96247947K</p>
+                        <a href="https://pay.hotmart.com/P96247947K" class="btn-buy" target="_blank">
+                            <i class="fas fa-shopping-cart"></i> Ver Producto
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
-
     </div>
 
+    <!-- Footer -->
     <footer>
-        <p>© 2026 Crochet Afiliados | Este sitio contiene enlaces de afiliado de Hotmart</p>
-        <p>Los precios y disponibilidad pueden cambiar. Garantía de devolución de 7 días en todos los cursos.</p>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+        </div>
+        <p>© 2026 Crochet y Amigurumis. Todos los derechos reservados.</p>
+        <p>Productos de Hotmart | Contacto: +53 54356696</p>
     </footer>
 
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/5354356696" class="whatsapp-float" target="_blank" title="Contáctanos por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Form Submission
+        document.getElementById('leadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const nombre = document.getElementById('nombre').value;
+            const email = document.getElementById('email').value;
+            const whatsapp = document.getElementById('whatsapp').value;
+            
+            // Create WhatsApp message
+            const mensaje = `¡Nuevo registro para Mi Ebook para Ti!%0A%0A` +
+                           `Nombre: ${nombre}%0A` +
+                           `Email: ${email}%0A` +
+                           `WhatsApp: ${whatsapp}%0A%0A` +
+                           `Fecha: ${new Date().toLocaleString()}`;
+            
+            // Open WhatsApp with pre-filled message
+            const whatsappUrl = `https://wa.me/5354356696?text=${mensaje}`;
+            window.open(whatsappUrl, '_blank');
+            
+            // Show success message
+            document.getElementById('successMessage').classList.add('show');
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Product Filter
+        function filterProducts(category) {
+            const cards = document.querySelectorAll('.product-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+            
+            // Update active button
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.textContent.toLowerCase().includes(category) || 
+                    (category === 'todos' && btn.textContent === 'Todos')) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Filter cards
+            cards.forEach(card => {
+                if (category === 'todos' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                    card.style.animation = 'slideDown 0.5s ease';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
