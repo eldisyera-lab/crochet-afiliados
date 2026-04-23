@@ -1,4 +1,136 @@
-<div class="curso-content">
+[22/4/2026 20:54] Eyerar: <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursos de Crochet y Trapillo | Aprende Desde Cero</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #faf7f2 0%, #f0e6d3 100%); color: #333; line-height: 1.6; }
+        
+        /* Header */
+        header { background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%); color: white; padding: 3rem 1rem; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
+        header p { font-size: 1.2rem; opacity: 0.95; }
+        
+        /* Contenedor principal */
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        
+        /* Sección de categoría */
+        .seccion { margin-bottom: 3rem; }
+        .seccion-titulo { font-size: 1.8rem; color: #6B46C1; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 3px solid #EC4899; display: inline-block; }
+        
+        /* Grid de cursos */
+        .cursos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        
+        /* Tarjeta de curso */
+        .curso-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: all 0.3s ease; position: relative; }
+        .curso-card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0,0,0,0.15); }
+        
+        /* Badge destacado */
+        .badge-destacado { position: absolute; top: 15px; right: -30px; background: #EF4444; color: white; padding: 0.4rem 2.5rem; font-size: 0.75rem; font-weight: bold; transform: rotate(45deg); z-index: 10; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        
+        /* Imagen del curso */
+        .curso-imagen { width: 100%; height: 220px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; font-size: 4rem; position: relative; }
+        .curso-imagen.trapillo { background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); }
+        .curso-imagen.amigurumi { background: linear-gradient(135deg, #EC4899 0%, #8B5CF6 100%); }
+        .curso-imagen.patrones { background: linear-gradient(135deg, #10B981 0%, #059669 100%); }
+        .curso-imagen.prendas { background: linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%); }
+        
+        /* Contenido */
+        .curso-content { padding: 1.8rem; }
+        .curso-tag { display: inline-block; padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.8rem; }
+        .tag-trapillo { background: #FEF3C7; color: #92400E; }
+        .tag-amigurumi { background: #FCE7F3; color: #9D174D; }
+        .tag-patrones { background: #D1FAE5; color: #065F46; }
+        .tag-prene { background: #DBEAFE; color: #1E40AF; }
+        
+        .curso-titulo { font-size: 1.4rem; margin-bottom: 0.8rem; color: #1F2937; font-weight: 700; }
+        .curso-desc { color: #6B7280; margin-bottom: 1.2rem; line-height: 1.6; font-size: 0.95rem; }
+        
+        /* Precio */
+        .curso-precio { margin-bottom: 1.2rem; }
+        .precio-actual { font-size: 2rem; font-weight: bold; color: #059669; }
+        .precio-tachado { font-size: 1rem; color: #9CA3AF; text-decoration: line-through; margin-left: 0.5rem; }
+        .precio-oferta { display: inline-block; background: #FEE2E2; color: #DC2626; padding: 0.2rem 0.6rem; border-radius: 10px; font-size: 0.8rem; font-weight: bold; margin-left: 0.5rem; vertical-align: middle; }
+[22/4/2026 20:54] Eyerar: /* Botón */
+        .btn-comprar { display: block; width: 100%; padding: 1rem; background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%); color: white; text-align: center; text-decoration: none; border-radius: 12px; font-weight: bold; font-size: 1.1rem; transition: all 0.3s; border: none; cursor: pointer; box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3); }
+        .btn-comprar:hover { transform: scale(1.02); box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4); }
+        
+        /* Bonos */
+        .bonos { margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed #E5E7EB; }
+        .bonos-titulo { font-size: 0.85rem; color: #059669; font-weight: bold; margin-bottom: 0.5rem; }
+        .bonos-lista { font-size: 0.8rem; color: #6B7280; }
+        .bonos-lista li { margin-bottom: 0.2rem; list-style: none; }
+        .bonos-lista li::before { content: "🎁 "; }
+        
+        /* Footer */
+        footer { background: #1F2937; color: #9CA3AF; text-align: center; padding: 2rem; margin-top: 3rem; }
+        footer a { color: #8B5CF6; }
+        
+        /* Responsive */
+        @media (max-width: 768px) { 
+            header h1 { font-size: 1.8rem; } 
+            .cursos-grid { grid-template-columns: 1fr; } 
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🧶 Cursos de Crochet Online</h1>
+        <p>Aprende trapillo, amigurumi y prendas tejidas con los mejores cursos seleccionados</p>
+    </header>
+
+    <div class="container">
+
+        <!-- SECCIÓN 1: TRAPILLO -->
+        <section class="seccion">
+            <h2 class="seccion-titulo">👜 Cursos de Trapillo</h2>
+            <div class="cursos-grid">
+
+                <!-- CURSO 1: Bolsos Premium -->
+                <div class="curso-card">
+                    <div class="curso-imagen trapillo">👜</div>
+                    <div class="curso-content">
+                        <span class="curso-tag tag-trapillo">Trapillo</span>
+                        <h3 class="curso-titulo">Bolsos Premium en Trapillo</h3>
+                        <p class="curso-desc">Aprende a crear bolsos profesionales con trapillo. Técnicas paso a paso desde cero para emprender.</p>
+                        <div class="curso-precio">
+                            <span class="precio-actual">$19.00</span>
+                            <span class="precio-tachado">$49.00</span>
+                        </div>
+                        <a href="https://go.hotmart.com/R97973128U?ap=2ff1" class="btn-comprar" target="_blank">Ver Curso →</a>
+                    </div>
+                </div>
+
+                <!-- CURSO 2: Guía Bolsos Trapillo -->
+                <div class="curso-card">
+                    <div class="curso-imagen trapillo">👛</div>
+                    <div class="curso-content">
+                        <span class="curso-tag tag-trapillo">Trapillo</span>
+                        <h3 class="curso-titulo">Guía para Tejer Bolsos a Trapillo</h3>
+                        <p class="curso-desc">Guía completa para dominar el trapillo. Desde los primeros puntos hasta bolsos terminados.</p>
+                        <div class="curso-precio">
+                            <span class="precio-actual">$19.00</span>
+                        </div>
+                        <a href="https://go.hotmart.com/Q101999463U" class="btn-comprar" target="_blank">Ver Curso →</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: AMIGURUMI Y PATRONES -->
+        <section class="seccion">
+            <h2 class="seccion-titulo">🧸 Amigurumi & Patrones</h2>
+            <div class="cursos-grid">
+
+                <!-- CURSO 3: 5000 Patrones (DESTACADO) -->
+                <div class="curso-card">
+                    <div class="badge-destacado">MEJOR OFERTA</div>
+                    <div class="curso-imagen patrones">📚</div>
+[22/4/2026 20:54] Eyerar: <div class="curso-content">
                         <span class="curso-tag tag-patrones">+5000 Patrones</span>
                         <h3 class="curso-titulo">+5000 Patrones Amigurumis en Español</h3>
                         <p class="curso-desc">eBook con más de 5,000 patrones creativos con guías paso a paso. Ideal para principiantes y expertos.</p>
