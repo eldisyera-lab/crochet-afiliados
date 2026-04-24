@@ -4,703 +4,606 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Ebook para Ti - Crochet y Amigurumis</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.6.6/css/flag-icons.min.css" rel="stylesheet">
+    <link href="https://cdncdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            color: #333;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        /* Header */
-        header {
-            text-align: center;
-            padding: 40px 20px;
-            color: white;
-        }
-
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        /* Lead Magnet Section */
-        .lead-magnet {
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            margin: 30px 0;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            text-align: center;
-        }
-
-        .lead-magnet h2 {
-            color: #667eea;
-            font-size: 2rem;
-            margin-bottom: 15px;
-        }
-
-        .lead-magnet .subtitle {
-            color: #666;
-            font-size: 1.1rem;
-            margin-bottom: 30px;
-        }
-
-        .ebook-preview {
-            width: 200px;
-            height: 280px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 10px;
-            margin: 0 auto 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-            font-weight: 600;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .ebook-preview::before {
-            content: '🧶';
-            font-size: 4rem;
-            position: absolute;
-            top: 20px;
-        }
-
-        .ebook-preview span {
-            margin-top: 60px;
-            padding: 0 20px;
-        }
-
-        /* Form Styles */
-        .form-container {
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: #555;
-            font-weight: 600;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            font-size: 1rem;
-            transition: all 0.3s;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .form-group input:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-        }
-
-        .btn-submit {
-            width: 100%;
-            padding: 18px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .btn-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-        }
-
-        .privacy-note {
-            margin-top: 15px;
-            font-size: 0.85rem;
-            color: #888;
-        }
-
-        /* Products Section */
-        .products-section {
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            margin: 30px 0;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-        }
-
-        .products-section h2 {
-            text-align: center;
-            color: #667eea;
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-
-        .products-section .section-subtitle {
-            text-align: center;
-            color: #666;
-            margin-bottom: 40px;
-        }
-
-        /* Category Filter */
-        .category-filter {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 30px;
-        }
-
-        .filter-btn {
-            padding: 10px 20px;
-            border: 2px solid #667eea;
-            background: white;
-            color: #667eea;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-        }
-
-        .filter-btn:hover,
-        .filter-btn.active {
-            background: #667eea;
-            color: white;
-        }
-
-        /* Product Grid */
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
-        }
-
-        .product-card {
-            background: #f8f9fa;
-            border-radius: 15px;
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 2px solid transparent;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-            border-color: #667eea;
-        }
-
-        .product-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .product-icon {
-            font-size: 3rem;
-            margin-bottom: 10px;
-        }
-
-        .product-type {
-            display: inline-block;
-            padding: 5px 15px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-
-        .product-body {
-            padding: 25px;
-        }
-
-        .product-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: #333;
-            margin-bottom: 10px;
-            line-height: 1.4;
-        }
-
-        .product-category {
-            display: inline-block;
-            padding: 5px 12px;
-            background: #e3f2fd;
-            color: #667eea;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-
-        .product-code {
-            font-size: 0.85rem;
-            color: #888;
-            margin-bottom: 15px;
-        }
-
-        .btn-buy {
-            display: block;
-            width: 100%;
-            padding: 12px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: opacity 0.3s;
-        }
-
-        .btn-buy:hover {
-            opacity: 0.9;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            color: white;
-        }
-
-        footer .social-links {
-            margin: 20px 0;
-        }
-
-        footer .social-links a {
-            color: white;
-            font-size: 1.5rem;
-            margin: 0 15px;
-            transition: transform 0.3s;
-            display: inline-block;
-        }
-
-        footer .social-links a:hover {
-            transform: scale(1.2);
-        }
-
-        footer p {
-            opacity: 0.8;
-            font-size: 0.9rem;
-        }
-
-        /* WhatsApp Float Button */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            background: #25d366;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2rem;
-            text-decoration: none;
-            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
-            transition: transform 0.3s;
-            z-index: 1000;
-        }
-
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-        }
-
-        /* Success Message */
-        .success-message {
-            display: none;
-            background: #d4edda;
-            color: #155724;
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 20px;
-            border: 1px solid #c3e6cb;
-        }
-
-        .success-message.show {
-            display: block;
-            animation: slideDown 0.5s ease;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 1.8rem;
-            }
-            
-            .lead-magnet,
-            .products-section {
-                padding: 25px;
-            }
-            
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+        background: linear-gradient(135deg, #ff6b6b 0%, #ffa500 100%); 
+        min-height: 100vh; 
+        display: flex; 
+        justify-content: center; 
+        align-items: center; 
+        padding: 20px; 
+    }
+    .container { max-width: 800px; width: 100%; }
+    
+    /* HERO */
+    .hero {
+        background: white;
+        border-radius: 20px;
+        padding: 50px 40px;
+        text-align: center;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        margin-bottom: 30px;
+    }
+    .hero h1 { color: #333; font-size: 32px; margin-bottom: 10px; }
+    .hero p { color: #666; font-size: 16px; line-height: 1.6; margin-bottom: 25px; }
+    .btn-primary {
+        background: linear-gradient(135deg, #ff6b6b 0%, #ffa500 100%);
+        color: white;
+        border: none;
+        padding: 14px 35px;
+        border-radius: 50px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: inline-block;
+        text-decoration: none;
+    }
+    .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(255,107,107,0.4);
+    }
+    
+    /* FORMULARIO MEJORADO */
+    .lead-form {
+        background: white;
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    }
+    .lead-form h2 { color: #333; margin-bottom: 25px; text-align: center; }
+    .lead-form p { color: #666; text-align: center; margin-bottom: 30px; }
+    
+    /* Selector de País */
+    .country-selector {
+        position: relative;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .country-trigger {
+        display: flex;
+        align-items: center;
+        padding: 14px 16px;
+        border: 2px solid #e0e0e0;
+        border-radius: 12px;
+        cursor: pointer;
+        background: #f8f9fa;
+        transition: all 0.3s;
+    }
+    .country-trigger:hover { border-color: #ff6b6b; }
+    .country-trigger.active {
+        border-color: #ff6b6b;
+        box-shadow: 0 0 0 3px rgba(255,107,107,0.1);
+    }
+    .fi { width: 28px !important; height: 21px !important; border-radius: 3px; margin-right: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.15); }
+    .country-name { flex: 1; font-size: 15px; color: #333; font-weight: 500; }
+    .country-code-display { color: #ff6b6b; font-weight: 700; font-size: 15px; margin-right: 8px; }
+    .arrow { color: #999; transition: transform 0.3s; font-size: 12px; }
+    .arrow.open { transform: rotate(180deg); }
+    
+    .country-dropdown {
+        position: absolute;
+        top: calc(100% + 6px);
+        left: 0; right: 0;
+        background: white;
+        border: 2px solid #e0e0e0;
+        border-radius: 12px;
+        max-height: 320px;
+        overflow-y: auto;
+        z-index: 100;
+        display: none;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    }
+    .country-dropdown.open { display: block; }
+    
+    .search-box {
+        padding: 12px 15px;
+        border-bottom: 1px solid #eee;
+        position: sticky;
+        top: 0;
+        background: white;
+        z-index: 10;
+    }
+    .search-box input {
+        width: 100%;
+        padding: 10px 14px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 14px;
+        outline: none;
+    }
+    .search-box input:focus { border-color: #ff6b6b; }
+    
+    .country-option {
+        display: flex;
+        align-items: center;
+        padding: 10px 15px;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+    .country-option:hover { background: #f5f5f5; }
+    .country-option.selected { background: #fff0f0; }
+    
+    /* Input de Teléfono */
+    .phone-input-wrapper {
+        display: flex;
+        align-items: center;
+        border: 2px solid #e0e0e0;
+        border-radius: 12px;
+        overflow: hidden;
+        transition: all 0.3s;
+    }
+    .phone-input-wrapper:focus-within {
+        border-color: #ff6b6b;
+        box-shadow: 0 0 0 3px rgba(255,107,107,0.1);
+    }
+    .phone-prefix {
+        padding: 14px 16px;
+        background: #f8f9fa;
+        color: #ff6b6b;
+        font-weight: 700;
+        font-size: 16px;
+        border-right: 2px solid #e0e0e0;
+        white-space: nowrap;
+    }
+    .phone-input {
+        flex: 1;
+        padding: 14px 16px;
+        border: none;
+        outline: none;
+        font-size: 16px;
+        color: #333;
+    }
+    .phone-input::placeholder { color: #bbb; }
+    
+    /* Validación */
+    .validation-msg {
+        margin-top: 8px;
+        font-size: 13px;
+        display: none;
+    }
+    .validation-msg.error { color: #e74c3c; display: block; }
+    .validation-msg.success { color: #27ae60; display: block; }
+    
+    /* Botón Submit */
+    .btn-submit {
+        width: 100%;
+        padding: 16px;
+        background: linear-gradient(135deg, #ff6b6b 0%, #ffa500 100%);
+        color: white;
+        border: none;
+        border-radius: 12px;
+        font-size: 17px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+    .btn-submit:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(255,107,107,0.4);
+    }
+    .btn-submit:active { transform: translateY(0); }
+    
+    /* Preview del Número */
+    .preview-section {
+        margin-top: 25px;
+        padding: 20px;
+        background: #f8f9fa;
+        border-radius: 12px;
+        text-align: center;
+    }
+    .preview-label { font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+    .preview-number { font-size: 22px; font-weight: 700; color: #333; font-family: 'Courier New', monospace; }
+    .preview-formatted { font-size: 14px; color: #ff6b6b; margin-top: 6px; }
+    
+    /* Productos */
+    .products-section {
+        margin-top: 35px;
+    }
+    .products-section h3 {
+        color: #333;
+        text-align: center;
+        margin-bottom: 25px;
+        font-size: 22px;
+    }
+    .products-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+    }
+    .product-card {
+        background: white;
+        border-radius: 16px;
+        padding: 25px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        transition: all 0.3s;
+        text-align: center;
+    }
+    .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    }
+    .product-icon { font-size: 42px; margin-bottom: 12px; }
+    .product-code { 
+        display: inline-block; 
+        background: #ff6b6b; 
+        color: white; 
+        padding: 6px 14px; 
+        border-radius: 20px; 
+        font-size: 13px; 
+        font-weight: 700; 
+        margin-bottom: 12px; 
+    }
+    .product-name { color: #333; font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+    .product-category { color: #888; font-size: 14px; margin-bottom: 15px; }
+    .btn-product {
+        display: inline-block;
+        background: linear-gradient(135deg, #ff6b6b 0%, #ffa500 100%);
+        color: white;
+        padding: 10px 25px;
+        border-radius: 50px;
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s;
+    }
+    .btn-product:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(255,107,107,0.3);
+    }
+    
+    /* Footer */
+    .footer {
+        margin-top: 30px;
+        text-align: center;
+        color: #888;
+        font-size: 13px;
+    }
+    
+    /* Responsive */
+    @media (max-width: 480px) {
+        .hero { padding: 35px 25px; }
+        .hero h1 { font-size: 26px; }
+        .products-grid { grid-template-columns: 1fr; }
+    }
+</style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <h1>🧶 Crochet y Amigurumis</h1>
-        <p>Aprende a tejer desde cero y convierte tu pasión en negocio</p>
-    </header>
-
     <div class="container">
-        <!-- Lead Magnet Section -->
-        <section class="lead-magnet">
-            <h2>📚 Mi Ebook para Ti</h2>
-            <p class="subtitle">Recibe GRATIS mi guía exclusiva con patrones y tips para empezar</p>
+        <!-- Hero -->
+        <div class="hero">
+            <h1>📚 Mi Ebook para Ti</h1>
+            <p>Recibe GRATIS mi guía exclusiva con patrones y tips para empezar</p>
+            <a href="https://hotmart.com" class="btn-primary" id="btnEbook">👉 Descargar Ebook Gratis</a>
+            <a href="#productos" class="btn-primary" style="background: linear-gradient(135deg, #ffa500 0%, #ff6b6b 100%); margin-top: 12px;">🛍️ Ver Productos</a>
+        </div>
+        
+        <!-- Formulario Mejorado -->
+        <div class="lead-form">
+            <h2>¡Gracias! Te enviaremos tu Ebook pronto</h2>
+            <p>Tu información está segura. No Enviamos Spam.</p>
             
-            <div class="ebook-preview">
-                <span>Mi Ebook para Ti</span>
-            </div>
-
-            <div class="form-container">
-                <form id="leadForm">
-                    <div class="form-group">
-                        <label for="nombre">Nombre completo *</label>
-                        <input type="text" id="nombre" name="nombre" required placeholder="Escribe tu nombre">
+            <div class="form-group">
+                <label>País <span style="color:#ff6b6b">*</span></label>
+                <div class="country-selector">
+                    <div class="country-trigger" id="countryTrigger">
+                        <span class="fi fi-us" id="selectedFlag"></span>
+                        <span class="country-name" id="selectedCountryName">Estados Unidos</span>
+                        <span class="country-code-display" id="selectedCode">+1</span>
+                        <span class="arrow" id="arrow">▼</span>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Correo electrónico *</label>
-                        <input type="email" id="email" name="email" required placeholder="tu@email.com">
+                    <div class="country-dropdown" id="countryDropdown">
+                        <div class="search-box">
+                            <input type="text" id="searchInput" placeholder="Buscar país...">
+                        </div>
+                        <div id="countryList"></div>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="whatsapp">WhatsApp *</label>
-                        <input type="tel" id="whatsapp" name="whatsapp" required placeholder="+53 54356696">
-                    </div>
-                    
-                    <button type="submit" class="btn-submit">
-                        <i class="fas fa-gift"></i> ¡Quiero mi Ebook Gratis!
-                    </button>
-                </form>
-                
-                <div class="success-message" id="successMessage">
-                    <i class="fas fa-check-circle"></i> ¡Gracias! Te enviaremos tu ebook pronto. Revisa tu WhatsApp.
                 </div>
-                
-                <p class="privacy-note">
-                    <i class="fas fa-lock"></i> Tu información está segura. No enviamos spam.
-                </p>
             </div>
-        </section>
-
-        <!-- Products Section -->
-        <section class="products-section">
-            <h2>🛍️ Nuestros Productos</h2>
-            <p class="section-subtitle">Cursos, ebooks y patrones para todos los niveles</p>
             
-            <div class="category-filter">
-                <button class="filter-btn active" onclick="filterProducts('todos')">Todos</button>
-                <button class="filter-btn" onclick="filterProducts('amigurumi')">Amigurumi</button>
-                <button class="filter-btn" onclick="filterProducts('crochet')">Crochet</button>
-                <button class="filter-btn" onclick="filterProducts('trapillo')">Trapillo</button>
-                <button class="filter-btn" onclick="filterProducts('prendas')">Prendas</button>
-                <button class="filter-btn" onclick="filterProducts('accesorios')">Accesorios</button>
+            <div class="form-group">
+                <label>Número de Teléfono <span style="color:#ff6b6b">*</span></label>
+                <div class="phone-input-wrapper">
+                    <span class="phone-prefix" id="phonePrefix">+1</span>
+                    <input type="tel" class="phone-input" id="phoneInput" placeholder="(555) 123-4567" maxlength="20">
+                </div>
+                <div class="validation-msg" id="validationMsg"></div>
             </div>
-
-            <div class="products-grid" id="productsGrid">
-                <!-- Product 1 -->
-                <div class="product-card" data-category="prendas">
-                    <div class="product-header">
-                        <div class="product-icon">👗</div>
-                        <span class="product-type">PATRÓN</span>
-                    </div>
-                    <div class="product-body">
-                        <h3 class="product-title">Patrón Blusa Flor de Olivo en Crochet</h3>
-                        <span class="product-category">Prendas</span>
-                        <p class="product-code">Código: W102293007J</p>
-                        <a href="https://hotmart.com/es/marketplace/productos/patron-en-crochet-blusa-flor-de-olivo/S97380393V?ref=W102293007J" class="btn-buy" target="_blank" rel="noopener noreferrer">
-                            <i class="fas fa-shopping-cart"></i> Ver Producto
-                        </a>
-                    </div>
+            
+            <button class="btn-submit" id="btnSubmit">📱 Guardar Número</button>
+            
+            <div class="preview-section">
+                <div class="preview-label">Vista previa</div>
+                <div class="preview-number" id="previewNumber">+1</div>
+                <div class="preview-formatted" id="previewFormatted">Ingresa Tu Número</div>
+            </div>
+        </div>
+        
+        <!-- Productos -->
+        <div class="products-section" id="productos">
+            <h3>🛍️ Nuestros Productos</h3>
+            <p style="text-align:center;color:#666;margin-bottom:30px;">Cursos, ebooks y patrones para todos los niveles</p>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-icon">🧶</div>
+                    <div class="product-code">W102293007J</div>
+                    <div class="product-name">Patrón Blusa Flor de Olivo</div>
+                    <div class="product-category">Prendas</div>
+                    <a href="https://hotmart.com" class="btn-product">Ver Producto</a>
                 </div>
-
-                <!-- Product 2 -->
-                <div class="product-card" data-category="crochet">
-                    <div class="product-header">
-                        <div class="product-icon">🎓</div>
-                        <span class="product-type">CURSO</span>
-                    </div>
-                    <div class="product-body">
-                        <h3 class="product-title">Curso de Crochet Profesional</h3>
-                        <span class="product-category">Crochet</span>
-                        <p class="product-code">Código: V101927515C</p>
-                        <a href="https://educatefacildesdecasa.com/crochet_afil/?ref=V101927515C" class="btn-buy" target="_blank" rel="noopener noreferrer">
-                            <i class="fas fa-shopping-cart"></i> Ver Producto
-                        </a>
-                    </div>
+                <div class="product-card">
+                    <div class="product-icon">🎓</div>
+                    <div class="product-code">V101927515C</div>
+                    <div class="product-name">Curso de Crochet Profesional</div>
+                    <div class="product-category">Crochet</div>
+                    <a href="https://hotmart.com" class="https://hotmart.com" class="btn-product">Ver Producto</a>
                 </div>
-
-                <!-- Product 3 -->
-                <div class="product-card" data-category="amigurumi">
-                    <div class="product-header">
-                        <div class="product-icon">🧸</div>
-                        <span class="product-type">CURSO</span>
-                    </div>
-                    <div class="product-body">
-                        <h3 class="product-title">Crochet – Amigurumis (Curso Completo)</h3>
-                        <span class="product-category">Amigurumi</span>
-                        <p class="product-code">Código: P97973535Q</p>
-                        <a href="https://vertice101.com/crochet-amigurumis/?ref=P97973535Q" class="btn-buy" target="_blank" rel="noopener noreferrer">
-                            <i class="fas fa-shopping-cart"></i> Ver Producto
-                        </a>
-                    </div>
+                <div class="product-card">
+                    <div class="product-icon">🧸</div>
+                    <div class="product-code">P97973535Q</div>
+                    <div class="product-name">Crochet - Amigurumis</div>
+                    <div class="product-category">Amigurumi</div>
+                    <a href="https://hotmart.com" target="_blank" class="btn-product">Ver Producto</a>
                 </div>
-
-                <!-- Product 4 -->
-                <div class="product-card" data-category="accesorios">
-                    <div class="product-header">
-                        <div class="product-icon">👜</div>
-                        <span class="product-type">CURSO</span>
-                    </div>
-                    <div class="product-body">
-                        <h3 class="product-title">Bolsos y Accesorios en Crochet</h3>
-                        <span class="product-category">Accesorios</span>
-                        <p class="product-code">Código: X101549444K</p>
-                        <a href="https://manitascreativastrapillo.tucompradigital.com/?ref=X101549444K" class="btn-buy" target="_blank" rel="noopener noreferrer">
-                            <i class="fas fa-shopping-cart"></i> Ver Producto
-                        </a>
-                    </div>
+                <div class="product-card">
+                    <div class="product-icon">👜</div>
+                    <div class="product-code">X101549444K</div>
+                    <div class="product-name">Bolsos y Accesorios</div>
+                    <div class="product-category">Accesorios</div>
+                    <a href="https://hotmart.com" target="_blank" class="btn-product">Ver Producto</a>
                 </div>
-
-                <!-- Product 5 -->
-                <div class="product-card" data-category="trapillo">
-                    <div class="product-header">
-                        <div class="product-icon">🧵</div>
-                        <span class="product-type">CURSO</span>
-                    </div>
-                    <div class="product-body">
-                        <h3 class="product-title">Crochet – Bolsos Premium en Trapillo</h3>
-                        <span class="product-category">Trapillo</span>
-                        <p class="product-code">Código: R97973128U</p>
-                        <a href="https://vertice101.com/crochet-bolsos-premium/?ref=R97973128U" class="btn-buy" target="_blank" rel="noopener noreferrer">
-                            <i class="fas fa-shopping-cart"></i> Ver Producto
-                        </a>
-                    </div>
+                <div class="product-card">
+                    <div class="product-icon">🛍️</div>
+                    <div class="product-code">R97973128U</div>
+                    <div class="product-name">Crochet - Bolsos Premium</div>
+                    <div class="product-category">Trapillo</div>
+                    <a href="https://hotmart.com" target="_blank" class="btn-product">Ver Producto</a>
                 </div>
-
-                <!-- Product 6 -->
-                <div class="product-card" data-category="amigurumi">
-                    <div class="product-header">
-                        <div class="product-icon">🔑</div>
-                        <span class="product-type">EBOOK</span>
-                    </div>
-                    <div class="product-body">
-                        <h3 class="product-title">Ebook +60 Llaveros Amigurumis</h3>
-                        <span class="product-category">Amigurumi</span>
-                        <p class="product-code">Código: S101949118J</p>
-                        <a href="https://hotmart.com/es/marketplace/productos/ebook-60-llaveros-amigurumis-patrones-paso-a-paso/U82362846Y?ref=S101949118J" class="btn-buy" target="_blank" rel="noopener noreferrer">
-                            <i class="fas fa-shopping-cart"></i> Ver Producto
-                        </a>
-                    </div>
+                <div class="product-card">
+                    <div class="product-icon">🔑</div>
+                    <div class="product-code">S101949118J</div>
+                    <div class="product-name">Ebook +60 Llaveros</div>
+                    <div class="product-category">Amigurumi</div>
+                    <a href="https://hotmart.com" target="_blank" class="btn-product">Ver Producto</a>
                 </div>
-
-                <!-- Product 7 -->
-                <div class="product-card" data-category="amigurumi">
-                    <div class="product-header">
-                        <div class="product-icon">📖</div>
-                        <span class="product-type">EBOOK</span>
-                    </div>
-                    <div class="product-body">
-                        <h3 class="product-title">Ebook +250 Minipatrones de Amigurumis</h3>
-                        <span class="product-category">Amigurumi</span>
-                        <p class="product-code">Código: L101949170Y</p>
-                        <a href="https://hotmart.com/es/marketplace/productos/200-minipatrones-de-amigurumis/Y82661895U?ref=L101949170Y" class="btn-buy" target="_blank" rel="noopener noreferrer">
-                            <i class="fas fa-shopping-cart"></i> Ver Producto
-                        </a>
-                    </div>
+                <div class="product-card">
+                    <div class="product-icon">📖</div>
+                    <div class="product-code">L101949170Y</div>
+                    <div class="product-name">Ebook +250 Minipatrones</div>
+                    <div class="product-category">Amigurumi</div>
+                    <a href="https://hotmart.com" target="_https://hotmart.com" class="btn-product">Ver Producto</div>
                 </div>
-
-                <!-- Product 8 -->
-                <div class="product-card" data-category="amigurumi">
-                    <div class="product-header">
-                        <div class="product-icon">🧶</div>
-                        <span class="product-type">EBOOK</span>
-                    </div>
-                    <div class="product-body">
-                        <h3 class="product-title">Ebook Amigurumis (Nícol Valentina)</h3>
-                        <span class="product-category">Amigurumi</span>
-                        <p class="product-code">Código: E102070698A</p>
-                        <a href="https://academyclasscursosonline.com/crochetpremium-3/?ref=E102070698A" class="btn-buy" target="_blank" rel="noopener noreferrer">
-                            <i class="fas fa-shopping-cart"></i> Ver Producto
-                        </a>
-                    </div>
+                <div class="product-card">
+                    <div class="product-code">E102070698A</div>
+                    <div class="product-name">Ebook Amigurumis</div>
+                    <div class="="product-category">Amigurumi</div>
+                    <a href="https://hotmart.com" target="_blank" class="btn-product">Ver Producto</>
                 </div>
-
-                <!-- Product 9 -->
-                <div class="product-card" data-category="crochet">
-                    <div class="product-header">
-                        <div class="product-icon">🌸</div>
-                        <span class="product-type">EBOOK</span>
-                    </div>
-                    <div class="product-body">
-                        <h3 class="product-title">Ebook Flores a Crochet</h3>
-                        <span class="product-category">Crochet</span>
-                        <p class="product-code">Código: H101888647B</p>
-                        <a href="https://hotmart.com/es/marketplace/productos/ebook-flores-a-crochet/H94101314B?ref=H101888647B" class="btn-buy" target="_blank" rel="noopener noreferrer">
-                            <i class="fas fa-shopping-cart"></i> Ver Producto
-                        </a>
-                    </div>
+                <div class="product-card">
+                    <div class="product-icon">🌸</div>
+                    <div class="product-code">H101888647B</div>
+                    <div class="product-name">Ebook Flores a Crochet</div>
+                    <div class="product-category">Crochet</div>
+                    <a href="https://hotmart.com" class="btn-product">Ver Producto</a>
                 </div>
-
-                <!-- Product 10 -->
-                <div class="product-card" data-category="amigurumi">
-                    <div class="product-header">
-                        <div class="product-icon">👸</div>
-                        <span class="product-type">CURSO</span>
-                    </div>
-                    <div class="product-body">
-                        <h3 class="product-title">Princesas Amigurumis</h3>
-                        <span class="product-category">Amigurumi</span>
-                        <p class="product-code">Código: P96247947K</p>
-                        <a href="https://hotmart.com/es/marketplace/productos/hagsxd-princesas-amigurumis-slech/R92072855D?ref=P96247947K" class="btn-buy" target="_blank" rel="noopener noreferrer">
-                            <i class="fas fa-shopping-cart"></i> Ver Producto
-                        </a>
-                    </div>
+                <div class="product-card">
+                    <div class="product-icon">👑</div>
+                    <div class="product-code">P96247947K</div>
+                    <div class="product-name">Princesas Amigurumis</div>
+                    <div class="product-category">Amigurumi</div>
+                    <a href="https://hotmart.com" target="_blank" class="btn-product">Ver Producto</a>
                 </div>
             </div>
-        </section>
+        </div>
+        
+        <div class="footer">
+            <p>2026 Mi Ebook para Ti. Todos los derechos reservados.</p>
+        </div>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="social-links">
-            <a href="https://www.facebook.com/profile.php?id=61565093347028" target="_blank" rel="noopener noreferrer" title="Síguenos en Facebook">
-                <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="https://www.instagram.com/curso_internacional_crochet?igsh=a2tsOTA4cTc2OG1v" target="_blank" rel="noopener noreferrer" title="Síguenos en Instagram">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="https://www.youtube.com/@EldisYerar" target="_blank" rel="noopener noreferrer" title="Suscríbete en YouTube">
-                <i class="fab fa-youtube"></i>
-            </a>
-            <a href="https://wa.me/5354356696" target="_blank" rel="noopener noreferrer" title="Escríbenos por WhatsApp">
-                <i class="fab fa-whatsapp"></i>
-            </a>
-        </div>
-        <p>© 2026 Crochet y Amigurumis. Todos los derechos reservados.</p>
-        <p>Productos de Hotmart | Contacto: +53 54356696</p>
-    </footer>
-
-    <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/5354356696" class="whatsapp-float" target="_blank" title="Contáctanos por WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
     <script>
-        // Form Submission
-        document.getElementById('leadForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const nombre = document.getElementById('nombre').value;
-            const email = document.getElementById('email').value;
-            const whatsapp = document.getElementById('whatsapp').value;
-            
-            // Create WhatsApp message
-            const mensaje = `¡Nuevo registro para Mi Ebook para Ti!%0A%0A` +
-                           `Nombre: ${nombre}%0A` +
-                           `Email: ${email}%0A` +
-                           `WhatsApp: ${whatsapp}%0A%0A` +
-                           `Fecha: ${new Date().toLocaleString()}`;
-            
-            // Open WhatsApp with pre-filled message
-            const whatsappUrl = `https://wa.me/5354356696?text=${mensaje}`;
-            window.open(whatsappUrl, '_blank');
-            
-            // Show success message
-            document.getElementById('successMessage').classList.add('show');
-            
-            // Reset form
-            this.reset();
-        });
+        // Base de datos completa de países con códigos ITU
+        const countries = [
+            { code: "AF", name: "Afganistán", dial: "+93", flag: "af" }, { code: "AL", name: "Albania", dial: "+355", flag: "al" }, { code: "DE", name: "Alemania", dial: "+49", flag: "de" }, { code: "AD", name: "Andorra", dial: "+376", flag: "ad" }, { code: "AO", name: "Angola", dial: "+244", flag: "ao" }, { code: "AI", name: "Anguila", dial: "+1-264", flag: "ai" }, { code: "AQ", name: "Antártida", dial: "+672", flag: "aq" }, { code: "AG", name: "Antigua y Barbuda", dial: "+1-268", flag: "ag" }, { code: "SA", name: "Arabia Saudita", dial: "+966", flag: "sa" }, { code: "DZ", name: "Argelia", dial: "+213", flag: "dz" }, { code: "AR", name: "Argentina", dial: "+54", flag: "ar" }, { code: "AM", name: "Armenia", dial: "+374", flag: "am" }, { code: "AW", name: "Aruba", dial: "+297", flag: "aw" }, { code: "AU", name: "Australia", dial: "+61", flag: "au" }, { code: "AT", name: "Austria", dial: "+43", flag: "at" }, { code: "AZ", name: "Azerbaiyán", dial: "+994", flag: "az" }, { code: "BS", name: "Bahamas", dial: "+1-242", flag: "bs" }, { code: "BH", name: "Baréin", dial: "+973", flag: "bh" }, { code: "BD", name: "Bangladesh", dial: "+880", flag: "bd" }, { code: "BB", name: "Barbados", dial: "+1-246", flag: "bb" }, { code: "BE", name: "Bélgica", dial: "+32", flag: "be" }, { code: "BZ", name: "Belice", dial: "+501", flag: "bz" }, { code: "BJ", name: "Benín", dial: "+229", flag: "bj" }, { code: "BM", name: "Bermudas", dial: "+1-441", flag: "bm" }, { code: "BY", name: "Bielorrusia", dial: "+375", flag: "by" }, { code: "BO", name: "Bolivia", dial: "+591", flag: "bo" }, { code: "BA", name: "Bosnia y Herzegov", dial: "+387", flag: "ba" }, { code: "BW", name: "Botsuana", dial: "+267", flag: "bw" }, { code: "BR", name: "Brasil", dial: "+55", flag: "br" }, { code: "BN", name: "Brunéi", dial: "+673", flag: "bn" }, { code: "BG", name: "Bulgaria", dial: "+359", flag: "bg" }, { code: "BF", name: "Burkina Faso", dial: "+226", flag: "bf" }, { code: "BI", name: "Burundi", dial: "+257", flag: "bi" }, { code: "BT", name: "Bután", dial: "+975", flag: "bt" }, { code: "CV", name: "Cabo Verde", dial: "+238", flag: "cv" }, { code: "KH", name: "Camboya", dial: "+855", flag: "kh" }, { code: "CM", name: "Camerún", dial: "+237", flag: "cm" }, { code: "CA", name: "Canadá", dial: "+1", flag: "ca" }, { code: "QA", name: "Catar", dial: "+974", flag: "qa" }, { code: "TD", name: "Chad", dial: "+235", flag: "td" }, { code: "CL", name: "Chile", dial: "+56", flag: "cl" }, { code: "CN", name: "China", dial: "+86", flag: "cn" }, { code: "CY", name: "Chipre", dial: "+357", flag: "cy" }, { code: "CO", name: "Colombia", dial: "+57", flag: "co" }, { code: "KM", name: "Comoras", dial: "+269", flag: "km" }, { code: "CG", name: "Congo", dial: "+242", flag: "cg" }, { code: "KP", name: "Corea del Norte", dial: "+850", flag: "kp" }, { code: "KR", name: "Corea del Sur", dial: "+82", flag: "kr" }, { code: "CI", name: "Costa de Marfil", dial: "+225", flag: "ci" }, { code: "CR", name: "Costa Rica", dial: "+506", flag: "cr" }, { code: "HR", name: "Croacia", dial: "+385", flag: "hr" }, { code: "CU", name: "Cuba", dial: "+53", flag: "cu" }, { code: "CW", name: "Curazao", dial: "+599", flag: "cw" }, { code: "DK", name: "Dinamarca", dial: "+45", flag: "dk" }, { code: "DM", name: "Dominica", dial: "+1-767", flag: "dm" }, { code: "EC", name: "Ecuador", dial: "+593", flag: "ec" }, { code: "EG", name: "Egipto", dial: "+20", flag: "eg" }, { code: "SV", name: "El Salvador", dial: "+503", flag: "sv" }, { code: "AE", name: "Emiratos Árabes Unidos", dial: "+971", flag: "ae" }, { code: "ER", name: "Eritrea", dial: "+291", flag: "er" }, { code: "SK", name: "Eslovaquia", dial: "+421", flag: "sk" }, { code: "SI", name: "Eslovenia", dial: "+386", flag: "si" }, { code: "ES", name: "España", dial: "+34", flag: "es" }, { code: "US", name: "Estados Unidos", dial: "+1", flag: "us" }, { code: "EE", name: "Estonia", dial: "+372", flag: "ee" }, { code: "ET", name: "Etiopía", dial: "+251", flag: "et" }, { code: "PH", name: "Filipinas", dial: "+63", flag: "ph" }, { code: "FI", name: "Finlandia", dial: "+358", flag: "fi" }, { code: "FJ", name: "Fiyi", dial: "+679", flag: "fj" }, { code: "FR", name: "Francia", dial: "+33", flag: "fr" }, { code: "GA", name: "Gabón", dial: "+241", flag: "ga" }, { code: "GM", name: "Gambia", dial: "+220", flag: "gm" }, { code: "GE", name: "Georgia", dial: "+995", flag: "ge" }, { code: "GH", name: "Ghana", dial: "+233", flag: "gh" }, { code: "GI", name: "Gibraltar", dial: "+350", flag: "gi" }, { code: "GD", name: "Granada", dial: "+1-473", flag: "gd" }, { code: "GR", name: "Grecia", dial: "+30", flag: "gr" }, { code: "GL", name: "Groenlandia", dial: "+299", flag: "gl" }, { code: "GP", name: "Guadalupe", dial: "+590", flag: "gp" }, { code: "GU", name: "Guam", dial: "+1-671", flag: "gu" }, { code: "GT", name: "Guatemala", dial: "+502", flag: "gt" }, { code: "GF", name: "Guayana Francesa", dial: "+594", flag: "gf" }, { code: "GG", name: "Guernsey", dial: "+44-1481", flag: "gg" }, { code: "GN", name: "Guinea", dial: "+224", flag: "gn" }, { code: "GW", name: "Guinea-Bisáu", dial: "+245", flag: "gw" }, { code: "GQ", name: "Guinea Ecuatorial", dial: "+240", flag: "gq" }, { code: "GY", name: "Guyana", dial: "+592", flag: "gy" }, { code: "HT", name: "Haití", dial: "+509", flag: "ht" }, { code: "HN", name: "Honduras", dial: "+504", flag: "hn" }, { code: "HK", name: "Hong Kong", dial: "+852", flag: "hk" }, { code: "HU", name: "Hungría", dial: "+36", flag: "hu" }, { code: "IN", name: "India", dial: "+91", flag: "in" }, { code: "ID", name: "Indonesia", dial: "+62", flag: "id" }, { code: "IQ", name: "Irak", dial: "+964", flag: "iq" }, { code: "IR", name: "Irán", dial: "+98", flag: "ir" }, { code: "IE", name: "Irlanda", dial: "+353", flag: "ie" }, { code: "BV", name: "Isla Bouvet", dial: "+47", flag: "bv" }, { code: "IM", name: "Isla de Man", dial: "+44-1624", flag: "im" }, { code: "CX", name: "Isla de Navidad", dial: "+61", flag: "cx" }, { code: "IS", name: "Islandia", dial: "+354", flag: "is" }, { code: "KY", name: "Islas Caimán", dial: "+1-345", flag: "ky" }, { code: "CC", name: "Islas Cocos", dial: "+61", flag: "cc" }, { code: "CK", name: "Islas Cook", dial: "+682", flag: "ck" }, { code: "FO", name: "Islas Feroe", dial: "+298", flag: "fo" }, { code: "GS", name: "Islas Georgias del Sur", dial: "+500", flag: "gs" }, { code: "FK", name: "Islas Malvinas", dial: "+500", flag: "fk" }, { code: "MP", name: "Islas Marianas del Norte", dial: "+1-670", flag: "mp" }, { code: "MH", name: "Islas Marshall", dial: "+692", flag: "mh" }, { code: "PN", name: "Islas Pitcairn", dial: "+64", flag: "pn" }, { code: "SB", name: "Islas Salomón", dial: "+677", flag: "sb" }, { code: "TC", name: "Islas Turcas y Caicos", dial: "+1-649", flag: "tc" }, { code: "VG", name: "Islas Vírgenes Británicas", dial: "+1-284", flag: "vg" }, { code: "VI", name: "Islas Vírgenes de EE.UU.", dial: "+1-340", flag: "vi" }, { code: "IL", name: "Israel", dial: "+972", flag: "il" }, { code: "IT", name: "Italia", dial: "+39", flag: "it" }, { code: "JM", name: "Jamaica", dial: "+1-876", flag: "jm" }, { code: "JP", name: "Japón", dial: "+81", flag: "jp" }, { code: "JE", name: "Jersey", dial: "+44-1534", flag: "je" }, { code: "JO", name: "Jordania", dial: "+962", flag: "jo" }, { code: "KZ", name: "Kazajistán", dial: "+7", flag: "kz" }, { code: "KE", name: "Kenia", dial: "+254", flag: "ke" }, { code: "KG", name: "Kirguistán", dial: "+996", flag: "kg" }, { code: "KI", name: "Kiribati", dial: "+686", flag: "ki" }, { code: "KW", name: "Kuwait", dial: "+965", flag: "kw" }, { code: "LA", name: "Laos", dial: "+856", flag: "la" }, { code: "LS", name: "Lesoto", dial: "+266", flag: "ls" }, { code: "LV", name: "Letonia", dial: "+371", flag: "lv" }, { code: "LB", name: "Líbano", dial: "+961", flag: "lb" }, { code: "LR", name: "Liberia", dial: "+231", flag: "lr" }, { code: "LY", name: "Libia", dial: "+218", flag: "ly" }, { code: "LI", name: "Liechtenstein", dial: "+423", flag: "al" }, { code: "LT", name: "Lituania", dial: "+370", flag: "lt" }, { code: "LU", name: "Luxemburgo", dial: "+352", flag: "lu" }, { code: "MO", name: "Macao", dial: "+853", flag: "mo" }, { code: "MK", name: "Macedonia del Norte", dial: "+389", flag: "mk" }, { code: "MG", name: "Madagascar", dial: "+261", flag: "mg" }, { code: "MY", name: "Malasia", dial: "+60", flag: "my" }, { code: "MW", name: "Malaui", dial: "+265", flag: "mw" }, { code: "MV", name: "Maldivas", dial: "+960", flag: "mv" }, { code: "ML", name: "Malí", dial: "+223", flag: "ml" }, { code: "MT", name: "Malta", dial: "+356", flag: "mt" }, { code: "MA", name: "Marruecos", dial: "+212", flag: "ma" }, { code: "MQ", name: "Martinica", dial: "+596", flag: "mq" }, { code: "MU", name: "Mauricio", dial: "+230", flag: "mu" }, { code: "MR", name: "Mauritania", dial: "+222", flag: "mr" }, { code: "YT", name: "Mayotte", dial: "+262", flag: "yt" }, { code: "MX", name: "México", dial: "+52", flag: "mx" }, { code: "FM", name: "Micronesia", dial: "+691", flag: "fm" }, { code: "MD", name: "Moldavia", dial: "+373", flag: "md" }, { code: "MC", name: "Mónaco", dial: "+377", flag: "mc" }, { code: "MN", name: "Mongolia", dial: "+976", flag: "mn" }, { code: "ME", name: "Montenegro", dial: "+382", flag: "me" }, { code: "MS", name: "Montserrat", dial: "+1-664", flag: "ms" }, { code: "MZ", name: "Mozambique", dial: "+258", flag: "mz" }, { code: "MM", name: "Myanmar", dial: "+95", flag: "mm" }, { code: "NA", name: "Namibia", dial: "+264", flag: "na" }, { code: "NR", name: "Nauru", dial: "+674", flag: "nr" }, { code: "NP", name: "Nepal", dial "+977", flag: "np" }, { code: "NI", name: "Nicaragua", dial: "+505", flag: "ni" }, { code: "NE", name: "Níger", dial: "+227", flag: "ne" }, { code: "NG", name: "Nigeria", dial: "+234", flag: "ng" }, { code: "NU", name: "Niue", dial: "+683", flag: "nu" }, { code: "NO", name: "Noruega", dial: "+47", flag: "no" }, { code: "NC", name: "Nueva Caledonia", dial: "+687", flag: "nc" }, { code: "NZ", name: "Nueva Zelanda", dial: "+64", flag: "nz" }, { code: "OM", name: "Omán", dial: "+968", flag: "om" }, { code: "NL", name: "Países Bajos", dial: "+31", flag: "nl" }, { code: "PK", name: "Pakistán", dial: "+92", flag: "pk" }, { code: "PW", name: "Palaos", dial: "+680", flag: "pw" }, { code: "PA", name: "Panamá", dial: "+507", flag: "pa" }, { code: "PG", name: "Papúa Nueva Guinea", dial: "+675", flag: "pg" }, { code: "PY", name: "Paraguay", dial: "+595", flag: "py" }, { code: "PE", name: "Perú", dial: "+51", flag: "pe" }, { code: "PF", name: "Polinesia Francesa", dial: "+689", flag: "pf" }, { code: "PL", name: "Polonia", dial: "+48", flag: "pl" }, { code: "PT", name: "Portugal", dial: "+351", flag: "pt" }, { code: "PR", name: "Puerto Rico", dial: "+1-787", flag: "pr" }, { code: "GB", name: "Reino Unido", dial: "+44", flag: "gb" }, { code: "EH", name: "República Árabe Saharaui Democrática", dial: "+212", flag: "eh" }, { code: "CF", name: "República Centroafricana", dial: "+236", flag: "cf" }, { code: "CZ", name: "República Checa", dial: "+420", flag: "cz" }, { code: "CD", name: "República Democrática del Congo", dial: "+243", flag: "cd" }, { code: "DO", name: "República Dominicana", dial: "+1-809", flag: "do" }, { code: "RE", name: "Reunión", dial: "+262", flag: "re" }, { code: "RW", name: "Ruanda", dial: "+250", flag: "rw" }, { code: "RO", name: "Rumania", dial: "+40", flag: "ro" }, { code: "RU", name: "Rusia", dial: "+7", flag: "ru" }, { code: "WS", name: "Samoa", dial: "+685", flag: "ws" }, { code: "AS", name: "Samoa Americana", dial: "+1-684", flag: "as" }, { code: "BL", name: "San Bartolomé", dial: "+590", flag: "bl" }, { code: "KN", name: "San Cristóbal y Nieves", dial: "+1-869", flag: "kn" }, { code: "SM", name: "San Marino", dial: "+378", flag: "sm" }, { code: "MF", name: "San Martín", dial: "+590", flag: "mf" }, { code: "PM", name: "San Pedro y Miquelón", dial: "+508", flag: "pm" }, { code: "VC", name: "San Vicente y las Granadinas", dial: "+1-784", flag: "vc" }, { code: "SH", name: "Santa Elena, Ascensión y Tristán de Acuña", dial: "+290", flag: "sh" }, { code: "LC", name: "Santa Lucía", dial: "+1-758", flag: "lc" }, { code: "ST", name: "Santo Tomé y Príncipe", dial: "+239", flag: "st" }, { code: "SN", name: "Senegal", dial: "+221", flag: "sn" }, { code: "RS", name: "Serbia", dial: "+381", flag: "rs" }, { code: "SC", name: "Seychelles", dial: "+248", flag: "sc" }, { code: "SL", name: "Sierra Leona", dial: "+232", flag: "sl" }, { code: "SG", name: "Singapore", dial: "+65", flag: "sg" }, { code: "SX", name: "Sint Maarten", dial: "+1-721", flag: "sx" }, { code: "SY", name: "Siria", dial: "+963", flag: "sy" }, { code: "SO", name: "Somalia", dial: "+252", flag: "so" }, { code: "LK", name: "Sri Lanka", dial: "+94", flag: "lk" }, { code: "SZ", name: "Suazilandia", dial: "+268", flag: "sz" }, { code: "ZA", name: "Sudáfrica", dial: "+27", flag: "za" }, { code: "SD", name: "Sudán", dial: "+249", flag: "sd" }, { code: "SS", name: "Sudán del Sur", dial: "+211", flag: "ss" }, { code: "SE", name: "Suecia", dial: "+46", flag: "se" }, { code: "CH", name: "Suiza", dial: "+41", flag: "ch" }, { code: "SR", name: "Surinam", dial: "+597", flag: "sr" }, { code: "TH", name: "Tailandia", dial: "+66", flag: "th" }, { code: "TW", name: "Taiwán", dial: "+886", flag: "tw" }, { code: "TZ", name: "Tanzania", dial: "+255", flag: "tz" }, { code: "TJ", name: "Tayikistán", dial: "+992", flag: "tj" }, { code: "IO", name: "Territorio Británico del Océano Índico", dial: "+246", flag: "io" }, { code: "TF", name: "Territorios Australes Franceses", dial: "+262", flag: "tf" }, { code: "PS", name: "Territorios Palestinos", dial: "+970", flag: "ps" }, { code: "TL", name: "Timor Oriental", dial: "+670", flag: "tl" }, { code: "TG", name: "Togo", dial: "+228", flag: "tg" }, { code: "TK", name: "Tokelau", dial: "+690", flag: "tk" }, { code: "TO", name: "Tonga", dial: "+676", flag: "to" }, { code: "TT", name: "Trinidad y Tobago", dial: "+1-868", flag: "tt" }, { code: "TN", name: "Túnez", dial: "+216", flag: "tn" }, { code: "TM", name: "Turkmenistán", dial: "+993", flag: "tm" }, { code: "TR", name: "Turquía", dial: "+90", flag: "tr" }, { code: "TV", name: "Tuvalu", dial: "+688", flag: "tv" }, { code: "UA", name: "Ucrania", dial: "+380", flag: "ua" }, { code: "UG", name: "Uganda", dial: "+256", flag: "ug" }, { code: "UY", name: "Uruguay", dial: "+598", flag: "uy" }, { code: "UZ", name: "Uzbekistán", dial: "+998", flag: "uz" }, { code: "VU", name: "Vanuatu", dial: "+678", flag: "vu" }, { code: "VA", name: "Vaticano", dial: "+379", flag: "va" }, { code: "VE", name: "Venezuela", dial: "+58", flag: "ve" }, { code: "VN", name: "Vietnam", dial: "+84", flag: "vn" }, { code: "WF", name: "Wallis y Futuna", dial: "+681", flag: "wf" }, { code: "YE", name: "Yemen", dial: "+967", flag: "ye" }, { code: "DJ", name: "Yibuti", dial: "+253", flag: "dj" }, { code: "ZM", name: "Zambia", dial: "+260", flag: "zm" }, { code: "ZW", name: "Zimbabue", dial: "+263", flag: "zw" }
+        ];
 
-        // Product Filter
-        function filterProducts(category) {
-            const cards = document.querySelectorAll('.product-card');
-            const buttons = document.querySelectorAll('.filter-btn');
+        // Estado
+        let selectedCountry = countries.find(c => c.code === "US");
+        let isDropdownOpen = false;
+
+        // Elementos DOM
+        const countryTrigger = document.getElementById('countryTrigger');
+        const countryDropdown = document.getElementById('countryDropdown');
+        const arrow = document.getElementById('arrow');
+        const searchInput = document.getElementById('searchInput');
+        const countryList = document.getElementById('countryList');
+        const selectedFlag = document.getElementById('selectedFlag');
+        const selectedCountryName = document.getElementById('selectedCountryName');
+        const selectedCode = document.getElementById('selectedCode');
+        const phonePrefix = document.getElementById('phonePrefix');
+        const phoneInput = document.getElementById('phoneInput');
+        const previewNumber = document.getElementById('previewNumber');
+        const previewFormatted = document.getElementById('previewFormatted');
+        const validationMsg = document.getElementById('validationMsg');
+        const btnSubmit = document.getElementById('btnSubmit');
+
+        // Renderizar lista de países
+        function renderCountryList(filter = '') {
+            const filtered = countries.filter(c => 
+                c.name.toLowerCase().includes(filter.toLowerCase()) || 
+                c.dial.includes(filter) || 
+                c.code.toLowerCase().includes(filter)
+            );
             
-            // Update active button
-            buttons.forEach(btn => {
-                btn.classList.remove('active');
-                if (btn.textContent.toLowerCase().includes(category) || 
-                    (category === 'todos' && btn.textContent === 'Todos')) {
-                    btn.classList.add('active');
-                }
-            });
+            countryList.innerHTML = filtered.map(country => `
+                <div class="country-option ${country.code === selectedCountry.code ? 'selected' : ''}" 
+                     data-code="${country.code}">
+                    <span class="fi fi-${country.flag}"></span>
+                    <span class="country-name">${country.name}</span>
+                    <span class="code">${country.dial}</span>
+                </div>
+            `).join('');
             
-            // Filter cards
-            cards.forEach(card => {
-                if (category === 'todos' || card.dataset.category === category) {
-                    card.style.display = 'block';
-                    card.style.animation = 'slideDown 0.5s ease';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
+            document.querySelectorAll('.country-option').forEach(option => {
+                option.addEventListener('click', () => {
+                    const code = option.getAttribute('data-code');
+                    selectCountry(code);
+                    closeDropdown();
+                });
         }
 
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
+        // Seleccionar país
+        function selectCountry(code) {
+            selectedCountry = countries.find(c => c.code === code);
+            
+            selectedFlag.className = `fi fi-${selectedCountry.flag}`;
+            selectedCountryName.textContent = selectedCountry.name;
+            selectedCode.textContent = selectedCountry.dial;
+            phonePrefix.textContent = selectedCountry.dial;
+            
+            updatePreview();
+            renderCountryList(searchInput.value);
+        }
+
+        // Abrir/cerrar dropdown
+        function toggleDropdown() {
+            isDropdownOpen = !isDropdownOpen;
+            countryDropdown.classList.toggle('open', isDropdownOpen);
+            countryTrigger.classList.toggle('active', isDropdownOpen);
+            arrow.classList.toggle('open', isDropdownOpen);
+            
+            if (isDropdownOpen) {
+                searchInput.focus();
+                searchInput.value = '';
+                renderCountryList();
+        }
+
+        function closeDropdown() {
+            isDropdownOpen = false;
+            countryDropdown.classList.remove('open');
+            countryTrigger.classList.remove('active');
+            arrow.classList.remove('open');
+        }
+
+        // Actualizar preview
+        function updatePreview() {
+            const phoneValue = phoneInput.value.replace(/\D/g, '');
+            const fullNumber = phoneValue ? `${selectedCountry.dial} ${phoneValue}` : selectedCountry.dial;
+            previewNumber.textContent = fullNumber;
+            
+            if (phoneValue) {
+                previewFormatted.textContent = formatPhone(PhoneValue, selectedCountry.code);
+            } Else {
+                previewFormatted.textContent = 'Ingresa Tu Número';
+            }
+        }
+
+        // Formatear teléfono según país
+        function formatPhone(number, countryCode) {
+            const formats = {
+                'US': (n) => n.length === 10 ? `(${n.slice(0,3)}) ${n.slice(3,6)}-${n.slice(6)}` : n,
+                'CA': (n) => n.length === 10 ? `(${n.slice(0,3)}) ${n.slice(33,6)}-${n.slice(6)}` : n,
+                'GB': (n) => n.length === 10 ? `0${n.slice(0,4)} ${n.slice(4,7)} ${n.slice(7)}` : n,
+                'ES': (n) => n.length === 9 ? `${n.slice(0,3)} ${n.slice(3,5)} ${n.slice(5,7)} ${n.slice(7)}` : n,
+                'MX': (n) => n.length === 10 ? `${n.slice(3,6)} ${n.slice(6,8)} ${n.slice(8)}` : n,
+                'AR': (n) => n.length === 10 ? `${n.slice(0,2)} ${n.slice(2,6)}-${n.slice(6)}` : n,
+                'CO': (n) => n.length === 10 ? `${n.slice(0,3)} ${n.slice(3,6)} ${n.slice(6)}` : n,
+                'CL': (n) => n.length === 9 ? `${n.slice(0,1)} ${n.slice(1,5)} ${n.slice(5)}` : n,
+                'PE': (n) => n.length === 9 ? `${n.slice(0,3)} ${n.slice(3,6)} ${n.slice(6)}` : n,
+                'VE': (n) => n.length === 10 ? `${n.slice(0,4)}-${n.slice(4,7)}-${n.slice(7)}` : n,
+                'BR': (n) => n.length === 11 ? `(${n.slice(0,2)}) ${n.slice(2,3)} ${n.slice(3,7)}-${n.slice(7)}` : n,
+                'FR': (n) => n.length === 9 ? `0${n.slice(0,1)} ${n.slice(3,5)} ${n.slice(5,7)} ${n.slice(7,9)}` : n,
+                'DE': (n) => n.length === 11 ? `${n.slice(0,4)} ${n.slice(4,7)}${n.slice(7)}` : n,
+                'IT': (n) => n.length === 10 ? `${n.slice(0,3)} ${n.slice(3,6)} ${n.slice(6)}` : n,
+                'RU': (n) => n.length === 10 ? `(${n.slice(0,3)}) ${n.slice(3,6)}-${n.slice(6,8)}-${n.slice(8)}` : n,
+                'IN': (n) => n.length === 10 ? `${n.slice(0,5)}-${n.slice(5)}` : n,
+                'CN': (n) => n.length === 11 ? `${n.slice(0,3)} ${n.slice(3,7)} ${n.slice(7)}` : n,
+                'JP': (n) => n.length === 10 ? `${n.slice(0,3)}-${n.slice(3,6)}-${n.slice(6)}` : n,
+                'KR': (n) => n.length === 10 ? `${n.slice(0,3)}-${n.slice(3,7)}-${n.slice(7)}` : n,
+                'AU': (n) => n.length === 9 ? `${n.slice(0,1)} ${n.slice(1,5)} ${n.slice(5)}` : n,
+                'CU': (n) => n.length === 8 ? `${n.slice(0,2)} ${n.slice(2,5)} ${n.slice(5)}` : n,
+                'DO': (n) => n.length === 10 ? `(${n.slice(0,3)}) ${n.slice(3,6)}-${n.slice(6)}` : n,
+            };
+            
+            const formatter = formats[countryCode] || ((n) => n);
+            return formatter(number);
+        }
+
+        // Validar teléfono
+        function validatePhone() {
+            const value = phoneInput.value.replace(/\D/g, '');
+            const minLength = selectedCountry.code === 'US' || selectedCountry.code === 'CA' ? 10 : 7;
+            const maxLength = selectedCountry.code === 'CN' ? 11 : 15;
+            
+            if (value.length === 0) {
+                validationMsg.textContent = '';
+                validationMsg.className = 'validation-msg';
+                return false;
+            }
+            
+            if (value.length < minLength) {
+                validationMsg.textContent = `El número debe tener al menos ${minLength} dígitos`;
+                validationMsg.className = 'validation-msg error';
+                return false;
+            }
+            
+            if (value.length > maxLength) {
+                validationMsg.textContent = `El número no debe exceder ${maxLength} dígitos`;
+                validationMsg.className = 'validation-msg error';
+                return false;
+            }
+            
+            validationMsg.textContent = '✓ Número válido';
+            validationMsg.className = 'validation-msg success';
+            return true;
+        }
+
+        // Event Listeners
+        countryTrigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleDropdown();
         });
+
+        searchInput.addEventListener('input', (e) => {
+            renderCountryList(e.target.value);
+        });
+
+        searchInput.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!countryDropdown.contains(e.target) && !countryTrigger.contains(e.target)) {
+                closeDropdown();
+            }
+        });
+
+        PhoneInput.addEventListener('input', (e) => {
+            // Solo permitir números
+            let value = e.target.value.replace(/\D/g, '');
+            e.target.value = value;
+            updatePreview();
+            validatePhone();
+        });
+
+        btnSubmit.addEventListener('click', () => {
+            if (validatePhone() && phoneInput.value.replace(/\D/g, '').length > 0) {
+                const fullNumber = `${selectedCountry.dial} ${phoneInput.value}`;
+                alert(`✅ Número guardado exitosamente:\n\n${fullNumber}\n${selectedCountry.name}`);
+            } else {
+                validationMsg.textContent = 'Por favor ingresa un número de teléfono válido';
+                validationMsg.className = 'validation-msg error';
+                phoneInput.focus();
+            }
+        });
+
+        // Inicializar
+        renderCountryList();
+        updatePreview();
     </script>
 </body>
 </html>
