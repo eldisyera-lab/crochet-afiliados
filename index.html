@@ -425,6 +425,10 @@
             border-radius: 10px;
             font-weight: 600;
             transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
         }
 
         .mega-link-box .btn-download:hover {
@@ -880,9 +884,9 @@
                         <input type="text" id="megaLinkInput" value="https://mega.nz/file/qs5UxY6I#XV20adIP2GuzmDWMaFuvmjHXQlbj4e1sWtVpcxCq-Kg" readonly>
                         <button type="button" onclick="copyMegaLink()"><i class="fas fa-copy"></i> Copiar</button>
                     </div>
-                    <a href="https://mega.nz/file/qs5UxY6I#XV20adIP2GuzmDWMaFuvmjHXQlbj4e1sWtVpcxCq-Kg" target="_blank" class="btn-download">
+                    <button type="button" class="btn-download" onclick="openMegaLink()">
                         <i class="fas fa-download"></i> Descargar Ebook
-                    </a>
+                    </button>
                 </div>
                 
                 <p class="privacy-note">
@@ -1088,7 +1092,14 @@
     </a>
 
     <script>
+        // ============================================
+        // CONFIGURACIÓN - ENLACE MEGA DEL EBOOK
+        // ============================================
+        const MEGA_LINK = "https://mega.nz/file/qs5UxY6I#XV20adIP2GuzmDWMaFuvmjHXQlbj4e1sWtVpcxCq-Kg";
+        
+        // ============================================
         // Country Data
+        // ============================================
         const countries = [
             { name: "Cuba", code: "+53", flag: "cu", iso: "CU" },
             { name: "México", code: "+52", flag: "mx", iso: "MX" },
@@ -1172,6 +1183,21 @@
             }
         });
 
+        // ============================================
+        // MEGA LINK FUNCTIONS - SOLUCIÓN DEFINITIVA
+        // ============================================
+        
+        // Función para abrir MEGA usando window.open (evita problemas con # en href)
+        function openMegaLink() {
+            // Usar window.open con la URL completa preserva el fragmento # correctamente
+            const win = window.open(MEGA_LINK, '_blank', 'noopener,noreferrer');
+            if (!win) {
+                // Si el popup fue bloqueado, copiar al portapapeles y mostrar instrucciones
+                copyMegaLink();
+                alert('El navegador bloqueó la ventana emergente.\n\nEl enlace ha sido COPIADO al portapapeles.\nPégalo en una nueva pestaña del navegador.');
+            }
+        }
+        
         // Copy Mega Link
         function copyMegaLink() {
             const input = document.getElementById('megaLinkInput');
@@ -1185,7 +1211,9 @@
             });
         }
 
+        // ============================================
         // Form Submission
+        // ============================================
         document.getElementById('leadForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -1250,13 +1278,12 @@
                                 `Email: ${email}%0A` +
                                 `País: ${selectedCountry.name}%0A` +
                                 `WhatsApp: ${fullPhone}%0A` +
-                                `Enlace Mega: https://mega.nz/file/qs5UxY6I#XV20adIP2GuzmDWMaFuvmjHXQlbj4e1sWtVpcxCq-Kg%0A` +
+                                `Enlace Mega: ${MEGA_LINK}%0A` +
                                 `Fecha: ${new Date().toLocaleString()}`;
                 
                 // Open admin notification in new window (won't block user)
                 const adminWindow = window.open(`https://wa.me/5354356696?text=${adminMsg}`, '_blank');
                 if (!adminWindow) {
-                    // If popup blocked, still show the mega link
                     console.log('Admin notification blocked by popup');
                 }
             }
@@ -1274,7 +1301,9 @@
             }, 15000);
         });
 
+        // ============================================
         // Product Filter
+        // ============================================
         function filterProducts(category) {
             const cards = document.querySelectorAll('.product-card');
             const buttons = document.querySelectorAll('.filter-btn');
@@ -1304,5 +1333,3 @@
     </script>
 </body>
 </html>
-
-
