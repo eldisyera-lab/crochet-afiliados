@@ -870,7 +870,7 @@
                 </form>
                 
                 <div class="success-message" id="successMessage">
-                    <i class="fas fa-check-circle"></i> ¡Gracias por registrarte! Hemos recibido tu solicitud. Te contactaremos pronto.
+                    <i class="fas fa-check-circle"></i> ¡Gracias por registrarte! Te contactaremos pronto.
                 </div>
                 
                 <div class="mega-link-box" id="megaLinkBox">
@@ -1199,44 +1199,78 @@
                 return;
             }
             
-            const fullPhone = selectedCountry.code + ' ' + whatsapp;
+            const fullPhone = selectedCountry.code + whatsapp;
             
-            let deliveryText = '';
-            if (delivery === 'email') deliveryText = 'Por Email';
-            else if (delivery === 'whatsapp') deliveryText = 'Por WhatsApp';
-            else if (delivery === 'mega') deliveryText = 'Enlace Mega';
+            // Hide previous messages
+            document.getElementById('successMessage').classList.remove('show');
+            document.getElementById('megaLinkBox').classList.remove('show');
             
-            // Create WhatsApp message for admin notification
-            const mensaje = `¡Nuevo registro para Mi Ebook para Ti!%0A%0A` +
-                           `Nombre: ${nombre}%0A` +
-                           `Email: ${email}%0A` +
-                           `País: ${selectedCountry.name}%0A` +
-                           `WhatsApp: ${fullPhone}%0A` +
-                           `Entrega: ${deliveryText}%0A` +
-                           `Enlace Mega: https://mega.nz/file/ewAl2QxZ#XV20adIP2GuzmDWMaFuvmjHXQlbj4e1sWtVpcxCq-Kg%0A%0A` +
-                           `Fecha: ${new Date().toLocaleString()}`;
-            
-            // Open WhatsApp with pre-filled message using wa.link
-            window.open(`https://wa.link/hifqij?text=${mensaje}`, '_blank');
-            
-            // Show appropriate message based on delivery method
-            if (delivery === 'mega') {
-                document.getElementById('megaLinkBox').classList.add('show');
-                document.getElementById('successMessage').style.display = 'none';
-            } else {
+            if (delivery === 'email') {
+                // Open Gmail compose with pre-filled data
+                const gmailSubject = encodeURIComponent('Solicitud de Ebook Gratis - ' + nombre);
+                const gmailBody = encodeURIComponent(
+                    `Hola, soy ${nombre}.\n\n` +
+                    `Solicito mi ebook gratis.\n\n` +
+                    `Mis datos:\n` +
+                    `Nombre: ${nombre}\n` +
+                    `Email: ${email}\n` +
+                    `País: ${selectedCountry.name}\n` +
+                    `WhatsApp: ${fullPhone}\n\n` +
+                    `Gracias!`
+                );
+                window.open(`https://mail.google.com/mail/?view=cm&to=eldisyera@gmail.com&su=${gmailSubject}&body=${gmailBody}`, '_blank');
+                
+                // Show success message
+                document.getElementById('successMessage').innerHTML = '<i class="fas fa-check-circle"></i> ¡Perfecto! Se abrió Gmail para que envíes tu solicitud. Te responderemos pronto.';
                 document.getElementById('successMessage').classList.add('show');
-                document.getElementById('megaLinkBox').classList.remove('show');
+                
+            } else if (delivery === 'whatsapp') {
+                // Open WhatsApp with pre-filled message
+                const mensaje = `¡Hola! Soy ${nombre}.%0A%0A` +
+                               `Solicito mi ebook gratis.%0A%0A` +
+                               `Mis datos:%0A` +
+                               `Nombre: ${nombre}%0A` +
+                               `Email: ${email}%0A` +
+                               `País: ${selectedCountry.name}%0A` +
+                               `WhatsApp: ${fullPhone}%0A%0A` +
+                               `Gracias!`;
+                window.open(`https://wa.me/5354356696?text=${mensaje}`, '_blank');
+                
+                // Show success message
+                document.getElementById('successMessage').innerHTML = '<i class="fas fa-check-circle"></i> ¡Perfecto! Se abrió WhatsApp. Envía el mensaje para recibir tu ebook.';
+                document.getElementById('successMessage').classList.add('show');
+                
+            } else if (delivery === 'mega') {
+                // Show Mega link box
+                document.getElementById('megaLinkBox').classList.add('show');
+                
+                // Also notify admin via WhatsApp
+                const adminMsg = `Nuevo registro Ebook Mega:%0A` +
+                                `Nombre: ${nombre}%0A` +
+                                `Email: ${email}%0A` +
+                                `País: ${selectedCountry.name}%0A` +
+                                `WhatsApp: ${fullPhone}%0A` +
+                                `Fecha: ${new Date().toLocaleString()}`;
+                
+                // Open admin notification in new window (won't block user)
+                const adminWindow = window.open(`https://wa.me/5354356696?text=${adminMsg}`, '_blank');
+                if (!adminWindow) {
+                    // If popup blocked, still show the mega link
+                    console.log('Admin notification blocked by popup');
+                }
             }
             
-            // Reset form
-            this.reset();
-            selectCountry(countries[0]);
+            // Reset form after 3 seconds
+            setTimeout(() => {
+                this.reset();
+                selectCountry(countries[0]);
+            }, 3000);
             
-            // Hide messages after 10 seconds
+            // Hide messages after 15 seconds
             setTimeout(() => {
                 document.getElementById('successMessage').classList.remove('show');
                 document.getElementById('megaLinkBox').classList.remove('show');
-            }, 10000);
+            }, 15000);
         });
 
         // Product Filter
