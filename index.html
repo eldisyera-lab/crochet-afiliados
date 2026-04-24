@@ -349,6 +349,89 @@
             color: #888;
         }
 
+        /* Mega Link Box */
+        .mega-link-box {
+            display: none;
+            background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+            border: 2px solid #667eea;
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .mega-link-box.show {
+            display: block;
+            animation: slideDown 0.5s ease;
+        }
+
+        .mega-link-box h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .mega-link-box p {
+            color: #555;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .mega-link-container {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 10px 15px;
+            margin-bottom: 15px;
+        }
+
+        .mega-link-container input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.85rem;
+            color: #333;
+            outline: none;
+        }
+
+        .mega-link-container button {
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 15px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: opacity 0.3s;
+            white-space: nowrap;
+        }
+
+        .mega-link-container button:hover {
+            opacity: 0.9;
+        }
+
+        .mega-link-box .btn-download {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .mega-link-box .btn-download:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
         /* Products Section */
         .products-section {
             background: white;
@@ -500,23 +583,61 @@
 
         footer .social-links {
             margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
         footer .social-links a {
             color: white;
             font-size: 1.5rem;
-            margin: 0 15px;
             transition: transform 0.3s;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.15);
         }
 
         footer .social-links a:hover {
             transform: scale(1.2);
+            background: rgba(255,255,255,0.3);
+        }
+
+        footer .social-links a.email-btn {
+            font-size: 1.2rem;
+            width: auto;
+            padding: 0 18px;
+            border-radius: 25px;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        footer .social-links a.email-btn i {
+            font-size: 1.1rem;
+        }
+
+        footer .social-links a.email-btn span {
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        footer .social-links a.whatsapp-btn {
+            background: #25d366;
+        }
+
+        footer .social-links a.whatsapp-btn:hover {
+            background: #128c7e;
         }
 
         footer p {
             opacity: 0.8;
             font-size: 0.9rem;
+            margin-top: 10px;
         }
 
         /* WhatsApp Float Button */
@@ -621,6 +742,24 @@
                 font-size: 1.5rem;
                 bottom: 20px;
                 right: 20px;
+            }
+
+            footer .social-links a.email-btn span {
+                display: none;
+            }
+
+            footer .social-links a.email-btn {
+                width: 45px;
+                padding: 0;
+            }
+
+            .mega-link-container {
+                flex-direction: column;
+            }
+
+            .mega-link-container input {
+                width: 100%;
+                text-align: center;
             }
         }
 
@@ -731,7 +870,19 @@
                 </form>
                 
                 <div class="success-message" id="successMessage">
-                    <i class="fas fa-check-circle"></i> ¡Gracias! Te enviaremos tu ebook pronto. Revisa tu correo o WhatsApp.
+                    <i class="fas fa-check-circle"></i> ¡Gracias por registrarte! Hemos recibido tu solicitud. Te contactaremos pronto.
+                </div>
+                
+                <div class="mega-link-box" id="megaLinkBox">
+                    <h3><i class="fas fa-cloud-download-alt"></i> ¡Tu Ebook está listo!</h3>
+                    <p>Copia el enlace o haz clic para descargar tu ebook gratis:</p>
+                    <div class="mega-link-container">
+                        <input type="text" id="megaLinkInput" value="https://mega.nz/file/ewAl2QxZ#XV20adIP2GuzmDWMaFuvmjHXQlbj4e1sWtVpcxCq-Kg" readonly>
+                        <button type="button" onclick="copyMegaLink()"><i class="fas fa-copy"></i> Copiar</button>
+                    </div>
+                    <a href="https://mega.nz/file/ewAl2QxZ#XV20adIP2GuzmDWMaFuvmjHXQlbj4e1sWtVpcxCq-Kg" target="_blank" class="btn-download">
+                        <i class="fas fa-download"></i> Descargar Ebook
+                    </a>
                 </div>
                 
                 <p class="privacy-note">
@@ -921,17 +1072,18 @@
     <!-- Footer -->
     <footer>
         <div class="social-links">
-            <a href="https://www.facebook.com/profile.php?id=61574903225896&mibextid=ZbWKwL" target="_blank"><i class="fab fa-facebook"></i></a>
-            <a href="https://www.instagram.com/artesdisyera?igsh=MXM4aWw1eGVpZ2t0bA==" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.tiktok.com/@artesdisyera?_t=ZM-8vTc8b2s6dH&_r=1" target="_blank"><i class="fab fa-tiktok"></i></a>
-            <a href="https://www.youtube.com/@artesdisyera" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.youtube.com/@EldisYerar" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=61565093347028" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/curso_internacional_crochet?igsh=a2tsOTA4cTc2OG1v" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.link/hifqij" target="_blank" class="whatsapp-btn" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="mailto:eldisyera@gmail.com" class="email-btn" title="Enviar correo"><i class="fas fa-envelope"></i><span>eldisyera@gmail.com</span></a>
         </div>
         <p>© 2026 Crochet y Amigurumis. Todos los derechos reservados.</p>
-        <p>Productos de Hotmart | Contacto: +53 54356696</p>
+        <p>Productos de Hotmart | Contacto: eldisyera@gmail.com</p>
     </footer>
 
     <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/5354356696" class="whatsapp-float" target="_blank" title="Contáctanos por WhatsApp">
+    <a href="https://wa.link/hifqij" class="whatsapp-float" target="_blank" title="Contáctanos por WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -1020,6 +1172,19 @@
             }
         });
 
+        // Copy Mega Link
+        function copyMegaLink() {
+            const input = document.getElementById('megaLinkInput');
+            input.select();
+            input.setSelectionRange(0, 99999);
+            navigator.clipboard.writeText(input.value).then(() => {
+                alert('¡Enlace copiado al portapapeles!');
+            }).catch(() => {
+                document.execCommand('copy');
+                alert('¡Enlace copiado al portapapeles!');
+            });
+        }
+
         // Form Submission
         document.getElementById('leadForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -1041,30 +1206,37 @@
             else if (delivery === 'whatsapp') deliveryText = 'Por WhatsApp';
             else if (delivery === 'mega') deliveryText = 'Enlace Mega';
             
-            // Create WhatsApp message
+            // Create WhatsApp message for admin notification
             const mensaje = `¡Nuevo registro para Mi Ebook para Ti!%0A%0A` +
                            `Nombre: ${nombre}%0A` +
                            `Email: ${email}%0A` +
                            `País: ${selectedCountry.name}%0A` +
                            `WhatsApp: ${fullPhone}%0A` +
-                           `Entrega: ${deliveryText}%0A%0A` +
+                           `Entrega: ${deliveryText}%0A` +
+                           `Enlace Mega: https://mega.nz/file/ewAl2QxZ#XV20adIP2GuzmDWMaFuvmjHXQlbj4e1sWtVpcxCq-Kg%0A%0A` +
                            `Fecha: ${new Date().toLocaleString()}`;
             
-            // Open WhatsApp with pre-filled message
-            const whatsappUrl = `https://wa.me/5354356696?text=${mensaje}`;
-            window.open(whatsappUrl, '_blank');
+            // Open WhatsApp with pre-filled message using wa.link
+            window.open(`https://wa.link/hifqij?text=${mensaje}`, '_blank');
             
-            // Show success message
-            document.getElementById('successMessage').classList.add('show');
+            // Show appropriate message based on delivery method
+            if (delivery === 'mega') {
+                document.getElementById('megaLinkBox').classList.add('show');
+                document.getElementById('successMessage').style.display = 'none';
+            } else {
+                document.getElementById('successMessage').classList.add('show');
+                document.getElementById('megaLinkBox').classList.remove('show');
+            }
             
             // Reset form
             this.reset();
             selectCountry(countries[0]);
             
-            // Hide success message after 5 seconds
+            // Hide messages after 10 seconds
             setTimeout(() => {
                 document.getElementById('successMessage').classList.remove('show');
-            }, 5000);
+                document.getElementById('megaLinkBox').classList.remove('show');
+            }, 10000);
         });
 
         // Product Filter
