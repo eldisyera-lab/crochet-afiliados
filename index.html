@@ -436,6 +436,32 @@
             box-shadow: 0 10px 30px rgba(52, 168, 83, 0.4);
         }
 
+        .drive-instructions {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 12px 15px;
+            margin-top: 15px;
+            border-radius: 0 8px 8px 0;
+            text-align: left;
+        }
+
+        .drive-instructions p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: #e65100;
+        }
+
+        .drive-instructions ol {
+            margin: 8px 0 0 18px;
+            padding: 0;
+            font-size: 0.85rem;
+            color: #555;
+        }
+
+        .drive-instructions li {
+            margin-bottom: 4px;
+        }
+
         /* Products Section */
         .products-section {
             background: white;
@@ -879,14 +905,22 @@
                 
                 <div class="drive-link-box" id="driveLinkBox">
                     <h3><i class="fab fa-google-drive"></i> ¡Tu Ebook está listo!</h3>
-                    <p>Copia el enlace o haz clic para descargar tu ebook gratis:</p>
+                    <p>Copia el enlace o haz clic para ver tu ebook en Google Drive:</p>
                     <div class="drive-link-container">
-                        <input type="text" id="driveLinkInput" value="https://drive.google.com/uc?export=download&id=1BgBRSMC_B-3k_pjM_5RLjWYQI-8h5l8_" readonly>
+                        <input type="text" id="driveLinkInput" value="https://drive.google.com/file/d/1BgBRSMC_B-3k_pjM_5RLjWYQI-8h5l8_/view?usp=sharing" readonly>
                         <button type="button" onclick="copyDriveLink()"><i class="fas fa-copy"></i> Copiar</button>
                     </div>
-                    <a href="https://drive.google.com/uc?export=download&id=1BgBRSMC_B-3k_pjM_5RLjWYQI-8h5l8_" target="_blank" class="btn-download">
-                        <i class="fas fa-download"></i> Descargar Ebook
+                    <a href="https://drive.google.com/file/d/1BgBRSMC_B-3k_pjM_5RLjWYQI-8h5l8_/view?usp=sharing" target="_blank" class="btn-download">
+                        <i class="fas fa-external-link-alt"></i> Ver Ebook en Google Drive
                     </a>
+                    <div class="drive-instructions">
+                        <p><strong>📥 Para descargar:</strong></p>
+                        <ol>
+                            <li>Haz clic en el botón verde arriba</li>
+                            <li>En Google Drive, haz clic en el icono ⬇️ (Descargar) arriba a la derecha</li>
+                            <li>¡Listo! El archivo se guardará en tu dispositivo</li>
+                        </ol>
+                    </div>
                 </div>
                 
                 <p class="privacy-note">
@@ -1095,8 +1129,7 @@
         // ============================================
         // CONFIGURACIÓN - ENLACE GOOGLE DRIVE DEL EBOOK
         // ============================================
-        const DRIVE_FILE_ID = "1BgBRSMC_B-3k_pjM_5RLjWYQI-8h5l8_";
-        const DRIVE_LINK = "https://drive.google.com/uc?export=download&id=" + DRIVE_FILE_ID;
+        const DRIVE_LINK = "https://drive.google.com/file/d/1BgBRSMC_B-3k_pjM_5RLjWYQI-8h5l8_/view?usp=sharing";
         
         // ============================================
         // Country Data
