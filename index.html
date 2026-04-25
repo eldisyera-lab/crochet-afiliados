@@ -349,35 +349,35 @@
             color: #888;
         }
 
-        /* Mega Link Box */
-        .mega-link-box {
+        /* Drive Link Box */
+        .drive-link-box {
             display: none;
-            background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
-            border: 2px solid #667eea;
+            background: linear-gradient(135deg, #e8f5e9 0%, #e3f2fd 100%);
+            border: 2px solid #34a853;
             border-radius: 15px;
             padding: 25px;
             margin-top: 20px;
             text-align: center;
         }
 
-        .mega-link-box.show {
+        .drive-link-box.show {
             display: block;
             animation: slideDown 0.5s ease;
         }
 
-        .mega-link-box h3 {
-            color: #667eea;
+        .drive-link-box h3 {
+            color: #34a853;
             margin-bottom: 15px;
             font-size: 1.1rem;
         }
 
-        .mega-link-box p {
+        .drive-link-box p {
             color: #555;
             font-size: 0.9rem;
             margin-bottom: 15px;
         }
 
-        .mega-link-container {
+        .drive-link-container {
             display: flex;
             gap: 10px;
             align-items: center;
@@ -388,7 +388,7 @@
             margin-bottom: 15px;
         }
 
-        .mega-link-container input {
+        .drive-link-container input {
             flex: 1;
             border: none;
             background: transparent;
@@ -398,8 +398,8 @@
             outline: none;
         }
 
-        .mega-link-container button {
-            background: #667eea;
+        .drive-link-container button {
+            background: #34a853;
             color: white;
             border: none;
             border-radius: 8px;
@@ -412,13 +412,13 @@
             white-space: nowrap;
         }
 
-        .mega-link-container button:hover {
+        .drive-link-container button:hover {
             opacity: 0.9;
         }
 
-        .mega-link-box .btn-download {
+        .drive-link-box .btn-download {
             display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #34a853 0%, #1e8e3e 100%);
             color: white;
             text-decoration: none;
             padding: 12px 30px;
@@ -431,9 +431,9 @@
             font-size: 1rem;
         }
 
-        .mega-link-box .btn-download:hover {
+        .drive-link-box .btn-download:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 10px 30px rgba(52, 168, 83, 0.4);
         }
 
         /* Products Section */
@@ -757,11 +757,11 @@
                 padding: 0;
             }
 
-            .mega-link-container {
+            .drive-link-container {
                 flex-direction: column;
             }
 
-            .mega-link-container input {
+            .drive-link-container input {
                 width: 100%;
                 text-align: center;
             }
@@ -859,10 +859,10 @@
                                 </div>
                             </label>
                             <label class="delivery-option">
-                                <input type="radio" name="delivery" value="mega">
+                                <input type="radio" name="delivery" value="drive">
                                 <div class="delivery-card">
-                                    <i class="fas fa-cloud"></i>
-                                    <span>Enlace Mega</span>
+                                    <i class="fab fa-google-drive"></i>
+                                    <span>Google Drive</span>
                                 </div>
                             </label>
                         </div>
@@ -877,16 +877,16 @@
                     <i class="fas fa-check-circle"></i> ¡Gracias por registrarte! Te contactaremos pronto.
                 </div>
                 
-                <div class="mega-link-box" id="megaLinkBox">
-                    <h3><i class="fas fa-cloud-download-alt"></i> ¡Tu Ebook está listo!</h3>
+                <div class="drive-link-box" id="driveLinkBox">
+                    <h3><i class="fab fa-google-drive"></i> ¡Tu Ebook está listo!</h3>
                     <p>Copia el enlace o haz clic para descargar tu ebook gratis:</p>
-                    <div class="mega-link-container">
-                        <input type="text" id="megaLinkInput" value="https://mega.nz/file/qs5UxY6I#XV20adIP2GuzmDWMaFuvmjHXQlbj4e1sWtVpcxCq-Kg" readonly>
-                        <button type="button" onclick="copyMegaLink()"><i class="fas fa-copy"></i> Copiar</button>
+                    <div class="drive-link-container">
+                        <input type="text" id="driveLinkInput" value="https://drive.google.com/uc?export=download&id=1BgBRSMC_B-3k_pjM_5RLjWYQI-8h5l8_" readonly>
+                        <button type="button" onclick="copyDriveLink()"><i class="fas fa-copy"></i> Copiar</button>
                     </div>
-                    <button type="button" class="btn-download" onclick="openMegaLink()">
+                    <a href="https://drive.google.com/uc?export=download&id=1BgBRSMC_B-3k_pjM_5RLjWYQI-8h5l8_" target="_blank" class="btn-download">
                         <i class="fas fa-download"></i> Descargar Ebook
-                    </button>
+                    </a>
                 </div>
                 
                 <p class="privacy-note">
@@ -1093,9 +1093,10 @@
 
     <script>
         // ============================================
-        // CONFIGURACIÓN - ENLACE MEGA DEL EBOOK
+        // CONFIGURACIÓN - ENLACE GOOGLE DRIVE DEL EBOOK
         // ============================================
-        const MEGA_LINK = "https://mega.nz/file/qs5UxY6I#XV20adIP2GuzmDWMaFuvmjHXQlbj4e1sWtVpcxCq-Kg";
+        const DRIVE_FILE_ID = "1BgBRSMC_B-3k_pjM_5RLjWYQI-8h5l8_";
+        const DRIVE_LINK = "https://drive.google.com/uc?export=download&id=" + DRIVE_FILE_ID;
         
         // ============================================
         // Country Data
@@ -1184,23 +1185,11 @@
         });
 
         // ============================================
-        // MEGA LINK FUNCTIONS - SOLUCIÓN DEFINITIVA
+        // GOOGLE DRIVE LINK FUNCTIONS
         // ============================================
         
-        // Función para abrir MEGA usando window.open (evita problemas con # en href)
-        function openMegaLink() {
-            // Usar window.open con la URL completa preserva el fragmento # correctamente
-            const win = window.open(MEGA_LINK, '_blank', 'noopener,noreferrer');
-            if (!win) {
-                // Si el popup fue bloqueado, copiar al portapapeles y mostrar instrucciones
-                copyMegaLink();
-                alert('El navegador bloqueó la ventana emergente.\n\nEl enlace ha sido COPIADO al portapapeles.\nPégalo en una nueva pestaña del navegador.');
-            }
-        }
-        
-        // Copy Mega Link
-        function copyMegaLink() {
-            const input = document.getElementById('megaLinkInput');
+        function copyDriveLink() {
+            const input = document.getElementById('driveLinkInput');
             input.select();
             input.setSelectionRange(0, 99999);
             navigator.clipboard.writeText(input.value).then(() => {
@@ -1231,7 +1220,7 @@
             
             // Hide previous messages
             document.getElementById('successMessage').classList.remove('show');
-            document.getElementById('megaLinkBox').classList.remove('show');
+            document.getElementById('driveLinkBox').classList.remove('show');
             
             if (delivery === 'email') {
                 // Open Gmail compose with pre-filled data
@@ -1268,17 +1257,17 @@
                 document.getElementById('successMessage').innerHTML = '<i class="fas fa-check-circle"></i> ¡Perfecto! Se abrió WhatsApp. Envía el mensaje para recibir tu ebook.';
                 document.getElementById('successMessage').classList.add('show');
                 
-            } else if (delivery === 'mega') {
-                // Show Mega link box
-                document.getElementById('megaLinkBox').classList.add('show');
+            } else if (delivery === 'drive') {
+                // Show Drive link box
+                document.getElementById('driveLinkBox').classList.add('show');
                 
                 // Also notify admin via WhatsApp
-                const adminMsg = `Nuevo registro Ebook Mega:%0A` +
+                const adminMsg = `Nuevo registro Ebook Drive:%0A` +
                                 `Nombre: ${nombre}%0A` +
                                 `Email: ${email}%0A` +
                                 `País: ${selectedCountry.name}%0A` +
                                 `WhatsApp: ${fullPhone}%0A` +
-                                `Enlace Mega: ${MEGA_LINK}%0A` +
+                                `Enlace Drive: ${DRIVE_LINK}%0A` +
                                 `Fecha: ${new Date().toLocaleString()}`;
                 
                 // Open admin notification in new window (won't block user)
@@ -1297,7 +1286,7 @@
             // Hide messages after 15 seconds
             setTimeout(() => {
                 document.getElementById('successMessage').classList.remove('show');
-                document.getElementById('megaLinkBox').classList.remove('show');
+                document.getElementById('driveLinkBox').classList.remove('show');
             }, 15000);
         });
 
