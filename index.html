@@ -7,1350 +7,307 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            color: #333;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        /* Header */
-        header {
-            text-align: center;
-            padding: 40px 20px;
-            color: white;
-        }
-
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        /* Lead Magnet Section */
-        .lead-magnet {
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            margin: 30px 0;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            text-align: center;
-        }
-
-        .lead-magnet h2 {
-            color: #667eea;
-            font-size: 2rem;
-            margin-bottom: 15px;
-        }
-
-        .lead-magnet .subtitle {
-            color: #666;
-            font-size: 1.1rem;
-            margin-bottom: 30px;
-        }
-
-        .ebook-preview {
-            width: 200px;
-            height: 280px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 10px;
-            margin: 0 auto 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-            font-weight: 600;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .ebook-preview::before {
-            content: '🧶';
-            font-size: 4rem;
-            position: absolute;
-            top: 20px;
-        }
-
-        .ebook-preview span {
-            margin-top: 60px;
-            padding: 0 20px;
-        }
-
-        /* Form Styles */
-        .form-container {
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: #555;
-            font-weight: 600;
-        }
-
-        .form-group input[type="text"],
-        .form-group input[type="email"],
-        .form-group input[type="tel"] {
-            width: 100%;
-            padding: 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            font-size: 1rem;
-            transition: all 0.3s;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .form-group input:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-        }
-
-        /* Country Selector */
-        .country-selector {
-            position: relative;
-            width: 100%;
-        }
-
-        .country-display {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            cursor: pointer;
-            background: white;
-            transition: all 0.3s;
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
-        }
-
-        .country-display:hover,
-        .country-display.active {
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-        }
-
-        .country-display img {
-            width: 28px;
-            height: 20px;
-            object-fit: cover;
-            border-radius: 3px;
-            flex-shrink: 0;
-        }
-
-        .country-display .country-name {
-            flex: 1;
-            color: #333;
-        }
-
-        .country-display .country-code {
-            color: #667eea;
-            font-weight: 600;
-        }
-
-        .country-display i {
-            color: #888;
-            transition: transform 0.3s;
-        }
-
-        .country-display.active i {
-            transform: rotate(180deg);
-        }
-
-        .country-dropdown {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: white;
-            border: 2px solid #e0e0e0;
-            border-top: none;
-            border-radius: 0 0 10px 10px;
-            max-height: 250px;
-            overflow-y: auto;
-            z-index: 100;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
-
-        .country-dropdown.show {
-            display: block;
-        }
-
-        .country-option {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 15px;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .country-option:hover {
-            background: #f0f0f0;
-        }
-
-        .country-option img {
-            width: 28px;
-            height: 20px;
-            object-fit: cover;
-            border-radius: 3px;
-            flex-shrink: 0;
-        }
-
-        .country-option .opt-name {
-            flex: 1;
-            color: #333;
-        }
-
-        .country-option .opt-code {
-            color: #667eea;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        .phone-input-wrapper {
-            display: flex;
-            gap: 10px;
-            align-items: stretch;
-        }
-
-        .phone-prefix {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 15px;
-            background: #f8f9fa;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            font-weight: 600;
-            color: #667eea;
-            white-space: nowrap;
-            flex-shrink: 0;
-        }
-
-        .phone-prefix img {
-            width: 24px;
-            height: 18px;
-            object-fit: cover;
-            border-radius: 3px;
-        }
-
-        /* Delivery Options */
-        .delivery-options {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-
-        .delivery-options > label {
-            display: block;
-            margin-bottom: 10px;
-            color: #555;
-            font-weight: 600;
-        }
-
-        .delivery-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-        }
-
-        .delivery-option {
-            position: relative;
-            cursor: pointer;
-        }
-
-        .delivery-option input {
-            position: absolute;
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        .delivery-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 15px 10px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            transition: all 0.3s;
-            text-align: center;
-            gap: 5px;
-        }
-
-        .delivery-option input:checked + .delivery-card {
-            border-color: #667eea;
-            background: rgba(102, 126, 234, 0.05);
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-        }
-
-        .delivery-card i {
-            font-size: 1.5rem;
-            color: #667eea;
-        }
-
-        .delivery-card span {
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #555;
-        }
-
-        .btn-submit {
-            width: 100%;
-            padding: 18px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .btn-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-        }
-
-        .privacy-note {
-            margin-top: 15px;
-            font-size: 0.85rem;
-            color: #888;
-        }
-
-        /* Drive Link Box */
-        .drive-link-box {
-            display: none;
-            background: linear-gradient(135deg, #e8f5e9 0%, #e3f2fd 100%);
-            border: 2px solid #34a853;
-            border-radius: 15px;
-            padding: 25px;
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        .drive-link-box.show {
-            display: block;
-            animation: slideDown 0.5s ease;
-        }
-
-        .drive-link-box h3 {
-            color: #34a853;
-            margin-bottom: 15px;
-            font-size: 1.1rem;
-        }
-
-        .drive-link-box p {
-            color: #555;
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-        }
-
-        .drive-link-container {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            background: white;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            padding: 10px 15px;
-            margin-bottom: 15px;
-        }
-
-        .drive-link-container input {
-            flex: 1;
-            border: none;
-            background: transparent;
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.85rem;
-            color: #333;
-            outline: none;
-        }
-
-        .drive-link-container button {
-            background: #34a853;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            padding: 8px 15px;
-            cursor: pointer;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            font-size: 0.85rem;
-            transition: opacity 0.3s;
-            white-space: nowrap;
-        }
-
-        .drive-link-container button:hover {
-            opacity: 0.9;
-        }
-
-        .drive-link-box .btn-download {
-            display: inline-block;
-            background: linear-gradient(135deg, #34a853 0%, #1e8e3e 100%);
-            color: white;
-            text-decoration: none;
-            padding: 12px 30px;
-            border-radius: 10px;
-            font-weight: 600;
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: none;
-            cursor: pointer;
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
-        }
-
-        .drive-link-box .btn-download:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(52, 168, 83, 0.4);
-        }
-
-        .drive-instructions {
-            background: #fff3e0;
-            border-left: 4px solid #ff9800;
-            padding: 12px 15px;
-            margin-top: 15px;
-            border-radius: 0 8px 8px 0;
-            text-align: left;
-        }
-
-        .drive-instructions p {
-            margin: 0;
-            font-size: 0.85rem;
-            color: #e65100;
-        }
-
-        .drive-instructions ol {
-            margin: 8px 0 0 18px;
-            padding: 0;
-            font-size: 0.85rem;
-            color: #555;
-        }
-
-        .drive-instructions li {
-            margin-bottom: 4px;
-        }
-
-        /* Products Section */
-        .products-section {
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            margin: 30px 0;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-        }
-
-        .products-section h2 {
-            text-align: center;
-            color: #667eea;
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-
-        .products-section .section-subtitle {
-            text-align: center;
-            color: #666;
-            margin-bottom: 40px;
-        }
-
-        /* Category Filter */
-        .category-filter {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 30px;
-        }
-
-        .filter-btn {
-            padding: 10px 20px;
-            border: 2px solid #667eea;
-            background: white;
-            color: #667eea;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        .filter-btn:hover,
-        .filter-btn.active {
-            background: #667eea;
-            color: white;
-        }
-
-        /* Product Grid */
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
-        }
-
-        .product-card {
-            background: #f8f9fa;
-            border-radius: 15px;
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 2px solid transparent;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-            border-color: #667eea;
-        }
-
-        .product-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .product-icon {
-            font-size: 3rem;
-            margin-bottom: 10px;
-        }
-
-        .product-type {
-            display: inline-block;
-            padding: 5px 15px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-
-        .product-body {
-            padding: 25px;
-        }
-
-        .product-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: #333;
-            margin-bottom: 10px;
-            line-height: 1.4;
-        }
-
-        .product-category {
-            display: inline-block;
-            padding: 5px 12px;
-            background: #e3f2fd;
-            color: #667eea;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-
-        .product-code {
-            font-size: 0.85rem;
-            color: #888;
-            margin-bottom: 15px;
-        }
-
-        .btn-buy {
-            display: block;
-            width: 100%;
-            padding: 12px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: opacity 0.3s;
-            border: none;
-            cursor: pointer;
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
-        }
-
-        .btn-buy:hover {
-            opacity: 0.9;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            color: white;
-        }
-
-        footer .social-links {
-            margin: 20px 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        footer .social-links a {
-            color: white;
-            font-size: 1.5rem;
-            transition: transform 0.3s;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.15);
-        }
-
-        footer .social-links a:hover {
-            transform: scale(1.2);
-            background: rgba(255,255,255,0.3);
-        }
-
-        footer .social-links a.email-btn {
-            font-size: 1.2rem;
-            width: auto;
-            padding: 0 18px;
-            border-radius: 25px;
-            gap: 8px;
-            text-decoration: none;
-        }
-
-        footer .social-links a.email-btn i {
-            font-size: 1.1rem;
-        }
-
-        footer .social-links a.email-btn span {
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-
-        footer .social-links a.whatsapp-btn {
-            background: #25d366;
-        }
-
-        footer .social-links a.whatsapp-btn:hover {
-            background: #128c7e;
-        }
-
-        footer p {
-            opacity: 0.8;
-            font-size: 0.9rem;
-            margin-top: 10px;
-        }
-
-        /* WhatsApp Float Button */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            background: #25d366;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2rem;
-            text-decoration: none;
-            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
-            transition: transform 0.3s;
-            z-index: 1000;
-        }
-
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-        }
-
-        /* Success Message */
-        .success-message {
-            display: none;
-            background: #d4edda;
-            color: #155724;
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 20px;
-            border: 1px solid #c3e6cb;
-        }
-
-        .success-message.show {
-            display: block;
-            animation: slideDown 0.5s ease;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Responsive */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; color: #333; overflow-x: hidden; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+        /* NAVBAR */
+        .navbar { position: fixed; top: 0; left: 0; right: 0; background: rgba(102, 126, 234, 0.95); backdrop-filter: blur(10px); padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; z-index: 2000; box-shadow: 0 2px 20px rgba(0,0,0,0.2); }
+        .navbar-brand { color: white; font-weight: 700; font-size: 1.3rem; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+        .menu-toggle { width: 40px; height: 40px; background: rgba(255,255,255,0.2); border: none; border-radius: 8px; cursor: pointer; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 5px; transition: all 0.3s; z-index: 2002; }
+        .menu-toggle:hover { background: rgba(255,255,255,0.3); }
+        .menu-toggle span { display: block; width: 22px; height: 2px; background: white; border-radius: 2px; transition: all 0.3s; }
+        .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .menu-toggle.active span:nth-child(2) { opacity: 0; }
+        .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        /* SIDEBAR */
+        .sidebar { position: fixed; top: 0; right: -320px; width: 320px; height: 100vh; background: linear-gradient(180deg, #667eea 0%, #764ba2 100%); z-index: 2001; transition: right 0.4s ease; box-shadow: -5px 0 30px rgba(0,0,0,0.3); display: flex; flex-direction: column; padding-top: 80px; }
+        .sidebar.open { right: 0; }
+        .sidebar-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 1999; opacity: 0; visibility: hidden; transition: all 0.3s; }
+        .sidebar-overlay.show { opacity: 1; visibility: visible; }
+        .sidebar-menu { list-style: none; padding: 0; }
+        .sidebar-menu li { border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .sidebar-menu a { display: flex; align-items: center; gap: 15px; padding: 18px 25px; color: white; text-decoration: none; font-weight: 600; font-size: 1rem; transition: all 0.3s; }
+        .sidebar-menu a:hover { background: rgba(255,255,255,0.15); padding-left: 35px; }
+        .sidebar-menu a i { font-size: 1.2rem; width: 24px; text-align: center; }
+        .sidebar-footer { margin-top: auto; padding: 25px; border-top: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.7); font-size: 0.85rem; text-align: center; }
+        body { padding-top: 70px; }
+
+        /* HEADER */
+        header { text-align: center; padding: 40px 20px; color: white; }
+        header h1 { font-size: 2.5rem; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        header p { font-size: 1.2rem; opacity: 0.9; }
+
+        /* LEAD MAGNET */
+        .lead-magnet { background: white; border-radius: 20px; padding: 40px; margin: 30px 0; box-shadow: 0 20px 60px rgba(0,0,0,0.3); text-align: center; }
+        .lead-magnet h2 { color: #667eea; font-size: 2rem; margin-bottom: 15px; }
+        .lead-magnet .subtitle { color: #666; font-size: 1.1rem; margin-bottom: 30px; }
+        .ebook-preview { width: 200px; height: 280px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 10px; margin: 0 auto 30px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem; font-weight: 600; box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4); position: relative; overflow: hidden; }
+        .ebook-preview::before { content: '🧶'; font-size: 4rem; position: absolute; top: 20px; }
+        .ebook-preview span { margin-top: 60px; padding: 0 20px; }
+
+        /* FORM */
+        .form-container { max-width: 500px; margin: 0 auto; }
+        .form-group { margin-bottom: 20px; text-align: left; }
+        .form-group label { display: block; margin-bottom: 8px; color: #555; font-weight: 600; }
+        .form-group input[type="text"], .form-group input[type="email"], .form-group input[type="tel"] { width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 1rem; transition: all 0.3s; font-family: 'Poppins', sans-serif; }
+        .form-group input:focus { outline: none; border-color: #667eea; box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1); }
+
+        /* COUNTRY SELECTOR */
+        .country-selector { position: relative; width: 100%; }
+        .country-display { display: flex; align-items: center; gap: 10px; padding: 15px; border: 2px solid #e0e0e0; border-radius: 10px; cursor: pointer; background: white; transition: all 0.3s; font-family: 'Poppins', sans-serif; font-size: 1rem; }
+        .country-display:hover, .country-display.active { border-color: #667eea; box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1); }
+        .country-display img { width: 28px; height: 20px; object-fit: cover; border-radius: 3px; flex-shrink: 0; }
+        .country-display .country-name { flex: 1; color: #333; }
+        .country-display .country-code { color: #667eea; font-weight: 600; }
+        .country-display i { color: #888; transition: transform 0.3s; }
+        .country-display.active i { transform: rotate(180deg); }
+        .country-dropdown { display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; border: 2px solid #e0e0e0; border-top: none; border-radius: 0 0 10px 10px; max-height: 250px; overflow-y: auto; z-index: 100; box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
+        .country-dropdown.show { display: block; }
+        .country-option { display: flex; align-items: center; gap: 10px; padding: 12px 15px; cursor: pointer; transition: background 0.2s; }
+        .country-option:hover { background: #f0f0f0; }
+        .country-option img { width: 28px; height: 20px; object-fit: cover; border-radius: 3px; flex-shrink: 0; }
+        .country-option .opt-name { flex: 1; color: #333; }
+        .country-option .opt-code { color: #667eea; font-weight: 600; font-size: 0.9rem; }
+        .phone-input-wrapper { display: flex; gap: 10px; align-items: stretch; }
+        .phone-prefix { display: flex; align-items: center; gap: 8px; padding: 15px; background: #f8f9fa; border: 2px solid #e0e0e0; border-radius: 10px; font-weight: 600; color: #667eea; white-space: nowrap; flex-shrink: 0; }
+        .phone-prefix img { width: 24px; height: 18px; object-fit: cover; border-radius: 3px; }
+
+        /* DELIVERY */
+        .delivery-options { margin-bottom: 20px; text-align: left; }
+        .delivery-options > label { display: block; margin-bottom: 10px; color: #555; font-weight: 600; }
+        .delivery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+        .delivery-option { position: relative; cursor: pointer; }
+        .delivery-option input { position: absolute; opacity: 0; width: 0; height: 0; }
+        .delivery-card { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 15px 10px; border: 2px solid #e0e0e0; border-radius: 10px; transition: all 0.3s; text-align: center; gap: 5px; }
+        .delivery-option input:checked + .delivery-card { border-color: #667eea; background: rgba(102, 126, 234, 0.05); box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1); }
+        .delivery-card i { font-size: 1.5rem; color: #667eea; }
+        .delivery-card span { font-size: 0.8rem; font-weight: 600; color: #555; }
+
+        .btn-submit { width: 100%; padding: 18px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 10px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; font-family: 'Poppins', sans-serif; }
+        .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4); }
+        .privacy-note { margin-top: 15px; font-size: 0.85rem; color: #888; }
+
+        /* DRIVE BOX */
+        .drive-link-box { display: none; background: linear-gradient(135deg, #e8f5e9 0%, #e3f2fd 100%); border: 2px solid #34a853; border-radius: 15px; padding: 25px; margin-top: 20px; text-align: center; }
+        .drive-link-box.show { display: block; animation: slideDown 0.5s ease; }
+        .drive-link-box h3 { color: #34a853; margin-bottom: 15px; font-size: 1.1rem; }
+        .drive-link-box p { color: #555; font-size: 0.9rem; margin-bottom: 15px; }
+        .drive-link-container { display: flex; gap: 10px; align-items: center; background: white; border: 2px solid #e0e0e0; border-radius: 10px; padding: 10px 15px; margin-bottom: 15px; }
+        .drive-link-container input { flex: 1; border: none; background: transparent; font-family: 'Poppins', sans-serif; font-size: 0.85rem; color: #333; outline: none; }
+        .drive-link-container button { background: #34a853; color: white; border: none; border-radius: 8px; padding: 8px 15px; cursor: pointer; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 0.85rem; transition: opacity 0.3s; white-space: nowrap; }
+        .drive-link-container button:hover { opacity: 0.9; }
+        .drive-link-box .btn-download { display: inline-block; background: linear-gradient(135deg, #34a853 0%, #1e8e3e 100%); color: white; text-decoration: none; padding: 12px 30px; border-radius: 10px; font-weight: 600; transition: transform 0.3s, box-shadow 0.3s; border: none; cursor: pointer; font-family: 'Poppins', sans-serif; font-size: 1rem; }
+        .drive-link-box .btn-download:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(52, 168, 83, 0.4); }
+        .drive-instructions { background: #fff3e0; border-left: 4px solid #ff9800; padding: 12px 15px; margin-top: 15px; border-radius: 0 8px 8px 0; text-align: left; }
+        .drive-instructions p { margin: 0; font-size: 0.85rem; color: #e65100; }
+        .drive-instructions ol { margin: 8px 0 0 18px; padding: 0; font-size: 0.85rem; color: #555; }
+        .drive-instructions li { margin-bottom: 4px; }
+
+        /* PRODUCTS */
+        .products-section { background: white; border-radius: 20px; padding: 40px; margin: 30px 0; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+        .products-section h2 { text-align: center; color: #667eea; font-size: 2rem; margin-bottom: 10px; }
+        .products-section .section-subtitle { text-align: center; color: #666; margin-bottom: 40px; }
+        .category-filter { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 30px; }
+        .filter-btn { padding: 10px 20px; border: 2px solid #667eea; background: white; color: #667eea; border-radius: 25px; cursor: pointer; transition: all 0.3s; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 0.9rem; }
+        .filter-btn:hover, .filter-btn.active { background: #667eea; color: white; }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
+        .product-card { background: #f8f9fa; border-radius: 15px; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; border: 2px solid transparent; }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.15); border-color: #667eea; }
+        .product-header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; text-align: center; }
+        .product-icon { font-size: 3rem; margin-bottom: 10px; }
+        .product-type { display: inline-block; padding: 5px 15px; background: rgba(255,255,255,0.2); border-radius: 20px; font-size: 0.85rem; font-weight: 600; }
+        .product-body { padding: 25px; }
+        .product-title { font-size: 1.1rem; font-weight: 700; color: #333; margin-bottom: 10px; line-height: 1.4; }
+        .product-category { display: inline-block; padding: 5px 12px; background: #e3f2fd; color: #667eea; border-radius: 15px; font-size: 0.8rem; font-weight: 600; margin-bottom: 15px; }
+        .product-code { font-size: 0.85rem; color: #888; margin-bottom: 15px; }
+        .btn-buy { display: block; width: 100%; padding: 12px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-align: center; text-decoration: none; border-radius: 8px; font-weight: 600; transition: opacity 0.3s; border: none; cursor: pointer; font-family: 'Poppins', sans-serif; font-size: 1rem; }
+        .btn-buy:hover { opacity: 0.9; }
+
+        /* LEGAL PAGES */
+        .legal-section { background: white; border-radius: 20px; padding: 40px; margin: 30px 0; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+        .legal-section h2 { color: #667eea; font-size: 1.8rem; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 3px solid #667eea; }
+        .legal-section h3 { color: #764ba2; font-size: 1.3rem; margin: 25px 0 12px 0; }
+        .legal-section p, .legal-section li { color: #555; line-height: 1.8; margin-bottom: 12px; font-size: 0.95rem; }
+        .legal-section ul, .legal-section ol { margin-left: 25px; margin-bottom: 15px; }
+        .legal-section li { margin-bottom: 8px; }
+        .legal-section a { color: #667eea; text-decoration: none; font-weight: 600; }
+        .legal-section a:hover { text-decoration: underline; }
+        .legal-badge { display: inline-flex; align-items: center; gap: 8px; background: #e3f2fd; color: #667eea; padding: 8px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 20px; }
+        .back-btn { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-decoration: none; padding: 12px 25px; border-radius: 10px; font-weight: 600; margin-bottom: 20px; transition: transform 0.3s, box-shadow 0.3s; }
+        .back-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4); }
+        .legal-footer { background: #f8f9fa; border-radius: 10px; padding: 20px; margin-top: 30px; text-align: center; color: #888; font-size: 0.85rem; }
+
+        /* FOOTER */
+        .footer-legal { display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; margin: 15px 0; }
+        .footer-legal a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.85rem; transition: color 0.3s; }
+        .footer-legal a:hover { color: white; text-decoration: underline; }
+        footer { text-align: center; padding: 40px 20px; color: white; }
+        footer .social-links { margin: 20px 0; display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 15px; }
+        footer .social-links a { color: white; font-size: 1.5rem; transition: transform 0.3s; display: inline-flex; align-items: center; justify-content: center; width: 45px; height: 45px; border-radius: 50%; background: rgba(255,255,255,0.15); }
+        footer .social-links a:hover { transform: scale(1.2); background: rgba(255,255,255,0.3); }
+        footer .social-links a.email-btn { font-size: 1.2rem; width: auto; padding: 0 18px; border-radius: 25px; gap: 8px; text-decoration: none; }
+        footer .social-links a.email-btn i { font-size: 1.1rem; }
+        footer .social-links a.email-btn span { font-size: 0.85rem; font-weight: 600; }
+        footer .social-links a.whatsapp-btn { background: #25d366; }
+        footer .social-links a.whatsapp-btn:hover { background: #128c7e; }
+        footer p { opacity: 0.8; font-size: 0.9rem; margin-top: 10px; }
+
+        /* WHATSAPP FLOAT */
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; text-decoration: none; box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4); transition: transform 0.3s; z-index: 1000; }
+        .whatsapp-float:hover { transform: scale(1.1); }
+
+        /* SUCCESS */
+        .success-message { display: none; background: #d4edda; color: #155724; padding: 20px; border-radius: 10px; margin-top: 20px; border: 1px solid #c3e6cb; }
+        .success-message.show { display: block; animation: slideDown 0.5s ease; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* RESPONSIVE */
         @media (max-width: 768px) {
-            header h1 {
-                font-size: 1.8rem;
-            }
-            
-            header p {
-                font-size: 1rem;
-            }
-            
-            .lead-magnet,
-            .products-section {
-                padding: 25px 15px;
-                margin: 15px 0;
-            }
-            
-            .lead-magnet h2 {
-                font-size: 1.5rem;
-            }
-            
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .delivery-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .phone-input-wrapper {
-                flex-direction: column;
-            }
-            
-            .phone-prefix {
-                justify-content: center;
-            }
-            
-            .category-filter {
-                gap: 8px;
-            }
-            
-            .filter-btn {
-                padding: 8px 14px;
-                font-size: 0.8rem;
-            }
-            
-            .whatsapp-float {
-                width: 50px;
-                height: 50px;
-                font-size: 1.5rem;
-                bottom: 20px;
-                right: 20px;
-            }
-
-            footer .social-links a.email-btn span {
-                display: none;
-            }
-
-            footer .social-links a.email-btn {
-                width: 45px;
-                padding: 0;
-            }
-
-            .drive-link-container {
-                flex-direction: column;
-            }
-
-            .drive-link-container input {
-                width: 100%;
-                text-align: center;
-            }
+            .sidebar { width: 280px; right: -280px; }
+            header h1 { font-size: 1.8rem; }
+            header p { font-size: 1rem; }
+            .lead-magnet, .products-section, .legal-section { padding: 25px 15px; margin: 15px 0; }
+            .lead-magnet h2 { font-size: 1.5rem; }
+            .legal-section h2 { font-size: 1.4rem; }
+            .products-grid { grid-template-columns: 1fr; }
+            .delivery-grid { grid-template-columns: 1fr; }
+            .phone-input-wrapper { flex-direction: column; }
+            .phone-prefix { justify-content: center; }
+            .category-filter { gap: 8px; }
+            .filter-btn { padding: 8px 14px; font-size: 0.8rem; }
+            .whatsapp-float { width: 50px; height: 50px; font-size: 1.5rem; bottom: 20px; right: 20px; }
+            footer .social-links a.email-btn span { display: none; }
+            footer .social-links a.email-btn { width: 45px; padding: 0; }
+            .drive-link-container { flex-direction: column; }
+            .drive-link-container input { width: 100%; text-align: center; }
+            .footer-legal { flex-direction: column; gap: 10px; }
         }
-
         @media (max-width: 480px) {
-            header {
-                padding: 25px 15px;
-            }
-            
-            header h1 {
-                font-size: 1.5rem;
-            }
-            
-            .ebook-preview {
-                width: 160px;
-                height: 220px;
-            }
-            
-            .btn-submit {
-                font-size: 1rem;
-                padding: 15px;
-            }
+            header { padding: 25px 15px; }
+            header h1 { font-size: 1.5rem; }
+            .ebook-preview { width: 160px; height: 220px; }
+            .btn-submit { font-size: 1rem; padding: 15px; }
+            .navbar-brand { font-size: 1.1rem; }
         }
     </style>
+<base target="_blank">
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <h1>🧶 Crochet y Amigurumis</h1>
-        <p>Aprende a tejer desde cero y convierte tu pasión en negocio</p>
-    </header>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="#" class="navbar-brand" onclick="showPage('home'); return false;">
+            <i class="fas fa-home"></i> Crochet y Amigurumis
+        </a>
+        <button type="button" class="menu-toggle" id="menuToggle" onclick="toggleSidebar()" aria-label="Abrir menú">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
 
-    <div class="container">
-        <!-- Lead Magnet Section -->
-        <section class="lead-magnet">
-            <h2>📚 Mi Ebook para Ti</h2>
-            <p class="subtitle">Recibe GRATIS mi guía exclusiva con patrones y tips para empezar</p>
-            
-            <div class="ebook-preview">
-                <span>Mi Ebook para Ti</span>
-            </div>
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
 
-            <div class="form-container">
-                <form id="leadForm">
-                    <div class="form-group">
-                        <label for="nombre">Nombre completo *</label>
-                        <input type="text" id="nombre" name="nombre" required placeholder="Escribe tu nombre">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Correo electrónico *</label>
-                        <input type="email" id="email" name="email" required placeholder="tu@email.com">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>País *</label>
-                        <div class="country-selector" id="countrySelector">
-                            <div class="country-display" id="countryDisplay" onclick="toggleDropdown()">
-                                <img id="selectedFlag" src="https://flagcdn.com/w40/cu.png" alt="Cuba">
-                                <span class="country-name" id="selectedName">Cuba</span>
-                                <span class="country-code" id="selectedCode">+53</span>
-                                <i class="fas fa-chevron-down"></i>
+    <aside class="sidebar" id="sidebar">
+        <ul class="sidebar-menu">
+            <li><a href="#" onclick="showPage('home'); toggleSidebar(); return false;"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="#" onclick="showPage('products'); toggleSidebar(); return false;"><i class="fas fa-shopping-bag"></i> Productos</a></li>
+            <li><a href="#" onclick="showPage('privacy'); toggleSidebar(); return false;"><i class="fas fa-shield-alt"></i> Política de Privacidad</a></li>
+            <li><a href="#" onclick="showPage('terms'); toggleSidebar(); return false;"><i class="fas fa-file-contract"></i> Términos y Condiciones</a></li>
+            <li><a href="#" onclick="showPage('affiliate'); toggleSidebar(); return false;"><i class="fas fa-handshake"></i> Aviso de Afiliados</a></li>
+            <li><a href="mailto:eldisyera@gmail.com"><i class="fas fa-envelope"></i> Contacto</a></li>
+        </ul>
+        <div class="sidebar-footer">© 2026 Crochet y Amigurumis<br>Todos los derechos reservados</div>
+    </aside>
+
+    <!-- PAGE: HOME -->
+    <div id="page-home">
+        <header><h1>🧶 Crochet y Amigurumis</h1><p>Aprende a tejer desde cero y convierte tu pasión en negocio</p></header>
+        <div class="container">
+            <section class="lead-magnet">
+                <h2>📚 Mi Ebook para Ti</h2>
+                <p class="subtitle">Recibe GRATIS mi guía exclusiva con patrones y tips para empezar</p>
+                <div class="ebook-preview"><span>Mi Ebook para Ti</span></div>
+                <div class="form-container">
+                    <form id="leadForm">
+                        <div class="form-group"><label for="nombre">Nombre completo *</label><input type="text" id="nombre" name="nombre" required placeholder="Escribe tu nombre"></div>
+                        <div class="form-group"><label for="email">Correo electrónico *</label><input type="email" id="email" name="email" required placeholder="tu@email.com"></div>
+                        <div class="form-group">
+                            <label>País *</label>
+                            <div class="country-selector" id="countrySelector">
+                                <div class="country-display" id="countryDisplay" onclick="toggleDropdown()">
+                                    <img id="selectedFlag" src="https://flagcdn.com/w40/cu.png" alt="Cuba"><span class="country-name" id="selectedName">Cuba</span><span class="country-code" id="selectedCode">+53</span><i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="country-dropdown" id="countryDropdown"></div>
                             </div>
-                            <div class="country-dropdown" id="countryDropdown"></div>
                         </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="whatsapp">Número de WhatsApp *</label>
-                        <div class="phone-input-wrapper">
-                            <div class="phone-prefix" id="phonePrefix">
-                                <img id="prefixFlag" src="https://flagcdn.com/w40/cu.png" alt="Cuba">
-                                <span id="prefixCode">+53</span>
+                        <div class="form-group">
+                            <label for="whatsapp">Número de WhatsApp *</label>
+                            <div class="phone-input-wrapper">
+                                <div class="phone-prefix" id="phonePrefix"><img id="prefixFlag" src="https://flagcdn.com/w40/cu.png" alt="Cuba"><span id="prefixCode">+53</span></div>
+                                <input type="tel" id="whatsapp" name="whatsapp" required placeholder="54356696" pattern="[0-9]*" inputmode="numeric">
                             </div>
-                            <input type="tel" id="whatsapp" name="whatsapp" required placeholder="54356696" pattern="[0-9]*" inputmode="numeric">
                         </div>
-                    </div>
-                    
-                    <div class="delivery-options">
-                        <label>¿Cómo quieres recibir tu ebook? *</label>
-                        <div class="delivery-grid">
-                            <label class="delivery-option">
-                                <input type="radio" name="delivery" value="email" checked>
-                                <div class="delivery-card">
-                                    <i class="fas fa-envelope"></i>
-                                    <span>Por Email</span>
-                                </div>
-                            </label>
-                            <label class="delivery-option">
-                                <input type="radio" name="delivery" value="whatsapp">
-                                <div class="delivery-card">
-                                    <i class="fab fa-whatsapp"></i>
-                                    <span>Por WhatsApp</span>
-                                </div>
-                            </label>
-                            <label class="delivery-option">
-                                <input type="radio" name="delivery" value="drive">
-                                <div class="delivery-card">
-                                    <i class="fab fa-google-drive"></i>
-                                    <span>Google Drive</span>
-                                </div>
-                            </label>
+                        <div class="delivery-options">
+                            <label>¿Cómo quieres recibir tu ebook? *</label>
+                            <div class="delivery-grid">
+                                <label class="delivery-option"><input type="radio" name="delivery" value="email" checked><div class="delivery-card"><i class="fas fa-envelope"></i><span>Por Email</span></div></label>
+                                <label class="delivery-option"><input type="radio" name="delivery" value="whatsapp"><div class="delivery-card"><i class="fab fa-whatsapp"></i><span>Por WhatsApp</span></div></label>
+                                <label class="delivery-option"><input type="radio" name="delivery" value="drive"><div class="delivery-card"><i class="fab fa-google-drive"></i><span>Google Drive</span></div></label>
+                            </div>
                         </div>
+                        <button type="submit" class="btn-submit"><i class="fas fa-gift"></i> ¡Quiero mi Ebook Gratis!</button>
+                    </form>
+                    <div class="success-message" id="successMessage"><i class="fas fa-check-circle"></i> ¡Gracias por registrarte! Te contactaremos pronto.</div>
+                    <div class="drive-link-box" id="driveLinkBox">
+                        <h3><i class="fab fa-google-drive"></i> ¡Tu Ebook está listo!</h3>
+                        <p>Copia el enlace o haz clic para ver tu ebook:</p>
+                        <div class="drive-link-container"><input type="text" id="driveLinkInput" value="https://drive.google.com/file/d/1BgBRSMC_B-3k_pjM_5RLjWYQI-8h5l8_/view?usp=sharing" readonly><button type="button" onclick="copyDriveLink()"><i class="fas fa-copy"></i> Copiar</button></div>
+                        <a href="https://drive.google.com/file/d/1BgBRSMC_B-3k_pjM_5RLjWYQI-8h5l8_/view?usp=sharing" target="_blank" class="btn-download"><i class="fas fa-external-link-alt"></i> Ver Ebook en Google Drive</a>
+                        <div class="drive-instructions"><p><strong>📥 Para descargar:</strong></p><ol><li>Haz clic en el botón verde arriba</li><li>En Google Drive, haz clic en el icono ⬇️ (Descargar)</li><li>¡Listo! El archivo se guardará en tu dispositivo</li></ol></div>
                     </div>
-                    
-                    <button type="submit" class="btn-submit">
-                        <i class="fas fa-gift"></i> ¡Quiero mi Ebook Gratis!
-                    </button>
-                </form>
-                
-                <div class="success-message" id="successMessage">
-                    <i class="fas fa-check-circle"></i> ¡Gracias por registrarte! Te contactaremos pronto.
+                    <p class="privacy-note"><i class="fas fa-lock"></i> Tu información está segura. No enviamos spam.</p>
                 </div>
-                
-                <div class="drive-link-box" id="driveLinkBox">
-                    <h3><i class="fab fa-google-drive"></i> ¡Tu Ebook está listo!</h3>
-                    <p>Copia el enlace o haz clic para ver tu ebook en Google Drive:</p>
-                    <div class="drive-link-container">
-                        <input type="text" id="driveLinkInput" value="https://drive.google.com/file/d/1BgBRSMC_B-3k_pjM_5RLjWYQI-8h5l8_/view?usp=sharing" readonly>
-                        <button type="button" onclick="copyDriveLink()"><i class="fas fa-copy"></i> Copiar</button>
-                    </div>
-                    <a href="https://drive.google.com/file/d/1BgBRSMC_B-3k_pjM_5RLjWYQI-8h5l8_/view?usp=sharing" target="_blank" class="btn-download">
-                        <i class="fas fa-external-link-alt"></i> Ver Ebook en Google Drive
-                    </a>
-                    <div class="drive-instructions">
-                        <p><strong>📥 Para descargar:</strong></p>
-                        <ol>
-                            <li>Haz clic en el botón verde arriba</li>
-                            <li>En Google Drive, haz clic en el icono ⬇️ (Descargar) arriba a la derecha</li>
-                            <li>¡Listo! El archivo se guardará en tu dispositivo</li>
-                        </ol>
-                    </div>
+            </section>
+
+            <section class="products-section">
+                <h2>🛍️ Nuestros Productos</h2>
+                <p class="section-subtitle">Cursos, ebooks y patrones para todos los niveles</p>
+                <div class="category-filter">
+                    <button type="button" class="filter-btn active" onclick="filterProducts('todos')">Todos</button>
+                    <button type="button" class="filter-btn" onclick="filterProducts('amigurumi')">Amigurumi</button>
+                    <button type="button" class="filter-btn" onclick="filterProducts('crochet')">Crochet</button>
+                    <button type="button" class="filter-btn" onclick="filterProducts('trapillo')">Trapillo</button>
+                    <button type="button" class="filter-btn" onclick="filterProducts('prendas')">Prendas</button>
+                    <button type="button" class="filter-btn" onclick="filterProducts('accesorios')">Accesorios</button>
                 </div>
-                
-                <p class="privacy-note">
-                    <i class="fas fa-lock"></i> Tu información está segura. No enviamos spam.
-                </p>
-            </div>
-        </section>
-
-        <!-- Products Section -->
-        <section class="products-section">
-            <h2>🛍️ Nuestros Productos</h2>
-            <p class="section-subtitle">Cursos, ebooks y patrones para todos los niveles</p>
-            
-            <div class="category-filter">
-                <button type="button" class="filter-btn active" onclick="filterProducts('todos')">Todos</button>
-                <button type="button" class="filter-btn" onclick="filterProducts('amigurumi')">Amigurumi</button>
-                <button type="button" class="filter-btn" onclick="filterProducts('crochet')">Crochet</button>
-                <button type="button" class="filter-btn" onclick="filterProducts('trapillo')">Trapillo</button>
-                <button type="button" class="filter-btn" onclick="filterProducts('prendas')">Prendas</button>
-                <button type="button" class="filter-btn" onclick="filterProducts('accesorios')">Accesorios</button>
-            </div>
-
-            <div class="products-grid" id="productsGrid">
-                <!-- Product 1 -->
-                <div class="product-card" data-category="prendas">
-                    <div class="product-header">
-                        <div class="product-icon">👗</div>
-                        <span class="product-type">PATRÓN</span>
-                    </div>
-                    <div class="product-body">
-                        <h3 class="product-title">Patrón Blusa Flor de Olivo en Crochet</h3>
-                        <span class="product-category">Prendas</span>
-                        <p class="product-code">Código: W102293007J</p>
-                        <a href="https://hotmart.com/es/marketplace/productos/patron-en-crochet-blusa-flor-de-olivo/S97380393V?ref=W102293007J" class="btn-buy" target="_blank" rel="noopener noreferrer">
-                            <i class="fas fa-shopping-cart"></i> Ver Producto
-                        </a>
-                    </div>
+                <div class="products-grid" id="productsGrid">
+                    <div class="product-card" data-category="prendas"><div class="product-header"><div class="product-icon">👗</div><span class="product-type">PATRÓN</span></div><div class="product-body"><h3 class="product-title">Patrón Blusa Flor de Olivo en Crochet</h3><span class="product-category">Prendas</span><p class="product-code">Código: W102293007J</p><a href="https://hotmart.com/es/marketplace/productos/patron-en-crochet-blusa-flor-de-olivo/S97380393V?ref=W102293007J" class="btn-buy" target="_blank" rel="noopener noreferrer"><i class="fas fa-shopping-cart"></i> Ver Producto</a></div></div>
+                    <div class="product-card" data-category="crochet"><div class="product-header"><div class="product-icon">🎓</div><span class="product-type">CURSO</span></div><div class="product-body"><h3 class="product-title">Curso de Crochet Profesional</h3><span class="product-category">Crochet</span><p class="product-code">Código: V101927515C</p><a href="https://educatefacildesdecasa.com/crochet_afil/?ref=V101927515C" class="btn-buy" target="_blank" rel="noopener noreferrer"><i class="fas fa-shopping-cart"></i> Ver Producto</a></div></div>
+                    <div class="product-card" data-category="amigurumi"><div class="product-header"><div class="product-icon">🧸</div><span class="product-type">CURSO</span></div><div class="product-body"><h3 class="product-title">Crochet – Amigurumis (Curso Completo)</h3><span class="product-category">Amigurumi</span><p class="product-code">Código: P97973535Q</p><a href="https://vertice101.com/crochet-amigurumis/?ref=P97973535Q" class="btn-buy" target="_blank" rel="noopener noreferrer"><i class="fas fa-shopping-cart"></i> Ver Producto</a></div></div>
+                    <div class="product-card" data-category="accesorios"><div class="product-header"><div class="product-icon">👜</div><span class="product-type">CURSO</span></div><div class="product-body"><h3 class="product-title">Bolsos y Accesorios en Crochet</h3><span class="product-category">Accesorios</span><p class="product-code">Código: X101549444K</p><a href="https://manitascreativastrapillo.tucompradigital.com/?ref=X101549444K" class="btn-buy" target="_blank" rel="noopener noreferrer"><i class="fas fa-shopping-cart"></i> Ver Producto</a></div></div>
+                    <div class="product-card" data-category="trapillo"><div class="product-header"><div class="product-icon">🧵</div><span class="product-type">CURSO</span></div><div class="product-body"><h3 class="product-title">Crochet – Bolsos Premium en Trapillo</h3><span class="product-category">Trapillo</span><p class="product-code">Código: R97973128U</p><a href="https://vertice101.com/crochet-bolsos-premium/?ref=R97973128U" class="btn-buy" target="_blank" rel="noopener noreferrer"><i class="fas fa-shopping-cart"></i> Ver Producto</a></div></div>
+                    <div class="product-card" data-category="amigurumi"><div class="product-header"><div class="product-icon">🔑</div><span class="product-type">EBOOK</span></div><div class="product-body"><h3 class="product-title">Ebook +60 Llaveros Amigurumis</h3><span class="product-category">Amigurumi</span><p class="product-code">Código: S101949118J</p><a href="https://hotmart.com/es/marketplace/productos/ebook-60-llaveros-amigurumis-patrones-paso-a-paso/U82362846Y?ref=S101949118J" class="btn-buy" target="_blank" rel="noopener noreferrer"><i class="fas fa-shopping-cart"></i> Ver Producto</a></div></div>
+                    <div class="product-card" data-category="amigurumi"><div class="product-header"><div class="product-icon">📖</div><span class="product-type">EBOOK</span></div><div class="product-body"><h3 class="product-title">Ebook +250 Minipatrones de Amigurumis</h3><span class="product-category">Amigurumi</span><p class="product-code">Código: L101949170Y</p><a href="https://hotmart.com/es/marketplace/productos/200-minipatrones-de-amigurumis/Y82661895U?ref=L101949170Y" class="btn-buy" target="_blank" rel="noopener noreferrer"><i class="fas fa-shopping-cart"></i> Ver Producto</a></div></div>
+                    <div class="product-card" data-category="amigurumi"><div class="product-header"><div class="product-icon">🧶</div><span class="product-type">EBOOK</span></div><div class="product-body"><h3 class="product-title">Ebook Amigurumis (Nícol Valentina)</h3><span class="product-category">Amigurumi</span><p class="product-code">Código: E102070698A</p><a href="https://academyclasscursosonline.com/crochetpremium-3/?ref=E102070698A" class="btn-buy" target="_blank" rel="noopener noreferrer"><i class="fas fa-shopping-cart"></i> Ver Producto</a></div></div>
+                    <div class="product-card" data-category="crochet"><div class="product-header"><div class="product-icon">🌸</div><span class="product-type">EBOOK</span></div><div class="product-body"><h3 class="product-title">Ebook Flores a Crochet</h3><span class="product-category">Crochet</span><p class="product-code">Código: H101888647B</p><a href="https://hotmart.com/es/marketplace/productos/ebook-flores-a-crochet/H94101314B?ref=H101888647B" class="btn-buy" target="_blank" rel="noopener noreferrer"><i class="fas fa-shopping-cart"></i> Ver Producto</a></div></div>
+                    <div class="product-card" data-category="amigurumi"><div class="product-header"><div class="product-icon">👸</div><span class="product-type">CURSO</span></div><div class="product-body"><h3 class="product-title">Princesas Amigurumis</h3><span class="product-category">Amigurumi</span><p class="product-code">Código: P96247947K</p><a href="https://hotmart.com/es/marketplace/productos/hagsxd-princesas-amigurumis-slech/R92072855D?ref=P96247947K" class="btn-buy" target="_blank" rel="noopener noreferrer"><i class="fas fa-shopping-cart"></i> Ver Producto</a></div></div>
                 </div>
-
-                <!-- Product 2 -->
-                <div class="product-card" data-category="crochet">
-                    <div class="product-header">
-                        <div class="product-icon">🎓</div>
-                        <span class="product-type">CURSO</span>
-                    </div>
-                    <div class="product-body">
-                        <h3 class="product-title">Curso de Crochet Profesional</h3>
-                        <span class="product-category">Crochet</span>
-                        <p class="product-code">Código: V101927515C</p>
-                        <a href="https://educatefacildesdecasa.com/crochet_afil/?ref=V101927515C" class="btn-buy" target="_blank" rel="noopener noreferrer">
-                            <i class="fas fa-shopping-cart"></i> Ver Producto
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Product 3 -->
-                <div class="product-card" data-category="amigurumi">
-                    <div class="product-header">
-                        <div class="product-icon">🧸</div>
-                        <span class="product-type">CURSO</span>
-                    </div>
-                    <div class="product-body">
-                        <h3 class="product-title">Crochet – Amigurumis (Curso Completo)</h3>
-                        <span class="product-category">Amigurumi</span>
-                        <p class="product-code">Código: P97973535Q</p>
-                        <a href="https://vertice101.com/crochet-amigurumis/?ref=P97973535Q" class="btn-buy" target="_blank" rel="noopener noreferrer">
-                            <i class="fas fa-shopping-cart"></i> Ver Producto
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Product 4 -->
-                <div class="product-card" data-category="accesorios">
-                    <div class="product-header">
-                        <div class="product-icon">👜</div>
-                        <span class="product-type">CURSO</span>
-                    </div>
-                    <div class="product-body">
-                        <h3 class="product-title">Bolsos y Accesorios en Crochet</h3>
-                        <span class="product-category">Accesorios</span>
-                        <p class="product-code">Código: X101549444K</p>
-                        <a href="https://manitascreativastrapillo.tucompradigital.com/?ref=X101549444K" class="btn-buy" target="_blank" rel="noopener noreferrer">
-                            <i class="fas fa-shopping-cart"></i> Ver Producto
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Product 5 -->
-                <div class="product-card" data-category="trapillo">
-                    <div class="product-header">
-                        <div class="product-icon">🧵</div>
-                        <span class="product-type">CURSO</span>
-                    </div>
-                    <div class="product-body">
-                        <h3 class="product-title">Crochet – Bolsos Premium en Trapillo</h3>
-                        <span class="product-category">Trapillo</span>
-                        <p class="product-code">Código: R97973128U</p>
-                        <a href="https://vertice101.com/crochet-bolsos-premium/?ref=R97973128U" class="btn-buy" target="_blank" rel="noopener noreferrer">
-                            <i class="fas fa-shopping-cart"></i> Ver Producto
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Product 6 -->
-                <div class="product-card" data-category="amigurumi">
-                    <div class="product-header">
-                        <div class="product-icon">🔑</div>
-                        <span class="product-type">EBOOK</span>
-                    </div>
-                    <div class="product-body">
-                        <h3 class="product-title">Ebook +60 Llaveros Amigurumis</h3>
-                        <span class="product-category">Amigurumi</span>
-                        <p class="product-code">Código: S101949118J</p>
-                        <a href="https://hotmart.com/es/marketplace/productos/ebook-60-llaveros-amigurumis-patrones-paso-a-paso/U82362846Y?ref=S101949118J" class="btn-buy" target="_blank" rel="noopener noreferrer">
-                            <i class="fas fa-shopping-cart"></i> Ver Producto
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Product 7 -->
-                <div class="product-card" data-category="amigurumi">
-                    <div class="product-header">
-                        <div class="product-icon">📖</div>
-                        <span class="product-type">EBOOK</span>
-                    </div>
-                    <div class="product-body">
-                        <h3 class="product-title">Ebook +250 Minipatrones de Amigurumis</h3>
-                        <span class="product-category">Amigurumi</span>
-                        <p class="product-code">Código: L101949170Y</p>
-                        <a href="https://hotmart.com/es/marketplace/productos/200-minipatrones-de-amigurumis/Y82661895U?ref=L101949170Y" class="btn-buy" target="_blank" rel="noopener noreferrer">
-                            <i class="fas fa-shopping-cart"></i> Ver Producto
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Product 8 -->
-                <div class="product-card" data-category="amigurumi">
-                    <div class="product-header">
-                        <div class="product-icon">🧶</div>
-                        <span class="product-type">EBOOK</span>
-                    </div>
-                    <div class="product-body">
-                        <h3 class="product-title">Ebook Amigurumis (Nícol Valentina)</h3>
-                        <span class="product-category">Amigurumi</span>
-                        <p class="product-code">Código: E102070698A</p>
-                        <a href="https://academyclasscursosonline.com/crochetpremium-3/?ref=E102070698A" class="btn-buy" target="_blank" rel="noopener noreferrer">
-                            <i class="fas fa-shopping-cart"></i> Ver Producto
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Product 9 -->
-                <div class="product-card" data-category="crochet">
-                    <div class="product-header">
-                        <div class="product-icon">🌸</div>
-                        <span class="product-type">EBOOK</span>
-                    </div>
-                    <div class="product-body">
-                        <h3 class="product-title">Ebook Flores a Crochet</h3>
-                        <span class="product-category">Crochet</span>
-                        <p class="product-code">Código: H101888647B</p>
-                        <a href="https://hotmart.com/es/marketplace/productos/ebook-flores-a-crochet/H94101314B?ref=H101888647B" class="btn-buy" target="_blank" rel="noopener noreferrer">
-                            <i class="fas fa-shopping-cart"></i> Ver Producto
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Product 10 -->
-                <div class="product-card" data-category="amigurumi">
-                    <div class="product-header">
-                        <div class="product-icon">👸</div>
-                        <span class="product-type">CURSO</span>
-                    </div>
-                    <div class="product-body">
-                        <h3 class="product-title">Princesas Amigurumis</h3>
-                        <span class="product-category">Amigurumi</span>
-                        <p class="product-code">Código: P96247947K</p>
-                        <a href="https://hotmart.com/es/marketplace/productos/hagsxd-princesas-amigurumis-slech/R92072855D?ref=P96247947K" class="btn-buy" target="_blank" rel="noopener noreferrer">
-                            <i class="fas fa-shopping-cart"></i> Ver Producto
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <div class="social-links">
-            <a href="https://www.youtube.com/@EldisYerar" target="_blank" title="YouTube" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
-            <a href="https://www.facebook.com/profile.php?id=61565093347028" target="_blank" title="Facebook" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
-            <a href="https://www.instagram.com/curso_internacional_crochet?igsh=a2tsOTA4cTc2OG1v" target="_blank" title="Instagram" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-            <a href="https://wa.link/hifqij" target="_blank" class="whatsapp-btn" title="WhatsApp" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
-            <a href="mailto:eldisyera@gmail.com" class="email-btn" title="Enviar correo"><i class="fas fa-envelope"></i><span>eldisyera@gmail.com</span></a>
+            </section>
         </div>
-        <p>© 2026 Crochet y Amigurumis. Todos los derechos reservados.</p>
-        <p>Productos de Hotmart | Contacto: eldisyera@gmail.com</p>
-    </footer>
-
-    <!-- WhatsApp Float Button -->
-    <a href="https://wa.link/hifqij" class="whatsapp-float" target="_blank" title="Contáctanos por WhatsApp" rel="noopener noreferrer">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <script>
-        // ============================================
-        // CONFIGURACIÓN - ENLACE GOOGLE DRIVE DEL EBOOK
-        // ============================================
-        const DRIVE_LINK = "https://drive.google.com/file/d/1BgBRSMC_B-3k_pjM_5RLjWYQI-8h5l8_/view?usp=sharing";
-        
-        // ============================================
-        // Country Data
-        // ============================================
-        const countries = [
-            { name: "Cuba", code: "+53", flag: "cu", iso: "CU" },
-            { name: "México", code: "+52", flag: "mx", iso: "MX" },
-            { name: "España", code: "+34", flag: "es", iso: "ES" },
-            { name: "Colombia", code: "+57", flag: "co", iso: "CO" },
-            { name: "Argentina", code: "+54", flag: "ar", iso: "AR" },
-            { name: "Chile", code: "+56", flag: "cl", iso: "CL" },
-            { name: "Perú", code: "+51", flag: "pe", iso: "PE" },
-            { name: "Venezuela", code: "+58", flag: "ve", iso: "VE" },
-            { name: "Ecuador", code: "+593", flag: "ec", iso: "EC" },
-            { name: "Guatemala", code: "+502", flag: "gt", iso: "GT" },
-            { name: "Rep. Dominicana", code: "+1", flag: "do", iso: "DO" },
-            { name: "Puerto Rico", code: "+1", flag: "pr", iso: "PR" },
-            { name: "Estados Unidos", code: "+1", flag: "us", iso: "US" },
-            { name: "Panamá", code: "+507", flag: "pa", iso: "PA" },
-            { name: "Costa Rica", code: "+506", flag: "cr", iso: "CR" },
-            { name: "Honduras", code: "+504", flag: "hn", iso: "HN" },
-            { name: "El Salvador", code: "+503", flag: "sv", iso: "SV" },
-            { name: "Nicaragua", code: "+505", flag: "ni", iso: "NI" },
-            { name: "Bolivia", code: "+591", flag: "bo", iso: "BO" },
-            { name: "Paraguay", code: "+595", flag: "py", iso: "PY" },
-            { name: "Uruguay", code: "+598", flag: "uy", iso: "UY" },
-            { name: "Brasil", code: "+55", flag: "br", iso: "BR" },
-            { name: "Italia", code: "+39", flag: "it", iso: "IT" },
-            { name: "Francia", code: "+33", flag: "fr", iso: "FR" },
-            { name: "Alemania", code: "+49", flag: "de", iso: "DE" }
-        ];
-
-        let selectedCountry = countries[0];
-        let dropdownOpen = false;
-
-        // Initialize dropdown
-        function initDropdown() {
-            const dropdown = document.getElementById('countryDropdown');
-            dropdown.innerHTML = '';
-            
-            countries.forEach(country => {
-                const option = document.createElement('div');
-                option.className = 'country-option';
-                option.innerHTML = `
-                    <img src="https://flagcdn.com/w40/${country.flag}.png" alt="${country.name}">
-                    <span class="opt-name">${country.name}</span>
-                    <span class="opt-code">${country.code}</span>
-                `;
-                option.onclick = () => selectCountry(country);
-                dropdown.appendChild(option);
-            });
-        }
-
-        function toggleDropdown() {
-            dropdownOpen = !dropdownOpen;
-            const display = document.getElementById('countryDisplay');
-            const dropdown = document.getElementById('countryDropdown');
-            
-            if (dropdownOpen) {
-                display.classList.add('active');
-                dropdown.classList.add('show');
-            } else {
-                display.classList.remove('active');
-                dropdown.classList.remove('show');
-            }
-        }
-
-        function selectCountry(country) {
-            selectedCountry = country;
-            document.getElementById('selectedFlag').src = `https://flagcdn.com/w40/${country.flag}.png`;
-            document.getElementById('selectedName').textContent = country.name;
-            document.getElementById('selectedCode').textContent = country.code;
-            
-            document.getElementById('prefixFlag').src = `https://flagcdn.com/w40/${country.flag}.png`;
-            document.getElementById('prefixCode').textContent = country.code;
-            
-            toggleDropdown();
-        }
-
-        // Close dropdown when clicking outside
-        document.addEventListener('click', function(e) {
-            const selector = document.getElementById('countrySelector');
-            if (!selector.contains(e.target) && dropdownOpen) {
-                toggleDropdown();
-            }
-        });
-
-        // ============================================
-        // GOOGLE DRIVE LINK FUNCTIONS
-        // ============================================
-        
-        function copyDriveLink() {
-            const input = document.getElementById('driveLinkInput');
-            input.select();
-            input.setSelectionRange(0, 99999);
-            navigator.clipboard.writeText(input.value).then(() => {
-                alert('¡Enlace copiado al portapapeles!');
-            }).catch(() => {
-                document.execCommand('copy');
-                alert('¡Enlace copiado al portapapeles!');
-            });
-        }
-
-        // ============================================
-        // Form Submission
-        // ============================================
-        document.getElementById('leadForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const nombre = document.getElementById('nombre').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const whatsapp = document.getElementById('whatsapp').value.trim();
-            const delivery = document.querySelector('input[name="delivery"]:checked').value;
-            
-            if (!nombre || !email || !whatsapp) {
-                alert('Por favor completa todos los campos');
-                return;
-            }
-            
-            const fullPhone = selectedCountry.code + whatsapp;
-            
-            // Hide previous messages
-            document.getElementById('successMessage').classList.remove('show');
-            document.getElementById('driveLinkBox').classList.remove('show');
-            
-            if (delivery === 'email') {
-                // Open Gmail compose with pre-filled data
-                const gmailSubject = encodeURIComponent('Solicitud de Ebook Gratis - ' + nombre);
-                const gmailBody = encodeURIComponent(
-                    `Hola, soy ${nombre}.\n\n` +
-                    `Solicito mi ebook gratis.\n\n` +
-                    `Mis datos:\n` +
-                    `Nombre: ${nombre}\n` +
-                    `Email: ${email}\n` +
-                    `País: ${selectedCountry.name}\n` +
-                    `WhatsApp: ${fullPhone}\n\n` +
-                    `Gracias!`
-                );
-                window.open(`https://mail.google.com/mail/?view=cm&to=eldisyera@gmail.com&su=${gmailSubject}&body=${gmailBody}`, '_blank');
-                
-                // Show success message
-                document.getElementById('successMessage').innerHTML = '<i class="fas fa-check-circle"></i> ¡Perfecto! Se abrió Gmail para que envíes tu solicitud. Te responderemos pronto.';
-                document.getElementById('successMessage').classList.add('show');
-                
-            } else if (delivery === 'whatsapp') {
-                // Open WhatsApp with pre-filled message
-                const mensaje = `¡Hola! Soy ${nombre}.%0A%0A` +
-                               `Solicito mi ebook gratis.%0A%0A` +
-                               `Mis datos:%0A` +
-                               `Nombre: ${nombre}%0A` +
-                               `Email: ${email}%0A` +
-                               `País: ${selectedCountry.name}%0A` +
-                               `WhatsApp: ${fullPhone}%0A%0A` +
-                               `Gracias!`;
-                window.open(`https://wa.me/5354356696?text=${mensaje}`, '_blank');
-                
-                // Show success message
-                document.getElementById('successMessage').innerHTML = '<i class="fas fa-check-circle"></i> ¡Perfecto! Se abrió WhatsApp. Envía el mensaje para recibir tu ebook.';
-                document.getElementById('successMessage').classList.add('show');
-                
-            } else if (delivery === 'drive') {
-                // Show Drive link box
-                document.getElementById('driveLinkBox').classList.add('show');
-                
-                // Also notify admin via WhatsApp
-                const adminMsg = `Nuevo registro Ebook Drive:%0A` +
-                                `Nombre: ${nombre}%0A` +
-                                `Email: ${email}%0A` +
-                                `País: ${selectedCountry.name}%0A` +
-                                `WhatsApp: ${fullPhone}%0A` +
-                                `Enlace Drive: ${DRIVE_LINK}%0A` +
-                                `Fecha: ${new Date().toLocaleString()}`;
-                
-                // Open admin notification in new window (won't block user)
-                const adminWindow = window.open(`https://wa.me/5354356696?text=${adminMsg}`, '_blank');
-                if (!adminWindow) {
-                    console.log('Admin notification blocked by popup');
-                }
-            }
-            
-            // Reset form after 3 seconds
-            setTimeout(() => {
-                this.reset();
-                selectCountry(countries[0]);
-            }, 3000);
-            
-            // Hide messages after 15 seconds
-            setTimeout(() => {
-                document.getElementById('successMessage').classList.remove('show');
-                document.getElementById('driveLinkBox').classList.remove('show');
-            }, 15000);
-        });
-
-        // ============================================
-        // Product Filter - SIN ANIMACIÓN QUE ROMPA LOS ENLACES
-        // ============================================
-        function filterProducts(category) {
-            const cards = document.querySelectorAll('.product-card');
-            const buttons = document.querySelectorAll('.filter-btn');
-            
-            // Update active button
-            buttons.forEach(btn => {
-                btn.classList.remove('active');
-                if (btn.textContent.toLowerCase().includes(category) || 
-                    (category === 'todos' && btn.textContent === 'Todos')) {
-                    btn.classList.add('active');
-                }
-            });
-            
-            // Filter cards - SOLO display, SIN animation
-            cards.forEach(card => {
-                if (category === 'todos' || card.dataset.category === category) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-
-        // Initialize
-        initDropdown();
-    </script>
-</body>
-</html>
+        <footer>
+            <div class="social-links">
+                <a href="https://www.youtube.com/@EldisYerar" target="_blank" title="YouTube" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.facebook.com/profile.php?id=61565093347028" target="_blank" title="Facebook" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/curso_internacional_crochet?igsh=a2tsOTA4cTc2OG1v" target="_blank" title="Instagram" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.link/hifqij" target="_blank" class="whatsapp-btn" title="WhatsApp" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+                <a href="mailto:eldisyera@gmail.com" class="email-btn" title="Enviar correo"><i class="fas fa-envelope"></i><span>eldisyera@gmail.com</span></a>
+            </div>
+            <div class="footer-legal">
+                <a href="#" onclick="showPage('privacy'); return false;">Política de Privacidad</a>
+                <a href="#" onclick="showPage('terms'); return false;">Términos y Condiciones</a>
+                <a href="#" onclick="showPage('affiliate'); return false;">Aviso de Afiliados</a>
+            </div>
+            <p>© 2026 Crochet y Amigurumis. Todos los derechos reservados.</p>
+            <p>Productos de Hotmart | Contacto: eldisyera@gmail.com</p>
+        </footer>
+    </div>
