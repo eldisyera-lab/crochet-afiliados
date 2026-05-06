@@ -1324,7 +1324,7 @@
         });
 
         // ============================================
-        // Product Filter - COMPLETAMENTE REPARADO
+        // Product Filter - SIN ANIMACIÓN QUE ROMPA LOS ENLACES
         // ============================================
         function filterProducts(category) {
             const cards = document.querySelectorAll('.product-card');
@@ -1339,7 +1339,7 @@
                 }
             });
             
-            // Filter cards - NO animation, direct show/hide
+            // Filter cards - SOLO display, SIN animation
             cards.forEach(card => {
                 if (category === 'todos' || card.dataset.category === category) {
                     card.style.display = 'block';
