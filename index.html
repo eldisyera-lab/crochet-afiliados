@@ -214,11 +214,11 @@
     <aside class="sidebar" id="sidebar">
         <ul class="sidebar-menu">
             <li><a href="#" onclick="showPage('home'); toggleSidebar(); return false;"><i class="fas fa-home"></i> Inicio</a></li>
-            <li><a href="#" onclick="showPage('products'); toggleSidebar(); return false;"><i class="fas fa-shopping-bag"></i> Productos</a></li>
+            <li><a href="#" onclick="showPage('home'); setTimeout(()=>{document.querySelector('.products-section').scrollIntoView({behavior:'smooth'});},100); toggleSidebar(); return false;"><i class="fas fa-shopping-bag"></i> Productos</a></li>
             <li><a href="#" onclick="showPage('privacy'); toggleSidebar(); return false;"><i class="fas fa-shield-alt"></i> Política de Privacidad</a></li>
             <li><a href="#" onclick="showPage('terms'); toggleSidebar(); return false;"><i class="fas fa-file-contract"></i> Términos y Condiciones</a></li>
             <li><a href="#" onclick="showPage('affiliate'); toggleSidebar(); return false;"><i class="fas fa-handshake"></i> Aviso de Afiliados</a></li>
-            <li><a href="mailto:eldisyera@gmail.com"><i class="fas fa-envelope"></i> Contacto</a></li>
+            <li><a href="mailto:eldisyera@gmail.com" onclick="toggleSidebar(); return true;"><i class="fas fa-envelope"></i> Contacto</a></li>
         </ul>
         <div class="sidebar-footer">© 2026 Crochet y Amigurumis<br>Todos los derechos reservados</div>
     </aside>
