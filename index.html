@@ -15,42 +15,186 @@
             min-height: 100vh;
             color: #333;
             line-height: 1.6;
+            overflow-x: hidden;
         }
         
         .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
 
-        /* Top Bar */
-        .top-bar {
-            background: rgba(0,0,0,0.2);
-            padding: 10px 0;
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(102, 126, 234, 0.95);
             backdrop-filter: blur(10px);
-        }
-        .top-bar-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+            z-index: 1000;
+            padding: 15px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
         }
-        .social-header { display: flex; gap: 15px; }
-        .social-header a {
+        
+        .navbar-brand {
             color: white;
+            font-weight: 700;
             font-size: 1.2rem;
-            transition: transform 0.3s, color 0.3s;
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-        .social-header a:hover { transform: translateY(-3px); color: #ffd700; }
-        .header-contact { color: white; font-size: 0.9rem; }
+        
+        .hamburger-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+        
+        .hamburger-btn:hover { background: rgba(255,255,255,0.2); }
 
-        /* Header */
+        /* ===== SIDEBAR ===== */
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1001;
+            backdrop-filter: blur(3px);
+        }
+        
+        .sidebar-overlay.active { display: block; }
+        
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -320px;
+            width: 320px;
+            height: 100vh;
+            background: white;
+            z-index: 1002;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+            box-shadow: -5px 0 30px rgba(0,0,0,0.2);
+        }
+        
+        .sidebar.active { right: 0; }
+        
+        .sidebar-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 30px 20px;
+            color: white;
+            position: relative;
+        }
+        
+        .sidebar-header h3 { font-size: 1.3rem; margin-bottom: 5px; }
+        .sidebar-header p { font-size: 0.9rem; opacity: 0.9; }
+        
+        .close-sidebar {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+        
+        .close-sidebar:hover { background: rgba(255,255,255,0.2); }
+        
+        .sidebar-nav {
+            padding: 20px;
+        }
+        
+        .sidebar-nav a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px;
+            color: #333;
+            text-decoration: none;
+            border-radius: 10px;
+            margin-bottom: 5px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .sidebar-nav a:hover {
+            background: #f0f0f0;
+            color: #667eea;
+            transform: translateX(5px);
+        }
+        
+        .sidebar-nav a i { color: #667eea; width: 20px; }
+        
+        .sidebar-social {
+            padding: 20px;
+            border-top: 1px solid #eee;
+        }
+        
+        .sidebar-social p {
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .sidebar-social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .sidebar-social-links a {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+        }
+        
+        .sidebar-social-links a:hover { transform: scale(1.15); }
+        .sidebar-social-links .yt { background: #ff0000; }
+        .sidebar-social-links .fb { background: #1877f2; }
+        .sidebar-social-links .ig { background: #e4405f; }
+        .sidebar-social-links .wa { background: #25d366; }
+        .sidebar-social-links .em { background: #667eea; }
+
+        /* Spacer for fixed navbar */
+        .navbar-spacer { height: 70px; }
+
+        /* ===== HEADER ===== */
         header { text-align: center; padding: 40px 20px 20px; color: white; }
         header h1 { font-size: 2.5rem; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
         header p { font-size: 1.2rem; opacity: 0.9; }
 
-        /* Carousel */
+        /* ===== CAROUSEL ===== */
         .carousel-section { margin: 30px 0; }
         .carousel-container {
             position: relative;
@@ -99,7 +243,7 @@
         }
         .dot.active { background: #667eea; transform: scale(1.2); }
 
-        /* Lead Magnet */
+        /* ===== LEAD MAGNET ===== */
         .lead-magnet {
             background: white; border-radius: 20px; padding: 40px;
             margin: 30px 0; box-shadow: 0 20px 60px rgba(0,0,0,0.3); text-align: center;
@@ -128,7 +272,7 @@
         }
         .form-group input:focus { outline: none; border-color: #667eea; box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1); }
 
-        /* Country Selector */
+        /* Country */
         .country-selector { position: relative; width: 100%; }
         .country-display {
             display: flex; align-items: center; gap: 10px; padding: 15px;
@@ -166,7 +310,7 @@
         }
         .phone-prefix img { width: 24px; height: 18px; object-fit: cover; border-radius: 3px; }
 
-        /* Delivery Options */
+        /* Delivery */
         .delivery-options { margin-bottom: 20px; text-align: left; }
         .delivery-options > label { display: block; margin-bottom: 10px; color: #555; font-weight: 600; }
         .delivery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
@@ -234,7 +378,7 @@
         .drive-instructions ol { margin: 8px 0 0 18px; padding: 0; font-size: 0.85rem; color: #555; }
         .drive-instructions li { margin-bottom: 4px; }
 
-        /* Success Message */
+        /* Success */
         .success-message {
             display: none; background: #d4edda; color: #155724;
             padding: 20px; border-radius: 10px; margin-top: 20px; border: 1px solid #c3e6cb;
@@ -246,7 +390,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Single Course Section */
+        /* ===== COURSE ===== */
         .course-section {
             background: white; border-radius: 20px; padding: 40px;
             margin: 30px 0; box-shadow: 0 20px 60px rgba(0,0,0,0.3); text-align: center;
@@ -262,9 +406,7 @@
         .featured-course .course-icon { font-size: 4rem; margin-bottom: 15px; }
         .featured-course h3 { font-size: 1.5rem; margin-bottom: 10px; }
         .featured-course p { opacity: 0.9; margin-bottom: 20px; font-size: 1rem; }
-        .featured-course .course-features {
-            text-align: left; margin: 20px 0; font-size: 0.95rem;
-        }
+        .featured-course .course-features { text-align: left; margin: 20px 0; font-size: 0.95rem; }
         .featured-course .course-features li {
             margin-bottom: 8px; list-style: none; display: flex; align-items: center; gap: 8px;
         }
@@ -282,7 +424,7 @@
             border-radius: 20px; font-size: 0.85rem;
         }
 
-        /* FAQ Accordion */
+        /* ===== FAQ ===== */
         .faq-section {
             background: white; border-radius: 20px; padding: 40px;
             margin: 30px 0; box-shadow: 0 20px 60px rgba(0,0,0,0.3);
@@ -308,14 +450,12 @@
             transition: max-height 0.3s ease, padding 0.3s ease;
             background: white;
         }
-        .accordion-item.active .accordion-body {
-            max-height: 500px; padding: 20px 25px;
-        }
+        .accordion-item.active .accordion-body { max-height: 500px; padding: 20px 25px; }
         .accordion-body p, .accordion-body ul { color: #666; line-height: 1.8; }
         .accordion-body ul { margin-left: 20px; }
         .accordion-body li { margin-bottom: 8px; }
 
-        /* Legal Section */
+        /* ===== LEGAL ===== */
         .legal-section {
             background: white; border-radius: 20px; padding: 40px;
             margin: 30px 0; box-shadow: 0 20px 60px rgba(0,0,0,0.3);
@@ -350,26 +490,26 @@
             border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 20px;
         }
 
-        /* Footer */
+        /* ===== FOOTER ===== */
         footer { text-align: center; padding: 40px 20px; color: white; }
-        .social-links {
+        .social-links-footer {
             margin: 20px 0; display: flex; justify-content: center;
             align-items: center; flex-wrap: wrap; gap: 15px;
         }
-        .social-links a {
+        .social-links-footer a {
             color: white; font-size: 1.5rem; transition: transform 0.3s;
             display: inline-flex; align-items: center; justify-content: center;
             width: 50px; height: 50px; border-radius: 50%; background: rgba(255,255,255,0.15);
             text-decoration: none;
         }
-        .social-links a:hover { transform: scale(1.15); background: rgba(255,255,255,0.3); }
-        .social-links a.email-btn { font-size: 1.1rem; width: auto; padding: 0 20px; border-radius: 25px; gap: 10px; }
-        .social-links a.email-btn span { font-size: 0.85rem; font-weight: 600; }
-        .social-links a.whatsapp-btn { background: #25d366; }
-        .social-links a.whatsapp-btn:hover { background: #128c7e; }
-        .social-links a.youtube-btn:hover { background: #ff0000; }
-        .social-links a.facebook-btn:hover { background: #1877f2; }
-        .social-links a.instagram-btn:hover { background: #e4405f; }
+        .social-links-footer a:hover { transform: scale(1.15); background: rgba(255,255,255,0.3); }
+        .social-links-footer a.email-btn { font-size: 1.1rem; width: auto; padding: 0 20px; border-radius: 25px; gap: 10px; }
+        .social-links-footer a.email-btn span { font-size: 0.85rem; font-weight: 600; }
+        .social-links-footer a.whatsapp-btn { background: #25d366; }
+        .social-links-footer a.whatsapp-btn:hover { background: #128c7e; }
+        .social-links-footer a.youtube-btn:hover { background: #ff0000; }
+        .social-links-footer a.facebook-btn:hover { background: #1877f2; }
+        .social-links-footer a.instagram-btn:hover { background: #e4405f; }
         footer p { opacity: 0.8; font-size: 0.9rem; margin-top: 10px; }
         footer a { color: white; text-decoration: underline; }
 
@@ -380,13 +520,12 @@
             align-items: center; justify-content: center; color: white;
             font-size: 2rem; text-decoration: none;
             box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
-            transition: transform 0.3s; z-index: 1000;
+            transition: transform 0.3s; z-index: 999;
         }
         .whatsapp-float:hover { transform: scale(1.1); }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .top-bar-content { flex-direction: column; gap: 10px; }
             header h1 { font-size: 1.8rem; }
             .carousel-wrapper { height: 350px; }
             .carousel-slide .slide-icon { font-size: 3.5rem; }
@@ -399,12 +538,13 @@
             .phone-prefix { justify-content: center; }
             .legal-grid { grid-template-columns: 1fr; }
             .whatsapp-float { width: 50px; height: 50px; font-size: 1.5rem; bottom: 20px; right: 20px; }
-            .social-links a.email-btn span { display: none; }
-            .social-links a.email-btn { width: 50px; padding: 0; }
+            .social-links-footer a.email-btn span { display: none; }
+            .social-links-footer a.email-btn { width: 50px; padding: 0; }
             .drive-link-container { flex-direction: column; }
             .drive-link-container input { width: 100%; text-align: center; }
             .featured-course { padding: 25px; }
             .featured-course h3 { font-size: 1.2rem; }
+            .sidebar { width: 280px; right: -280px; }
         }
         @media (max-width: 480px) {
             header h1 { font-size: 1.5rem; }
@@ -416,31 +556,72 @@
     </style>
 </head>
 <body>
-    <!-- Top Bar -->
-    <div class="top-bar">
-        <div class="top-bar-content">
-            <div class="social-header">
-                <a href="https://www.youtube.com/@EldisYerar" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-                <a href="https://www.facebook.com/profile.php?id=61565093347028" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.instagram.com/curso_internacional_crochet" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://wa.link/hifqij" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                <a href="mailto:eldisyera@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-            </div>
-            <div class="header-contact">
-                <i class="fab fa-whatsapp"></i>
-                <span>eldisyera@gmail.com</span>
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar">
+        <a href="#" class="navbar-brand">
+            <i class="fas fa-heart"></i> Crochet y Amigurumis
+        </a>
+        <button class="hamburger-btn" onclick="toggleSidebar()" aria-label="Menú">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+
+    <!-- ===== SIDEBAR ===== -->
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3>🧶 Menú</h3>
+            <p>Navega por nuestra web</p>
+            <button class="close-sidebar" onclick="toggleSidebar()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#inicio" onclick="toggleSidebar()">
+                <i class="fas fa-home"></i> Inicio
+            </a>
+            <a href="#ebook" onclick="toggleSidebar()">
+                <i class="fas fa-book"></i> Ebook Gratis
+            </a>
+            <a href="#curso" onclick="toggleSidebar()">
+                <i class="fas fa-graduation-cap"></i> Curso Recomendado
+            </a>
+            <a href="#faq" onclick="toggleSidebar()">
+                <i class="fas fa-question-circle"></i> Preguntas Frecuentes
+            </a>
+            <a href="#politicas" onclick="toggleSidebar()">
+                <i class="fas fa-shield-alt"></i> Políticas Legales
+            </a>
+            <a href="mailto:eldisyera@gmail.com" onclick="toggleSidebar()">
+                <i class="fas fa-envelope"></i> Contactar por Email
+            </a>
+            <a href="https://wa.link/hifqij" target="_blank" onclick="toggleSidebar()">
+                <i class="fab fa-whatsapp"></i> WhatsApp Directo
+            </a>
+        </nav>
+        <div class="sidebar-social">
+            <p>Síguenos en redes</p>
+            <div class="sidebar-social-links">
+                <a href="https://www.youtube.com/@EldisYerar" target="_blank" class="yt" title="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.facebook.com/profile.php?id=61565093347028" target="_blank" class="fb" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/curso_internacional_crochet" target="_blank" class="ig" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.link/hifqij" target="_blank" class="wa" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="mailto:eldisyera@gmail.com" class="em" title="Email"><i class="fas fa-envelope"></i></a>
             </div>
         </div>
-    </div>
+    </aside>
 
-    <!-- Header -->
+    <!-- Spacer -->
+    <div class="navbar-spacer" id="inicio"></div>
+
+    <!-- ===== HEADER ===== -->
     <header>
         <h1>🧶 Crochet y Amigurumis</h1>
         <p>Aprende a tejer desde cero y convierte tu pasión en negocio</p>
     </header>
 
     <div class="container">
-        <!-- Carousel -->
+        <!-- ===== CAROUSEL ===== -->
         <section class="carousel-section">
             <div class="carousel-container">
                 <div class="carousel-wrapper" id="carouselWrapper">
@@ -476,8 +657,8 @@
             </div>
         </section>
 
-        <!-- Lead Magnet -->
-        <section class="lead-magnet">
+        <!-- ===== LEAD MAGNET ===== -->
+        <section class="lead-magnet" id="ebook">
             <h2>📚 Mi Ebook para Ti</h2>
             <p class="subtitle">Recibe GRATIS mi guía exclusiva con patrones y tips para empezar</p>
             
@@ -559,33 +740,29 @@
                 
                 <div class="drive-link-box" id="driveLinkBox">
                     <h3><i class="fab fa-google-drive"></i> ¡Tu Ebook está listo!</h3>
-                    <p>Copia el enlace o haz clic para descargar tu ebook:</p>
-                    <div class="drive-link-container">
-                        <input type="text" id="driveLinkInput" value="https://drive.google.com/file/d/1Fylb1eRt7LTYs1TnLADMzQT5gEJgtOK8/view?usp=drive_link" readonly>
-                        <button type="button" onclick="copyDriveLink()"><i class="fas fa-copy"></i> Copiar</button>
-                    </div>
-                    <a href="https://drive.google.com/file/d/1Fylb1eRt7LTYs1TnLADMzQT5gEJgtOK8/view?usp=drive_link" target="_blank" class="btn-download">
+                    <p>Haz clic para descargar directamente:</p>
+                    <a href="https://drive.google.com/uc?export=download&id=1Fylb1eRt7LTYs1TnLADMzQT5gEJgtOK8" class="btn-download">
                         <i class="fas fa-download"></i> Descargar Ebook Ahora
                     </a>
                     <div class="drive-instructions">
-                        <p><strong>📥 Instrucciones para descargar:</strong></p>
+                        <p><strong>📥 Si no inicia la descarga:</strong></p>
                         <ol>
-                            <li>Haz clic en el botón verde "Descargar Ebook Ahora"</li>
-                            <li>En Google Drive, haz clic en el icono ⬇️ arriba a la derecha</li>
-                            <li>El PDF se guardará automáticamente en tu dispositivo</li>
-                            <li>¡Disfruta aprendiendo crochet!</li>
+                            <li>Haz clic en el botón verde arriba</li>
+                            <li>Espera 3-5 segundos</li>
+                            <li>El PDF se descargará automáticamente</li>
+                            <li>Busca en tu carpeta de "Descargas"</li>
                         </ol>
                     </div>
                 </div>
                 
                 <p class="privacy-note">
-                    <i class="fas fa-lock"></i> Tu información está segura. No enviamos spam. Lee nuestra <a href="#politicas" style="color: #667eea;">Política de Privacidad</a>.
+                    <i class="fas fa-lock"></i> Tu información está segura. Lee nuestra <a href="#politicas" style="color: #667eea;">Política de Privacidad</a>.
                 </p>
             </div>
         </section>
 
-        <!-- Single Featured Course -->
-        <section class="course-section">
+        <!-- ===== COURSE ===== -->
+        <section class="course-section" id="curso">
             <h2>🎓 Curso Recomendado</h2>
             <p class="section-subtitle">El curso que transformará tu pasión en habilidades profesionales</p>
             
@@ -615,8 +792,8 @@
             </div>
         </section>
 
-        <!-- FAQ Accordion -->
-        <section class="faq-section">
+        <!-- ===== FAQ ===== -->
+        <section class="faq-section" id="faq">
             <h2>❓ Preguntas Frecuentes</h2>
             <div class="accordion">
                 <div class="accordion-item active">
@@ -697,7 +874,7 @@
             </div>
         </section>
 
-        <!-- Legal Section -->
+        <!-- ===== LEGAL ===== -->
         <section class="legal-section" id="politicas">
             <h2>🔒 Políticas y Términos Legales</h2>
             
@@ -799,14 +976,14 @@
         </section>
     </div>
 
-    <!-- Footer -->
+    <!-- ===== FOOTER ===== -->
     <footer>
-        <div class="social-links">
+        <div class="social-links-footer">
             <a href="https://www.youtube.com/@EldisYerar" target="_blank" class="youtube-btn" title="YouTube"><i class="fab fa-youtube"></i></a>
             <a href="https://www.facebook.com/profile.php?id=61565093347028" target="_blank" class="facebook-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
             <a href="https://www.instagram.com/curso_internacional_crochet" target="_blank" class="instagram-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
             <a href="https://wa.link/hifqij" target="_blank" class="whatsapp-btn" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-            <a href="mailto:eldisyera@gmail.com" class="email-btn" title="Email"><i class="fas fa-envelope"></i><span>eldisyera@gmail.com</span></a>
+            <a href="mailto:eldisyera@gmail.com" class="email-btn" title="Enviar correo"><i class="fas fa-envelope"></i><span>eldisyera@gmail.com</span></a>
         </div>
         <p>© 2026 Crochet y Amigurumis. Todos los derechos reservados.</p>
         <p>Productos de Hotmart | <a href="#politicas">Políticas y Términos</a></p>
@@ -818,18 +995,26 @@
     </a>
 
     <script>
-        // ============================================
-        // CAROUSEL
-        // ============================================
-        let currentSlide = 0;
-        const totalSlides = 4;
-        let autoSlideInterval;
+        // ===== SIDEBAR =====
+        function toggleSidebar() {
+            var sidebar = document.getElementById('sidebar');
+            var overlay = document.getElementById('sidebarOverlay');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
+        }
+
+        // ===== CAROUSEL =====
+        var currentSlide = 0;
+        var totalSlides = 4;
+        var autoSlideInterval;
 
         function updateCarousel() {
             document.getElementById('carouselWrapper').style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
-            document.querySelectorAll('.dot').forEach(function(dot, index) {
-                dot.classList.toggle('active', index === currentSlide);
-            });
+            var dots = document.querySelectorAll('.dot');
+            for (var i = 0; i < dots.length; i++) {
+                dots[i].classList.toggle('active', i === currentSlide);
+            }
         }
 
         function moveCarousel(direction) {
@@ -868,37 +1053,29 @@
 
         resetAutoSlide();
 
-        // ============================================
-        // ACCORDION FAQ
-        // ============================================
+        // ===== ACCORDION FAQ =====
         function toggleAccordion(button) {
             var item = button.parentElement;
             var wasActive = item.classList.contains('active');
-            
-            document.querySelectorAll('.accordion-item').forEach(function(acc) {
-                acc.classList.remove('active');
-            });
-            
+            var items = document.querySelectorAll('.accordion-item');
+            for (var i = 0; i < items.length; i++) {
+                items[i].classList.remove('active');
+            }
             if (!wasActive) item.classList.add('active');
         }
 
-        // ============================================
-        // LEGAL CARDS
-        // ============================================
+        // ===== LEGAL CARDS =====
         function toggleLegal(button) {
             var card = button.parentElement;
             var wasActive = card.classList.contains('active');
-            
-            document.querySelectorAll('.legal-card').forEach(function(c) {
-                c.classList.remove('active');
-            });
-            
+            var cards = document.querySelectorAll('.legal-card');
+            for (var i = 0; i < cards.length; i++) {
+                cards[i].classList.remove('active');
+            }
             if (!wasActive) card.classList.add('active');
         }
 
-        // ============================================
-        // COUNTRY SELECTOR
-        // ============================================
+        // ===== COUNTRY SELECTOR =====
         var countries = [
             { name: "Cuba", code: "+53", flag: "cu" },
             { name: "México", code: "+52", flag: "mx" },
@@ -933,13 +1110,14 @@
         function initDropdown() {
             var dropdown = document.getElementById('countryDropdown');
             dropdown.innerHTML = '';
-            countries.forEach(function(country) {
+            for (var i = 0; i < countries.length; i++) {
+                var country = countries[i];
                 var option = document.createElement('div');
                 option.className = 'country-option';
                 option.innerHTML = '<img src="https://flagcdn.com/w40/' + country.flag + '.png" alt="' + country.name + '"><span class="opt-name">' + country.name + '</span><span class="opt-code">' + country.code + '</span>';
-                option.onclick = function() { selectCountry(country); };
+                option.onclick = (function(c) { return function() { selectCountry(c); }; })(country);
                 dropdown.appendChild(option);
-            });
+            }
         }
 
         function toggleDropdown() {
@@ -970,28 +1148,7 @@
             if (!selector.contains(e.target) && dropdownOpen) toggleDropdown();
         });
 
-        // ============================================
-        // GOOGLE DRIVE
-        // ============================================
-        var DRIVE_LINK = "https://drive.google.com/file/d/1Fylb1eRt7LTYs1TnLADMzQT5gEJgtOK8/view?usp=drive_link";
-
-        function copyDriveLink() {
-            var input = document.getElementById('driveLinkInput');
-            input.select();
-            input.setSelectionRange(0, 99999);
-            if (navigator.clipboard) {
-                navigator.clipboard.writeText(input.value).then(function() {
-                    alert('¡Enlace copiado al portapapeles!');
-                });
-            } else {
-                document.execCommand('copy');
-                alert('¡Enlace copiado al portapapeles!');
-            }
-        }
-
-        // ============================================
-        // FORM SUBMIT
-        // ============================================
+        // ===== FORM SUBMIT =====
         document.getElementById('leadForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -1011,32 +1168,32 @@
             document.getElementById('driveLinkBox').classList.remove('show');
             
             if (delivery === 'email') {
-                var subject = encodeURIComponent('Solicitud de Ebook Gratis - ' + nombre);
-                var body = encodeURIComponent(
-                    'Hola, soy ' + nombre + '.\n\n' +
-                    'Solicito mi ebook gratis.\n\n' +
-                    'Mis datos:\n' +
-                    'Nombre: ' + nombre + '\n' +
-                    'Email: ' + email + '\n' +
-                    'País: ' + selectedCountry.name + '\n' +
-                    'WhatsApp: ' + fullPhone + '\n\n' +
-                    'Gracias!'
-                );
-                window.open('https://mail.google.com/mail/?view=cm&to=eldisyera@gmail.com&su=' + subject + '&body=' + body, '_blank');
-                document.getElementById('successMessage').innerHTML = '<i class="fas fa-check-circle"></i> ¡Perfecto! Se abrió Gmail para que envíes tu solicitud.';
+                // Abre cliente de correo NATIVO del dispositivo (Outlook, Mail, Thunderbird, etc.)
+                var subject = 'Solicitud de Ebook Gratis - ' + nombre;
+                var body = 'Hola, soy ' + nombre + '.\n\n' +
+                          'Solicito mi ebook gratis.\n\n' +
+                          'Mis datos:\n' +
+                          'Nombre: ' + nombre + '\n' +
+                          'Email: ' + email + '\n' +
+                          'Pais: ' + selectedCountry.name + '\n' +
+                          'WhatsApp: ' + fullPhone + '\n\n' +
+                          'Gracias!';
+                window.location.href = 'mailto:eldisyera@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+                
+                document.getElementById('successMessage').innerHTML = '<i class="fas fa-check-circle"></i> Se abrió tu app de correo. Envía el email para recibir tu ebook.';
                 document.getElementById('successMessage').classList.add('show');
                 
             } else if (delivery === 'whatsapp') {
-                var msg = '¡Hola! Soy ' + nombre + '.%0A%0A' +
+                var msg = 'Hola! Soy ' + nombre + '.%0A%0A' +
                          'Solicito mi ebook gratis.%0A%0A' +
                          'Mis datos:%0A' +
                          'Nombre: ' + nombre + '%0A' +
                          'Email: ' + email + '%0A' +
-                         'País: ' + selectedCountry.name + '%0A' +
+                         'Pais: ' + selectedCountry.name + '%0A' +
                          'WhatsApp: ' + fullPhone + '%0A%0A' +
                          'Gracias!';
                 window.open('https://wa.me/5354356696?text=' + msg, '_blank');
-                document.getElementById('successMessage').innerHTML = '<i class="fas fa-check-circle"></i> ¡Perfecto! Se abrió WhatsApp. Envía el mensaje para recibir tu ebook.';
+                document.getElementById('successMessage').innerHTML = '<i class="fas fa-check-circle"></i> Se abrió WhatsApp. Envía el mensaje para recibir tu ebook.';
                 document.getElementById('successMessage').classList.add('show');
                 
             } else if (delivery === 'drive') {
@@ -1044,7 +1201,7 @@
                 var adminMsg = 'Nuevo registro Ebook Drive:%0A' +
                               'Nombre: ' + nombre + '%0A' +
                               'Email: ' + email + '%0A' +
-                              'País: ' + selectedCountry.name + '%0A' +
+                              'Pais: ' + selectedCountry.name + '%0A' +
                               'WhatsApp: ' + fullPhone + '%0A' +
                               'Fecha: ' + new Date().toLocaleString();
                 window.open('https://wa.me/5354356696?text=' + adminMsg, '_blank');
@@ -1061,16 +1218,21 @@
             }, 15000);
         });
 
-        // ============================================
-        // SMOOTH SCROLL
-        // ============================================
-        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-            anchor.addEventListener('click', function(e) {
+        // ===== SMOOTH SCROLL =====
+        var anchorLinks = document.querySelectorAll('a[href^="#"]');
+        for (var i = 0; i < anchorLinks.length; i++) {
+            anchorLinks[i].addEventListener('click', function(e) {
                 e.preventDefault();
-                var target = document.querySelector(this.getAttribute('href'));
-                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                var targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                var target = document.querySelector(targetId);
+                if (target) {
+                    var offset = 80;
+                    var targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                }
             });
-        });
+        }
 
         // Initialize
         initDropdown();
