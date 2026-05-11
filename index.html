@@ -7,12 +7,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -20,20 +16,15 @@
             color: #333;
             line-height: 1.6;
         }
+        
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        /* Header & Social Bar */
+        /* Top Bar */
         .top-bar {
             background: rgba(0,0,0,0.2);
             padding: 10px 0;
             backdrop-filter: blur(10px);
         }
-
         .top-bar-content {
             max-width: 1200px;
             margin: 0 auto;
@@ -41,56 +32,26 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
         }
-
-        .social-header {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
-
+        .social-header { display: flex; gap: 15px; }
         .social-header a {
             color: white;
             font-size: 1.2rem;
             transition: transform 0.3s, color 0.3s;
             text-decoration: none;
         }
+        .social-header a:hover { transform: translateY(-3px); color: #ffd700; }
+        .header-contact { color: white; font-size: 0.9rem; }
 
-        .social-header a:hover {
-            transform: translateY(-3px);
-            color: #ffd700;
-        }
+        /* Header */
+        header { text-align: center; padding: 40px 20px 20px; color: white; }
+        header h1 { font-size: 2.5rem; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        header p { font-size: 1.2rem; opacity: 0.9; }
 
-        .header-contact {
-            color: white;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        header {
-            text-align: center;
-            padding: 40px 20px 20px;
-            color: white;
-        }
-
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        /* Carousel Section */
-        .carousel-section {
-            margin: 30px 0;
-        }
-
+        /* Carousel */
+        .carousel-section { margin: 30px 0; }
         .carousel-container {
             position: relative;
             max-width: 800px;
@@ -100,13 +61,11 @@
             overflow: hidden;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
         }
-
         .carousel-wrapper {
             display: flex;
             transition: transform 0.5s ease-in-out;
             height: 400px;
         }
-
         .carousel-slide {
             min-width: 100%;
             display: flex;
@@ -117,1112 +76,359 @@
             text-align: center;
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
         }
-
-        .carousel-slide img {
-            width: 200px;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 50%;
-            margin-bottom: 20px;
-            border: 5px solid white;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        .carousel-slide .slide-icon {
-            font-size: 5rem;
-            margin-bottom: 15px;
-        }
-
-        .carousel-slide h3 {
-            color: #667eea;
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-
-        .carousel-slide p {
-            color: #666;
-            max-width: 500px;
-        }
-
+        .carousel-slide .slide-icon { font-size: 5rem; margin-bottom: 15px; }
+        .carousel-slide h3 { color: #667eea; font-size: 1.5rem; margin-bottom: 10px; }
+        .carousel-slide p { color: #666; max-width: 500px; }
         .carousel-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(102, 126, 234, 0.8);
-            color: white;
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.2rem;
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: rgba(102, 126, 234, 0.8); color: white; border: none;
+            width: 50px; height: 50px; border-radius: 50%; cursor: pointer;
+            font-size: 1.2rem; z-index: 10; display: flex; align-items: center; justify-content: center;
             transition: all 0.3s;
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
-
-        .carousel-btn:hover {
-            background: #667eea;
-            transform: translateY(-50%) scale(1.1);
-        }
-
+        .carousel-btn:hover { background: #667eea; transform: translateY(-50%) scale(1.1); }
         .carousel-btn.prev { left: 20px; }
         .carousel-btn.next { right: 20px; }
-
         .carousel-dots {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            padding: 20px;
-            background: white;
+            display: flex; justify-content: center; gap: 10px;
+            padding: 20px; background: white;
         }
-
         .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #ddd;
-            cursor: pointer;
-            transition: all 0.3s;
-            border: none;
+            width: 12px; height: 12px; border-radius: 50%;
+            background: #ddd; cursor: pointer; border: none; transition: all 0.3s;
         }
+        .dot.active { background: #667eea; transform: scale(1.2); }
 
-        .dot.active {
-            background: #667eea;
-            transform: scale(1.2);
-        }
-
-        /* Lead Magnet Section */
+        /* Lead Magnet */
         .lead-magnet {
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            margin: 30px 0;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            text-align: center;
+            background: white; border-radius: 20px; padding: 40px;
+            margin: 30px 0; box-shadow: 0 20px 60px rgba(0,0,0,0.3); text-align: center;
         }
-
-        .lead-magnet h2 {
-            color: #667eea;
-            font-size: 2rem;
-            margin-bottom: 15px;
-        }
-
-        .lead-magnet .subtitle {
-            color: #666;
-            font-size: 1.1rem;
-            margin-bottom: 30px;
-        }
-
+        .lead-magnet h2 { color: #667eea; font-size: 2rem; margin-bottom: 15px; }
+        .lead-magnet .subtitle { color: #666; font-size: 1.1rem; margin-bottom: 30px; }
         .ebook-preview {
-            width: 220px;
-            height: 300px;
+            width: 220px; height: 300px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 10px;
-            margin: 0 auto 30px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-            font-weight: 600;
+            border-radius: 10px; margin: 0 auto 30px;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            color: white; font-size: 1.2rem; font-weight: 600;
             box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-            position: relative;
-            overflow: hidden;
         }
+        .ebook-preview::before { content: '🧶'; font-size: 4rem; margin-bottom: 10px; }
+        .ebook-preview span { padding: 0 20px; text-align: center; }
 
-        .ebook-preview::before {
-            content: '🧶';
-            font-size: 4rem;
-            margin-bottom: 10px;
-        }
-
-        .ebook-preview span {
-            padding: 0 20px;
-            text-align: center;
-        }
-
-        /* Form Styles */
-        .form-container {
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: #555;
-            font-weight: 600;
-        }
-
-        .form-group input[type="text"],
-        .form-group input[type="email"],
-        .form-group input[type="tel"] {
-            width: 100%;
-            padding: 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            font-size: 1rem;
+        /* Form */
+        .form-container { max-width: 500px; margin: 0 auto; }
+        .form-group { margin-bottom: 20px; text-align: left; }
+        .form-group label { display: block; margin-bottom: 8px; color: #555; font-weight: 600; }
+        .form-group input {
+            width: 100%; padding: 15px; border: 2px solid #e0e0e0;
+            border-radius: 10px; font-size: 1rem; font-family: 'Poppins', sans-serif;
             transition: all 0.3s;
-            font-family: 'Poppins', sans-serif;
         }
-
-        .form-group input:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-        }
+        .form-group input:focus { outline: none; border-color: #667eea; box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1); }
 
         /* Country Selector */
-        .country-selector {
-            position: relative;
-            width: 100%;
-        }
-
+        .country-selector { position: relative; width: 100%; }
         .country-display {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            cursor: pointer;
-            background: white;
+            display: flex; align-items: center; gap: 10px; padding: 15px;
+            border: 2px solid #e0e0e0; border-radius: 10px; cursor: pointer;
+            background: white; font-family: 'Poppins', sans-serif; font-size: 1rem;
             transition: all 0.3s;
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
         }
-
-        .country-display:hover,
-        .country-display.active {
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-        }
-
-        .country-display img {
-            width: 28px;
-            height: 20px;
-            object-fit: cover;
-            border-radius: 3px;
-            flex-shrink: 0;
-        }
-
-        .country-display .country-name {
-            flex: 1;
-            color: #333;
-        }
-
-        .country-display .country-code {
-            color: #667eea;
-            font-weight: 600;
-        }
-
-        .country-display i {
-            color: #888;
-            transition: transform 0.3s;
-        }
-
-        .country-display.active i {
-            transform: rotate(180deg);
-        }
-
+        .country-display:hover, .country-display.active { border-color: #667eea; box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1); }
+        .country-display img { width: 28px; height: 20px; object-fit: cover; border-radius: 3px; flex-shrink: 0; }
+        .country-display .country-name { flex: 1; color: #333; }
+        .country-display .country-code { color: #667eea; font-weight: 600; }
+        .country-display i { color: #888; transition: transform 0.3s; }
+        .country-display.active i { transform: rotate(180deg); }
         .country-dropdown {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: white;
-            border: 2px solid #e0e0e0;
-            border-top: none;
-            border-radius: 0 0 10px 10px;
-            max-height: 250px;
-            overflow-y: auto;
-            z-index: 100;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            display: none; position: absolute; top: 100%; left: 0; right: 0;
+            background: white; border: 2px solid #e0e0e0; border-top: none;
+            border-radius: 0 0 10px 10px; max-height: 250px; overflow-y: auto;
+            z-index: 100; box-shadow: 0 10px 30px rgba(0,0,0,0.15);
         }
-
-        .country-dropdown.show {
-            display: block;
-        }
-
+        .country-dropdown.show { display: block; }
         .country-option {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 15px;
-            cursor: pointer;
-            transition: background 0.2s;
+            display: flex; align-items: center; gap: 10px; padding: 12px 15px;
+            cursor: pointer; transition: background 0.2s;
         }
+        .country-option:hover { background: #f0f0f0; }
+        .country-option img { width: 28px; height: 20px; object-fit: cover; border-radius: 3px; flex-shrink: 0; }
+        .country-option .opt-name { flex: 1; color: #333; }
+        .country-option .opt-code { color: #667eea; font-weight: 600; font-size: 0.9rem; }
 
-        .country-option:hover {
-            background: #f0f0f0;
-        }
-
-        .country-option img {
-            width: 28px;
-            height: 20px;
-            object-fit: cover;
-            border-radius: 3px;
-            flex-shrink: 0;
-        }
-
-        .country-option .opt-name {
-            flex: 1;
-            color: #333;
-        }
-
-        .country-option .opt-code {
-            color: #667eea;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        .phone-input-wrapper {
-            display: flex;
-            gap: 10px;
-            align-items: stretch;
-        }
-
+        .phone-input-wrapper { display: flex; gap: 10px; align-items: stretch; }
         .phone-prefix {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 15px;
-            background: #f8f9fa;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            font-weight: 600;
-            color: #667eea;
-            white-space: nowrap;
-            flex-shrink: 0;
+            display: flex; align-items: center; gap: 8px; padding: 15px;
+            background: #f8f9fa; border: 2px solid #e0e0e0; border-radius: 10px;
+            font-weight: 600; color: #667eea; white-space: nowrap; flex-shrink: 0;
         }
-
-        .phone-prefix img {
-            width: 24px;
-            height: 18px;
-            object-fit: cover;
-            border-radius: 3px;
-        }
+        .phone-prefix img { width: 24px; height: 18px; object-fit: cover; border-radius: 3px; }
 
         /* Delivery Options */
-        .delivery-options {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-
-        .delivery-options > label {
-            display: block;
-            margin-bottom: 10px;
-            color: #555;
-            font-weight: 600;
-        }
-
-        .delivery-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-        }
-
-        .delivery-option {
-            position: relative;
-            cursor: pointer;
-        }
-
-        .delivery-option input {
-            position: absolute;
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
+        .delivery-options { margin-bottom: 20px; text-align: left; }
+        .delivery-options > label { display: block; margin-bottom: 10px; color: #555; font-weight: 600; }
+        .delivery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+        .delivery-option { position: relative; cursor: pointer; }
+        .delivery-option input { position: absolute; opacity: 0; width: 0; height: 0; }
         .delivery-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 15px 10px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            transition: all 0.3s;
-            text-align: center;
-            gap: 5px;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            padding: 15px 10px; border: 2px solid #e0e0e0; border-radius: 10px;
+            transition: all 0.3s; text-align: center; gap: 5px;
         }
-
         .delivery-option input:checked + .delivery-card {
-            border-color: #667eea;
-            background: rgba(102, 126, 234, 0.05);
+            border-color: #667eea; background: rgba(102, 126, 234, 0.05);
             box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
         }
-
-        .delivery-card i {
-            font-size: 1.5rem;
-            color: #667eea;
-        }
-
-        .delivery-card span {
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #555;
-        }
+        .delivery-card i { font-size: 1.5rem; color: #667eea; }
+        .delivery-card span { font-size: 0.8rem; font-weight: 600; color: #555; }
 
         .btn-submit {
-            width: 100%;
-            padding: 18px;
+            width: 100%; padding: 18px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            font-family: 'Poppins', sans-serif;
+            color: white; border: none; border-radius: 10px;
+            font-size: 1.1rem; font-weight: 600; cursor: pointer;
+            font-family: 'Poppins', sans-serif; transition: transform 0.3s, box-shadow 0.3s;
         }
+        .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4); }
 
-        .btn-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-        }
+        .privacy-note { margin-top: 15px; font-size: 0.85rem; color: #888; }
 
-        .privacy-note {
-            margin-top: 15px;
-            font-size: 0.85rem;
-            color: #888;
-        }
-
-        /* Drive Link Box */
+        /* Drive Box */
         .drive-link-box {
-            display: none;
-            background: linear-gradient(135deg, #e8f5e9 0%, #e3f2fd 100%);
-            border: 2px solid #34a853;
-            border-radius: 15px;
-            padding: 25px;
-            margin-top: 20px;
-            text-align: center;
+            display: none; background: linear-gradient(135deg, #e8f5e9 0%, #e3f2fd 100%);
+            border: 2px solid #34a853; border-radius: 15px; padding: 25px;
+            margin-top: 20px; text-align: center;
         }
-
-        .drive-link-box.show {
-            display: block;
-            animation: slideDown 0.5s ease;
-        }
-
-        .drive-link-box h3 {
-            color: #34a853;
-            margin-bottom: 15px;
-            font-size: 1.1rem;
-        }
-
-        .drive-link-box p {
-            color: #555;
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-        }
-
+        .drive-link-box.show { display: block; animation: slideDown 0.5s ease; }
+        .drive-link-box h3 { color: #34a853; margin-bottom: 15px; font-size: 1.1rem; }
+        .drive-link-box p { color: #555; font-size: 0.9rem; margin-bottom: 15px; }
         .drive-link-container {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            background: white;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            padding: 10px 15px;
-            margin-bottom: 15px;
+            display: flex; gap: 10px; align-items: center;
+            background: white; border: 2px solid #e0e0e0; border-radius: 10px;
+            padding: 10px 15px; margin-bottom: 15px;
         }
-
         .drive-link-container input {
-            flex: 1;
-            border: none;
-            background: transparent;
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.85rem;
-            color: #333;
-            outline: none;
+            flex: 1; border: none; background: transparent;
+            font-family: 'Poppins', sans-serif; font-size: 0.85rem; color: #333; outline: none;
         }
-
         .drive-link-container button {
-            background: #34a853;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            padding: 8px 15px;
-            cursor: pointer;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            font-size: 0.85rem;
-            transition: opacity 0.3s;
-            white-space: nowrap;
+            background: #34a853; color: white; border: none; border-radius: 8px;
+            padding: 8px 15px; cursor: pointer; font-family: 'Poppins', sans-serif;
+            font-weight: 600; font-size: 0.85rem; transition: opacity 0.3s; white-space: nowrap;
         }
-
-        .drive-link-container button:hover {
-            opacity: 0.9;
-        }
-
+        .drive-link-container button:hover { opacity: 0.9; }
         .drive-link-box .btn-download {
-            display: inline-block;
-            background: linear-gradient(135deg, #34a853 0%, #1e8e3e 100%);
-            color: white;
-            text-decoration: none;
-            padding: 12px 30px;
-            border-radius: 10px;
-            font-weight: 600;
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: none;
-            cursor: pointer;
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
+            display: inline-block; background: linear-gradient(135deg, #34a853 0%, #1e8e3e 100%);
+            color: white; text-decoration: none; padding: 12px 30px;
+            border-radius: 10px; font-weight: 600; transition: transform 0.3s, box-shadow 0.3s;
+            border: none; cursor: pointer; font-family: 'Poppins', sans-serif; font-size: 1rem;
         }
-
-        .drive-link-box .btn-download:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(52, 168, 83, 0.4);
-        }
-
+        .drive-link-box .btn-download:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(52, 168, 83, 0.4); }
         .drive-instructions {
-            background: #fff3e0;
-            border-left: 4px solid #ff9800;
-            padding: 12px 15px;
-            margin-top: 15px;
-            border-radius: 0 8px 8px 0;
-            text-align: left;
+            background: #fff3e0; border-left: 4px solid #ff9800;
+            padding: 12px 15px; margin-top: 15px; border-radius: 0 8px 8px 0; text-align: left;
+        }
+        .drive-instructions p { margin: 0; font-size: 0.85rem; color: #e65100; }
+        .drive-instructions ol { margin: 8px 0 0 18px; padding: 0; font-size: 0.85rem; color: #555; }
+        .drive-instructions li { margin-bottom: 4px; }
+
+        /* Success Message */
+        .success-message {
+            display: none; background: #d4edda; color: #155724;
+            padding: 20px; border-radius: 10px; margin-top: 20px; border: 1px solid #c3e6cb;
+        }
+        .success-message.show { display: block; animation: slideDown 0.5s ease; }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .drive-instructions p {
-            margin: 0;
-            font-size: 0.85rem;
-            color: #e65100;
+        /* Single Course Section */
+        .course-section {
+            background: white; border-radius: 20px; padding: 40px;
+            margin: 30px 0; box-shadow: 0 20px 60px rgba(0,0,0,0.3); text-align: center;
         }
-
-        .drive-instructions ol {
-            margin: 8px 0 0 18px;
-            padding: 0;
-            font-size: 0.85rem;
-            color: #555;
-        }
-
-        .drive-instructions li {
-            margin-bottom: 4px;
-        }
-
-        /* Products Section */
-        .products-section {
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            margin: 30px 0;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-        }
-
-        .products-section h2 {
-            text-align: center;
-            color: #667eea;
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-
-        .products-section .section-subtitle {
-            text-align: center;
-            color: #666;
-            margin-bottom: 40px;
-        }
-
-        /* Category Filter */
-        .category-filter {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 30px;
-        }
-
-        .filter-btn {
-            padding: 10px 20px;
-            border: 2px solid #667eea;
-            background: white;
-            color: #667eea;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        .filter-btn:hover,
-        .filter-btn.active {
-            background: #667eea;
-            color: white;
-        }
-
-        /* Product Grid */
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
-        }
-
-        .product-card {
-            background: #f8f9fa;
-            border-radius: 15px;
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 2px solid transparent;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-            border-color: #667eea;
-        }
-
-        .product-header {
+        .course-section h2 { color: #667eea; font-size: 2rem; margin-bottom: 10px; }
+        .course-section .section-subtitle { color: #666; margin-bottom: 30px; }
+        .featured-course {
+            max-width: 500px; margin: 0 auto;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 20px;
-            text-align: center;
+            border-radius: 20px; padding: 40px; color: white;
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
         }
-
-        .product-icon {
-            font-size: 3rem;
-            margin-bottom: 10px;
+        .featured-course .course-icon { font-size: 4rem; margin-bottom: 15px; }
+        .featured-course h3 { font-size: 1.5rem; margin-bottom: 10px; }
+        .featured-course p { opacity: 0.9; margin-bottom: 20px; font-size: 1rem; }
+        .featured-course .course-features {
+            text-align: left; margin: 20px 0; font-size: 0.95rem;
         }
-
-        .product-type {
-            display: inline-block;
-            padding: 5px 15px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
+        .featured-course .course-features li {
+            margin-bottom: 8px; list-style: none; display: flex; align-items: center; gap: 8px;
         }
-
-        .product-body {
-            padding: 25px;
+        .featured-course .course-features li::before { content: '✅'; }
+        .btn-course {
+            display: inline-block; background: white; color: #667eea;
+            text-decoration: none; padding: 15px 40px; border-radius: 10px;
+            font-weight: 700; font-size: 1.1rem; transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
         }
-
-        .product-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: #333;
-            margin-bottom: 10px;
-            line-height: 1.4;
-        }
-
-        .product-category {
-            display: inline-block;
-            padding: 5px 12px;
-            background: #e3f2fd;
-            color: #667eea;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-
-        .product-code {
-            font-size: 0.85rem;
-            color: #888;
-            margin-bottom: 15px;
-        }
-
-        .btn-buy {
-            display: block;
-            width: 100%;
-            padding: 12px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: opacity 0.3s;
-            border: none;
-            cursor: pointer;
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
-        }
-
-        .btn-buy:hover {
-            opacity: 0.9;
+        .btn-course:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .guarantee-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            margin-top: 15px; padding: 8px 16px; background: rgba(255,255,255,0.2);
+            border-radius: 20px; font-size: 0.85rem;
         }
 
         /* FAQ Accordion */
         .faq-section {
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            margin: 30px 0;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            background: white; border-radius: 20px; padding: 40px;
+            margin: 30px 0; box-shadow: 0 20px 60px rgba(0,0,0,0.3);
         }
-
-        .faq-section h2 {
-            text-align: center;
-            color: #667eea;
-            font-size: 2rem;
-            margin-bottom: 30px;
-        }
-
-        .accordion {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
+        .faq-section h2 { text-align: center; color: #667eea; font-size: 2rem; margin-bottom: 30px; }
+        .accordion { max-width: 800px; margin: 0 auto; }
         .accordion-item {
-            border: 2px solid #e0e0e0;
-            border-radius: 12px;
-            margin-bottom: 15px;
-            overflow: hidden;
-            transition: all 0.3s;
+            border: 2px solid #e0e0e0; border-radius: 12px;
+            margin-bottom: 15px; overflow: hidden; transition: all 0.3s;
         }
-
-        .accordion-item.active {
-            border-color: #667eea;
-            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.1);
-        }
-
+        .accordion-item.active { border-color: #667eea; box-shadow: 0 5px 20px rgba(102, 126, 234, 0.1); }
         .accordion-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 20px 25px;
-            background: #f8f9fa;
-            cursor: pointer;
-            transition: all 0.3s;
-            border: none;
-            width: 100%;
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            color: #333;
-            text-align: left;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 20px 25px; background: #f8f9fa; cursor: pointer; border: none;
+            width: 100%; font-family: 'Poppins', sans-serif; font-size: 1rem;
+            font-weight: 600; color: #333; text-align: left;
         }
-
-        .accordion-header:hover {
-            background: #e3f2fd;
-        }
-
-        .accordion-header i {
-            color: #667eea;
-            transition: transform 0.3s;
-            font-size: 1.2rem;
-        }
-
-        .accordion-item.active .accordion-header i {
-            transform: rotate(180deg);
-        }
-
+        .accordion-header:hover { background: #e3f2fd; }
+        .accordion-header i { color: #667eea; transition: transform 0.3s; font-size: 1.2rem; }
+        .accordion-item.active .accordion-header i { transform: rotate(180deg); }
         .accordion-body {
-            max-height: 0;
-            overflow: hidden;
+            max-height: 0; overflow: hidden;
             transition: max-height 0.3s ease, padding 0.3s ease;
             background: white;
         }
-
         .accordion-item.active .accordion-body {
-            max-height: 500px;
-            padding: 20px 25px;
+            max-height: 500px; padding: 20px 25px;
         }
+        .accordion-body p, .accordion-body ul { color: #666; line-height: 1.8; }
+        .accordion-body ul { margin-left: 20px; }
+        .accordion-body li { margin-bottom: 8px; }
 
-        .accordion-body p, .accordion-body ul {
-            color: #666;
-            line-height: 1.8;
-        }
-
-        .accordion-body ul {
-            margin-left: 20px;
-        }
-
-        .accordion-body li {
-            margin-bottom: 8px;
-        }
-
-        /* Legal Sections */
+        /* Legal Section */
         .legal-section {
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            margin: 30px 0;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            background: white; border-radius: 20px; padding: 40px;
+            margin: 30px 0; box-shadow: 0 20px 60px rgba(0,0,0,0.3);
         }
-
-        .legal-section h2 {
-            text-align: center;
-            color: #667eea;
-            font-size: 2rem;
-            margin-bottom: 30px;
-        }
-
+        .legal-section h2 { text-align: center; color: #667eea; font-size: 2rem; margin-bottom: 30px; }
         .legal-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            max-width: 900px;
-            margin: 0 auto;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px; max-width: 900px; margin: 0 auto;
         }
-
-        .legal-card {
-            border: 2px solid #e0e0e0;
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
+        .legal-card { border: 2px solid #e0e0e0; border-radius: 12px; overflow: hidden; }
         .legal-card-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            cursor: pointer;
-            border: none;
-            width: 100%;
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            text-align: left;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white; cursor: pointer; border: none; width: 100%;
+            font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 600; text-align: left;
         }
-
-        .legal-card-header i {
-            transition: transform 0.3s;
-        }
-
-        .legal-card.active .legal-card-header i {
-            transform: rotate(180deg);
-        }
-
+        .legal-card-header i { transition: transform 0.3s; }
+        .legal-card.active .legal-card-header i { transform: rotate(180deg); }
         .legal-card-body {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease, padding 0.3s ease;
-            background: #fafafa;
+            max-height: 0; overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease; background: #fafafa;
         }
-
-        .legal-card.active .legal-card-body {
-            max-height: 1000px;
-            padding: 25px;
-        }
-
-        .legal-card-body h4 {
-            color: #667eea;
-            margin: 15px 0 8px;
-            font-size: 0.95rem;
-        }
-
-        .legal-card-body h4:first-child {
-            margin-top: 0;
-        }
-
-        .legal-card-body p, .legal-card-body ul {
-            color: #666;
-            font-size: 0.9rem;
-            line-height: 1.8;
-            margin-bottom: 10px;
-        }
-
-        .legal-card-body ul {
-            margin-left: 20px;
-        }
-
-        .legal-card-body li {
-            margin-bottom: 6px;
-        }
-
+        .legal-card.active .legal-card-body { max-height: 1000px; padding: 25px; }
+        .legal-card-body h4 { color: #667eea; margin: 15px 0 8px; font-size: 0.95rem; }
+        .legal-card-body h4:first-child { margin-top: 0; }
+        .legal-card-body p, .legal-card-body ul { color: #666; font-size: 0.9rem; line-height: 1.8; margin-bottom: 10px; }
+        .legal-card-body ul { margin-left: 20px; }
+        .legal-card-body li { margin-bottom: 6px; }
         .legal-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            background: #e8f5e9;
-            color: #2e7d32;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 20px;
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 8px 16px; background: #e8f5e9; color: #2e7d32;
+            border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 20px;
         }
 
         /* Footer */
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            color: white;
+        footer { text-align: center; padding: 40px 20px; color: white; }
+        .social-links {
+            margin: 20px 0; display: flex; justify-content: center;
+            align-items: center; flex-wrap: wrap; gap: 15px;
         }
-
-        footer .social-links {
-            margin: 20px 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        footer .social-links a {
-            color: white;
-            font-size: 1.5rem;
-            transition: transform 0.3s;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.15);
+        .social-links a {
+            color: white; font-size: 1.5rem; transition: transform 0.3s;
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 50px; height: 50px; border-radius: 50%; background: rgba(255,255,255,0.15);
             text-decoration: none;
         }
+        .social-links a:hover { transform: scale(1.15); background: rgba(255,255,255,0.3); }
+        .social-links a.email-btn { font-size: 1.1rem; width: auto; padding: 0 20px; border-radius: 25px; gap: 10px; }
+        .social-links a.email-btn span { font-size: 0.85rem; font-weight: 600; }
+        .social-links a.whatsapp-btn { background: #25d366; }
+        .social-links a.whatsapp-btn:hover { background: #128c7e; }
+        .social-links a.youtube-btn:hover { background: #ff0000; }
+        .social-links a.facebook-btn:hover { background: #1877f2; }
+        .social-links a.instagram-btn:hover { background: #e4405f; }
+        footer p { opacity: 0.8; font-size: 0.9rem; margin-top: 10px; }
+        footer a { color: white; text-decoration: underline; }
 
-        footer .social-links a:hover {
-            transform: scale(1.15);
-            background: rgba(255,255,255,0.3);
-        }
-
-        footer .social-links a.email-btn {
-            font-size: 1.1rem;
-            width: auto;
-            padding: 0 20px;
-            border-radius: 25px;
-            gap: 10px;
-            text-decoration: none;
-        }
-
-        footer .social-links a.email-btn i {
-            font-size: 1.1rem;
-        }
-
-        footer .social-links a.email-btn span {
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-
-        footer .social-links a.whatsapp-btn {
-            background: #25d366;
-        }
-
-        footer .social-links a.whatsapp-btn:hover {
-            background: #128c7e;
-        }
-
-        footer .social-links a.youtube-btn:hover {
-            background: #ff0000;
-        }
-
-        footer .social-links a.facebook-btn:hover {
-            background: #1877f2;
-        }
-
-        footer .social-links a.instagram-btn:hover {
-            background: #e4405f;
-        }
-
-        footer p {
-            opacity: 0.8;
-            font-size: 0.9rem;
-            margin-top: 10px;
-        }
-
-        /* WhatsApp Float Button */
+        /* WhatsApp Float */
         .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            background: #25d366;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2rem;
-            text-decoration: none;
+            position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
+            background: #25d366; border-radius: 50%; display: flex;
+            align-items: center; justify-content: center; color: white;
+            font-size: 2rem; text-decoration: none;
             box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
-            transition: transform 0.3s;
-            z-index: 1000;
+            transition: transform 0.3s; z-index: 1000;
         }
-
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-        }
-
-        /* Success Message */
-        .success-message {
-            display: none;
-            background: #d4edda;
-            color: #155724;
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 20px;
-            border: 1px solid #c3e6cb;
-        }
-
-        .success-message.show {
-            display: block;
-            animation: slideDown 0.5s ease;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+        .whatsapp-float:hover { transform: scale(1.1); }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .top-bar-content {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            header h1 {
-                font-size: 1.8rem;
-            }
-            
-            header p {
-                font-size: 1rem;
-            }
-
-            .carousel-wrapper {
-                height: 350px;
-            }
-
-            .carousel-slide .slide-icon {
-                font-size: 3.5rem;
-            }
-
-            .carousel-btn {
-                width: 40px;
-                height: 40px;
-                font-size: 1rem;
-            }
-            
-            .lead-magnet,
-            .products-section,
-            .faq-section,
-            .legal-section {
-                padding: 25px 15px;
-                margin: 15px 0;
-            }
-            
-            .lead-magnet h2 {
-                font-size: 1.5rem;
-            }
-
-            .ebook-preview {
-                width: 180px;
-                height: 250px;
-            }
-            
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .delivery-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .phone-input-wrapper {
-                flex-direction: column;
-            }
-            
-            .phone-prefix {
-                justify-content: center;
-            }
-            
-            .category-filter {
-                gap: 8px;
-            }
-            
-            .filter-btn {
-                padding: 8px 14px;
-                font-size: 0.8rem;
-            }
-
-            .legal-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .whatsapp-float {
-                width: 50px;
-                height: 50px;
-                font-size: 1.5rem;
-                bottom: 20px;
-                right: 20px;
-            }
-
-            footer .social-links a.email-btn span {
-                display: none;
-            }
-
-            footer .social-links a.email-btn {
-                width: 50px;
-                padding: 0;
-            }
-
-            .drive-link-container {
-                flex-direction: column;
-            }
-
-            .drive-link-container input {
-                width: 100%;
-                text-align: center;
-            }
+            .top-bar-content { flex-direction: column; gap: 10px; }
+            header h1 { font-size: 1.8rem; }
+            .carousel-wrapper { height: 350px; }
+            .carousel-slide .slide-icon { font-size: 3.5rem; }
+            .carousel-btn { width: 40px; height: 40px; font-size: 1rem; }
+            .lead-magnet, .course-section, .faq-section, .legal-section { padding: 25px 15px; margin: 15px 0; }
+            .lead-magnet h2, .course-section h2, .faq-section h2, .legal-section h2 { font-size: 1.5rem; }
+            .ebook-preview { width: 180px; height: 250px; }
+            .delivery-grid { grid-template-columns: 1fr; }
+            .phone-input-wrapper { flex-direction: column; }
+            .phone-prefix { justify-content: center; }
+            .legal-grid { grid-template-columns: 1fr; }
+            .whatsapp-float { width: 50px; height: 50px; font-size: 1.5rem; bottom: 20px; right: 20px; }
+            .social-links a.email-btn span { display: none; }
+            .social-links a.email-btn { width: 50px; padding: 0; }
+            .drive-link-container { flex-direction: column; }
+            .drive-link-container input { width: 100%; text-align: center; }
+            .featured-course { padding: 25px; }
+            .featured-course h3 { font-size: 1.2rem; }
         }
-
         @media (max-width: 480px) {
-            header {
-                padding: 25px 15px;
-            }
-            
-            header h1 {
-                font-size: 1.5rem;
-            }
-
-            .carousel-wrapper {
-                height: 300px;
-            }
-
-            .carousel-slide {
-                padding: 20px;
-            }
-            
-            .ebook-preview {
-                width: 160px;
-                height: 220px;
-            }
-            
-            .btn-submit {
-                font-size: 1rem;
-                padding: 15px;
-            }
+            header h1 { font-size: 1.5rem; }
+            .carousel-wrapper { height: 300px; }
+            .carousel-slide { padding: 20px; }
+            .ebook-preview { width: 160px; height: 220px; }
+            .btn-submit { font-size: 1rem; padding: 15px; }
         }
     </style>
 </head>
 <body>
-    <!-- Top Bar with Social Links -->
+    <!-- Top Bar -->
     <div class="top-bar">
         <div class="top-bar-content">
             <div class="social-header">
                 <a href="https://www.youtube.com/@EldisYerar" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
                 <a href="https://www.facebook.com/profile.php?id=61565093347028" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.instagram.com/curso_internacional_crochet?igsh=a2tsOTA4cTc2OG1v" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.instagram.com/curso_internacional_crochet" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
                 <a href="https://wa.link/hifqij" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                 <a href="mailto:eldisyera@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
             </div>
             <div class="header-contact">
                 <i class="fab fa-whatsapp"></i>
-                <span>Contacto: eldisyera@gmail.com</span>
+                <span>eldisyera@gmail.com</span>
             </div>
         </div>
     </div>
@@ -1234,7 +440,7 @@
     </header>
 
     <div class="container">
-        <!-- Carousel Section -->
+        <!-- Carousel -->
         <section class="carousel-section">
             <div class="carousel-container">
                 <div class="carousel-wrapper" id="carouselWrapper">
@@ -1270,7 +476,7 @@
             </div>
         </section>
 
-        <!-- Lead Magnet Section -->
+        <!-- Lead Magnet -->
         <section class="lead-magnet">
             <h2>📚 Mi Ebook para Ti</h2>
             <p class="subtitle">Recibe GRATIS mi guía exclusiva con patrones y tips para empezar</p>
@@ -1353,7 +559,7 @@
                 
                 <div class="drive-link-box" id="driveLinkBox">
                     <h3><i class="fab fa-google-drive"></i> ¡Tu Ebook está listo!</h3>
-                    <p>Copia el enlace o haz clic para descargar tu ebook en Google Drive:</p>
+                    <p>Copia el enlace o haz clic para descargar tu ebook:</p>
                     <div class="drive-link-container">
                         <input type="text" id="driveLinkInput" value="https://drive.google.com/file/d/1Fylb1eRt7LTYs1TnLADMzQT5gEJgtOK8/view?usp=drive_link" readonly>
                         <button type="button" onclick="copyDriveLink()"><i class="fas fa-copy"></i> Copiar</button>
@@ -1365,8 +571,8 @@
                         <p><strong>📥 Instrucciones para descargar:</strong></p>
                         <ol>
                             <li>Haz clic en el botón verde "Descargar Ebook Ahora"</li>
-                            <li>En Google Drive, haz clic en el icono ⬇️ (Descargar) arriba a la derecha</li>
-                            <li>El archivo PDF se guardará automáticamente en tu dispositivo</li>
+                            <li>En Google Drive, haz clic en el icono ⬇️ arriba a la derecha</li>
+                            <li>El PDF se guardará automáticamente en tu dispositivo</li>
                             <li>¡Disfruta aprendiendo crochet!</li>
                         </ol>
                     </div>
@@ -1378,184 +584,38 @@
             </div>
         </section>
 
-        <!-- Products Section -->
-        <section class="products-section">
-            <h2>🛍️ Nuestros Productos</h2>
-            <p class="section-subtitle">Cursos, ebooks y patrones para todos los niveles</p>
+        <!-- Single Featured Course -->
+        <section class="course-section">
+            <h2>🎓 Curso Recomendado</h2>
+            <p class="section-subtitle">El curso que transformará tu pasión en habilidades profesionales</p>
             
-            <div class="category-filter">
-                <button class="filter-btn active" onclick="filterProducts('todos')">Todos</button>
-                <button class="filter-btn" onclick="filterProducts('amigurumi')">Amigurumi</button>
-                <button class="filter-btn" onclick="filterProducts('crochet')">Crochet</button>
-                <button class="filter-btn" onclick="filterProducts('trapillo')">Trapillo</button>
-                <button class="filter-btn" onclick="filterProducts('prendas')">Prendas</button>
-                <button class="filter-btn" onclick="filterProducts('accesorios')">Accesorios</button>
-            </div>
-
-            <div class="products-grid" id="productsGrid">
-                <!-- Product 1 -->
-                <div class="product-card" data-category="prendas">
-                    <div class="product-header">
-                        <div class="product-icon">👗</div>
-                        <span class="product-type">PATRÓN</span>
-                    </div>
-                    <div class="product-body">
-                        <h3 class="product-title">Patrón Blusa Flor de Olivo en Crochet</h3>
-                        <span class="product-category">Prendas</span>
-                        <p class="product-code">Código: W102293007J</p>
-                        <a href="https://hotmart.com/es/marketplace/productos/patron-en-crochet-blusa-flor-de-olivo/S97380393V?ref=W102293007J" class="btn-buy" target="_blank">
-                            <i class="fas fa-shopping-cart"></i> Ver Producto
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Product 2 -->
-                <div class="product-card" data-category="crochet">
-                    <div class="product-header">
-                        <div class="product-icon">🎓</div>
-                        <span class="product-type">CURSO</span>
-                    </div>
-                    <div class="product-body">
-                        <h3 class="product-title">Curso de Crochet Profesional</h3>
-                        <span class="product-category">Crochet</span>
-                        <p class="product-code">Código: V101927515C</p>
-                        <a href="https://educatefacildesdecasa.com/crochet_afil/?ref=V101927515C" class="btn-buy" target="_blank">
-                            <i class="fas fa-shopping-cart"></i> Ver Producto
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Product 3 -->
-                <div class="product-card" data-category="amigurumi">
-                    <div class="product-header">
-                        <div class="product-icon">🧸</div>
-                        <span class="product-type">CURSO</span>
-                    </div>
-                    <div class="product-body">
-                        <h3 class="product-title">Crochet – Amigurumis (Curso Completo)</h3>
-                        <span class="product-category">Amigurumi</span>
-                        <p class="product-code">Código: P97973535Q</p>
-                        <a href="https://vertice101.com/crochet-amigurumis/?ref=P97973535Q" class="btn-buy" target="_blank">
-                            <i class="fas fa-shopping-cart"></i> Ver Producto
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Product 4 -->
-                <div class="product-card" data-category="accesorios">
-                    <div class="product-header">
-                        <div class="product-icon">👜</div>
-                        <span class="product-type">CURSO</span>
-                    </div>
-                    <div class="product-body">
-                        <h3 class="product-title">Bolsos y Accesorios en Crochet</h3>
-                        <span class="product-category">Accesorios</span>
-                        <p class="product-code">Código: X101549444K</p>
-                        <a href="https://manitascreativastrapillo.tucompradigital.com/?ref=X101549444K" class="btn-buy" target="_blank">
-                            <i class="fas fa-shopping-cart"></i> Ver Producto
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Product 5 -->
-                <div class="product-card" data-category="trapillo">
-                    <div class="product-header">
-                        <div class="product-icon">🧵</div>
-                        <span class="product-type">CURSO</span>
-                    </div>
-                    <div class="product-body">
-                        <h3 class="product-title">Crochet – Bolsos Premium en Trapillo</h3>
-                        <span class="product-category">Trapillo</span>
-                        <p class="product-code">Código: R97973128U</p>
-                        <a href="https://vertice101.com/crochet-bolsos-premium/?ref=R97973128U" class="btn-buy" target="_blank">
-                            <i class="fas fa-shopping-cart"></i> Ver Producto
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Product 6 -->
-                <div class="product-card" data-category="amigurumi">
-                    <div class="product-header">
-                        <div class="product-icon">🔑</div>
-                        <span class="product-type">EBOOK</span>
-                    </div>
-                    <div class="product-body">
-                        <h3 class="product-title">Ebook +60 Llaveros Amigurumis</h3>
-                        <span class="product-category">Amigurumi</span>
-                        <p class="product-code">Código: S101949118J</p>
-                        <a href="https://hotmart.com/es/marketplace/productos/ebook-60-llaveros-amigurumis-patrones-paso-a-paso/U82362846Y?ref=S101949118J" class="btn-buy" target="_blank">
-                            <i class="fas fa-shopping-cart"></i> Ver Producto
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Product 7 -->
-                <div class="product-card" data-category="amigurumi">
-                    <div class="product-header">
-                        <div class="product-icon">📖</div>
-                        <span class="product-type">EBOOK</span>
-                    </div>
-                    <div class="product-body">
-                        <h3 class="product-title">Ebook +250 Minipatrones de Amigurumis</h3>
-                        <span class="product-category">Amigurumi</span>
-                        <p class="product-code">Código: L101949170Y</p>
-                        <a href="https://hotmart.com/es/marketplace/productos/200-minipatrones-de-amigurumis/Y82661895U?ref=L101949170Y" class="btn-buy" target="_blank">
-                            <i class="fas fa-shopping-cart"></i> Ver Producto
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Product 8 -->
-                <div class="product-card" data-category="amigurumi">
-                    <div class="product-header">
-                        <div class="product-icon">🧶</div>
-                        <span class="product-type">EBOOK</span>
-                    </div>
-                    <div class="product-body">
-                        <h3 class="product-title">Ebook Amigurumis (Nícol Valentina)</h3>
-                        <span class="product-category">Amigurumi</span>
-                        <p class="product-code">Código: E102070698A</p>
-                        <a href="https://academyclasscursosonline.com/crochetpremium-3/?ref=E102070698A" class="btn-buy" target="_blank">
-                            <i class="fas fa-shopping-cart"></i> Ver Producto
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Product 9 -->
-                <div class="product-card" data-category="crochet">
-                    <div class="product-header">
-                        <div class="product-icon">🌸</div>
-                        <span class="product-type">EBOOK</span>
-                    </div>
-                    <div class="product-body">
-                        <h3 class="product-title">Ebook Flores a Crochet</h3>
-                        <span class="product-category">Crochet</span>
-                        <p class="product-code">Código: H101888647B</p>
-                        <a href="https://hotmart.com/es/marketplace/productos/ebook-flores-a-crochet/H94101314B?ref=H101888647B" class="btn-buy" target="_blank">
-                            <i class="fas fa-shopping-cart"></i> Ver Producto
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Product 10 -->
-                <div class="product-card" data-category="amigurumi">
-                    <div class="product-header">
-                        <div class="product-icon">👸</div>
-                        <span class="product-type">CURSO</span>
-                    </div>
-                    <div class="product-body">
-                        <h3 class="product-title">Princesas Amigurumis</h3>
-                        <span class="product-category">Amigurumi</span>
-                        <p class="product-code">Código: P96247947K</p>
-                        <a href="https://hotmart.com/es/marketplace/productos/hagsxd-princesas-amigurumis-slech/R92072855D?ref=P96247947K" class="btn-buy" target="_blank">
-                            <i class="fas fa-shopping-cart"></i> Ver Producto
-                        </a>
-                    </div>
+            <div class="featured-course">
+                <div class="course-icon">🧸</div>
+                <h3>Curso Amigurumi Master Premium</h3>
+                <p>Aprende crochet desde cero y crea personajes adorables con técnicas profesionales paso a paso.</p>
+                
+                <ul class="course-features">
+                    <li>Videoaulas en HD (4K)</li>
+                    <li>Desde cero, sin experiencia previa</li>
+                    <li>Acceso multi-dispositivo (app Hotmart Sparkle)</li>
+                    <li>Certificado de finalización</li>
+                    <li>Acceso vitalicio + actualizaciones</li>
+                    <li>Grupo exclusivo de alumnos</li>
+                    <li>7 días de garantía</li>
+                </ul>
+                
+                <a href="https://go.hotmart.com/U105777467A" target="_blank" class="btn-course">
+                    <i class="fas fa-shopping-cart"></i> Ver Curso Ahora
+                </a>
+                
+                <div class="guarantee-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Garantía de 7 días | Pago seguro Hotmart</span>
                 </div>
             </div>
         </section>
 
-        <!-- FAQ Section with Accordion -->
+        <!-- FAQ Accordion -->
         <section class="faq-section">
             <h2>❓ Preguntas Frecuentes</h2>
             <div class="accordion">
@@ -1565,7 +625,7 @@
                         <i class="fas fa-chevron-down"></i>
                     </button>
                     <div class="accordion-body">
-                        <p>No, <strong>no necesitas ninguna experiencia previa</strong>. Nuestros cursos y ebooks están diseñados para principiantes totales. Empiezas desde los puntos más básicos: cadeneta, punto bajo, punto alto, aumentos y disminuciones. Cada patrón incluye instrucciones paso a paso con imágenes y videos explicativos.</p>
+                        <p>No, <strong>no necesitas ninguna experiencia previa</strong>. El curso está diseñado para principiantes totales. Empiezas desde los puntos más básicos: cadeneta, punto bajo, punto alto, aumentos y disminuciones.</p>
                     </div>
                 </div>
 
@@ -1575,17 +635,13 @@
                         <i class="fas fa-chevron-down"></i>
                     </button>
                     <div class="accordion-body">
-                        <p>Los materiales básicos para iniciar son:</p>
+                        <p>Los materiales básicos son:</p>
                         <ul>
-                            <li>Ganchillos de diferentes tamaños (recomendado 3.5mm y 4mm)</li>
-                            <li>Hilado de algodón o acrílico de distintos colores</li>
-                            <li>Tijeras de punta roma</li>
-                            <li>Marcadores de puntos (puedes usar clips)</li>
-                            <li>Fibra de relleno sintético (para amigurumis)</li>
+                            <li>Ganchillos (3.5mm y 4mm recomendados)</li>
+                            <li>Hilado de algodón o acrílico</li>
+                            <li>Tijeras, marcadores, fibra de relleno</li>
                             <li>Aguja lanera para coser piezas</li>
-                            <li>¡Muchas ganas de aprender y crear!</li>
                         </ul>
-                        <p>En cada curso te damos una lista específica según el proyecto.</p>
                     </div>
                 </div>
 
@@ -1595,14 +651,7 @@
                         <i class="fas fa-chevron-down"></i>
                     </button>
                     <div class="accordion-body">
-                        <p><strong>Sí, es 100% seguro.</strong> Hotmart es una de las plataformas de educación online más grandes de Latinoamérica con más de 10 años en el mercado. Cuenta con:</p>
-                        <ul>
-                            <li>Encriptación SSL de 256 bits para todas las transacciones</li>
-                            <li>Certificación PCI DSS (estándar de seguridad de datos de la industria de tarjetas de pago)</li>
-                            <li>Procesadores de pago verificados internacionalmente</li>
-                            <li>Protección contra fraude y chargebacks</li>
-                        </ul>
-                        <p>Tus datos financieros nunca son almacenados en nuestros servidores.</p>
+                        <p><strong>Sí, es 100% seguro.</strong> Hotmart es la plataforma de educación online más grande de Latinoamérica. Cuenta con encriptación SSL, certificación PCI DSS y más de 10 años en el mercado.</p>
                     </div>
                 </div>
 
@@ -1612,7 +661,7 @@
                         <i class="fas fa-chevron-down"></i>
                     </button>
                     <div class="accordion-body">
-                        <p><strong>Sí, tienes 7 días de garantía incondicional.</strong> Si el curso o ebook no cumple con tus expectativas, puedes solicitar la devolución del 100% de tu dinero sin preguntas. El reembolso se procesa directamente por Hotmart y suele reflejarse en 5-10 días hábiles según tu método de pago.</p>
+                        <p><strong>Sí, 7 días de garantía incondicional.</strong> Si no te satisface, te devuelven el 100% de tu dinero sin preguntas.</p>
                     </div>
                 </div>
 
@@ -1622,41 +671,27 @@
                         <i class="fas fa-chevron-down"></i>
                     </button>
                     <div class="accordion-body">
-                        <p>Recibirás acceso <strong>inmediatamente después de la compra</strong> por correo electrónico. El proceso es:</p>
-                        <ul>
-                            <li>Recibes un email de Hotmart con tus credenciales de acceso</li>
-                            <li>Accedes desde cualquier dispositivo: celular, tablet, computadora o laptop</li>
-                            <li>Puedes usar la app <strong>Hotmart Sparkle</strong> en tu celular para ver offline</li>
-                            <li>El acceso es <strong>vitalicio</strong>: compra una vez, accede para siempre</li>
-                            <li>Incluye actualizaciones futuras sin costo adicional</li>
-                        </ul>
+                        <p>Recibes acceso <strong>inmediatamente</strong> por email. También puedes usar la app <strong>Hotmart Sparkle</strong> en tu celular. El acceso es <strong>vitalicio</strong>.</p>
                     </div>
                 </div>
 
                 <div class="accordion-item">
                     <button class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>¿Puedo vender los amigurumis que haga con estos patrones?</span>
+                        <span>¿Puedo vender los amigurumis que haga?</span>
                         <i class="fas fa-chevron-down"></i>
                     </button>
                     <div class="accordion-body">
-                        <p><strong>¡Absolutamente sí!</strong> Todos nuestros cursos y ebooks incluyen una <strong>licencia comercial</strong> que te permite:</p>
-                        <ul>
-                            <li>Vender los productos terminados en ferias, tiendas o redes sociales</li>
-                            <li>Crear tu propia marca de amigurumis personalizados</li>
-                            <li>Aceptar encargos y pedidos personalizados de clientes</li>
-                            <li>Usar las técnicas aprendidas para diseñar tus propios modelos</li>
-                        </ul>
-                        <p>Te enseñamos no solo a tejer, sino también a emprender y monetizar tu pasión.</p>
+                        <p><strong>¡Sí!</strong> El curso incluye licencia comercial. Puedes vender tus creaciones, aceptar encargos y crear tu propia marca.</p>
                     </div>
                 </div>
 
                 <div class="accordion-item">
                     <button class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>¿El ebook gratuito tiene los mismos patrones que los de pago?</span>
+                        <span>¿El ebook gratuito tiene los mismos patrones que el curso?</span>
                         <i class="fas fa-chevron-down"></i>
                     </button>
                     <div class="accordion-body">
-                        <p>El <strong>ebook gratuito</strong> es una guía introductoria con patrones básicos y tips fundamentales para principiantes. Los <strong>ebooks y cursos de pago</strong> contienen contenido avanzado: más de 60 llaveros, 250 minipatrones, técnicas profesionales, certificación y acceso a grupo exclusivo de alumnos. El ebook gratis es perfecto para empezar; los productos premium te llevan al siguiente nivel.</p>
+                        <p>El ebook gratuito es una <strong>guía introductoria</strong> con patrones básicos. El curso premium contiene contenido avanzado, certificación y acceso al grupo de alumnos.</p>
                     </div>
                 </div>
             </div>
@@ -1666,9 +701,11 @@
         <section class="legal-section" id="politicas">
             <h2>🔒 Políticas y Términos Legales</h2>
             
-            <div class="legal-badge">
-                <i class="fas fa-shield-alt"></i>
-                <span>Sitio verificado y seguro</span>
+            <div style="text-align: center;">
+                <div class="legal-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Sitio verificado y seguro</span>
+                </div>
             </div>
 
             <div class="legal-grid">
@@ -1680,28 +717,22 @@
                     </button>
                     <div class="legal-card-body">
                         <h4>1. Recopilación de Información</h4>
-                        <p>Recopilamos únicamente la información necesaria para brindarte nuestros servicios: nombre, correo electrónico, país y número de WhatsApp. Esta información se obtiene voluntariamente a través de nuestros formularios de registro.</p>
+                        <p>Recopilamos: nombre, email, país y WhatsApp. Solo lo necesario para enviarte el ebook y contactarte sobre productos relacionados.</p>
                         
                         <h4>2. Uso de la Información</h4>
-                        <p>Utilizamos tus datos para:</p>
-                        <ul>
-                            <li>Enviarte el ebook gratuito solicitado</li>
-                            <li>Contactarte sobre productos relacionados con crochet y amigurumis</li>
-                            <li>Enviar newsletters con tips, nuevos patrones y ofertas especiales</li>
-                            <li>Mejorar nuestros productos y servicios</li>
-                        </ul>
+                        <p>Utilizamos tus datos para enviar el ebook, newsletters con tips, nuevos patrones y ofertas especiales.</p>
                         
                         <h4>3. Protección de Datos</h4>
-                        <p>Tus datos personales están protegidos bajo los estándares de seguridad SSL y nunca son compartidos con terceros sin tu consentimiento explícito. No vendemos ni alquilamos tu información a otras empresas.</p>
+                        <p>Tus datos están protegidos con SSL. Nunca son compartidos con terceros sin tu consentimiento. No vendemos tu información.</p>
                         
-                        <h4>4. Cookies y Tecnologías</h4>
-                        <p>Utilizamos cookies esenciales para el funcionamiento del sitio y cookies analíticas (Google Analytics) para mejorar la experiencia del usuario. Puedes desactivar las cookies en tu navegador.</p>
+                        <h4>4. Cookies</h4>
+                        <p>Usamos cookies esenciales y analíticas (Google Analytics). Puedes desactivarlas en tu navegador.</p>
                         
                         <h4>5. Derechos del Usuario</h4>
-                        <p>Tienes derecho a acceder, rectificar, cancelar u oponerte al tratamiento de tus datos personales. Para ejercer estos derechos, contáctanos en <strong>eldisyera@gmail.com</strong>.</p>
+                        <p>Tienes derecho a acceder, rectificar o eliminar tus datos. Contacto: <strong>eldisyera@gmail.com</strong></p>
                         
                         <h4>6. Conservación</h4>
-                        <p>Conservamos tus datos mientras mantengas una relación activa con nosotros o hasta que solicites su eliminación. Los datos de compra se conservan por obligaciones fiscales durante el período legal requerido.</p>
+                        <p>Conservamos tus datos mientras mantengas relación activa o hasta que solicites su eliminación.</p>
                     </div>
                 </div>
 
@@ -1712,29 +743,29 @@
                         <i class="fas fa-chevron-down"></i>
                     </button>
                     <div class="legal-card-body">
-                        <h4>1. Aceptación de Términos</h4>
-                        <p>Al acceder y utilizar este sitio web, aceptas cumplir con estos términos y condiciones. Si no estás de acuerdo, por favor no utilices nuestros servicios.</p>
+                        <h4>1. Aceptación</h4>
+                        <p>Al usar este sitio aceptas estos términos. Si no estás de acuerdo, no uses nuestros servicios.</p>
                         
-                        <h4>2. Productos y Servicios</h4>
-                        <p>Ofrecemos cursos online, ebooks y patrones digitales de crochet y amigurumis. Todos los productos son entregados en formato digital. No realizamos envíos físicos.</p>
+                        <h4>2. Productos Digitales</h4>
+                        <p>Ofrecemos cursos online y ebooks digitales. No realizamos envíos físicos.</p>
                         
-                        <h4>3. Pagos y Facturación</h4>
-                        <p>Los pagos se procesan a través de Hotmart, plataforma segura certificada PCI DSS. Aceptamos tarjetas de crédito/débito, PayPal y otros métodos según tu país. Los precios están en USD y pueden variar según la tasa de cambio local.</p>
+                        <h4>3. Pagos</h4>
+                        <p>Procesados por Hotmart (PCI DSS). Aceptamos tarjetas, PayPal y otros métodos según país.</p>
                         
-                        <h4>4. Política de Reembolso</h4>
-                        <p>Ofrecemos garantía de 7 días para todos los productos de pago. Si no estás satisfecho, solicita el reembolso dentro de este período contactando a Hotmart directamente o escribiéndonos a eldisyera@gmail.com.</p>
+                        <h4>4. Reembolso</h4>
+                        <p>7 días de garantía. Solicita reembolso contactando a Hotmart o a eldisyera@gmail.com</p>
                         
                         <h4>5. Propiedad Intelectual</h4>
-                        <p>Todos los patrones, videos, textos e imágenes son propiedad de sus respectivos creadores. Al comprar, obtienes una licencia personal y comercial para uso ilimitado de los productos terminados. No está permitida la revenda o distribución del material digital.</p>
+                        <p>Obtienes licencia personal y comercial para productos terminados. No revendas el material digital.</p>
                         
-                        <h4>6. Limitación de Responsabilidad</h4>
-                        <p>No nos hacemos responsables por resultados comerciales específicos derivados del uso de nuestros cursos. El éxito del emprendimiento depende del esfuerzo y dedicación individual de cada alumno.</p>
+                        <h4>6. Limitación</h4>
+                        <p>No garantizamos resultados comerciales específicos. El éxito depende de tu esfuerzo individual.</p>
                         
                         <h4>7. Modificaciones</h4>
-                        <p>Nos reservamos el derecho de modificar estos términos en cualquier momento. Los cambios entrarán en vigor inmediatamente después de su publicación en el sitio.</p>
+                        <p>Podemos modificar estos términos en cualquier momento. Los cambios entran en vigor al publicarse.</p>
                         
                         <h4>8. Ley Aplicable</h4>
-                        <p>Estos términos se rigen por las leyes internacionales de comercio electrónico y las regulaciones de protección al consumidor aplicables en tu país de residencia.</p>
+                        <p>Rigen las leyes de comercio electrónico y protección al consumidor de tu país.</p>
                     </div>
                 </div>
 
@@ -1745,35 +776,23 @@
                         <i class="fas fa-chevron-down"></i>
                     </button>
                     <div class="legal-card-body">
-                        <h4>1. Seguridad del Sitio</h4>
-                        <p>Este sitio utiliza <strong>certificado SSL de 256 bits</strong> para encriptar todas las comunicaciones entre tu navegador y nuestro servidor. La URL comienza con "https://" garantizando una conexión segura.</p>
+                        <h4>1. SSL</h4>
+                        <p>Sitio con certificado SSL de 256 bits. URL segura con https://</p>
                         
-                        <h4>2. Procesamiento de Pagos</h4>
-                        <p>Los pagos son procesados directamente por <strong>Hotmart</strong>, que cumple con:</p>
-                        <ul>
-                            <li>Certificación PCI DSS Nivel 1 (máximo nivel de seguridad)</li>
-                            <li>Encriptación AES-256 en todos los datos sensibles</li>
-                            <li>Tokenización de tarjetas de crédito</li>
-                            <li>Monitoreo 24/7 contra fraudes y actividades sospechosas</li>
-                        </ul>
+                        <h4>2. Pagos Seguros</h4>
+                        <p>Hotmart procesa pagos con: PCI DSS Nivel 1, encriptación AES-256, tokenización y monitoreo 24/7.</p>
                         
-                        <h4>3. Protección de Datos Personales</h4>
-                        <p>Implementamos medidas técnicas y organizativas para proteger tu información:</p>
-                        <ul>
-                            <li>Firewalls de última generación</li>
-                            <li>Acceso restringido a bases de datos</li>
-                            <li>Auditorías de seguridad periódicas</li>
-                            <li>Backups automáticos diarios</li>
-                        </ul>
+                        <h4>3. Protección de Datos</h4>
+                        <p>Firewalls, acceso restringido, auditorías periódicas y backups diarios.</p>
                         
                         <h4>4. Enlaces Externos</h4>
-                        <p>Nuestros enlaces a Hotmart, Google Drive y redes sociales son oficiales y verificados. Sin embargo, te recomendamos verificar siempre la URL antes de ingresar datos personales.</p>
+                        <p>Enlaces a Hotmart, Google Drive y redes sociales son oficiales. Verifica siempre la URL.</p>
                         
                         <h4>5. Reporte de Incidentes</h4>
-                        <p>Si detectas actividad sospechosa o crees que tu información ha sido comprometida, contáctanos inmediatamente en <strong>eldisyera@gmail.com</strong> o por WhatsApp. Investigamos todos los reportes dentro de las 24 horas.</p>
+                        <p>¿Actividad sospechosa? Contáctanos inmediatamente: <strong>eldisyera@gmail.com</strong></p>
                         
-                        <h4>6. Actualizaciones de Seguridad</h4>
-                        <p>Mantenemos todas nuestras plataformas actualizadas con los últimos parches de seguridad. Realizamos escaneos de vulnerabilidades mensuales para garantizar la integridad del sitio.</p>
+                        <h4>6. Actualizaciones</h4>
+                        <p>Plataformas actualizadas con últimos parches de seguridad. Escaneos mensuales de vulnerabilidades.</p>
                     </div>
                 </div>
             </div>
@@ -1785,39 +804,30 @@
         <div class="social-links">
             <a href="https://www.youtube.com/@EldisYerar" target="_blank" class="youtube-btn" title="YouTube"><i class="fab fa-youtube"></i></a>
             <a href="https://www.facebook.com/profile.php?id=61565093347028" target="_blank" class="facebook-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com/curso_internacional_crochet?igsh=a2tsOTA4cTc2OG1v" target="_blank" class="instagram-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.instagram.com/curso_internacional_crochet" target="_blank" class="instagram-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
             <a href="https://wa.link/hifqij" target="_blank" class="whatsapp-btn" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-            <a href="mailto:eldisyera@gmail.com" class="email-btn" title="Enviar correo"><i class="fas fa-envelope"></i><span>eldisyera@gmail.com</span></a>
+            <a href="mailto:eldisyera@gmail.com" class="email-btn" title="Email"><i class="fas fa-envelope"></i><span>eldisyera@gmail.com</span></a>
         </div>
         <p>© 2026 Crochet y Amigurumis. Todos los derechos reservados.</p>
-        <p>Productos de Hotmart | Contacto: eldisyera@gmail.com | <a href="#politicas" style="color: white; text-decoration: underline;">Políticas y Términos</a></p>
+        <p>Productos de Hotmart | <a href="#politicas">Políticas y Términos</a></p>
     </footer>
 
-    <!-- WhatsApp Float Button -->
-    <a href="https://wa.link/hifqij" class="whatsapp-float" target="_blank" title="Contáctanos por WhatsApp">
+    <!-- WhatsApp Float -->
+    <a href="https://wa.link/hifqij" class="whatsapp-float" target="_blank" title="WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
     <script>
         // ============================================
-        // CONFIGURACIÓN - ENLACE GOOGLE DRIVE DEL EBOOK
-        // ============================================
-        const DRIVE_LINK = "https://drive.google.com/file/d/1Fylb1eRt7LTYs1TnLADMzQT5gEJgtOK8/view?usp=drive_link";
-        
-        // ============================================
-        // CAROUSEL FUNCTIONALITY
+        // CAROUSEL
         // ============================================
         let currentSlide = 0;
-        const slides = document.querySelectorAll('.carousel-slide');
-        const totalSlides = slides.length;
+        const totalSlides = 4;
         let autoSlideInterval;
 
         function updateCarousel() {
-            const wrapper = document.getElementById('carouselWrapper');
-            wrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
-            
-            // Update dots
-            document.querySelectorAll('.dot').forEach((dot, index) => {
+            document.getElementById('carouselWrapper').style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
+            document.querySelectorAll('.dot').forEach(function(dot, index) {
                 dot.classList.toggle('active', index === currentSlide);
             });
         }
@@ -1844,123 +854,98 @@
             autoSlideInterval = setInterval(autoSlide, 5000);
         }
 
-        // Start auto-slide
-        resetAutoSlide();
-
-        // Touch support for mobile
-        let touchStartX = 0;
-        let touchEndX = 0;
-        const carouselContainer = document.querySelector('.carousel-container');
-
-        carouselContainer.addEventListener('touchstart', (e) => {
+        // Touch support
+        var touchStartX = 0;
+        var carouselContainer = document.querySelector('.carousel-container');
+        carouselContainer.addEventListener('touchstart', function(e) {
             touchStartX = e.changedTouches[0].screenX;
         });
-
-        carouselContainer.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            if (touchStartX - touchEndX > 50) {
-                moveCarousel(1);
-            } else if (touchEndX - touchStartX > 50) {
-                moveCarousel(-1);
-            }
+        carouselContainer.addEventListener('touchend', function(e) {
+            var touchEndX = e.changedTouches[0].screenX;
+            if (touchStartX - touchEndX > 50) moveCarousel(1);
+            else if (touchEndX - touchStartX > 50) moveCarousel(-1);
         });
 
+        resetAutoSlide();
+
         // ============================================
-        // ACCORDION FUNCTIONALITY
+        // ACCORDION FAQ
         // ============================================
         function toggleAccordion(button) {
-            const item = button.parentElement;
-            const wasActive = item.classList.contains('active');
+            var item = button.parentElement;
+            var wasActive = item.classList.contains('active');
             
-            // Close all items
-            document.querySelectorAll('.accordion-item').forEach(acc => {
+            document.querySelectorAll('.accordion-item').forEach(function(acc) {
                 acc.classList.remove('active');
             });
             
-            // Open clicked item if it wasn't active
-            if (!wasActive) {
-                item.classList.add('active');
-            }
+            if (!wasActive) item.classList.add('active');
         }
 
         // ============================================
-        // LEGAL CARDS FUNCTIONALITY
+        // LEGAL CARDS
         // ============================================
         function toggleLegal(button) {
-            const card = button.parentElement;
-            const wasActive = card.classList.contains('active');
+            var card = button.parentElement;
+            var wasActive = card.classList.contains('active');
             
-            // Close all cards
-            document.querySelectorAll('.legal-card').forEach Continúo con la parte restante del JavaScript que se cortó:
-
-```javascript
-            c => {
+            document.querySelectorAll('.legal-card').forEach(function(c) {
                 c.classList.remove('active');
             });
             
-            // Open clicked card if it wasn't active
-            if (!wasActive) {
-                card.classList.add('active');
-            }
+            if (!wasActive) card.classList.add('active');
         }
 
         // ============================================
-        // Country Data
+        // COUNTRY SELECTOR
         // ============================================
-        const countries = [
-            { name: "Cuba", code: "+53", flag: "cu", iso: "CU" },
-            { name: "México", code: "+52", flag: "mx", iso: "MX" },
-            { name: "España", code: "+34", flag: "es", iso: "ES" },
-            { name: "Colombia", code: "+57", flag: "co", iso: "CO" },
-            { name: "Argentina", code: "+54", flag: "ar", iso: "AR" },
-            { name: "Chile", code: "+56", flag: "cl", iso: "CL" },
-            { name: "Perú", code: "+51", flag: "pe", iso: "PE" },
-            { name: "Venezuela", code: "+58", flag: "ve", iso: "VE" },
-            { name: "Ecuador", code: "+593", flag: "ec", iso: "EC" },
-            { name: "Guatemala", code: "+502", flag: "gt", iso: "GT" },
-            { name: "Rep. Dominicana", code: "+1", flag: "do", iso: "DO" },
-            { name: "Puerto Rico", code: "+1", flag: "pr", iso: "PR" },
-            { name: "Estados Unidos", code: "+1", flag: "us", iso: "US" },
-            { name: "Panamá", code: "+507", flag: "pa", iso: "PA" },
-            { name: "Costa Rica", code: "+506", flag: "cr", iso: "CR" },
-            { name: "Honduras", code: "+504", flag: "hn", iso: "HN" },
-            { name: "El Salvador", code: "+503", flag: "sv", iso: "SV" },
-            { name: "Nicaragua", code: "+505", flag: "ni", iso: "NI" },
-            { name: "Bolivia", code: "+591", flag: "bo", iso: "BO" },
-            { name: "Paraguay", code: "+595", flag: "py", iso: "PY" },
-            { name: "Uruguay", code: "+598", flag: "uy", iso: "UY" },
-            { name: "Brasil", code: "+55", flag: "br", iso: "BR" },
-            { name: "Italia", code: "+39", flag: "it", iso: "IT" },
-            { name: "Francia", code: "+33", flag: "fr", iso: "FR" },
-            { name: "Alemania", code: "+49", flag: "de", iso: "DE" }
+        var countries = [
+            { name: "Cuba", code: "+53", flag: "cu" },
+            { name: "México", code: "+52", flag: "mx" },
+            { name: "España", code: "+34", flag: "es" },
+            { name: "Colombia", code: "+57", flag: "co" },
+            { name: "Argentina", code: "+54", flag: "ar" },
+            { name: "Chile", code: "+56", flag: "cl" },
+            { name: "Perú", code: "+51", flag: "pe" },
+            { name: "Venezuela", code: "+58", flag: "ve" },
+            { name: "Ecuador", code: "+593", flag: "ec" },
+            { name: "Guatemala", code: "+502", flag: "gt" },
+            { name: "Rep. Dominicana", code: "+1", flag: "do" },
+            { name: "Puerto Rico", code: "+1", flag: "pr" },
+            { name: "Estados Unidos", code: "+1", flag: "us" },
+            { name: "Panamá", code: "+507", flag: "pa" },
+            { name: "Costa Rica", code: "+506", flag: "cr" },
+            { name: "Honduras", code: "+504", flag: "hn" },
+            { name: "El Salvador", code: "+503", flag: "sv" },
+            { name: "Nicaragua", code: "+505", flag: "ni" },
+            { name: "Bolivia", code: "+591", flag: "bo" },
+            { name: "Paraguay", code: "+595", flag: "py" },
+            { name: "Uruguay", code: "+598", flag: "uy" },
+            { name: "Brasil", code: "+55", flag: "br" },
+            { name: "Italia", code: "+39", flag: "it" },
+            { name: "Francia", code: "+33", flag: "fr" },
+            { name: "Alemania", code: "+49", flag: "de" }
         ];
 
-        let selectedCountry = countries[0];
-        let dropdownOpen = false;
+        var selectedCountry = countries[0];
+        var dropdownOpen = false;
 
-        // Initialize dropdown
         function initDropdown() {
-            const dropdown = document.getElementById('countryDropdown');
+            var dropdown = document.getElementById('countryDropdown');
             dropdown.innerHTML = '';
-            
-            countries.forEach(country => {
-                const option = document.createElement('div');
+            countries.forEach(function(country) {
+                var option = document.createElement('div');
                 option.className = 'country-option';
-                option.innerHTML = `
-                    <img src="https://flagcdn.com/w40/${country.flag}.png" alt="${country.name}">
-                    <span class="opt-name">${country.name}</span>
-                    <span class="opt-code">${country.code}</span>
-                `;
-                option.onclick = () => selectCountry(country);
+                option.innerHTML = '<img src="https://flagcdn.com/w40/' + country.flag + '.png" alt="' + country.name + '"><span class="opt-name">' + country.name + '</span><span class="opt-code">' + country.code + '</span>';
+                option.onclick = function() { selectCountry(country); };
                 dropdown.appendChild(option);
             });
         }
 
         function toggleDropdown() {
             dropdownOpen = !dropdownOpen;
-            const display = document.getElementById('countryDisplay');
-            const dropdown = document.getElementById('countryDropdown');
-            
+            var display = document.getElementById('countryDisplay');
+            var dropdown = document.getElementById('countryDropdown');
             if (dropdownOpen) {
                 display.classList.add('active');
                 dropdown.classList.add('show');
@@ -1972,170 +957,118 @@
 
         function selectCountry(country) {
             selectedCountry = country;
-            document.getElementById('selectedFlag').src = `https://flagcdn.com/w40/${country.flag}.png`;
+            document.getElementById('selectedFlag').src = 'https://flagcdn.com/w40/' + country.flag + '.png';
             document.getElementById('selectedName').textContent = country.name;
             document.getElementById('selectedCode').textContent = country.code;
-            
-            document.getElementById('prefixFlag').src = `https://flagcdn.com/w40/${country.flag}.png`;
+            document.getElementById('prefixFlag').src = 'https://flagcdn.com/w40/' + country.flag + '.png';
             document.getElementById('prefixCode').textContent = country.code;
-            
             toggleDropdown();
         }
 
-        // Close dropdown when clicking outside
         document.addEventListener('click', function(e) {
-            const selector = document.getElementById('countrySelector');
-            if (!selector.contains(e.target) && dropdownOpen) {
-                toggleDropdown();
-            }
+            var selector = document.getElementById('countrySelector');
+            if (!selector.contains(e.target) && dropdownOpen) toggleDropdown();
         });
 
         // ============================================
-        // GOOGLE DRIVE LINK FUNCTIONS
+        // GOOGLE DRIVE
         // ============================================
-        
+        var DRIVE_LINK = "https://drive.google.com/file/d/1Fylb1eRt7LTYs1TnLADMzQT5gEJgtOK8/view?usp=drive_link";
+
         function copyDriveLink() {
-            const input = document.getElementById('driveLinkInput');
+            var input = document.getElementById('driveLinkInput');
             input.select();
             input.setSelectionRange(0, 99999);
-            navigator.clipboard.writeText(input.value).then(() => {
-                alert('¡Enlace copiado al portapapeles!');
-            }).catch(() => {
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(input.value).then(function() {
+                    alert('¡Enlace copiado al portapapeles!');
+                });
+            } else {
                 document.execCommand('copy');
                 alert('¡Enlace copiado al portapapeles!');
-            });
+            }
         }
 
         // ============================================
-        // Form Submission
+        // FORM SUBMIT
         // ============================================
         document.getElementById('leadForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            const nombre = document.getElementById('nombre').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const whatsapp = document.getElementById('whatsapp').value.trim();
-            const delivery = document.querySelector('input[name="delivery"]:checked').value;
+            var nombre = document.getElementById('nombre').value.trim();
+            var email = document.getElementById('email').value.trim();
+            var whatsapp = document.getElementById('whatsapp').value.trim();
+            var delivery = document.querySelector('input[name="delivery"]:checked').value;
             
             if (!nombre || !email || !whatsapp) {
                 alert('Por favor completa todos los campos');
                 return;
             }
             
-            const fullPhone = selectedCountry.code + whatsapp;
+            var fullPhone = selectedCountry.code + whatsapp;
             
-            // Hide previous messages
             document.getElementById('successMessage').classList.remove('show');
             document.getElementById('driveLinkBox').classList.remove('show');
             
             if (delivery === 'email') {
-                // Open Gmail compose with pre-filled data
-                const gmailSubject = encodeURIComponent('Solicitud de Ebook Gratis - ' + nombre);
-                const gmailBody = encodeURIComponent(
-                    `Hola, soy ${nombre}.\n\n` +
-                    `Solicito mi ebook gratis.\n\n` +
-                    `Mis datos:\n` +
-                    `Nombre: ${nombre}\n` +
-                    `Email: ${email}\n` +
-                    `País: ${selectedCountry.name}\n` +
-                    `WhatsApp: ${fullPhone}\n\n` +
-                    `Gracias!`
+                var subject = encodeURIComponent('Solicitud de Ebook Gratis - ' + nombre);
+                var body = encodeURIComponent(
+                    'Hola, soy ' + nombre + '.\n\n' +
+                    'Solicito mi ebook gratis.\n\n' +
+                    'Mis datos:\n' +
+                    'Nombre: ' + nombre + '\n' +
+                    'Email: ' + email + '\n' +
+                    'País: ' + selectedCountry.name + '\n' +
+                    'WhatsApp: ' + fullPhone + '\n\n' +
+                    'Gracias!'
                 );
-                window.open(`https://mail.google.com/mail/?view=cm&to=eldisyera@gmail.com&su=${gmailSubject}&body=${gmailBody}`, '_blank');
-                
-                // Show success message
-                document.getElementById('successMessage').innerHTML = '<i class="fas fa-check-circle"></i> ¡Perfecto! Se abrió Gmail para que envíes tu solicitud. Te responderemos pronto.';
+                window.open('https://mail.google.com/mail/?view=cm&to=eldisyera@gmail.com&su=' + subject + '&body=' + body, '_blank');
+                document.getElementById('successMessage').innerHTML = '<i class="fas fa-check-circle"></i> ¡Perfecto! Se abrió Gmail para que envíes tu solicitud.';
                 document.getElementById('successMessage').classList.add('show');
                 
             } else if (delivery === 'whatsapp') {
-                // Open WhatsApp with pre-filled message
-                const mensaje = `¡Hola! Soy ${nombre}.%0A%0A` +
-                               `Solicito mi ebook gratis.%0A%0A` +
-                               `Mis datos:%0A` +
-                               `Nombre: ${nombre}%0A` +
-                               `Email: ${email}%0A` +
-                               `País: ${selectedCountry.name}%0A` +
-                               `WhatsApp: ${fullPhone}%0A%0A` +
-                               `Gracias!`;
-                window.open(`https://wa.me/5354356696?text=${mensaje}`, '_blank');
-                
-                // Show success message
+                var msg = '¡Hola! Soy ' + nombre + '.%0A%0A' +
+                         'Solicito mi ebook gratis.%0A%0A' +
+                         'Mis datos:%0A' +
+                         'Nombre: ' + nombre + '%0A' +
+                         'Email: ' + email + '%0A' +
+                         'País: ' + selectedCountry.name + '%0A' +
+                         'WhatsApp: ' + fullPhone + '%0A%0A' +
+                         'Gracias!';
+                window.open('https://wa.me/5354356696?text=' + msg, '_blank');
                 document.getElementById('successMessage').innerHTML = '<i class="fas fa-check-circle"></i> ¡Perfecto! Se abrió WhatsApp. Envía el mensaje para recibir tu ebook.';
                 document.getElementById('successMessage').classList.add('show');
                 
             } else if (delivery === 'drive') {
-                // Show Drive link box with NEW link
                 document.getElementById('driveLinkBox').classList.add('show');
-                
-                // Also notify admin via WhatsApp
-                const adminMsg = `Nuevo registro Ebook Drive:%0A` +
-                                `Nombre: ${nombre}%0A` +
-                                `Email: ${email}%0A` +
-                                `País: ${selectedCountry.name}%0A` +
-                                `WhatsApp: ${fullPhone}%0A` +
-                                `Enlace Drive: ${DRIVE_LINK}%0A` +
-                                `Fecha: ${new Date().toLocaleString()}`;
-                
-                // Open admin notification in new window (won't block user)
-                const adminWindow = window.open(`https://wa.me/5354356696?text=${adminMsg}`, '_blank');
-                if (!adminWindow) {
-                    console.log('Admin notification blocked by popup');
-                }
+                var adminMsg = 'Nuevo registro Ebook Drive:%0A' +
+                              'Nombre: ' + nombre + '%0A' +
+                              'Email: ' + email + '%0A' +
+                              'País: ' + selectedCountry.name + '%0A' +
+                              'WhatsApp: ' + fullPhone + '%0A' +
+                              'Fecha: ' + new Date().toLocaleString();
+                window.open('https://wa.me/5354356696?text=' + adminMsg, '_blank');
             }
             
-            // Reset form after 3 seconds
-            setTimeout(() => {
-                this.reset();
+            setTimeout(function() {
+                document.getElementById('leadForm').reset();
                 selectCountry(countries[0]);
             }, 3000);
             
-            // Hide messages after 15 seconds
-            setTimeout(() => {
+            setTimeout(function() {
                 document.getElementById('successMessage').classList.remove('show');
                 document.getElementById('driveLinkBox').classList.remove('show');
             }, 15000);
         });
 
         // ============================================
-        // Product Filter
+        // SMOOTH SCROLL
         // ============================================
-        function filterProducts(category) {
-            const cards = document.querySelectorAll('.product-card');
-            const buttons = document.querySelectorAll('.filter-btn');
-            
-            // Update active button
-            buttons.forEach(btn => {
-                btn.classList.remove('active');
-                if (btn.textContent.toLowerCase().includes(category) || 
-                    (category === 'todos' && btn.textContent === 'Todos')) {
-                    btn.classList.add('active');
-                }
-            });
-            
-            // Filter cards
-            cards.forEach(card => {
-                if (category === 'todos' || card.dataset.category === category) {
-                    card.style.display = 'block';
-                    card.style.animation = 'slideDown 0.5s ease';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-
-        // ============================================
-        // Smooth scroll for anchor links
-        // ============================================
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+                var target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         });
 
