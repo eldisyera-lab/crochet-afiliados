@@ -207,17 +207,26 @@
             transition: transform 0.5s ease-in-out;
             height: 400px;
         }
+        
         .carousel-slide {
             min-width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 40px;
+            padding: 30px 40px;
             text-align: center;
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
         }
-        .carousel-slide .slide-icon { font-size: 5rem; margin-bottom: 15px; }
+        .carousel-slide .slide-img {
+            width: 280px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
         .carousel-slide h3 { color: #667eea; font-size: 1.5rem; margin-bottom: 10px; }
         .carousel-slide p { color: #666; max-width: 500px; }
         .carousel-btn {
@@ -929,24 +938,24 @@
             <div class="carousel-container">
                 <div class="carousel-wrapper" id="carouselWrapper">
                     <div class="carousel-slide">
-                        <div class="slide-icon">🎬</div>
-                        <h3>80+ Lecciones en 4K</h3>
-                        <p>Más de 80 videoaulas paso a paso en alta definición para aprender desde cero sin experiencia previa.</p>
+                        <img src="carrusel-slide-1.jpg" alt="Bolso tejido con trapillo" class="slide-img">
+                        <h3>Bolsos Premium</h3>
+                        <p>Aprende a crear bolsos elegantes con acabados profesionales que tus clientes amarán.</p>
                     </div>
                     <div class="carousel-slide">
-                        <div class="slide-icon">👜</div>
-                        <h3>10+ Proyectos Prácticos</h3>
-                        <p>Carteras lineales, bolsos redondos, morrales en cuero y diseños premium para vender desde el primer día.</p>
+                        <img src="carrusel-slide-2.jpg" alt="Cartera tejida con trapillo" class="slide-img">
+                        <h3>Carteras de Diseño</h3>
+                        <p>Domina técnicas avanzadas para diseñar carteras únicas con detalles y accesorios.</p>
                     </div>
                     <div class="carousel-slide">
-                        <div class="slide-icon">💰</div>
-                        <h3>Conviértelo en Negocio</h3>
-                        <p>Aprende a fijar el precio justo, encuentra proveedores y crea tu marca de bolsos tejidos profesionales.</p>
+                        <img src="carrusel-slide-3.jpg" alt="Bolso redondo tejido" class="slide-img">
+                        <h3>Formas Creativas</h3>
+                        <p>Desde bolsos redondos hasta morrales, expande tu repertorio con proyectos variados.</p>
                     </div>
                     <div class="carousel-slide">
-                        <div class="slide-icon">🎁</div>
-                        <h3>7 Bonos Exclusivos</h3>
-                        <p>50 patrones, lista de proveedores, forro a mano/máquina, cestos personalizados y comunidad de crocheteras.</p>
+                        <img src="carrusel-slide-4.jpg" alt="Colección de bolsos tejidos" class="slide-img">
+                        <h3>Crea tu Colección</h3>
+                        <p>Con más de 10 proyectos prácticos, tendrás un catálogo completo para emprender.</p>
                     </div>
                 </div>
                 <button class="carousel-btn prev" onclick="moveCarousel(-1)"><i class="fas fa-chevron-left"></i></button>
