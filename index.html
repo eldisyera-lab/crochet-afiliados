@@ -611,7 +611,252 @@
             .ebook-preview { width: 160px; height: 220px; }
             .btn-submit { font-size: 1rem; padding: 15px; }
         }
-    </style>
+    
+        /* ===== OFERTA ESPECIAL ===== */
+        .offer-section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px 0;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .offer-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #ff6b6b, #feca57, #ff6b6b);
+            background-size: 200% 100%;
+            animation: gradientMove 2s linear infinite;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        .offer-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .offer-section h2 {
+            color: #333;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .offer-subtitle {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .offer-card {
+            max-width: 600px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            padding: 30px;
+            border: 2px solid #e0e0e0;
+        }
+
+        .price-comparison {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .price-regular, .price-special {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .price-label {
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .price-old {
+            font-size: 1.8rem;
+            color: #999;
+            text-decoration: line-through;
+            font-weight: 600;
+        }
+
+        .price-new {
+            font-size: 2.5rem;
+            color: #27ae60;
+            font-weight: 700;
+        }
+
+        .price-arrow {
+            color: #667eea;
+            font-size: 1.5rem;
+        }
+
+        .countdown-container {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border: 2px dashed #ff6b6b;
+        }
+
+        .countdown-label {
+            color: #ff6b6b;
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .countdown-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .countdown-number {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-size: 2rem;
+            font-weight: 700;
+            padding: 10px 15px;
+            border-radius: 8px;
+            min-width: 60px;
+            display: inline-block;
+        }
+
+        .countdown-text {
+            font-size: 0.75rem;
+            color: #888;
+            margin-top: 5px;
+            text-transform: uppercase;
+        }
+
+        .countdown-separator {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-top: -15px;
+        }
+
+        .offer-features {
+            text-align: left;
+            margin-bottom: 25px;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .offer-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        .offer-feature i {
+            color: #27ae60;
+            font-size: 1.1rem;
+        }
+
+        .btn-offer {
+            display: inline-block;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+            border: none;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 15px;
+        }
+
+        .btn-offer:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.5);
+        }
+
+        .offer-warning {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 12px 15px;
+            border-radius: 0 8px 8px 0;
+            text-align: left;
+            font-size: 0.9rem;
+            color: #856404;
+            margin-bottom: 15px;
+        }
+
+        .offer-warning i {
+            color: #ffc107;
+            margin-right: 5px;
+        }
+
+        .offer-security {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        .offer-security i {
+            color: #27ae60;
+        }
+
+        @media (max-width: 768px) {
+            .offer-section { padding: 25px 15px; }
+            .offer-section h2 { font-size: 1.5rem; }
+            .price-comparison { flex-direction: column; gap: 10px; }
+            .price-arrow { transform: rotate(90deg); }
+            .countdown-number { font-size: 1.5rem; padding: 8px 12px; min-width: 50px; }
+            .btn-offer { font-size: 1rem; padding: 15px; }
+        }
+
+</style>
 <base target="_blank">
 </head>
 <body>
@@ -711,6 +956,82 @@
                     <button class="dot" onclick="goToSlide(1)"></button>
                     <button class="dot" onclick="goToSlide(2)"></button>
                     <button class="dot" onclick="goToSlide(3)"></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== OFERTA ESPECIAL ===== -->
+        <section class="offer-section" id="oferta">
+            <div class="offer-badge">🔥 OFERTA POR TIEMPO LIMITADO</div>
+            <h2>¡No pagues el precio completo!</h2>
+            <p class="offer-subtitle">Accede al curso completo con un descuento exclusivo solo por hoy</p>
+
+            <div class="offer-card">
+                <div class="price-comparison">
+                    <div class="price-regular">
+                        <span class="price-label">Precio regular</span>
+                        <span class="price-old">$97 USD</span>
+                    </div>
+                    <div class="price-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    <div class="price-special">
+                        <span class="price-label">Precio único hoy</span>
+                        <span class="price-new">$47 USD</span>
+                    </div>
+                </div>
+
+                <div class="countdown-container">
+                    <p class="countdown-label">⏰ Esta oferta expira en:</p>
+                    <div class="countdown" id="countdown">
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="hours">04</span>
+                            <span class="countdown-text">horas</span>
+                        </div>
+                        <div class="countdown-separator">:</div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="minutes">59</span>
+                            <span class="countdown-text">minutos</span>
+                        </div>
+                        <div class="countdown-separator">:</div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="seconds">59</span>
+                            <span class="countdown-text">segundos</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="offer-features">
+                    <div class="offer-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Acceso vitalicio al curso completo</span>
+                    </div>
+                    <div class="offer-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>7 bonos exclusivos incluidos</span>
+                    </div>
+                    <div class="offer-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Certificación al finalizar</span>
+                    </div>
+                    <div class="offer-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Garantía 7 días de devolución</span>
+                    </div>
+                </div>
+
+                <a href="https://go.hotmart.com/I105828523Q?ap=dddd" target="_blank" class="btn-offer">
+                    <i class="fas fa-fire"></i> ¡SÍ, QUIERO MI DESCUENTO AHORA!
+                </a>
+
+                <p class="offer-warning">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <strong>Atención:</strong> Este precio especial puede desaparecer en cualquier momento. No dejes pasar esta oportunidad única.
+                </p>
+
+                <div class="offer-security">
+                    <i class="fas fa-lock"></i>
+                    <span>Pago 100% seguro por Hotmart | Encriptación SSL</span>
                 </div>
             </div>
         </section>
@@ -1332,6 +1653,44 @@
 
         // Initialize
         initDropdown();
-    </script>
+    
+
+        // ===== COUNTDOWN TIMER =====
+        function startCountdown() {
+            var hoursEl = document.getElementById('hours');
+            var minutesEl = document.getElementById('minutes');
+            var secondsEl = document.getElementById('seconds');
+
+            // Set countdown to 4 hours from now
+            var endTime = new Date();
+            endTime.setHours(endTime.getHours() + 4);
+
+            function updateCountdown() {
+                var now = new Date();
+                var diff = endTime - now;
+
+                if (diff <= 0) {
+                    // Reset to 4 hours when expired
+                    endTime = new Date();
+                    endTime.setHours(endTime.getHours() + 4);
+                    diff = endTime - now;
+                }
+
+                var hours = Math.floor(diff / (1000 * 60 * 60));
+                var minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                hoursEl.textContent = String(hours).padStart(2, '0');
+                minutesEl.textContent = String(minutes).padStart(2, '0');
+                secondsEl.textContent = String(seconds).padStart(2, '0');
+            }
+
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        }
+
+        startCountdown();
+
+</script>
 </body>
 </html>
