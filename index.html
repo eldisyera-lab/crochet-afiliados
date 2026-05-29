@@ -1129,7 +1129,7 @@
                 <div class="drive-link-box" id="driveLinkBox">
                     <h3><i class="fab fa-google-drive"></i> ¡Tu Ebook está listo!</h3>
                     <p>Haz clic para descargar directamente:</p>
-                    <a href="https://drive.google.com/uc?export=download&id=1Fylb1eRt7LTYs1TnLADMzQT5gEJgtOK8" class="btn-download">
+                    <a href="https://drive.google.com/file/d/1x4xRGYoFDxr5Wx5R6LK9zBoMiYk6wuaM/view?usp=drive_link" class="btn-download">
                         <i class="fas fa-download"></i> Descargar Ebook Ahora
                     </a>
                     <div class="drive-instructions">
@@ -1390,7 +1390,7 @@
         <div class="whatsapp-tooltip" id="whatsappTooltip">
             <p><strong>¿Necesitas el ebook?</strong></p>
             <p>Envíame el link de Google Drive por WhatsApp o Email y te lo envío de inmediato:</p>
-            <a href="https://drive.google.com/file/d/1Fylb1eRt7LTYs1TnLADMzQT5gEJgtOK8/view?usp=drive_link" target="_blank" class="tooltip-link">
+            <a href="https://drive.google.com/file/d/1x4xRGYoFDxr5Wx5R6LK9zBoMiYk6wuaM/view?usp=drive_link" target="_blank" class="tooltip-link">
                 <i class="fab fa-google-drive"></i> Ver Link del Ebook
             </a>
         </div>
@@ -1603,6 +1603,8 @@
                           'Email: ' + email + '\n' +
                           'Pais: ' + selectedCountry.name + '\n' +
                           'WhatsApp: ' + fullPhone + '\n\n' +
+                          'Aquí está el link para descargar mi ebook:\n' +
+                          'https://drive.google.com/file/d/1x4xRGYoFDxr5Wx5R6LK9zBoMiYk6wuaM/view?usp=drive_link\n\n' +
                           'Gracias!';
                 var mailtoUrl = 'mailto:eldisyera@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
                 window.open(mailtoUrl, '_blank');
@@ -1618,6 +1620,8 @@
                          'Email: ' + email + '%0A' +
                          'Pais: ' + selectedCountry.name + '%0A' +
                          'WhatsApp: ' + fullPhone + '%0A%0A' +
+                         'Aquí está el link para descargar el ebook:%0A' +
+                         'https://drive.google.com/file/d/1x4xRGYoFDxr5Wx5R6LK9zBoMiYk6wuaM/view?usp=drive_link%0A%0A' +
                          'Gracias!';
                 window.open('https://wa.me/5354356696?text=' + msg, '_blank');
                 document.getElementById('successMessage').innerHTML = '<i class="fas fa-check-circle"></i> Se abrió WhatsApp. Envía el mensaje para recibir tu ebook.';
