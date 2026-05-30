@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
         body {
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -17,492 +16,189 @@
             line-height: 1.6;
             overflow-x: hidden;
         }
-        
         .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
 
-        /* ===== NAVBAR ===== */
+        /* NAVBAR */
         .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(102, 126, 234, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            position: fixed; top: 0; left: 0; right: 0;
+            background: rgba(102, 126, 234, 0.95); backdrop-filter: blur(10px);
+            z-index: 1000; padding: 15px 20px;
+            display: flex; justify-content: space-between; align-items: center;
             box-shadow: 0 2px 20px rgba(0,0,0,0.1);
         }
-        
-        .navbar-brand {
-            color: white;
-            font-weight: 700;
-            font-size: 1.2rem;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .hamburger-btn {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px;
-            transition: background 0.3s;
-        }
-        
+        .navbar-brand { color: white; font-weight: 700; font-size: 1.2rem; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+        .hamburger-btn { background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 8px; transition: background 0.3s; }
         .hamburger-btn:hover { background: rgba(255,255,255,0.2); }
-
-        /* ===== SIDEBAR ===== */
-        .sidebar-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.5);
-            z-index: 1001;
-            backdrop-filter: blur(3px);
-        }
-        
+        .sidebar-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 1001; backdrop-filter: blur(3px); }
         .sidebar-overlay.active { display: block; }
-        
-        .sidebar {
-            position: fixed;
-            top: 0;
-            right: -320px;
-            width: 320px;
-            height: 100vh;
-            background: white;
-            z-index: 1002;
-            transition: right 0.3s ease;
-            overflow-y: auto;
-            box-shadow: -5px 0 30px rgba(0,0,0,0.2);
-        }
-        
+        .sidebar { position: fixed; top: 0; right: -320px; width: 320px; height: 100vh; background: white; z-index: 1002; transition: right 0.3s ease; overflow-y: auto; box-shadow: -5px 0 30px rgba(0,0,0,0.2); }
         .sidebar.active { right: 0; }
-        
-        .sidebar-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 30px 20px;
-            color: white;
-            position: relative;
-        }
-        
+        .sidebar-header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px 20px; color: white; position: relative; }
         .sidebar-header h3 { font-size: 1.3rem; margin-bottom: 5px; }
         .sidebar-header p { font-size: 0.9rem; opacity: 0.9; }
-        
-        .close-sidebar {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            width: 35px;
-            height: 35px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: background 0.3s;
-        }
-        
+        .close-sidebar { position: absolute; top: 15px; right: 15px; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: background 0.3s; }
         .close-sidebar:hover { background: rgba(255,255,255,0.2); }
-        
         .sidebar-nav { padding: 20px; }
-        
-        .sidebar-nav a {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 15px;
-            color: #333;
-            text-decoration: none;
-            border-radius: 10px;
-            margin-bottom: 5px;
-            transition: all 0.3s;
-            font-weight: 500;
-        }
-        
-        .sidebar-nav a:hover {
-            background: #f0f0f0;
-            color: #667eea;
-            transform: translateX(5px);
-        }
-        
+        .sidebar-nav a { display: flex; align-items: center; gap: 12px; padding: 15px; color: #333; text-decoration: none; border-radius: 10px; margin-bottom: 5px; transition: all 0.3s; font-weight: 500; }
+        .sidebar-nav a:hover { background: #f0f0f0; color: #667eea; transform: translateX(5px); }
         .sidebar-nav a i { color: #667eea; width: 20px; }
-        
-        .sidebar-social {
-            padding: 20px;
-            border-top: 1px solid #eee;
-        }
-        
-        .sidebar-social p {
-            font-size: 0.85rem;
-            color: #888;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        
-        .sidebar-social-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-        
-        .sidebar-social-links a {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-decoration: none;
-            font-size: 1.2rem;
-            transition: transform 0.3s;
-        }
-        
+        .sidebar-social { padding: 20px; border-top: 1px solid #eee; }
+        .sidebar-social p { font-size: 0.85rem; color: #888; margin-bottom: 15px; text-align: center; }
+        .sidebar-social-links { display: flex; justify-content: center; gap: 15px; }
+        .sidebar-social-links a { width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; font-size: 1.2rem; transition: transform 0.3s; }
         .sidebar-social-links a:hover { transform: scale(1.15); }
         .sidebar-social-links .yt { background: #ff0000; }
         .sidebar-social-links .fb { background: #1877f2; }
         .sidebar-social-links .ig { background: #e4405f; }
         .sidebar-social-links .wa { background: #25d366; }
         .sidebar-social-links .em { background: #667eea; }
-
         .navbar-spacer { height: 70px; }
 
-        /* ===== HEADER ===== */
+        /* HEADER */
         header { text-align: center; padding: 40px 20px 20px; color: white; }
         header h1 { font-size: 2.5rem; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
         header p { font-size: 1.2rem; opacity: 0.9; }
 
-        /* ===== CAROUSEL ===== */
+        /* CAROUSEL */
         .carousel-section { margin: 30px 0; }
-        .carousel-container {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-        }
-        .carousel-wrapper {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-            height: 400px;
-        }
-        
-        .carousel-slide {
-            min-width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 30px 40px;
-            text-align: center;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        }
-        .carousel-slide .slide-img {
-            width: 280px;
-            height: 220px;
-            object-fit: cover;
-            border-radius: 15px;
-            margin-bottom: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
-
+        .carousel-container { position: relative; max-width: 800px; margin: 0 auto; background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+        .carousel-wrapper { display: flex; transition: transform 0.5s ease-in-out; height: 400px; }
+        .carousel-slide { min-width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 30px 40px; text-align: center; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); }
+        .carousel-slide .slide-img { width: 280px; height: 220px; object-fit: cover; border-radius: 15px; margin-bottom: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
         .carousel-slide h3 { color: #667eea; font-size: 1.5rem; margin-bottom: 10px; }
         .carousel-slide p { color: #666; max-width: 500px; }
-        .carousel-btn {
-            position: absolute; top: 50%; transform: translateY(-50%);
-            background: rgba(102, 126, 234, 0.8); color: white; border: none;
-            width: 50px; height: 50px; border-radius: 50%; cursor: pointer;
-            font-size: 1.2rem; z-index: 10; display: flex; align-items: center; justify-content: center;
-            transition: all 0.3s;
-        }
+        .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(102, 126, 234, 0.8); color: white; border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; font-size: 1.2rem; z-index: 10; display: flex; align-items: center; justify-content: center; transition: all 0.3s; }
         .carousel-btn:hover { background: #667eea; transform: translateY(-50%) scale(1.1); }
         .carousel-btn.prev { left: 20px; }
         .carousel-btn.next { right: 20px; }
-        .carousel-dots {
-            display: flex; justify-content: center; gap: 10px;
-            padding: 20px; background: white;
-        }
-        .dot {
-            width: 12px; height: 12px; border-radius: 50%;
-            background: #ddd; cursor: pointer; border: none; transition: all 0.3s;
-        }
+        .carousel-dots { display: flex; justify-content: center; gap: 10px; padding: 20px; background: white; }
+        .dot { width: 12px; height: 12px; border-radius: 50%; background: #ddd; cursor: pointer; border: none; transition: all 0.3s; }
         .dot.active { background: #667eea; transform: scale(1.2); }
 
-        /* ===== LEAD MAGNET ===== */
-        .lead-magnet {
-            background: white; border-radius: 20px; padding: 40px;
-            margin: 30px 0; box-shadow: 0 20px 60px rgba(0,0,0,0.3); text-align: center;
-        }
+        /* LEAD MAGNET */
+        .lead-magnet { background: white; border-radius: 20px; padding: 40px; margin: 30px 0; box-shadow: 0 20px 60px rgba(0,0,0,0.3); text-align: center; }
         .lead-magnet h2 { color: #667eea; font-size: 2rem; margin-bottom: 15px; }
         .lead-magnet .subtitle { color: #666; font-size: 1.1rem; margin-bottom: 30px; }
-        .ebook-preview {
-            width: 220px; height: 300px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 10px; margin: 0 auto 30px;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            color: white; font-size: 1.2rem; font-weight: 600;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-        }
+        .ebook-preview { width: 220px; height: 300px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 10px; margin: 0 auto 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; font-size: 1.2rem; font-weight: 600; box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4); }
         .ebook-preview::before { content: '🧶'; font-size: 4rem; margin-bottom: 10px; }
         .ebook-preview span { padding: 0 20px; text-align: center; }
 
+        /* FORM */
         .form-container { max-width: 500px; margin: 0 auto; }
         .form-group { margin-bottom: 20px; text-align: left; }
         .form-group label { display: block; margin-bottom: 8px; color: #555; font-weight: 600; }
-        .form-group input {
-            width: 100%; padding: 15px; border: 2px solid #e0e0e0;
-            border-radius: 10px; font-size: 1rem; font-family: 'Poppins', sans-serif;
-            transition: all 0.3s;
-        }
+        .form-group input { width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 1rem; font-family: 'Poppins', sans-serif; transition: all 0.3s; }
         .form-group input:focus { outline: none; border-color: #667eea; box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1); }
-
         .country-selector { position: relative; width: 100%; }
-        .country-display {
-            display: flex; align-items: center; gap: 10px; padding: 15px;
-            border: 2px solid #e0e0e0; border-radius: 10px; cursor: pointer;
-            background: white; font-family: 'Poppins', sans-serif; font-size: 1rem;
-            transition: all 0.3s;
-        }
+        .country-display { display: flex; align-items: center; gap: 10px; padding: 15px; border: 2px solid #e0e0e0; border-radius: 10px; cursor: pointer; background: white; font-family: 'Poppins', sans-serif; font-size: 1rem; transition: all 0.3s; }
         .country-display:hover, .country-display.active { border-color: #667eea; box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1); }
         .country-display img { width: 28px; height: 20px; object-fit: cover; border-radius: 3px; flex-shrink: 0; }
         .country-display .country-name { flex: 1; color: #333; }
         .country-display .country-code { color: #667eea; font-weight: 600; }
         .country-display i { color: #888; transition: transform 0.3s; }
         .country-display.active i { transform: rotate(180deg); }
-        .country-dropdown {
-            display: none; position: absolute; top: 100%; left: 0; right: 0;
-            background: white; border: 2px solid #e0e0e0; border-top: none;
-            border-radius: 0 0 10px 10px; max-height: 250px; overflow-y: auto;
-            z-index: 100; box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
+        .country-dropdown { display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; border: 2px solid #e0e0e0; border-top: none; border-radius: 0 0 10px 10px; max-height: 250px; overflow-y: auto; z-index: 100; box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
         .country-dropdown.show { display: block; }
-        .country-option {
-            display: flex; align-items: center; gap: 10px; padding: 12px 15px;
-            cursor: pointer; transition: background 0.2s;
-        }
+        .country-option { display: flex; align-items: center; gap: 10px; padding: 12px 15px; cursor: pointer; transition: background 0.2s; }
         .country-option:hover { background: #f0f0f0; }
         .country-option img { width: 28px; height: 20px; object-fit: cover; border-radius: 3px; flex-shrink: 0; }
         .country-option .opt-name { flex: 1; color: #333; }
         .country-option .opt-code { color: #667eea; font-weight: 600; font-size: 0.9rem; }
-
         .phone-input-wrapper { display: flex; gap: 10px; align-items: stretch; }
-        .phone-prefix {
-            display: flex; align-items: center; gap: 8px; padding: 15px;
-            background: #f8f9fa; border: 2px solid #e0e0e0; border-radius: 10px;
-            font-weight: 600; color: #667eea; white-space: nowrap; flex-shrink: 0;
-        }
+        .phone-prefix { display: flex; align-items: center; gap: 8px; padding: 15px; background: #f8f9fa; border: 2px solid #e0e0e0; border-radius: 10px; font-weight: 600; color: #667eea; white-space: nowrap; flex-shrink: 0; }
         .phone-prefix img { width: 24px; height: 18px; object-fit: cover; border-radius: 3px; }
-
-        .delivery-options { margin-bottom: 20px; text-align: left; }
-        .delivery-options > label { display: block; margin-bottom: 10px; color: #555; font-weight: 600; }
-        .delivery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-        .delivery-option { position: relative; cursor: pointer; }
-        .delivery-option input { position: absolute; opacity: 0; width: 0; height: 0; }
-        .delivery-card {
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            padding: 15px 10px; border: 2px solid #e0e0e0; border-radius: 10px;
-            transition: all 0.3s; text-align: center; gap: 5px;
-        }
-        .delivery-option input:checked + .delivery-card {
-            border-color: #667eea; background: rgba(102, 126, 234, 0.05);
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-        }
-        .delivery-card i { font-size: 1.5rem; color: #667eea; }
-        .delivery-card span { font-size: 0.8rem; font-weight: 600; color: #555; }
-
-        .btn-submit {
-            width: 100%; padding: 18px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white; border: none; border-radius: 10px;
-            font-size: 1.1rem; font-weight: 600; cursor: pointer;
-            font-family: 'Poppins', sans-serif; transition: transform 0.3s, box-shadow 0.3s;
-        }
+        .btn-submit { width: 100%; padding: 18px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 10px; font-size: 1.1rem; font-weight: 600; cursor: pointer; font-family: 'Poppins', sans-serif; transition: transform 0.3s, box-shadow 0.3s; }
         .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4); }
-
         .privacy-note { margin-top: 15px; font-size: 0.85rem; color: #888; }
 
-        .drive-link-box {
-            display: none; background: linear-gradient(135deg, #e8f5e9 0%, #e3f2fd 100%);
-            border: 2px solid #34a853; border-radius: 15px; padding: 25px;
-            margin-top: 20px; text-align: center;
+        /* BOTÓN VERDE PARPADEANTE DE DESCARGA */
+        .download-section { margin-top: 30px; padding: 30px; background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); border-radius: 20px; border: 3px solid #4caf50; }
+        .download-section h3 { color: #2e7d32; font-size: 1.3rem; margin-bottom: 20px; }
+        .btn-download-blink {
+            display: inline-block;
+            width: 100%;
+            padding: 22px 30px;
+            background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 15px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            cursor: pointer;
+            border: none;
+            font-family: 'Poppins', sans-serif;
+            animation: blinkGreen 1.5s ease-in-out infinite;
+            box-shadow: 0 10px 30px rgba(76, 175, 80, 0.4);
+            transition: transform 0.3s;
         }
-        .drive-link-box.show { display: block; animation: slideDown 0.5s ease; }
-        .drive-link-box h3 { color: #34a853; margin-bottom: 15px; font-size: 1.1rem; }
-        .drive-link-box p { color: #555; font-size: 0.9rem; margin-bottom: 15px; }
-        .drive-link-container {
-            display: flex; gap: 10px; align-items: center;
-            background: white; border: 2px solid #e0e0e0; border-radius: 10px;
-            padding: 10px 15px; margin-bottom: 15px;
+        .btn-download-blink:hover { transform: translateY(-3px) scale(1.02); }
+        .btn-download-blink i { margin-right: 10px; font-size: 1.4rem; }
+        @keyframes blinkGreen {
+            0%, 100% { box-shadow: 0 10px 30px rgba(76, 175, 80, 0.4); transform: scale(1); }
+            50% { box-shadow: 0 15px 40px rgba(76, 175, 80, 0.7); transform: scale(1.03); }
         }
-        .drive-link-container input {
-            flex: 1; border: none; background: transparent;
-            font-family: 'Poppins', sans-serif; font-size: 0.85rem; color: #333; outline: none;
-        }
-        .drive-link-container button {
-            background: #34a853; color: white; border: none; border-radius: 8px;
-            padding: 8px 15px; cursor: pointer; font-family: 'Poppins', sans-serif;
-            font-weight: 600; font-size: 0.85rem; transition: opacity 0.3s; white-space: nowrap;
-        }
-        .drive-link-container button:hover { opacity: 0.9; }
-        .drive-link-box .btn-download {
-            display: inline-block; background: linear-gradient(135deg, #34a853 0%, #1e8e3e 100%);
-            color: white; text-decoration: none; padding: 12px 30px;
-            border-radius: 10px; font-weight: 600; transition: transform 0.3s, box-shadow 0.3s;
-            border: none; cursor: pointer; font-family: 'Poppins', sans-serif; font-size: 1rem;
-        }
-        .drive-link-box .btn-download:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(52, 168, 83, 0.4); }
-        .drive-instructions {
-            background: #fff3e0; border-left: 4px solid #ff9800;
-            padding: 12px 15px; margin-top: 15px; border-radius: 0 8px 8px 0; text-align: left;
-        }
-        .drive-instructions p { margin: 0; font-size: 0.85rem; color: #e65100; }
-        .drive-instructions ol { margin: 8px 0 0 18px; padding: 0; font-size: 0.85rem; color: #555; }
-        .drive-instructions li { margin-bottom: 4px; }
+        .download-hint { margin-top: 15px; font-size: 0.85rem; color: #555; }
+        .download-hint i { color: #4caf50; }
 
-        .success-message {
-            display: none; background: #d4edda; color: #155724;
-            padding: 20px; border-radius: 10px; margin-top: 20px; border: 1px solid #c3e6cb;
-        }
+        /* MENSAJES */
+        .success-message { display: none; background: #d4edda; color: #155724; padding: 20px; border-radius: 10px; margin-top: 20px; border: 1px solid #c3e6cb; }
         .success-message.show { display: block; animation: slideDown 0.5s ease; }
+        .error-message { display: none; background: #f8d7da; color: #721c24; padding: 15px; border-radius: 10px; margin-top: 15px; border: 1px solid #f5c6cb; }
+        .error-message.show { display: block; animation: slideDown 0.5s ease; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
 
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* ===== COURSE ===== */
-        .course-section {
-            background: white; border-radius: 20px; padding: 40px;
-            margin: 30px 0; box-shadow: 0 20px 60px rgba(0,0,0,0.3); text-align: center;
-        }
+        /* COURSE */
+        .course-section { background: white; border-radius: 20px; padding: 40px; margin: 30px 0; box-shadow: 0 20px 60px rgba(0,0,0,0.3); text-align: center; }
         .course-section h2 { color: #667eea; font-size: 2rem; margin-bottom: 10px; }
         .course-section .section-subtitle { color: #666; margin-bottom: 30px; }
-        .featured-course {
-            max-width: 500px; margin: 0 auto;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 20px; padding: 40px; color: white;
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
-        }
+        .featured-course { max-width: 500px; margin: 0 auto; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 20px; padding: 40px; color: white; box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3); }
         .featured-course .course-icon { font-size: 4rem; margin-bottom: 15px; }
         .featured-course h3 { font-size: 1.5rem; margin-bottom: 10px; }
         .featured-course p { opacity: 0.9; margin-bottom: 20px; font-size: 1rem; }
         .featured-course .course-features { text-align: left; margin: 20px 0; font-size: 0.95rem; }
-        .featured-course .course-features li {
-            margin-bottom: 8px; list-style: none; display: flex; align-items: center; gap: 8px;
-        }
+        .featured-course .course-features li { margin-bottom: 8px; list-style: none; display: flex; align-items: center; gap: 8px; }
         .featured-course .course-features li::before { content: '✅'; }
-        .btn-course {
-            display: inline-block; background: white; color: #667eea;
-            text-decoration: none; padding: 15px 40px; border-radius: 10px;
-            font-weight: 700; font-size: 1.1rem; transition: all 0.3s;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-        }
+        .btn-course { display: inline-block; background: white; color: #667eea; text-decoration: none; padding: 15px 40px; border-radius: 10px; font-weight: 700; font-size: 1.1rem; transition: all 0.3s; box-shadow: 0 5px 20px rgba(0,0,0,0.2); }
         .btn-course:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-        .guarantee-badge {
-            display: inline-flex; align-items: center; gap: 8px;
-            margin-top: 15px; padding: 8px 16px; background: rgba(255,255,255,0.2);
-            border-radius: 20px; font-size: 0.85rem;
-        }
+        .guarantee-badge { display: inline-flex; align-items: center; gap: 8px; margin-top: 15px; padding: 8px 16px; background: rgba(255,255,255,0.2); border-radius: 20px; font-size: 0.85rem; }
 
-        /* ===== FAQ ===== */
-        .faq-section {
-            background: white; border-radius: 20px; padding: 40px;
-            margin: 30px 0; box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-        }
+        /* FAQ */
+        .faq-section { background: white; border-radius: 20px; padding: 40px; margin: 30px 0; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
         .faq-section h2 { text-align: center; color: #667eea; font-size: 2rem; margin-bottom: 30px; }
         .accordion { max-width: 800px; margin: 0 auto; }
-        .accordion-item {
-            border: 2px solid #e0e0e0; border-radius: 12px;
-            margin-bottom: 15px; overflow: hidden; transition: all 0.3s;
-        }
+        .accordion-item { border: 2px solid #e0e0e0; border-radius: 12px; margin-bottom: 15px; overflow: hidden; transition: all 0.3s; }
         .accordion-item.active { border-color: #667eea; box-shadow: 0 5px 20px rgba(102, 126, 234, 0.1); }
-        .accordion-header {
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 20px 25px; background: #f8f9fa; cursor: pointer; border: none;
-            width: 100%; font-family: 'Poppins', sans-serif; font-size: 1rem;
-            font-weight: 600; color: #333; text-align: left;
-        }
+        .accordion-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 25px; background: #f8f9fa; cursor: pointer; border: none; width: 100%; font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 600; color: #333; text-align: left; }
         .accordion-header:hover { background: #e3f2fd; }
         .accordion-header i { color: #667eea; transition: transform 0.3s; font-size: 1.2rem; }
         .accordion-item.active .accordion-header i { transform: rotate(180deg); }
-        .accordion-body {
-            max-height: 0; overflow: hidden;
-            transition: max-height 0.3s ease, padding 0.3s ease;
-            background: white;
-        }
+        .accordion-body { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; background: white; }
         .accordion-item.active .accordion-body { max-height: 500px; padding: 20px 25px; }
         .accordion-body p, .accordion-body ul { color: #666; line-height: 1.8; }
         .accordion-body ul { margin-left: 20px; }
         .accordion-body li { margin-bottom: 8px; }
 
-        /* ===== LEGAL ===== */
-        .legal-section {
-            background: white; border-radius: 20px; padding: 40px;
-            margin: 30px 0; box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-        }
+        /* LEGAL */
+        .legal-section { background: white; border-radius: 20px; padding: 40px; margin: 30px 0; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
         .legal-section h2 { text-align: center; color: #667eea; font-size: 2rem; margin-bottom: 30px; }
-        .legal-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px; max-width: 900px; margin: 0 auto;
-        }
+        .legal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 900px; margin: 0 auto; }
         .legal-card { border: 2px solid #e0e0e0; border-radius: 12px; overflow: hidden; }
-        .legal-card-header {
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white; cursor: pointer; border: none; width: 100%;
-            font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 600; text-align: left;
-        }
+        .legal-card-header { display: flex; align-items: center; justify-content: space-between; padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; cursor: pointer; border: none; width: 100%; font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 600; text-align: left; }
         .legal-card-header i { transition: transform 0.3s; }
         .legal-card.active .legal-card-header i { transform: rotate(180deg); }
-        .legal-card-body {
-            max-height: 0; overflow: hidden;
-            transition: max-height 0.4s ease, padding 0.3s ease; background: #fafafa;
-        }
+        .legal-card-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s ease; background: #fafafa; }
         .legal-card.active .legal-card-body { max-height: 1000px; padding: 25px; }
         .legal-card-body h4 { color: #667eea; margin: 15px 0 8px; font-size: 0.95rem; }
         .legal-card-body h4:first-child { margin-top: 0; }
         .legal-card-body p, .legal-card-body ul { color: #666; font-size: 0.9rem; line-height: 1.8; margin-bottom: 10px; }
         .legal-card-body ul { margin-left: 20px; }
         .legal-card-body li { margin-bottom: 6px; }
-        .legal-badge {
-            display: inline-flex; align-items: center; gap: 8px;
-            padding: 8px 16px; background: #e8f5e9; color: #2e7d32;
-            border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 20px;
-        }
+        .legal-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: #e8f5e9; color: #2e7d32; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 20px; }
 
-        /* ===== FOOTER ===== */
+        /* FOOTER */
         footer { text-align: center; padding: 40px 20px; color: white; }
-        .social-links-footer {
-            margin: 20px 0; display: flex; justify-content: center;
-            align-items: center; flex-wrap: wrap; gap: 15px;
-        }
-        .social-links-footer a {
-            color: white; font-size: 1.5rem; transition: transform 0.3s;
-            display: inline-flex; align-items: center; justify-content: center;
-            width: 50px; height: 50px; border-radius: 50%; background: rgba(255,255,255,0.15);
-            text-decoration: none;
-        }
+        .social-links-footer { margin: 20px 0; display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 15px; }
+        .social-links-footer a { color: white; font-size: 1.5rem; transition: transform 0.3s; display: inline-flex; align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 50%; background: rgba(255,255,255,0.15); text-decoration: none; }
         .social-links-footer a:hover { transform: scale(1.15); background: rgba(255,255,255,0.3); }
         .social-links-footer a.email-btn { font-size: 1.1rem; width: auto; padding: 0 20px; border-radius: 25px; gap: 10px; }
         .social-links-footer a.email-btn span { font-size: 0.85rem; font-weight: 600; }
@@ -514,80 +210,18 @@
         footer p { opacity: 0.8; font-size: 0.9rem; margin-top: 10px; }
         footer a { color: white; text-decoration: underline; }
 
-        /* ===== WHATSAPP FLOAT WITH TOOLTIP ===== */
-        .whatsapp-float-wrapper {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 999;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 10px;
-        }
-
-        .whatsapp-tooltip {
-            display: none;
-            background: #25d366;
-            color: white;
-            padding: 15px 20px;
-            border-radius: 15px;
-            font-size: 0.9rem;
-            max-width: 280px;
-            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
-            animation: tooltipSlide 0.3s ease;
-            position: relative;
-        }
-
-        .whatsapp-tooltip::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            right: 20px;
-            border-width: 10px 10px 0;
-            border-style: solid;
-            border-color: #25d366 transparent transparent transparent;
-        }
-
+        /* WHATSAPP FLOAT */
+        .whatsapp-float-wrapper { position: fixed; bottom: 30px; right: 30px; z-index: 999; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+        .whatsapp-tooltip { display: none; background: #25d366; color: white; padding: 15px 20px; border-radius: 15px; font-size: 0.9rem; max-width: 280px; box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4); animation: tooltipSlide 0.3s ease; position: relative; }
+        .whatsapp-tooltip::after { content: ''; position: absolute; bottom: -10px; right: 20px; border-width: 10px 10px 0; border-style: solid; border-color: #25d366 transparent transparent transparent; }
         .whatsapp-tooltip.show { display: block; }
-
         .whatsapp-tooltip p { margin-bottom: 10px; line-height: 1.5; }
         .whatsapp-tooltip p:last-child { margin-bottom: 0; }
-
-        .whatsapp-tooltip .tooltip-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: rgba(255,255,255,0.2);
-            color: white;
-            text-decoration: none;
-            padding: 8px 14px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-top: 8px;
-            transition: background 0.3s;
-        }
-
+        .whatsapp-tooltip .tooltip-link { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.2); color: white; text-decoration: none; padding: 8px 14px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; margin-top: 8px; transition: background 0.3s; }
         .whatsapp-tooltip .tooltip-link:hover { background: rgba(255,255,255,0.3); }
-
-        .whatsapp-float {
-            width: 60px; height: 60px;
-            background: #25d366; border-radius: 50%; display: flex;
-            align-items: center; justify-content: center; color: white;
-            font-size: 2rem; text-decoration: none;
-            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
-            transition: transform 0.3s;
-            cursor: pointer;
-            border: none;
-        }
-
+        .whatsapp-float { width: 60px; height: 60px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; text-decoration: none; box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4); transition: transform 0.3s; cursor: pointer; border: none; }
         .whatsapp-float:hover { transform: scale(1.1); }
-
-        @keyframes tooltipSlide {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes tooltipSlide { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         @media (max-width: 768px) {
             .whatsapp-float-wrapper { bottom: 20px; right: 20px; }
@@ -595,24 +229,18 @@
             .whatsapp-tooltip { max-width: 240px; font-size: 0.85rem; padding: 12px 15px; }
             header h1 { font-size: 1.8rem; }
             .carousel-wrapper { height: 350px; }
-            .carousel-slide .slide-icon { font-size: 3.5rem; }
             .carousel-btn { width: 40px; height: 40px; font-size: 1rem; }
             .lead-magnet, .course-section, .faq-section, .legal-section { padding: 25px 15px; margin: 15px 0; }
             .lead-magnet h2, .course-section h2, .faq-section h2, .legal-section h2 { font-size: 1.5rem; }
             .ebook-preview { width: 180px; height: 250px; }
-            .delivery-grid { grid-template-columns: 1fr; }
-            .phone-input-wrapper { flex-direction: column; }
-            .phone-prefix { justify-content: center; }
             .legal-grid { grid-template-columns: 1fr; }
             .social-links-footer a.email-btn span { display: none; }
             .social-links-footer a.email-btn { width: 50px; padding: 0; }
-            .drive-link-container { flex-direction: column; }
-            .drive-link-container input { width: 100%; text-align: center; }
             .featured-course { padding: 25px; }
             .featured-course h3 { font-size: 1.2rem; }
             .sidebar { width: 280px; right: -280px; }
+            .btn-download-blink { font-size: 1.1rem; padding: 18px 20px; }
         }
-
         @media (max-width: 480px) {
             header h1 { font-size: 1.5rem; }
             .carousel-wrapper { height: 300px; }
@@ -620,297 +248,29 @@
             .ebook-preview { width: 160px; height: 220px; }
             .btn-submit { font-size: 1rem; padding: 15px; }
         }
-    
-        /* ===== OFERTA ESPECIAL ===== */
-        .offer-section {
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            margin: 30px 0;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .offer-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, #ff6b6b, #feca57, #ff6b6b);
-            background-size: 200% 100%;
-            animation: gradientMove 2s linear infinite;
-        }
-
-        @keyframes gradientMove {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 200% 50%; }
-        }
-
-        .offer-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
-            color: white;
-            padding: 10px 25px;
-            border-radius: 25px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            margin-bottom: 20px;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        .offer-section h2 {
-            color: #333;
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-
-        .offer-subtitle {
-            color: #666;
-            font-size: 1.1rem;
-            margin-bottom: 30px;
-        }
-
-        .offer-card {
-            max-width: 600px;
-            margin: 0 auto;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            border-radius: 15px;
-            padding: 30px;
-            border: 2px solid #e0e0e0;
-        }
-
-        .price-comparison {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 25px;
-            flex-wrap: wrap;
-        }
-
-        .price-regular, .price-special {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .price-label {
-            font-size: 0.85rem;
-            color: #888;
-            margin-bottom: 5px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .price-old {
-            font-size: 1.8rem;
-            color: #999;
-            text-decoration: line-through;
-            font-weight: 600;
-        }
-
-        .price-new {
-            font-size: 2.5rem;
-            color: #27ae60;
-            font-weight: 700;
-        }
-
-        .price-arrow {
-            color: #667eea;
-            font-size: 1.5rem;
-        }
-
-        .countdown-container {
-            background: white;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 25px;
-            border: 2px dashed #ff6b6b;
-        }
-
-        .countdown-label {
-            color: #ff6b6b;
-            font-weight: 600;
-            margin-bottom: 15px;
-            font-size: 1rem;
-        }
-
-        .countdown {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .countdown-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .countdown-number {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            font-size: 2rem;
-            font-weight: 700;
-            padding: 10px 15px;
-            border-radius: 8px;
-            min-width: 60px;
-            display: inline-block;
-        }
-
-        .countdown-text {
-            font-size: 0.75rem;
-            color: #888;
-            margin-top: 5px;
-            text-transform: uppercase;
-        }
-
-        .countdown-separator {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #667eea;
-            margin-top: -15px;
-        }
-
-        .offer-features {
-            text-align: left;
-            margin-bottom: 25px;
-            max-width: 400px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .offer-feature {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 10px;
-            font-size: 0.95rem;
-            color: #555;
-        }
-
-        .offer-feature i {
-            color: #27ae60;
-            font-size: 1.1rem;
-        }
-
-        .btn-offer {
-            display: inline-block;
-            width: 100%;
-            padding: 20px;
-            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
-            color: white;
-            text-decoration: none;
-            border-radius: 12px;
-            font-size: 1.2rem;
-            font-weight: 700;
-            transition: all 0.3s;
-            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
-            border: none;
-            cursor: pointer;
-            font-family: 'Poppins', sans-serif;
-            margin-bottom: 15px;
-        }
-
-        .btn-offer:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.5);
-        }
-
-        .offer-warning {
-            background: #fff3cd;
-            border-left: 4px solid #ffc107;
-            padding: 12px 15px;
-            border-radius: 0 8px 8px 0;
-            text-align: left;
-            font-size: 0.9rem;
-            color: #856404;
-            margin-bottom: 15px;
-        }
-
-        .offer-warning i {
-            color: #ffc107;
-            margin-right: 5px;
-        }
-
-        .offer-security {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            font-size: 0.85rem;
-            color: #888;
-        }
-
-        .offer-security i {
-            color: #27ae60;
-        }
-
-        @media (max-width: 768px) {
-            .offer-section { padding: 25px 15px; }
-            .offer-section h2 { font-size: 1.5rem; }
-            .price-comparison { flex-direction: column; gap: 10px; }
-            .price-arrow { transform: rotate(90deg); }
-            .countdown-number { font-size: 1.5rem; padding: 8px 12px; min-width: 50px; }
-            .btn-offer { font-size: 1rem; padding: 15px; }
-        }
-
-</style>
+    </style>
+    <base target="_blank">
 <base target="_blank">
 </head>
 <body>
-    <!-- ===== NAVBAR ===== -->
     <nav class="navbar">
-        <a href="#" class="navbar-brand">
-            <i class="fas fa-heart"></i> Bolsos con Trapillo
-        </a>
-        <button class="hamburger-btn" onclick="toggleSidebar()" aria-label="Menú">
-            <i class="fas fa-bars"></i>
-        </button>
+        <a href="#" class="navbar-brand"><i class="fas fa-heart"></i> Bolsos con Trapillo</a>
+        <button class="hamburger-btn" onclick="toggleSidebar()" aria-label="Menú"><i class="fas fa-bars"></i></button>
     </nav>
-
-    <!-- ===== SIDEBAR ===== -->
     <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <h3>👜 Menú</h3>
-            <p>Navega por nuestra web</p>
-            <button class="close-sidebar" onclick="toggleSidebar()">
-                <i class="fas fa-times"></i>
-            </button>
+            <h3>👜 Menú</h3><p>Navega por nuestra web</p>
+            <button class="close-sidebar" onclick="toggleSidebar()"><i class="fas fa-times"></i></button>
         </div>
         <nav class="sidebar-nav">
-            <a href="#inicio" onclick="toggleSidebar()">
-                <i class="fas fa-home"></i> Inicio
-            </a>
-            <a href="#ebook" onclick="toggleSidebar()">
-                <i class="fas fa-book"></i> Ebook Gratis
-            </a>
-            <a href="#curso" onclick="toggleSidebar()">
-                <i class="fas fa-graduation-cap"></i> Curso Recomendado
-            </a>
-            <a href="#faq" onclick="toggleSidebar()">
-                <i class="fas fa-question-circle"></i> Preguntas Frecuentes
-            </a>
-            <a href="#politicas" onclick="toggleSidebar()">
-                <i class="fas fa-shield-alt"></i> Políticas Legales
-            </a>
-            <a href=" target="_blank"https://mail.google.com/mail/?view=cm&fs=1&to=eldisyera@gmail.com&su=Consulta%20desde%20la%20web" target="_blank" target="_blank" onclick="toggleSidebar()">
-                <i class="fas fa-envelope"></i> Contactar por Email
-            </a>
-            <a href="https://wa.link/hifqij" target="_blank" onclick="toggleSidebar()">
-                <i class="fab fa-whatsapp"></i> WhatsApp Directo
-            </a>
+            <a href="#inicio" onclick="toggleSidebar()"><i class="fas fa-home"></i> Inicio</a>
+            <a href="#ebook" onclick="toggleSidebar()"><i class="fas fa-book"></i> Ebook Gratis</a>
+            <a href="#curso" onclick="toggleSidebar()"><i class="fas fa-graduation-cap"></i> Curso Recomendado</a>
+            <a href="#faq" onclick="toggleSidebar()"><i class="fas fa-question-circle"></i> Preguntas Frecuentes</a>
+            <a href="#politicas" onclick="toggleSidebar()"><i class="fas fa-shield-alt"></i> Políticas Legales</a>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=eldisyera@gmail.com&su=Consulta%20desde%20la%20web" target="_blank" onclick="toggleSidebar()"><i class="fas fa-envelope"></i> Contactar por Email</a>
+            <a href="https://wa.link/hifqij" target="_blank" onclick="toggleSidebar()"><i class="fab fa-whatsapp"></i> WhatsApp Directo</a>
         </nav>
         <div class="sidebar-social">
             <p>Síguenos en redes</p>
@@ -919,21 +279,19 @@
                 <a href="https://www.facebook.com/profile.php?id=61565093347028" target="_blank" class="fb" title="Facebook"><i class="fab fa-facebook-f"></i></a>
                 <a href="https://www.instagram.com/curso_internacional_crochet" target="_blank" class="ig" title="Instagram"><i class="fab fa-instagram"></i></a>
                 <a href="https://wa.link/hifqij" target="_blank" class="wa" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                <a href=" target="_blank"https://mail.google.com/mail/?view=cm&fs=1&to=eldisyera@gmail.com" target="_blank" target="_blank" class="em" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=eldisyera@gmail.com" target="_blank" class="em" title="Email"><i class="fas fa-envelope"></i></a>
             </div>
         </div>
     </aside>
 
     <div class="navbar-spacer" id="inicio"></div>
-
-    <!-- ===== HEADER ===== -->
     <header>
         <h1>👜 Bolsos Tejidos con Trapillo</h1>
         <p>Aprende a tejer y crea un negocio rentable desde casa</p>
     </header>
 
     <div class="container">
-        <!-- ===== CAROUSEL ===== -->
+        <!-- CAROUSEL -->
         <section class="carousel-section">
             <div class="carousel-container">
                 <div class="carousel-wrapper" id="carouselWrapper">
@@ -969,107 +327,25 @@
             </div>
         </section>
 
-        <!-- ===== OFERTA ESPECIAL ===== -->
-        <section class="offer-section" id="oferta">
-            <div class="offer-badge">🔥 OFERTA POR TIEMPO LIMITADO</div>
-            <h2>¡No pagues el precio completo!</h2>
-            <p class="offer-subtitle">Accede al curso completo con un descuento exclusivo solo por hoy</p>
-
-            <div class="offer-card">
-                <div class="price-comparison">
-                    <div class="price-regular">
-                        <span class="price-label">Precio regular</span>
-                        <span class="price-old">$97 USD</span>
-                    </div>
-                    <div class="price-arrow">
-                        <i class="fas fa-arrow-right"></i>
-                    </div>
-                    <div class="price-special">
-                        <span class="price-label">Precio único hoy</span>
-                        <span class="price-new">$35 USD</span>
-                    </div>
-                </div>
-
-                <div class="countdown-container">
-                    <p class="countdown-label">⏰ Esta oferta expira en:</p>
-                    <div class="countdown" id="countdown">
-                        <div class="countdown-item">
-                            <span class="countdown-number" id="hours">04</span>
-                            <span class="countdown-text">horas</span>
-                        </div>
-                        <div class="countdown-separator">:</div>
-                        <div class="countdown-item">
-                            <span class="countdown-number" id="minutes">59</span>
-                            <span class="countdown-text">minutos</span>
-                        </div>
-                        <div class="countdown-separator">:</div>
-                        <div class="countdown-item">
-                            <span class="countdown-number" id="seconds">59</span>
-                            <span class="countdown-text">segundos</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="offer-features">
-                    <div class="offer-feature">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Acceso vitalicio al curso completo</span>
-                    </div>
-                    <div class="offer-feature">
-                        <i class="fas fa-check-circle"></i>
-                        <span>7 bonos exclusivos incluidos</span>
-                    </div>
-                    <div class="offer-feature">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Certificación al finalizar</span>
-                    </div>
-                    <div class="offer-feature">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Garantía 7 días de devolución</span>
-                    </div>
-                </div>
-
-                <a href="https://go.hotmart.com/I105828523Q?ap=dddd" target="_blank" class="btn-offer">
-                    <i class="fas fa-fire"></i> ¡SÍ, QUIERO MI DESCUENTO DE $35 AHORA!
-                </a>
-
-                <p class="offer-warning">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    <strong>Atención:</strong> Este precio especial puede desaparecer en cualquier momento. No dejes pasar esta oportunidad única.
-                </p>
-
-                <div class="offer-security">
-                    <i class="fas fa-lock"></i>
-                    <span>Pago 100% seguro por Hotmart | Encriptación SSL</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== LEAD MAGNET ===== -->
+        <!-- LEAD MAGNET / FORMULARIO + BOTÓN DESCARGA -->
         <section class="lead-magnet" id="ebook">
             <h2>📚 Mi Ebook para Ti</h2>
             <p class="subtitle">Recibe GRATIS mi guía exclusiva con patrones y tips para empezar</p>
-            
-            <div class="ebook-preview">
-                <span>Mi Ebook para Ti</span>
-            </div>
+            <div class="ebook-preview"><span>Mi Ebook para Ti</span></div>
 
             <div class="form-container">
-                <!-- Formspree hidden fields -->
-                <input type="hidden" name="_subject" value="Nuevo registro Ebook Gratis">
-                <input type="hidden" name="_template" value="table">
-                <input type="hidden" name="_next" value="https://eldisyera-lab.github.io/crochet-afiliados/#gracias">
                 <form id="leadForm" action="https://formspree.io/f/mjgzzdzp" method="POST">
+                    <input type="hidden" name="_subject" value="Nuevo registro Ebook Gratis">
+                    <input type="hidden" name="_template" value="table">
+
                     <div class="form-group">
                         <label for="nombre">Nombre completo *</label>
                         <input type="text" id="nombre" name="nombre" required placeholder="Escribe tu nombre">
                     </div>
-                    
                     <div class="form-group">
                         <label for="email">Correo electrónico *</label>
                         <input type="email" id="email" name="email" required placeholder="tu@email.com">
                     </div>
-                    
                     <div class="form-group">
                         <label>País *</label>
                         <div class="country-selector" id="countrySelector">
@@ -1082,7 +358,6 @@
                             <div class="country-dropdown" id="countryDropdown"></div>
                         </div>
                     </div>
-                    
                     <div class="form-group">
                         <label for="whatsapp">Número de WhatsApp *</label>
                         <div class="phone-input-wrapper">
@@ -1093,67 +368,38 @@
                             <input type="tel" id="whatsapp" name="whatsapp" required placeholder="54356696" pattern="[0-9]*" inputmode="numeric">
                         </div>
                     </div>
-                    
-                    <div class="delivery-options">
-                        <label>¿Cómo quieres recibir tu ebook? *</label>
-                        <div class="delivery-grid">
-                            <label class="delivery-option">
-                                <input type="radio" name="delivery" value="email" checked>
-                                <div class="delivery-card">
-                                    <i class="fas fa-envelope"></i>
-                                    <span>Por Email</span>
-                                </div>
-                            </label>
-                            <label class="delivery-option">
-                                <input type="radio" name="delivery" value="whatsapp">
-                                <div class="delivery-card">
-                                    <i class="fab fa-whatsapp"></i>
-                                    <span>Por WhatsApp</span>
-                                </div>
-                            </label>
-                            <label class="delivery-option">
-                                <input type="radio" name="delivery" value="drive">
-                                <div class="delivery-card">
-                                    <i class="fab fa-google-drive"></i>
-                                    <span>Google Drive</span>
-                                </div>
-                            </label>
-                        </div>
-                    </div>
-                    
-                    <button type="submit" class="btn-submit">
+                    <button type="submit" class="btn-submit" id="submitBtn">
                         <i class="fas fa-gift"></i> ¡Quiero mi Ebook Gratis!
                     </button>
                 </form>
-                
+
                 <div class="success-message" id="successMessage">
-                    <i class="fas fa-check-circle"></i> ¡Gracias por registrarte! Te contactaremos pronto.
+                    <i class="fas fa-check-circle"></i> ¡Gracias por registrarte! Ahora puedes descargar tu ebook.
                 </div>
-                
-                <div class="drive-link-box" id="driveLinkBox">
-                    <h3><i class="fab fa-google-drive"></i> ¡Redirigiendo a tu Ebook!</h3>
-                    <p>Si no te redirige automáticamente, haz clic aquí:</p>
-                    <a href="https://drive.google.com/file/d/1x4xRGYoFDxr5Wx5R6LK9zBoMiYk6wuaM/view?usp=drive_link" class="btn-download" id="driveDirectLink">
-                        <i class="fas fa-download"></i> Descargar Ebook Ahora
+                <div class="error-message" id="errorMessage">
+                    <i class="fas fa-exclamation-circle"></i> <span id="errorText">Hubo un error. Intenta de nuevo.</span>
+                </div>
+
+                <!-- BOTÓN VERDE PARPADEANTE DE DESCARGA -->
+                <div class="download-section" id="downloadSection" style="display:none;">
+                    <h3><i class="fas fa-book-open"></i> ¡Tu Ebook está listo!</h3>
+                    <a href="https://drive.google.com/uc?export=download&id=1x4xRGYoFDxr5Wx5R6LK9zBoMiYk6wuaM" class="btn-download-blink" target="_blank" id="downloadBtn">
+                        <i class="fas fa-download"></i> 📥 DESCARGA TU LIBRO AQUÍ
                     </a>
+                    <p class="download-hint"><i class="fas fa-info-circle"></i> Si no se descarga automáticamente, haz clic derecho y selecciona "Guardar enlace como..."</p>
                 </div>
-                
-                <p class="privacy-note">
-                    <i class="fas fa-lock"></i> Tu información está segura. Lee nuestra <a href="#politicas" style="color: #667eea;">Política de Privacidad</a>.
-                </p>
+
+                <p class="privacy-note"><i class="fas fa-lock"></i> Tu información está segura. Lee nuestra <a href="#politicas" style="color:#667eea;">Política de Privacidad</a>.</p>
             </div>
         </section>
-
-        <!-- ===== COURSE ===== -->
+        <!-- COURSE -->
         <section class="course-section" id="curso">
             <h2>🎓 Curso Recomendado</h2>
             <p class="section-subtitle">El programa online más completo en habla hispana de bolsos tejidos con totora</p>
-            
             <div class="featured-course">
                 <div class="course-icon">👜</div>
                 <h3>Bolsos Tejidos con Trapillo como Negocio</h3>
                 <p>El único curso que te enseña paso a paso y desde cero a diseñar bolsos y carteras de alta calidad, y a vivir de este bello arte.</p>
-                
                 <ul class="course-features">
                     <li>80+ lecciones en Full 4K HD</li>
                     <li>10+ proyectos prácticos para vender</li>
@@ -1164,112 +410,52 @@
                     <li>7 bonos exclusivos incluidos</li>
                     <li>7 días de garantía</li>
                 </ul>
-                
-                <a href="https://go.hotmart.com/I105828523Q" target="_blank" class="btn-course">
-                    <i class="fas fa-eye"></i> Ver el Curso por Dentro
-                </a>
-                
-                <div class="guarantee-badge">
-                    <i class="fas fa-shield-alt"></i>
-                    <span>Garantía de 7 días | Pago seguro Hotmart</span>
-                </div>
+                <a href="https://go.hotmart.com/I105828523Q" target="_blank" class="btn-course"><i class="fas fa-eye"></i> Ver el Curso por Dentro</a>
+                <div class="guarantee-badge"><i class="fas fa-shield-alt"></i><span>Garantía de 7 días | Pago seguro Hotmart</span></div>
             </div>
         </section>
 
-        <!-- ===== FAQ ===== -->
+        <!-- FAQ -->
         <section class="faq-section" id="faq">
             <h2>❓ Preguntas Frecuentes</h2>
             <div class="accordion">
                 <div class="accordion-item active">
-                    <button class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>¿Necesito experiencia previa en crochet?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="accordion-body">
-                        <p>No, <strong>no necesitas ninguna experiencia previa</strong>. El curso está diseñado para principiantes totales. Empiezas desde los puntos más básicos: cadeneta, punto bajo, punto alto, aumentos y disminuciones.</p>
-                    </div>
+                    <button class="accordion-header" onclick="toggleAccordion(this)"><span>¿Necesito experiencia previa en crochet?</span><i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-body"><p>No, <strong>no necesitas ninguna experiencia previa</strong>. El curso está diseñado para principiantes totales. Empiezas desde los puntos más básicos: cadeneta, punto bajo, punto alto, aumentos y disminuciones.</p></div>
                 </div>
-
                 <div class="accordion-item">
-                    <button class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>¿Qué materiales necesito para empezar?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
+                    <button class="accordion-header" onclick="toggleAccordion(this)"><span>¿Qué materiales necesito para empezar?</span><i class="fas fa-chevron-down"></i></button>
                     <div class="accordion-body">
                         <p>Los materiales básicos son:</p>
-                        <ul>
-                            <li>Ganchillos (tamaños según el proyecto)</li>
-                            <li>Totora o trapillo (hilado grueso)</li>
-                            <li>Tijeras, marcadores y aguja lanera</li>
-                            <li>Accesorios: cadenas, broches, forros</li>
-                        </ul>
+                        <ul><li>Ganchillos (tamaños según el proyecto)</li><li>Totora o trapillo (hilado grueso)</li><li>Tijeras, marcadores y aguja lanera</li><li>Accesorios: cadenas, broches, forros</li></ul>
                         <p>El curso incluye un módulo completo de "Conociendo los materiales" y un <strong>bono con lista de proveedores</strong> para que encuentres todo en tu país.</p>
                     </div>
                 </div>
-
                 <div class="accordion-item">
-                    <button class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>¿Qué tipo de bolsos aprenderé a hacer?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
+                    <button class="accordion-header" onclick="toggleAccordion(this)"><span>¿Qué tipo de bolsos aprenderé a hacer?</span><i class="fas fa-chevron-down"></i></button>
                     <div class="accordion-body">
                         <p>Más de <strong>10 proyectos prácticos</strong> distribuidos en lecciones paso a paso:</p>
-                        <ul>
-                            <li>Carteras lineales con punto espiga</li>
-                            <li>Bolsos redondos con punto bajo centrado</li>
-                            <li>Bolsos con accesorios y detalles</li>
-                            <li>Morrales en base de cuero con punto piña</li>
-                            <li>Bolsos premium y carteras profesionales</li>
-                            <li>Cestos personalizados (bono extra)</li>
-                        </ul>
+                        <ul><li>Carteras lineales con punto espiga</li><li>Bolsos redondos con punto bajo centrado</li><li>Bolsos con accesorios y detalles</li><li>Morrales en base de cuero con punto piña</li><li>Bolsos premium y carteras profesionales</li><li>Cestos personalizados (bono extra)</li></ul>
                     </div>
                 </div>
-
                 <div class="accordion-item">
-                    <button class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>¿Es seguro comprar por Hotmart?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="accordion-body">
-                        <p><strong>Sí, es 100% seguro.</strong> Hotmart es la plataforma de educación online más grande de Latinoamérica. Cuenta con encriptación SSL, certificación PCI DSS y más de 10 años en el mercado.</p>
-                    </div>
+                    <button class="accordion-header" onclick="toggleAccordion(this)"><span>¿Es seguro comprar por Hotmart?</span><i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-body"><p><strong>Sí, es 100% seguro.</strong> Hotmart es la plataforma de educación online más grande de Latinoamérica. Cuenta con encriptación SSL, certificación PCI DSS y más de 10 años en el mercado.</p></div>
                 </div>
-
                 <div class="accordion-item">
-                    <button class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>¿Tengo garantía de devolución?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="accordion-body">
-                        <p><strong>Sí, 7 días de garantía incondicional.</strong> Si no te satisface, te devuelven el 100% de tu dinero sin preguntas.</p>
-                    </div>
+                    <button class="accordion-header" onclick="toggleAccordion(this)"><span>¿Tengo garantía de devolución?</span><i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-body"><p><strong>Sí, 7 días de garantía incondicional.</strong> Si no te satisface, te devuelven el 100% de tu dinero sin preguntas.</p></div>
                 </div>
-
                 <div class="accordion-item">
-                    <button class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>¿Cómo accedo al contenido después de comprar?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="accordion-body">
-                        <p>Recibes acceso <strong>inmediatamente</strong> por email. También puedes usar la app <strong>Hotmart Sparkle</strong> en tu celular. El acceso es <strong>vitalicio</strong>.</p>
-                    </div>
+                    <button class="accordion-header" onclick="toggleAccordion(this)"><span>¿Cómo accedo al contenido después de comprar?</span><i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-body"><p>Recibes acceso <strong>inmediatamente</strong> por email. También puedes usar la app <strong>Hotmart Sparkle</strong> en tu celular. El acceso es <strong>vitalicio</strong>.</p></div>
                 </div>
-
                 <div class="accordion-item">
-                    <button class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>¿Puedo vender los bolsos que haga?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="accordion-body">
-                        <p><strong>¡Sí!</strong> El curso incluye un bono especial: <strong>"Aprende a sacar el precio justo de tus bolsos y carteras"</strong>. Podrás vender tus creaciones, aceptar encargos y crear tu propia marca. Obtienes licencia comercial para productos terminados.</p>
-                    </div>
+                    <button class="accordion-header" onclick="toggleAccordion(this)"><span>¿Puedo vender los bolsos que haga?</span><i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-body"><p><strong>¡Sí!</strong> El curso incluye un bono especial: <strong>"Aprende a sacar el precio justo de tus bolsos y carteras"</strong>. Podrás vender tus creaciones, aceptar encargos y crear tu propia marca. Obtienes licencia comercial para productos terminados.</p></div>
                 </div>
-
                 <div class="accordion-item">
-                    <button class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>¿Qué incluyen los 7 bonos?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
+                    <button class="accordion-header" onclick="toggleAccordion(this)"><span>¿Qué incluyen los 7 bonos?</span><i class="fas fa-chevron-down"></i></button>
                     <div class="accordion-body">
                         <ul>
                             <li><strong>Bono 1:</strong> Cestos personalizados con patrones</li>
@@ -1285,113 +471,69 @@
             </div>
         </section>
 
-        <!-- ===== LEGAL ===== -->
+        <!-- LEGAL -->
         <section class="legal-section" id="politicas">
             <h2>🔒 Políticas y Términos Legales</h2>
-            
-            <div style="text-align: center;">
-                <div class="legal-badge">
-                    <i class="fas fa-shield-alt"></i>
-                    <span>Sitio verificado y seguro</span>
-                </div>
-            </div>
-
+            <div style="text-align:center;"><div class="legal-badge"><i class="fas fa-shield-alt"></i><span>Sitio verificado y seguro</span></div></div>
             <div class="legal-grid">
                 <div class="legal-card">
-                    <button class="legal-card-header" onclick="toggleLegal(this)">
-                        <span><i class="fas fa-user-shield"></i> Política de Privacidad</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
+                    <button class="legal-card-header" onclick="toggleLegal(this)"><span><i class="fas fa-user-shield"></i> Política de Privacidad</span><i class="fas fa-chevron-down"></i></button>
                     <div class="legal-card-body">
-                        <h4>1. Recopilación de Información</h4>
-                        <p>Recopilamos: nombre, email, país y WhatsApp. Solo lo necesario para enviarte el ebook y contactarte sobre productos relacionados.</p>
-                        <h4>2. Uso de la Información</h4>
-                        <p>Utilizamos tus datos para enviar el ebook, newsletters con tips, nuevos patrones y ofertas especiales.</p>
-                        <h4>3. Protección de Datos</h4>
-                        <p>Tus datos están protegidos con SSL. Nunca son compartidos con terceros sin tu consentimiento. No vendemos tu información.</p>
-                        <h4>4. Cookies</h4>
-                        <p>Usamos cookies esenciales y analíticas (Google Analytics). Puedes desactivarlas en tu navegador.</p>
-                        <h4>5. Derechos del Usuario</h4>
-                        <p>Tienes derecho a acceder, rectificar o eliminar tus datos. Contacto: <strong>eldisyera@gmail.com</strong></p>
-                        <h4>6. Conservación</h4>
-                        <p>Conservamos tus datos mientras mantengas relación activa o hasta que solicites su eliminación.</p>
+                        <h4>1. Recopilación de Información</h4><p>Recopilamos: nombre, email, país y WhatsApp. Solo lo necesario para enviarte el ebook y contactarte sobre productos relacionados.</p>
+                        <h4>2. Uso de la Información</h4><p>Utilizamos tus datos para enviar el ebook, newsletters con tips, nuevos patrones y ofertas especiales.</p>
+                        <h4>3. Protección de Datos</h4><p>Tus datos están protegidos con SSL. Nunca son compartidos con terceros sin tu consentimiento. No vendemos tu información.</p>
+                        <h4>4. Cookies</h4><p>Usamos cookies esenciales y analíticas (Google Analytics). Puedes desactivarlas en tu navegador.</p>
+                        <h4>5. Derechos del Usuario</h4><p>Tienes derecho a acceder, rectificar o eliminar tus datos. Contacto: <strong>eldisyera@gmail.com</strong></p>
+                        <h4>6. Conservación</h4><p>Conservamos tus datos mientras mantengas relación activa o hasta que solicites su eliminación.</p>
                     </div>
                 </div>
-
                 <div class="legal-card">
-                    <button class="legal-card-header" onclick="toggleLegal(this)">
-                        <span><i class="fas fa-file-contract"></i> Términos y Condiciones</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
+                    <button class="legal-card-header" onclick="toggleLegal(this)"><span><i class="fas fa-file-contract"></i> Términos y Condiciones</span><i class="fas fa-chevron-down"></i></button>
                     <div class="legal-card-body">
-                        <h4>1. Aceptación</h4>
-                        <p>Al usar este sitio aceptas estos términos. Si no estás de acuerdo, no uses nuestros servicios.</p>
-                        <h4>2. Productos Digitales</h4>
-                        <p>Ofrecemos cursos online y ebooks digitales. No realizamos envíos físicos.</p>
-                        <h4>3. Pagos</h4>
-                        <p>Procesados por Hotmart (PCI DSS). Aceptamos tarjetas, PayPal y otros métodos según país.</p>
-                        <h4>4. Reembolso</h4>
-                        <p>7 días de garantía. Solicita reembolso contactando a Hotmart o a eldisyera@gmail.com</p>
-                        <h4>5. Propiedad Intelectual</h4>
-                        <p>Obtienes licencia personal y comercial para productos terminados. No revendas el material digital.</p>
-                        <h4>6. Limitación</h4>
-                        <p>No garantizamos resultados comerciales específicos. El éxito depende de tu esfuerzo individual.</p>
-                        <h4>7. Modificaciones</h4>
-                        <p>Podemos modificar estos términos en cualquier momento. Los cambios entran en vigor al publicarse.</p>
-                        <h4>8. Ley Aplicable</h4>
-                        <p>Rigen las leyes de comercio electrónico y protección al consumidor de tu país.</p>
+                        <h4>1. Aceptación</h4><p>Al usar este sitio aceptas estos términos. Si no estás de acuerdo, no uses nuestros servicios.</p>
+                        <h4>2. Productos Digitales</h4><p>Ofrecemos cursos online y ebooks digitales. No realizamos envíos físicos.</p>
+                        <h4>3. Pagos</h4><p>Procesados por Hotmart (PCI DSS). Aceptamos tarjetas, PayPal y otros métodos según país.</p>
+                        <h4>4. Reembolso</h4><p>7 días de garantía. Solicita reembolso contactando a Hotmart o a eldisyera@gmail.com</p>
+                        <h4>5. Propiedad Intelectual</h4><p>Obtienes licencia personal y comercial para productos terminados. No revendas el material digital.</p>
+                        <h4>6. Limitación</h4><p>No garantizamos resultados comerciales específicos. El éxito depende de tu esfuerzo individual.</p>
+                        <h4>7. Modificaciones</h4><p>Podemos modificar estos términos en cualquier momento. Los cambios entran en vigor al publicarse.</p>
+                        <h4>8. Ley Aplicable</h4><p>Rigen las leyes de comercio electrónico y protección al consumidor de tu país.</p>
                     </div>
                 </div>
-
                 <div class="legal-card">
-                    <button class="legal-card-header" onclick="toggleLegal(this)">
-                        <span><i class="fas fa-lock"></i> Política de Seguridad</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
+                    <button class="legal-card-header" onclick="toggleLegal(this)"><span><i class="fas fa-lock"></i> Política de Seguridad</span><i class="fas fa-chevron-down"></i></button>
                     <div class="legal-card-body">
-                        <h4>1. SSL</h4>
-                        <p>Sitio con certificado SSL de 256 bits. URL segura con https://</p>
-                        <h4>2. Pagos Seguros</h4>
-                        <p>Hotmart procesa pagos con: PCI DSS Nivel 1, encriptación AES-256, tokenización y monitoreo 24/7.</p>
-                        <h4>3. Protección de Datos</h4>
-                        <p>Firewalls, acceso restringido, auditorías periódicas y backups diarios.</p>
-                        <h4>4. Enlaces Externos</h4>
-                        <p>Enlaces a Hotmart, Google Drive y redes sociales son oficiales. Verifica siempre la URL.</p>
-                        <h4>5. Reporte de Incidentes</h4>
-                        <p>¿Actividad sospechosa? Contáctanos inmediatamente: <strong>eldisyera@gmail.com</strong></p>
-                        <h4>6. Actualizaciones</h4>
-                        <p>Plataformas actualizadas con últimos parches de seguridad. Escaneos mensuales de vulnerabilidades.</p>
+                        <h4>1. SSL</h4><p>Sitio con certificado SSL de 256 bits. URL segura con https://</p>
+                        <h4>2. Pagos Seguros</h4><p>Hotmart procesa pagos con: PCI DSS Nivel 1, encriptación AES-256, tokenización y monitoreo 24/7.</p>
+                        <h4>3. Protección de Datos</h4><p>Firewalls, acceso restringido, auditorías periódicas y backups diarios.</p>
+                        <h4>4. Enlaces Externos</h4><p>Enlaces a Hotmart, Google Drive y redes sociales son oficiales. Verifica siempre la URL.</p>
+                        <h4>5. Reporte de Incidentes</h4><p>¿Actividad sospechosa? Contáctanos inmediatamente: <strong>eldisyera@gmail.com</strong></p>
+                        <h4>6. Actualizaciones</h4><p>Plataformas actualizadas con últimos parches de seguridad. Escaneos mensuales de vulnerabilidades.</p>
                     </div>
                 </div>
             </div>
         </section>
     </div>
 
-    <!-- ===== FOOTER ===== -->
     <footer>
         <div class="social-links-footer">
             <a href="https://www.youtube.com/@EldisYerar" target="_blank" class="youtube-btn" title="YouTube"><i class="fab fa-youtube"></i></a>
             <a href="https://www.facebook.com/profile.php?id=61565093347028" target="_blank" class="facebook-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
             <a href="https://www.instagram.com/curso_internacional_crochet" target="_blank" class="instagram-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
             <a href="https://wa.link/hifqij" target="_blank" class="whatsapp-btn" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-            <a href=" target="_blank"https://mail.google.com/mail/?view=cm&fs=1&to=eldisyera@gmail.com&su=Consulta%20desde%20la%20web" target="_blank" target="_blank" class="email-btn" title="Enviar correo"><i class="fas fa-envelope"></i><span>eldisyera@gmail.com</span></a>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=eldisyera@gmail.com&su=Consulta%20desde%20la%20web" target="_blank" class="email-btn" title="Enviar correo"><i class="fas fa-envelope"></i><span>eldisyera@gmail.com</span></a>
         </div>
         <p>© 2026 Bolsos Tejidos con Trapillo. Todos los derechos reservados.</p>
         <p>Productos de Hotmart | <a href="#politicas">Políticas y Términos</a></p>
     </footer>
 
-    <!-- ===== WHATSAPP FLOAT WITH TOOLTIP ===== -->
     <div class="whatsapp-float-wrapper">
         <div class="whatsapp-tooltip" id="whatsappTooltip">
             <p><strong>¿Necesitas el ebook?</strong></p>
             <p>Envíame el link de Google Drive por WhatsApp o Email y te lo envío de inmediato:</p>
-            <a href="https://web.whatsapp.com/send?phone=5354356696&text=Hola!%20Solicito%20mi%20ebook%20gratis%20por%20favor" target="_blank" class="tooltip-link">
-                <i class="fab fa-whatsapp"></i> Solicitar por WhatsApp
-            </a>
+            <a href="https://web.whatsapp.com/send?phone=5354356696&text=Hola!%20Solicito%20mi%20ebook%20gratis%20por%20favor" target="_blank" class="tooltip-link"><i class="fab fa-whatsapp"></i> Solicitar por WhatsApp</a>
         </div>
-        <button class="whatsapp-float" onclick="toggleWhatsAppTooltip()" title="Contáctanos">
-            <i class="fab fa-whatsapp"></i>
-        </button>
+        <button class="whatsapp-float" onclick="toggleWhatsAppTooltip()" title="Contáctanos"><i class="fab fa-whatsapp"></i></button>
     </div>
 
     <script>
@@ -1409,14 +551,9 @@
         function toggleWhatsAppTooltip() {
             var tooltip = document.getElementById('whatsappTooltip');
             tooltipVisible = !tooltipVisible;
-            if (tooltipVisible) {
-                tooltip.classList.add('show');
-            } else {
-                tooltip.classList.remove('show');
-            }
+            if (tooltipVisible) { tooltip.classList.add('show'); }
+            else { tooltip.classList.remove('show'); }
         }
-
-        // Close tooltip when clicking outside
         document.addEventListener('click', function(e) {
             var wrapper = document.querySelector('.whatsapp-float-wrapper');
             var tooltip = document.getElementById('whatsappTooltip');
@@ -1430,7 +567,6 @@
         var currentSlide = 0;
         var totalSlides = 4;
         var autoSlideInterval;
-
         function updateCarousel() {
             document.getElementById('carouselWrapper').style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
             var dots = document.querySelectorAll('.dot');
@@ -1438,29 +574,24 @@
                 dots[i].classList.toggle('active', i === currentSlide);
             }
         }
-
         function moveCarousel(direction) {
             currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
             updateCarousel();
             resetAutoSlide();
         }
-
         function goToSlide(index) {
             currentSlide = index;
             updateCarousel();
             resetAutoSlide();
         }
-
         function autoSlide() {
             currentSlide = (currentSlide + 1) % totalSlides;
             updateCarousel();
         }
-
         function resetAutoSlide() {
             clearInterval(autoSlideInterval);
             autoSlideInterval = setInterval(autoSlide, 5000);
         }
-
         var touchStartX = 0;
         var carouselContainer = document.querySelector('.carousel-container');
         carouselContainer.addEventListener('touchstart', function(e) {
@@ -1471,17 +602,14 @@
             if (touchStartX - touchEndX > 50) moveCarousel(1);
             else if (touchEndX - touchStartX > 50) moveCarousel(-1);
         });
-
         resetAutoSlide();
 
-        // ===== ACCORDION FAQ =====
+        // ===== ACCORDION =====
         function toggleAccordion(button) {
             var item = button.parentElement;
             var wasActive = item.classList.contains('active');
             var items = document.querySelectorAll('.accordion-item');
-            for (var i = 0; i < items.length; i++) {
-                items[i].classList.remove('active');
-            }
+            for (var i = 0; i < items.length; i++) { items[i].classList.remove('active'); }
             if (!wasActive) item.classList.add('active');
         }
 
@@ -1490,9 +618,7 @@
             var card = button.parentElement;
             var wasActive = card.classList.contains('active');
             var cards = document.querySelectorAll('.legal-card');
-            for (var i = 0; i < cards.length; i++) {
-                cards[i].classList.remove('active');
-            }
+            for (var i = 0; i < cards.length; i++) { cards[i].classList.remove('active'); }
             if (!wasActive) card.classList.add('active');
         }
 
@@ -1524,10 +650,8 @@
             { name: "Francia", code: "+33", flag: "fr" },
             { name: "Alemania", code: "+49", flag: "de" }
         ];
-
         var selectedCountry = countries[0];
         var dropdownOpen = false;
-
         function initDropdown() {
             var dropdown = document.getElementById('countryDropdown');
             dropdown.innerHTML = '';
@@ -1540,20 +664,13 @@
                 dropdown.appendChild(option);
             }
         }
-
         function toggleDropdown() {
             dropdownOpen = !dropdownOpen;
             var display = document.getElementById('countryDisplay');
             var dropdown = document.getElementById('countryDropdown');
-            if (dropdownOpen) {
-                display.classList.add('active');
-                dropdown.classList.add('show');
-            } else {
-                display.classList.remove('active');
-                dropdown.classList.remove('show');
-            }
+            if (dropdownOpen) { display.classList.add('active'); dropdown.classList.add('show'); }
+            else { display.classList.remove('active'); dropdown.classList.remove('show'); }
         }
-
         function selectCountry(country) {
             selectedCountry = country;
             document.getElementById('selectedFlag').src = 'https://flagcdn.com/w40/' + country.flag + '.png';
@@ -1563,134 +680,85 @@
             document.getElementById('prefixCode').textContent = country.code;
             toggleDropdown();
         }
-
         document.addEventListener('click', function(e) {
             var selector = document.getElementById('countrySelector');
             if (!selector.contains(e.target) && dropdownOpen) toggleDropdown();
         });
 
-        // ===== FORM SUBMIT - EMAIL FIXED =====
+        // ===== FORM SUBMIT - REGISTRO + MOSTRAR BOTÓN DESCARGA =====
+        var isRegistered = false;
         document.getElementById('leadForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
             var nombre = document.getElementById('nombre').value.trim();
             var email = document.getElementById('email').value.trim();
             var whatsapp = document.getElementById('whatsapp').value.trim();
-            var delivery = document.querySelector('input[name="delivery"]:checked').value;
 
             if (!nombre || !email || !whatsapp) {
-                alert('Por favor completa todos los campos');
+                showError('Por favor completa todos los campos');
                 return;
             }
 
             var fullPhone = selectedCountry.code + whatsapp;
             var pdfLink = 'https://drive.google.com/file/d/1x4xRGYoFDxr5Wx5R6LK9zBoMiYk6wuaM/view?usp=drive_link';
 
+            // Ocultar mensajes previos
             document.getElementById('successMessage').classList.remove('show');
-            document.getElementById('driveLinkBox').classList.remove('show');
+            document.getElementById('errorMessage').classList.remove('show');
 
-            // Send data to Formspree for all delivery methods
+            // Deshabilitar botón durante envío
+            var submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+
+            // Enviar a Formspree
             var formData = new FormData();
             formData.append('nombre', nombre);
             formData.append('email', email);
             formData.append('pais', selectedCountry.name);
             formData.append('whatsapp', fullPhone);
-            formData.append('delivery', delivery);
-            formData.append('pdf_link', 'https://drive.google.com/file/d/1x4xRGYoFDxr5Wx5R6LK9zBoMiYk6wuaM/view?usp=drive_link');
+            formData.append('pdf_link', pdfLink);
             formData.append('_subject', 'Nuevo registro Ebook - ' + nombre);
 
             fetch('https://formspree.io/f/mjgzzdzp', {
                 method: 'POST',
                 body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
+                headers: { 'Accept': 'application/json' }
             }).then(function(response) {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-gift"></i> ¡Quiero mi Ebook Gratis!';
+
                 if (response.ok) {
-                    if (delivery === 'email') {
-                        document.getElementById('successMessage').innerHTML = '<i class="fas fa-check-circle"></i> ¡Gracias ' + nombre + '! Revisa tu correo, te enviaremos el ebook en breve.';
-                        document.getElementById('successMessage').classList.add('show');
+                    // ÉXITO: Marcar como registrado y mostrar botón de descarga
+                    isRegistered = true;
+                    document.getElementById('successMessage').innerHTML = '<i class="fas fa-check-circle"></i> ¡Gracias ' + nombre + '! Tu registro fue exitoso. Ahora puedes descargar tu ebook.';
+                    document.getElementById('successMessage').classList.add('show');
 
-                        // Open Gmail compose to send PDF to user
-                        var gmailUrl = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent(email) + '&su=' + encodeURIComponent('📚 Tu Ebook Gratis - Bolsos Tejidos con Trapillo') + '&body=' + encodeURIComponent('Hola ' + nombre + ',
+                    // Ocultar formulario y mostrar botón de descarga
+                    document.getElementById('leadForm').style.display = 'none';
+                    document.getElementById('downloadSection').style.display = 'block';
 
-¡Gracias por tu interés!
-
-Aquí tienes el link para descargar tu ebook gratis:
-
-' + pdfLink + '
-
-Si tienes alguna duda, responde a este correo.
-
-Saludos,
-Eldis Yera');
-                        window.open(gmailUrl, '_blank');
-
-                    } else if (delivery === 'whatsapp') {
-                        document.getElementById('successMessage').innerHTML = '<i class="fas fa-check-circle"></i> Se abrió WhatsApp con el link del ebook. Envía el mensaje para recibirlo.';
-                        document.getElementById('successMessage').classList.add('show');
-
-                        // WhatsApp to user with PDF link
-                        var userMsg = '¡Hola ' + nombre + '! 👋%0A%0A' +
-                                     'Gracias por solicitar tu ebook gratis 📚%0A%0A' +
-                                     'Aquí tienes el link para descargarlo:%0A' +
-                                     pdfLink + '%0A%0A' +
-                                     'Si tienes dudas, escríbeme.%0A%0A' +
-                                     '¡Éxitos! 🧶';
-                        window.open('https://wa.me/' + fullPhone.replace('+', '') + '?text=' + userMsg, '_blank');
-
-                    } else if (delivery === 'drive') {
-                        document.getElementById('driveLinkBox').classList.add('show');
-                        document.getElementById('successMessage').innerHTML = '<i class="fas fa-check-circle"></i> ¡Redirigiendo a Google Drive...';
-                        document.getElementById('successMessage').classList.add('show');
-                        // Redirect to PDF after 2 seconds
-                        setTimeout(function() {
-                            window.open('https://drive.google.com/file/d/1x4xRGYoFDxr5Wx5R6LK9zBoMiYk6wuaM/view?usp=drive_link', '_blank');
-                        }, 2000);
-                    }
+                    // Scroll suave al botón de descarga
+                    setTimeout(function() {
+                        document.getElementById('downloadSection').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }, 500);
                 } else {
-                    alert('Hubo un error al enviar. Intenta de nuevo.');
+                    showError('Hubo un error al enviar. Intenta de nuevo.');
                 }
             }).catch(function(error) {
-                console.error('Error:', error);
-                // Even if Formspree fails, try to open WhatsApp or Gmail
-                if (delivery === 'whatsapp') {
-                    var userMsg = '¡Hola ' + nombre + '! 👋%0A%0A' +
-                                 'Gracias por solicitar tu ebook gratis 📚%0A%0A' +
-                                 'Aquí tienes el link para descargarlo:%0A' +
-                                 pdfLink + '%0A%0A' +
-                                 'Si tienes dudas, escríbeme.%0A%0A' +
-                                 '¡Éxitos! 🧶';
-                    window.open('https://wa.me/' + fullPhone.replace('+', '') + '?text=' + userMsg, '_blank');
-                    document.getElementById('successMessage').innerHTML = '<i class="fas fa-check-circle"></i> Se abrió WhatsApp con el link del ebook.';
-                    document.getElementById('successMessage').classList.add('show');
-                } else if (delivery === 'email') {
-                    var gmailUrl = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent(email) + '&su=' + encodeURIComponent('📚 Tu Ebook Gratis') + '&body=' + encodeURIComponent('Hola ' + nombre + ',
-
-Aquí tienes tu ebook:
-
-' + pdfLink);
-                    window.open(gmailUrl, '_blank');
-                    document.getElementById('successMessage').innerHTML = '<i class="fas fa-check-circle"></i> Se abrió Gmail para enviarte el ebook.';
-                    document.getElementById('successMessage').classList.add('show');
-                } else {
-                    document.getElementById('driveLinkBox').classList.add('show');
-                    setTimeout(function() {
-                        window.open('https://drive.google.com/file/d/1x4xRGYoFDxr5Wx5R6LK9zBoMiYk6wuaM/view?usp=drive_link', '_blank');
-                    }, 2000);
-                }
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-gift"></i> ¡Quiero mi Ebook Gratis!';
+                showError('Error de conexión. Verifica tu internet e intenta de nuevo.');
             });
-
-            setTimeout(function() {
-                document.getElementById('leadForm').reset();
-                selectCountry(countries[0]);
-            }, 3000);
-
-            setTimeout(function() {
-                document.getElementById('successMessage').classList.remove('show');
-                document.getElementById('driveLinkBox').classList.remove('show');
-            }, 15000);
         });
+
+        function showError(msg) {
+            document.getElementById('errorText').textContent = msg;
+            document.getElementById('errorMessage').classList.add('show');
+            setTimeout(function() {
+                document.getElementById('errorMessage').classList.remove('show');
+            }, 5000);
+        }
 
         // ===== SMOOTH SCROLL =====
         var anchorLinks = document.querySelectorAll('a[href^="#"]');
@@ -1710,44 +778,33 @@ Aquí tienes tu ebook:
 
         // Initialize
         initDropdown();
-    
 
         // ===== COUNTDOWN TIMER =====
         function startCountdown() {
             var hoursEl = document.getElementById('hours');
             var minutesEl = document.getElementById('minutes');
             var secondsEl = document.getElementById('seconds');
-
-            // Set countdown to 4 hours from now
             var endTime = new Date();
             endTime.setHours(endTime.getHours() + 4);
-
             function updateCountdown() {
                 var now = new Date();
                 var diff = endTime - now;
-
                 if (diff <= 0) {
-                    // Reset to 4 hours when expired
                     endTime = new Date();
                     endTime.setHours(endTime.getHours() + 4);
                     diff = endTime - now;
                 }
-
                 var hours = Math.floor(diff / (1000 * 60 * 60));
                 var minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
                 var seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
                 hoursEl.textContent = String(hours).padStart(2, '0');
                 minutesEl.textContent = String(minutes).padStart(2, '0');
                 secondsEl.textContent = String(seconds).padStart(2, '0');
             }
-
             updateCountdown();
             setInterval(updateCountdown, 1000);
         }
-
         startCountdown();
-
-</script>
+    </script>
 </body>
 </html>
