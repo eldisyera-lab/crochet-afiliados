@@ -905,7 +905,7 @@
             <a href="#politicas" onclick="toggleSidebar()">
                 <i class="fas fa-shield-alt"></i> Políticas Legales
             </a>
-            <a href="mailto:eldisyera@gmail.com" onclick="toggleSidebar()">
+            <a href=" target="_blank"https://mail.google.com/mail/?view=cm&fs=1&to=eldisyera@gmail.com&su=Consulta%20desde%20la%20web" target="_blank" target="_blank" onclick="toggleSidebar()">
                 <i class="fas fa-envelope"></i> Contactar por Email
             </a>
             <a href="https://wa.link/hifqij" target="_blank" onclick="toggleSidebar()">
@@ -919,7 +919,7 @@
                 <a href="https://www.facebook.com/profile.php?id=61565093347028" target="_blank" class="fb" title="Facebook"><i class="fab fa-facebook-f"></i></a>
                 <a href="https://www.instagram.com/curso_internacional_crochet" target="_blank" class="ig" title="Instagram"><i class="fab fa-instagram"></i></a>
                 <a href="https://wa.link/hifqij" target="_blank" class="wa" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                <a href="mailto:eldisyera@gmail.com" class="em" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href=" target="_blank"https://mail.google.com/mail/?view=cm&fs=1&to=eldisyera@gmail.com" target="_blank" target="_blank" class="em" title="Email"><i class="fas fa-envelope"></i></a>
             </div>
         </div>
     </aside>
@@ -1055,7 +1055,11 @@
             </div>
 
             <div class="form-container">
-                <form id="leadForm">
+                <!-- Formspree hidden fields -->
+                <input type="hidden" name="_subject" value="Nuevo registro Ebook Gratis">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_next" value="https://eldisyera-lab.github.io/crochet-afiliados/#gracias">
+                <form id="leadForm" action="https://formspree.io/f/mjgzzdzp" method="POST">
                     <div class="form-group">
                         <label for="nombre">Nombre completo *</label>
                         <input type="text" id="nombre" name="nombre" required placeholder="Escribe tu nombre">
@@ -1379,7 +1383,7 @@
             <a href="https://www.facebook.com/profile.php?id=61565093347028" target="_blank" class="facebook-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
             <a href="https://www.instagram.com/curso_internacional_crochet" target="_blank" class="instagram-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
             <a href="https://wa.link/hifqij" target="_blank" class="whatsapp-btn" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-            <a href="mailto:eldisyera@gmail.com" class="email-btn" title="Enviar correo"><i class="fas fa-envelope"></i><span>eldisyera@gmail.com</span></a>
+            <a href=" target="_blank"https://mail.google.com/mail/?view=cm&fs=1&to=eldisyera@gmail.com&su=Consulta%20desde%20la%20web" target="_blank" target="_blank" class="email-btn" title="Enviar correo"><i class="fas fa-envelope"></i><span>eldisyera@gmail.com</span></a>
         </div>
         <p>© 2026 Bolsos Tejidos con Trapillo. Todos los derechos reservados.</p>
         <p>Productos de Hotmart | <a href="#politicas">Políticas y Términos</a></p>
@@ -1390,8 +1394,8 @@
         <div class="whatsapp-tooltip" id="whatsappTooltip">
             <p><strong>¿Necesitas el ebook?</strong></p>
             <p>Envíame el link de Google Drive por WhatsApp o Email y te lo envío de inmediato:</p>
-            <a href="https://drive.google.com/file/d/1x4xRGYoFDxr5Wx5R6LK9zBoMiYk6wuaM/view?usp=drive_link" target="_blank" class="tooltip-link">
-                <i class="fab fa-google-drive"></i> Ver Link del Ebook
+            <a href="https://web.whatsapp.com/send?phone=5354356696&text=Hola!%20Solicito%20mi%20ebook%20gratis%20por%20favor" target="_blank" class="tooltip-link">
+                <i class="fab fa-whatsapp"></i> Solicitar por WhatsApp
             </a>
         </div>
         <button class="whatsapp-float" onclick="toggleWhatsAppTooltip()" title="Contáctanos">
@@ -1577,72 +1581,112 @@
         // ===== FORM SUBMIT - EMAIL FIXED =====
         document.getElementById('leadForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
+
             var nombre = document.getElementById('nombre').value.trim();
             var email = document.getElementById('email').value.trim();
             var whatsapp = document.getElementById('whatsapp').value.trim();
             var delivery = document.querySelector('input[name="delivery"]:checked').value;
-            
+
             if (!nombre || !email || !whatsapp) {
                 alert('Por favor completa todos los campos');
                 return;
             }
-            
+
             var fullPhone = selectedCountry.code + whatsapp;
-            
+            var pdfLink = 'https://drive.google.com/file/d/1x4xRGYoFDxr5Wx5R6LK9zBoMiYk6wuaM/view?usp=drive_link';
+
             document.getElementById('successMessage').classList.remove('show');
             document.getElementById('driveLinkBox').classList.remove('show');
-            
-            if (delivery === 'email') {
-                // FIXED: Abre cliente de correo nativo con window.open
-                var subject = 'Solicitud de Ebook Gratis - ' + nombre;
-                var body = 'Hola, soy ' + nombre + '.\n\n' +
-                          'Solicito mi ebook gratis.\n\n' +
-                          'Mis datos:\n' +
-                          'Nombre: ' + nombre + '\n' +
-                          'Email: ' + email + '\n' +
-                          'Pais: ' + selectedCountry.name + '\n' +
-                          'WhatsApp: ' + fullPhone + '\n\n' +
-                          'Aquí está el link para descargar mi ebook:\n' +
-                          'https://drive.google.com/file/d/1x4xRGYoFDxr5Wx5R6LK9zBoMiYk6wuaM/view?usp=drive_link\n\n' +
-                          'Gracias!';
-                var mailtoUrl = 'mailto:eldisyera@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-                window.open(mailtoUrl, '_blank');
-                
-                document.getElementById('successMessage').innerHTML = '<i class="fas fa-check-circle"></i> Se abrió tu app de correo. Envía el email para recibir tu ebook.';
-                document.getElementById('successMessage').classList.add('show');
-                
-            } else if (delivery === 'whatsapp') {
-                var msg = 'Hola! Soy ' + nombre + '.%0A%0A' +
-                         'Solicito mi ebook gratis.%0A%0A' +
-                         'Mis datos:%0A' +
-                         'Nombre: ' + nombre + '%0A' +
-                         'Email: ' + email + '%0A' +
-                         'Pais: ' + selectedCountry.name + '%0A' +
-                         'WhatsApp: ' + fullPhone + '%0A%0A' +
-                         'Aquí está el link para descargar el ebook:%0A' +
-                         'https://drive.google.com/file/d/1x4xRGYoFDxr5Wx5R6LK9zBoMiYk6wuaM/view?usp=drive_link%0A%0A' +
-                         'Gracias!';
-                window.open('https://wa.me/5354356696?text=' + msg, '_blank');
-                document.getElementById('successMessage').innerHTML = '<i class="fas fa-check-circle"></i> Se abrió WhatsApp. Envía el mensaje para recibir tu ebook.';
-                document.getElementById('successMessage').classList.add('show');
-                
-            } else if (delivery === 'drive') {
-                document.getElementById('driveLinkBox').classList.add('show');
-                var adminMsg = 'Nuevo registro Ebook Drive:%0A' +
-                              'Nombre: ' + nombre + '%0A' +
-                              'Email: ' + email + '%0A' +
-                              'Pais: ' + selectedCountry.name + '%0A' +
-                              'WhatsApp: ' + fullPhone + '%0A' +
-                              'Fecha: ' + new Date().toLocaleString();
-                window.open('https://wa.me/5354356696?text=' + adminMsg, '_blank');
-            }
-            
+
+            // Send data to Formspree for all delivery methods
+            var formData = new FormData();
+            formData.append('nombre', nombre);
+            formData.append('email', email);
+            formData.append('pais', selectedCountry.name);
+            formData.append('whatsapp', fullPhone);
+            formData.append('delivery', delivery);
+            formData.append('_subject', 'Nuevo registro Ebook - ' + nombre);
+
+            fetch('https://formspree.io/f/mjgzzdzp', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(function(response) {
+                if (response.ok) {
+                    if (delivery === 'email') {
+                        document.getElementById('successMessage').innerHTML = '<i class="fas fa-check-circle"></i> ¡Gracias ' + nombre + '! Revisa tu correo, te enviaremos el ebook en breve.';
+                        document.getElementById('successMessage').classList.add('show');
+
+                        // Open Gmail compose to send PDF to user
+                        var gmailUrl = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent(email) + '&su=' + encodeURIComponent('📚 Tu Ebook Gratis - Bolsos Tejidos con Trapillo') + '&body=' + encodeURIComponent('Hola ' + nombre + ',
+
+¡Gracias por tu interés!
+
+Aquí tienes el link para descargar tu ebook gratis:
+
+' + pdfLink + '
+
+Si tienes alguna duda, responde a este correo.
+
+Saludos,
+Eldis Yera');
+                        window.open(gmailUrl, '_blank');
+
+                    } else if (delivery === 'whatsapp') {
+                        document.getElementById('successMessage').innerHTML = '<i class="fas fa-check-circle"></i> Se abrió WhatsApp con el link del ebook. Envía el mensaje para recibirlo.';
+                        document.getElementById('successMessage').classList.add('show');
+
+                        // WhatsApp to user with PDF link
+                        var userMsg = '¡Hola ' + nombre + '! 👋%0A%0A' +
+                                     'Gracias por solicitar tu ebook gratis 📚%0A%0A' +
+                                     'Aquí tienes el link para descargarlo:%0A' +
+                                     pdfLink + '%0A%0A' +
+                                     'Si tienes dudas, escríbeme.%0A%0A' +
+                                     '¡Éxitos! 🧶';
+                        window.open('https://wa.me/' + fullPhone.replace('+', '') + '?text=' + userMsg, '_blank');
+
+                    } else if (delivery === 'drive') {
+                        document.getElementById('driveLinkBox').classList.add('show');
+                        document.getElementById('successMessage').innerHTML = '<i class="fas fa-check-circle"></i> ¡Listo! Descarga tu ebook arriba.';
+                        document.getElementById('successMessage').classList.add('show');
+                    }
+                } else {
+                    alert('Hubo un error al enviar. Intenta de nuevo.');
+                }
+            }).catch(function(error) {
+                console.error('Error:', error);
+                // Even if Formspree fails, try to open WhatsApp or Gmail
+                if (delivery === 'whatsapp') {
+                    var userMsg = '¡Hola ' + nombre + '! 👋%0A%0A' +
+                                 'Gracias por solicitar tu ebook gratis 📚%0A%0A' +
+                                 'Aquí tienes el link para descargarlo:%0A' +
+                                 pdfLink + '%0A%0A' +
+                                 'Si tienes dudas, escríbeme.%0A%0A' +
+                                 '¡Éxitos! 🧶';
+                    window.open('https://wa.me/' + fullPhone.replace('+', '') + '?text=' + userMsg, '_blank');
+                    document.getElementById('successMessage').innerHTML = '<i class="fas fa-check-circle"></i> Se abrió WhatsApp con el link del ebook.';
+                    document.getElementById('successMessage').classList.add('show');
+                } else if (delivery === 'email') {
+                    var gmailUrl = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent(email) + '&su=' + encodeURIComponent('📚 Tu Ebook Gratis') + '&body=' + encodeURIComponent('Hola ' + nombre + ',
+
+Aquí tienes tu ebook:
+
+' + pdfLink);
+                    window.open(gmailUrl, '_blank');
+                    document.getElementById('successMessage').innerHTML = '<i class="fas fa-check-circle"></i> Se abrió Gmail para enviarte el ebook.';
+                    document.getElementById('successMessage').classList.add('show');
+                } else {
+                    document.getElementById('driveLinkBox').classList.add('show');
+                }
+            });
+
             setTimeout(function() {
                 document.getElementById('leadForm').reset();
                 selectCountry(countries[0]);
             }, 3000);
-            
+
             setTimeout(function() {
                 document.getElementById('successMessage').classList.remove('show');
                 document.getElementById('driveLinkBox').classList.remove('show');
