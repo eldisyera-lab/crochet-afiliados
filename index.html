@@ -1131,20 +1131,11 @@
                 </div>
                 
                 <div class="drive-link-box" id="driveLinkBox">
-                    <h3><i class="fab fa-google-drive"></i> ¡Tu Ebook está listo!</h3>
-                    <p>Haz clic para descargar directamente:</p>
-                    <a href="https://drive.google.com/file/d/1x4xRGYoFDxr5Wx5R6LK9zBoMiYk6wuaM/view?usp=drive_link" class="btn-download">
+                    <h3><i class="fab fa-google-drive"></i> ¡Redirigiendo a tu Ebook!</h3>
+                    <p>Si no te redirige automáticamente, haz clic aquí:</p>
+                    <a href="https://drive.google.com/file/d/1x4xRGYoFDxr5Wx5R6LK9zBoMiYk6wuaM/view?usp=drive_link" class="btn-download" id="driveDirectLink">
                         <i class="fas fa-download"></i> Descargar Ebook Ahora
                     </a>
-                    <div class="drive-instructions">
-                        <p><strong>📥 Si no inicia la descarga:</strong></p>
-                        <ol>
-                            <li>Haz clic en el botón verde arriba</li>
-                            <li>Espera 3-5 segundos</li>
-                            <li>El PDF se descargará automáticamente</li>
-                            <li>Busca en tu carpeta de "Descargas"</li>
-                        </ol>
-                    </div>
                 </div>
                 
                 <p class="privacy-note">
@@ -1605,6 +1596,7 @@
             formData.append('pais', selectedCountry.name);
             formData.append('whatsapp', fullPhone);
             formData.append('delivery', delivery);
+            formData.append('pdf_link', 'https://drive.google.com/file/d/1x4xRGYoFDxr5Wx5R6LK9zBoMiYk6wuaM/view?usp=drive_link');
             formData.append('_subject', 'Nuevo registro Ebook - ' + nombre);
 
             fetch('https://formspree.io/f/mjgzzdzp', {
@@ -1649,8 +1641,12 @@ Eldis Yera');
 
                     } else if (delivery === 'drive') {
                         document.getElementById('driveLinkBox').classList.add('show');
-                        document.getElementById('successMessage').innerHTML = '<i class="fas fa-check-circle"></i> ¡Listo! Descarga tu ebook arriba.';
+                        document.getElementById('successMessage').innerHTML = '<i class="fas fa-check-circle"></i> ¡Redirigiendo a Google Drive...';
                         document.getElementById('successMessage').classList.add('show');
+                        // Redirect to PDF after 2 seconds
+                        setTimeout(function() {
+                            window.open('https://drive.google.com/file/d/1x4xRGYoFDxr5Wx5R6LK9zBoMiYk6wuaM/view?usp=drive_link', '_blank');
+                        }, 2000);
                     }
                 } else {
                     alert('Hubo un error al enviar. Intenta de nuevo.');
@@ -1679,6 +1675,9 @@ Aquí tienes tu ebook:
                     document.getElementById('successMessage').classList.add('show');
                 } else {
                     document.getElementById('driveLinkBox').classList.add('show');
+                    setTimeout(function() {
+                        window.open('https://drive.google.com/file/d/1x4xRGYoFDxr5Wx5R6LK9zBoMiYk6wuaM/view?usp=drive_link', '_blank');
+                    }, 2000);
                 }
             });
 
