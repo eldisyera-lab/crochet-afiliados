@@ -432,9 +432,9 @@
                         <label>País *</label>
                         <div class="country-selector" id="countrySelector">
                             <div class="country-display" id="countryDisplay" onclick="toggleDropdown()">
-                                <img id="selectedFlag" src="https://flagcdn.com/w40/cu.png" alt="Cuba">
-                                <span class="country-name" id="selectedName">Cuba</span>
-                                <span class="country-code" id="selectedCode">+53</span>
+                                <img id="selectedFlag" src="https://flagcdn.com/w40/us.png" alt="Estados Unidos">
+                                <span class="country-name" id="selectedName">Estados Unidos</span>
+                                <span class="country-code" id="selectedCode">+1</span>
                                 <i class="fas fa-chevron-down"></i>
                             </div>
                             <div class="country-dropdown" id="countryDropdown"></div>
@@ -444,10 +444,10 @@
                         <label for="whatsapp">Número de WhatsApp *</label>
                         <div class="phone-input-wrapper">
                             <div class="phone-prefix" id="phonePrefix">
-                                <img id="prefixFlag" src="https://flagcdn.com/w40/cu.png" alt="Cuba">
-                                <span id="prefixCode">+53</span>
+                                <img id="prefixFlag" src="https://flagcdn.com/w40/us.png" alt="Estados Unidos">
+                                <span id="prefixCode">+1</span>
                             </div>
-                            <input type="tel" id="whatsapp" name="whatsapp" required placeholder="54356696" pattern="[0-9]*" inputmode="numeric">
+                            <input type="tel" id="whatsapp" name="whatsapp" required placeholder="3055550199" pattern="[0-9]*" inputmode="numeric">
                         </div>
                     </div>
                     <button type="submit" class="btn-submit" id="submitBtn">
@@ -756,7 +756,7 @@
             { name: "Francia", code: "+33", flag: "fr" },
             { name: "Alemania", code: "+49", flag: "de" }
         ];
-        var selectedCountry = countries[0];
+        var selectedCountry = countries[12];
         var dropdownOpen = false;
         function initDropdown() {
             var dropdown = document.getElementById('countryDropdown');
