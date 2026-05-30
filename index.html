@@ -248,8 +248,350 @@
             .ebook-preview { width: 160px; height: 220px; }
             .btn-submit { font-size: 1rem; padding: 15px; }
         }
-    </style>
+    
+
+        /* CTA URGENCY SECTION */
+        .cta-urgency-section {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            border-radius: 24px;
+            padding: 50px 30px;
+            margin: 30px 0;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.05);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-urgency-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(231,76,60,0.08) 0%, transparent 70%);
+            animation: pulseGlow 4s ease-in-out infinite;
+        }
+        @keyframes pulseGlow {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+        .cta-urgency-container {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .urgency-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 20px rgba(231,76,60,0.4);
+            animation: badgePulse 2s ease-in-out infinite;
+        }
+        @keyframes badgePulse {
+            0%, 100% { box-shadow: 0 5px 20px rgba(231,76,60,0.4); }
+            50% { box-shadow: 0 8px 30px rgba(231,76,60,0.7); }
+        }
+        .urgency-badge i { font-size: 1rem; }
+        .cta-title {
+            color: #ffffff;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        .cta-subtitle {
+            color: rgba(255,255,255,0.75);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        .cta-subtitle strong { color: #f1c40f; }
+
+        /* COUNTDOWN */
+        .countdown-wrapper {
+            background: rgba(0,0,0,0.3);
+            border-radius: 16px;
+            padding: 25px 20px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(231,76,60,0.2);
+        }
+        .countdown-label {
+            color: #e74c3c;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        .countdown-box {
+            background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
+            border-radius: 12px;
+            padding: 15px 20px;
+            min-width: 80px;
+            border: 2px solid rgba(231,76,60,0.3);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+        .countdown-number {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #e74c3c;
+            line-height: 1;
+            font-family: 'Courier New', monospace;
+        }
+        .countdown-text {
+            display: block;
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.6);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 5px;
+        }
+        .countdown-separator {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #e74c3c;
+            animation: separatorBlink 1s ease-in-out infinite;
+        }
+        @keyframes separatorBlink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        /* PRICE COMPARISON */
+        .price-comparison {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .price-old {
+            text-align: center;
+            opacity: 0.6;
+        }
+        .price-old-label {
+            display: block;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+        .price-old-value {
+            display: block;
+            color: rgba(255,255,255,0.5);
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-decoration: line-through;
+            text-decoration-color: #e74c3c;
+            text-decoration-thickness: 3px;
+        }
+        .price-arrow {
+            color: #e74c3c;
+            font-size: 1.5rem;
+            animation: arrowBounce 1.5s ease-in-out infinite;
+        }
+        @keyframes arrowBounce {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(8px); }
+        }
+        .price-new {
+            text-align: center;
+        }
+        .price-new-label {
+            display: block;
+            color: #f1c40f;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        .price-new-value {
+            display: block;
+            color: #2ecc71;
+            font-size: 3rem;
+            font-weight: 800;
+            text-shadow: 0 0 20px rgba(46,204,113,0.4);
+            line-height: 1;
+        }
+        .savings-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(46,204,113,0.15);
+            color: #2ecc71;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            border: 1px solid rgba(46,204,113,0.3);
+        }
+
+        /* SCARCITY BAR */
+        .scarcity-bar {
+            background: rgba(0,0,0,0.25);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(231,76,60,0.15);
+        }
+        .scarcity-text {
+            color: rgba(255,255,255,0.85);
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+        }
+        .scarcity-text strong { color: #e74c3c; }
+        .scarcity-progress {
+            width: 100%;
+            height: 10px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+        .scarcity-fill {
+            height: 100%;
+            width: 93%;
+            background: linear-gradient(90deg, #e74c3c 0%, #c0392b 100%);
+            border-radius: 5px;
+            transition: width 0.3s ease;
+            animation: scarcityPulse 2s ease-in-out infinite;
+        }
+        @keyframes scarcityPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        .scarcity-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* CTA BUTTON */
+        .btn-cta-urgency {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto 25px;
+            padding: 22px 30px;
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(231,76,60,0.5), 0 0 0 4px rgba(231,76,60,0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-cta-urgency::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        .btn-cta-urgency:hover::before {
+            left: 100%;
+        }
+        .btn-cta-urgency:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 50px rgba(231,76,60,0.6), 0 0 0 4px rgba(231,76,60,0.3);
+        }
+        .btn-cta-main {
+            font-size: 1.3rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+        .btn-cta-main i { margin-right: 10px; }
+        .btn-cta-sub {
+            font-size: 0.8rem;
+            opacity: 0.85;
+            font-weight: 400;
+        }
+
+        /* TRUST BADGES */
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.8rem;
+        }
+        .trust-badge i {
+            color: #f1c40f;
+            font-size: 1rem;
+        }
+
+        /* DISCLAIMER */
+        .cta-disclaimer {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.85rem;
+            line-height: 1.6;
+            max-width: 550px;
+            margin: 0 auto;
+        }
+        .cta-disclaimer i { color: #e74c3c; margin-right: 5px; }
+        .cta-disclaimer strong { color: rgba(255,255,255,0.7); }
+
+        @media (max-width: 768px) {
+            .cta-urgency-section { padding: 35px 15px; margin: 15px 0; }
+            .cta-title { font-size: 1.6rem; }
+            .cta-subtitle { font-size: 0.95rem; }
+            .countdown-box { min-width: 60px; padding: 12px 15px; }
+            .countdown-number { font-size: 1.8rem; }
+            .countdown-text { font-size: 0.65rem; }
+            .price-new-value { font-size: 2.2rem; }
+            .price-old-value { font-size: 1.4rem; }
+            .btn-cta-main { font-size: 1.05rem; }
+            .btn-cta-sub { font-size: 0.75rem; }
+            .trust-badges { gap: 12px; }
+            .trust-badge { font-size: 0.75rem; }
+        }
+        @media (max-width: 480px) {
+            .cta-title { font-size: 1.3rem; }
+            .countdown-box { min-width: 50px; padding: 10px 12px; }
+            .countdown-number { font-size: 1.5rem; }
+            .price-comparison { gap: 12px; }
+            .price-new-value { font-size: 1.8rem; }
+            .btn-cta-urgency { padding: 18px 20px; }
+            .btn-cta-main { font-size: 0.95rem; }
+        }
+
+</style>
     <base target="_blank">
+<base target="_blank">
 <base target="_blank">
 </head>
 <body>
@@ -392,6 +734,96 @@
                 <p class="privacy-note"><i class="fas fa-lock"></i> Tu información está segura. Lee nuestra <a href="#politicas" style="color:#667eea;">Política de Privacidad</a>.</p>
             </div>
         </section>
+        
+        <!-- CTA URGENTE CON CONTADOR -->
+        <section class="cta-urgency-section" id="cta-urgente">
+            <div class="cta-urgency-container">
+                <div class="urgency-badge">
+                    <i class="fas fa-fire"></i> OFERTA ESPECIAL POR TIEMPO LIMITADO
+                </div>
+                <h2 class="cta-title">¡No pierdas esta oportunidad!</h2>
+                <p class="cta-subtitle">Accede al curso completo con un <strong>descuento exclusivo</strong> solo por las próximas horas</p>
+
+                <div class="countdown-wrapper">
+                    <p class="countdown-label">⏰ La oferta termina en:</p>
+                    <div class="countdown-timer" id="urgencyCountdown">
+                        <div class="countdown-box">
+                            <span class="countdown-number" id="urgencyHours">04</span>
+                            <span class="countdown-text">Horas</span>
+                        </div>
+                        <div class="countdown-separator">:</div>
+                        <div class="countdown-box">
+                            <span class="countdown-number" id="urgencyMinutes">00</span>
+                            <span class="countdown-text">Minutos</span>
+                        </div>
+                        <div class="countdown-separator">:</div>
+                        <div class="countdown-box">
+                            <span class="countdown-number" id="urgencySeconds">00</span>
+                            <span class="countdown-text">Segundos</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="price-comparison">
+                    <div class="price-old">
+                        <span class="price-old-label">Precio normal</span>
+                        <span class="price-old-value">$97 USD</span>
+                    </div>
+                    <div class="price-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    <div class="price-new">
+                        <span class="price-new-label">Hoy solo</span>
+                        <span class="price-new-value">$35 USD</span>
+                    </div>
+                </div>
+
+                <div class="savings-badge">
+                    <i class="fas fa-tag"></i> ¡Ahorras $62 USD! (64% de descuento)
+                </div>
+
+                <div class="scarcity-bar">
+                    <div class="scarcity-text">
+                        <i class="fas fa-users"></i> Solo quedan <strong>7 cupos</strong> disponibles a este precio
+                    </div>
+                    <div class="scarcity-progress">
+                        <div class="scarcity-fill" id="scarcityFill"></div>
+                    </div>
+                    <div class="scarcity-labels">
+                        <span>93% vendido</span>
+                        <span>7% disponible</span>
+                    </div>
+                </div>
+
+                <a href="https://go.hotmart.com/I105828523Q?ap=dddd" target="_blank" class="btn-cta-urgency">
+                    <span class="btn-cta-main">
+                        <i class="fas fa-shopping-cart"></i> SÍ, QUIERO EL CURSO POR $35 USD
+                    </span>
+                    <span class="btn-cta-sub">Acceso inmediato • Garantía 7 días • Pago seguro</span>
+                </a>
+
+                <div class="trust-badges">
+                    <div class="trust-badge">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Pago 100% Seguro</span>
+                    </div>
+                    <div class="trust-badge">
+                        <i class="fas fa-undo"></i>
+                        <span>Garantía 7 Días</span>
+                    </div>
+                    <div class="trust-badge">
+                        <i class="fas fa-infinity"></i>
+                        <span>Acceso Vitalicio</span>
+                    </div>
+                </div>
+
+                <p class="cta-disclaimer">
+                    <i class="fas fa-exclamation-triangle"></i> 
+                    <strong>Atención:</strong> Este precio especial de $35 USD es por tiempo limitado. Una vez que el contador llegue a cero, el precio volverá a $97 USD. No te quedes fuera.
+                </p>
+            </div>
+        </section>
+
         <!-- COURSE -->
         <section class="course-section" id="curso">
             <h2>🎓 Curso Recomendado</h2>
@@ -805,6 +1237,58 @@
             setInterval(updateCountdown, 1000);
         }
         startCountdown();
-    </script>
+    
+
+        // ===== URGENCY COUNTDOWN =====
+        function startUrgencyCountdown() {
+            var hoursEl = document.getElementById('urgencyHours');
+            var minutesEl = document.getElementById('urgencyMinutes');
+            var secondsEl = document.getElementById('urgencySeconds');
+
+            // Leer tiempo guardado o crear nuevo
+            var savedEndTime = localStorage.getItem('urgencyCountdownEnd');
+            var endTime;
+
+            if (savedEndTime) {
+                endTime = new Date(parseInt(savedEndTime));
+                // Si ya pasó, reiniciar
+                if (endTime < new Date()) {
+                    endTime = new Date();
+                    endTime.setHours(endTime.getHours() + 4);
+                    localStorage.setItem('urgencyCountdownEnd', endTime.getTime());
+                }
+            } else {
+                endTime = new Date();
+                endTime.setHours(endTime.getHours() + 4);
+                localStorage.setItem('urgencyCountdownEnd', endTime.getTime());
+            }
+
+            function updateUrgencyCountdown() {
+                var now = new Date();
+                var diff = endTime - now;
+
+                if (diff <= 0) {
+                    // Reiniciar a 4 horas cuando llegue a cero
+                    endTime = new Date();
+                    endTime.setHours(endTime.getHours() + 4);
+                    localStorage.setItem('urgencyCountdownEnd', endTime.getTime());
+                    diff = endTime - now;
+                }
+
+                var hours = Math.floor(diff / (1000 * 60 * 60));
+                var minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
+                if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, '0');
+                if (secondsEl) secondsEl.textContent = String(seconds).padStart(2, '0');
+            }
+
+            updateUrgencyCountdown();
+            setInterval(updateUrgencyCountdown, 1000);
+        }
+        startUrgencyCountdown();
+
+</script>
 </body>
 </html>
